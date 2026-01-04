@@ -44,7 +44,7 @@ export function generateRecipeMetadata(recipe) {
   
   // Generate canonical URL - use consistent pattern with seo.js
   // Construct path first, then full URL (same pattern as seo.js: `${SITE_URL}${url}`)
-  const urlPath = `/recept/${slug}`;
+  const urlPath = `/${slug}`;
   const canonicalUrl = normalizeUrl(SITE_URL, urlPath);
   
   // Generate image URL - ONLY if recipe image exists
@@ -320,7 +320,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
         position: index + 1,
         name: step.title || `Schritt ${index + 1}`,
         text: step.description.trim(), // Ensure text is trimmed and not empty
-        url: normalizeUrl(SITE_URL, `/recept/${slug}#step-${index + 1}`),
+        url: normalizeUrl(SITE_URL, `/${slug}#step-${index + 1}`),
       };
       // Add image with proper ImageObject format if stepImage exists
       // Priority: stepImage > step.image (for backward compatibility)
@@ -374,8 +374,8 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     // Issue #4: Add mainEntityOfPage to associate recipe with exact URL
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': normalizeUrl(SITE_URL, `/recept/${slug}`),
-      url: normalizeUrl(SITE_URL, `/recept/${slug}`), // Also add url property for completeness
+      '@id': normalizeUrl(SITE_URL, `/${slug}`),
+      url: normalizeUrl(SITE_URL, `/${slug}`), // Also add url property for completeness
     },
     author: {
       '@type': 'Person',
@@ -645,7 +645,7 @@ export function generateRelatedContentSchema(relatedRecipes, category) {
       const item = {
         // DO NOT add '@type': 'Recipe' here - that's only for actual recipe pages
         name: recipe.title,
-        url: normalizeUrl(SITE_URL, `/recept/${recipe.slug}`),
+        url: normalizeUrl(SITE_URL, `/${recipe.slug}`),
         description: recipe.excerpt,
       };
       
@@ -714,7 +714,7 @@ export function generateRecipeBreadcrumbSchema(recipe, category) {
     '@type': 'ListItem',
     position: category ? 4 : 3,
     name: recipe.title,
-    item: normalizeUrl(SITE_URL, `/recept/${recipe.slug}`),
+    item: normalizeUrl(SITE_URL, `/${recipe.slug}`),
   });
 
   return {

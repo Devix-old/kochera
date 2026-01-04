@@ -22,17 +22,12 @@ export default function Header({ recipes = [] }) {
       icon: Home
     },
     {
-      label: 'Kategorier',
-      href: '/kategorier',
-      icon: Grid3X3
-    },
-    {
-      label: 'Recept',
-      href: '/recept',
+      label: 'Rezepte',
+      href: '/rezepte',
       icon: Utensils,
       dropdown: allCategories.map(cat => ({
         label: cat.name,
-        href: `/kategorier/${cat.slug}`,
+        href: `/${cat.slug}`,
         icon: cat.icon,
         description: cat.description
       }))
