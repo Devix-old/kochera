@@ -44,7 +44,7 @@ body {
 /* Global Image Aspect Ratio Protection */
 img {
   max-width: 100%;
-  height: auto;
+  height: 100%s;
   display: block;
 }
 
@@ -390,6 +390,16 @@ img {
 
 .font-inter {
   font-family: var(--font-inter);
+}
+
+/* Hide scrollbar for category rail */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 .font-crimson {
