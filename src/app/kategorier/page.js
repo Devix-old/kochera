@@ -7,7 +7,7 @@ import { normalizeUrl } from '@/lib/utils/url';
 
 export async function generateMetadata() {
   return generateSiteMetadata({
-    title: 'Alla Receptkategorier - Hitta Ditt Nästa Favoritrecept | Bakstunden',
+    title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | Kochera',
     description: 'Utforska alla våra receptkategorier: Kyckling, Pasta, Vegetariska, Kladdkaka, Pannkakor och mycket mer. Över 100+ recept i 16 kategorier för alla smaker och tillfällen.',
     url: '/kategorier',
     keywords: 'receptkategorier, matkategorier, kyckling recept, pasta recept, vegetariska recept, kladdkaka recept, pannkakor recept, svenska recept, matlagning, kokbok, recept inspiration, kategorier mat, alla recept, recept sortering',
@@ -17,7 +17,7 @@ export async function generateMetadata() {
           url: '/images/fika-och-bakning-svensk-stil.webp',
           width: 1200,
           height: 630,
-          alt: 'Alla receptkategorier på Bakstunden',
+          alt: 'Alle Rezeptkategorien auf Kochera',
         },
       ],
     },
@@ -69,14 +69,14 @@ export default async function KategorierPage() {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Hem',
-        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se'
+        name: 'Start',
+        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Kategorier',
-        item: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se'}/kategorier`
+        item: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'}/kategorier`
       }
     ]
   };
@@ -84,9 +84,9 @@ export default async function KategorierPage() {
   const collectionPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Alla Receptkategorier',
-    description: 'Utforska alla våra receptkategorier med över 100+ recept för alla smaker och tillfällen',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se'}/kategorier`,
+    name: 'Alle Rezeptkategorien',
+    description: 'Entdecke alle unsere Rezeptkategorien mit über 100+ Rezepten für alle Geschmäcker und Anlässe',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'}/kategorier`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: allCategories.length,
@@ -97,7 +97,7 @@ export default async function KategorierPage() {
           '@type': 'Thing',
           name: category.name,
           description: category.description,
-          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se', `/kategorier/${category.slug}`)
+          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${category.slug}`)
         }
       }))
     }

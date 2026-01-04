@@ -42,7 +42,7 @@ function normalizeImageSrc(image: any): string | null {
  * Main Sitemap Generator
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://bakstunden.se';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kochera.de';
 
   // Load MDX content
   let recipes: any[] = [];

@@ -5,7 +5,7 @@
 
 import { normalizeUrl } from '@/lib/utils/url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
 
 /**
  * Generate comprehensive recipe metadata
@@ -20,7 +20,7 @@ export function generateRecipeMetadata(recipe) {
     title = '',
     excerpt = '',
     image,
-    author = 'Bakstunden Team',
+    author = 'Kochera Team',
     publishedAt,
     updatedAt,
     tags = [],
@@ -75,15 +75,15 @@ export function generateRecipeMetadata(recipe) {
       title: seoTitle,
       description: seoDescription,
       url: canonicalUrl,
-      siteName: 'Bakstunden',
+      siteName: 'Kochera',
       // Only include images if we have a valid recipe image
       // Empty array or missing images property is better than wrong image
       ...(imageMeta ? { images: [imageMeta] } : {}),
-      locale: 'sv_SE',
+      locale: 'de_DE',
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: updatedAt || publishedAt,
-      authors: author ? [author] : ['Bakstunden Team'],
+      authors: author ? [author] : ['Kochera Team'],
       tags: tags,
       section: category,
     },
@@ -93,8 +93,8 @@ export function generateRecipeMetadata(recipe) {
       description: seoDescription,
       // Only include images if we have a valid recipe image
       ...(imageUrl ? { images: [imageUrl] } : {}),
-      creator: '@bakstunden',
-      site: '@bakstunden',
+      creator: '@kochera',
+      site: '@kochera',
     },
     robots: {
       index: true,
@@ -109,7 +109,7 @@ export function generateRecipeMetadata(recipe) {
     },
     // NICE-TO-HAVE #12: Add metadata for AI/LLM discovery
     other: {
-      'article:author': author || 'Bakstunden Team',
+      'article:author': author || 'Kochera Team',
       // Add content accessibility hints
       'accessibility': 'screen-reader-optimized',
     },
@@ -139,7 +139,7 @@ function generateRecipeTitle(title = '', category = '', difficulty = '') {
  */
 function generateRecipeDescription(excerpt = '', category = '', totalTimeMinutes = 0, servings = 0) {
   // Use the exact excerpt from MDX file without any modifications
-  return excerpt || 'Lär dig att laga god mat med vår steg-för-steg guide på Bakstunden.';
+  return excerpt || 'Lerne, wie du leckeres Essen mit unserer Schritt-für-Schritt-Anleitung auf Kochera zubereitest.';
 }
 
 /**
@@ -318,7 +318,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
       const stepSchema = {
         '@type': 'HowToStep',
         position: index + 1,
-        name: step.title || `Steg ${index + 1}`,
+        name: step.title || `Schritt ${index + 1}`,
         text: step.description.trim(), // Ensure text is trimmed and not empty
         url: normalizeUrl(SITE_URL, `/recept/${slug}#step-${index + 1}`),
       };
@@ -370,7 +370,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     description: recipeDescription,
     image: imageArray,
     // Add language for better international SEO
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     // Issue #4: Add mainEntityOfPage to associate recipe with exact URL
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -379,11 +379,11 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     },
     author: {
       '@type': 'Person',
-      name: author || 'Bakstunden Team',
+      name: author || 'Kochera Team',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Bakstunden',
+      name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
         url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
@@ -396,11 +396,11 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     prepTime: prepTimeMinutes ? `PT${prepTimeMinutes}M` : undefined,
     cookTime: cookTimeMinutes ? `PT${cookTimeMinutes}M` : undefined,
     totalTime: totalTimeMinutes ? `PT${totalTimeMinutes}M` : undefined,
-    // Use yield from MDX if available, otherwise use Swedish localization
-    recipeYield: recipeYield || (servings ? `${servings} portioner` : undefined),
+    // Use yield from MDX if available, otherwise use German localization
+    recipeYield: recipeYield || (servings ? `${servings} Portionen` : undefined),
     // CRITICAL #2: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: category || undefined,
-    recipeCuisine: cuisine || 'Swedish',
+    recipeCuisine: cuisine || 'German',
     // Google recommends keywords field for Recipe schema (optional but recommended)
     // Provides additional descriptive terms like season, occasion, descriptors
     keywords: schemaKeywords,
@@ -487,7 +487,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     schema.video = {
       '@type': 'VideoObject',
       name: `${title} - Videoguide`,
-      description: `Lär dig att laga ${title} med vår steg-för-steg videoguide`,
+      description: `Lerne, wie du ${title} mit unserer Schritt-für-Schritt-Videoanleitung zubereitest`,
       thumbnailUrl: image?.src ? normalizeUrl(SITE_URL, image.src) : undefined,
       contentUrl: recipe.video.url,
       embedUrl: recipe.video.embedUrl,
@@ -637,8 +637,8 @@ export function generateRelatedContentSchema(relatedRecipes, category) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `Relaterade ${safeCategory} recept`,
-    description: `Fler ${categoryLabel} recept du kanske gillar`,
+    name: `Verwandte ${safeCategory} Rezepte`,
+    description: `Weitere ${categoryLabel} Rezepte, die dir gefallen könnten`,
     itemListElement: relatedRecipes.map((recipe, index) => {
       // CRITICAL: Remove @type: 'Recipe' to avoid Google seeing multiple recipes on same page
       // Use simple reference with URL, name, description only - no Recipe type
@@ -672,13 +672,13 @@ export function generateRecipeBreadcrumbSchema(recipe, category) {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'Hem',
+      name: 'Start',
       item: SITE_URL,
     },
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Recept',
+      name: 'Rezepte',
       item: normalizeUrl(SITE_URL, '/recept'),
     },
   ];
@@ -732,7 +732,7 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Bakstunden',
+    name: 'Kochera',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -761,7 +761,7 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Bakstunden',
+    name: 'Kochera',
     url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',

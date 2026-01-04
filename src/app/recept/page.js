@@ -7,26 +7,26 @@ import { getAllCategories } from '@/lib/categories';
 import { redirect } from 'next/navigation';
 
 export const metadata = {
-  title: 'Alla recept - Matrecept för alla tillfällen',
-  description: 'Utforska hundratals provlagade matrecept från Bakstunden. Från kyckling och pasta till vegetariskt och dessert - hitta din nya favorit!',
-  keywords: 'recept, mat, matlagning, kyckling, pasta, vegetariskt, kladdkaka, pannkakor, svenska recept, frukost, lunch, middag, dessert, familjerecept',
+  title: 'Alle Rezepte - Kochrezepte für jeden Anlass',
+  description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
+  keywords: 'Rezepte, Essen, Kochen, Hähnchen, Pasta, vegetarisch, Brownie, Pfannkuchen, deutsche Rezepte, Frühstück, Mittagessen, Abendessen, Dessert, Familienrezepte',
   openGraph: {
-    title: 'Alla recept | Bakstunden',
-    description: 'Utforska hundratals provlagade matrecept från Bakstunden. Från kyckling och pasta till vegetariskt och dessert - hitta din nya favorit!',
+    title: 'Alle Rezepte | Kochera',
+    description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
     type: 'website',
     images: [
       {
         url: '/images/fika-och-bakning-svensk-stil.webp',
         width: 1200,
         height: 630,
-        alt: 'Svenska matrecept - Bakstunden',
+        alt: 'Deutsche Rezepte - Kochera',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alla recept | Bakstunden',
-    description: 'Utforska hundratals provlagade matrecept från Bakstunden. Från kyckling och pasta till vegetariskt och dessert - hitta din nya favorit!',
+    title: 'Alle Rezepte | Kochera',
+    description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
     images: ['/images/fika-och-bakning-svensk-stil.webp'],
   },
 };

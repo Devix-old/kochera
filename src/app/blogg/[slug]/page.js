@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
     type: 'article',
     publishedTime: blog.publishedAt,
     modifiedTime: blog.updatedAt || blog.publishedAt,
-    author: blog.author || 'Bakstunden Team',
+    author: blog.author || 'Kochera Team',
     tags: blog.tags,
     keywords: blog.tags?.join(', ') || blog.keywords,
   });
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }) {
     { name: frontmatter.title }
   ];
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
   
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }) {
     title: frontmatter.title,
     excerpt: frontmatter.excerpt,
     image: frontmatter.image,
-    author: frontmatter.author || 'Bakstunden Team',
+    author: frontmatter.author || 'Kochera Team',
     publishedAt: frontmatter.publishedAt,
     updatedAt: frontmatter.updatedAt || frontmatter.publishedAt,
     url: normalizeUrl(siteUrl, `/blogg/${slug}`),

@@ -46,16 +46,16 @@ const crimson = Crimson_Text({
 
 export const metadata = {
   ...generateSiteMetadata({
-    title: 'Bakstunden – Sveriges bästa matrecept | Matlagning & Bakning för alla tillfällen',
-    description: 'Upptäck tusentals enkla, goda recept – från klassiska pannkakor till saftiga kycklingfärsrätter. Snabba vardagsrätter och svenska favoriter för hela familjen!',
+    title: 'Kochera – Deutschlands beste Rezepte | Kochen & Backen für jeden Anlass',
+    description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     url: '/',
-    keywords: 'recept, matrecept, matlagning, svenska recept, bakning, bakningsrecept, vegetariskt, veganskt, glutenfritt, frukost, lunch, middag, dessert, snabbmat, vardagsmat, kokbok, svensk mat, familjerecept, hemlagad mat, kycklingfärs recept, pannkakor recept, kycklinglårfile recept, kladdkaka recept, lasagne recept, scones recept, chokladbollar recept, våfflor recept, kanelbullar recept, köttbullar recept, carbonara recept, korvstroganoff recept, kyckling recept, sockerkaka recept, lax recept, muffins recept, äppelmos recept, äppelpaj recept, pasta recept, vegetariska recept, hälsosam mat, italiensk mat, asiatisk mat, sallader, soppor, steg-för-steg recept, enkla recept, snabba recept, vardagsrecept, helgmat, festmat',
+    keywords: 'Rezepte, Kochrezepte, Kochen, deutsche Rezepte, Backen, Backrezepte, vegetarisch, vegan, glutenfrei, Frühstück, Mittagessen, Abendessen, Dessert, Schnellgericht, Alltagsessen, Kochbuch, deutsche Küche, Familienrezepte, hausgemachtes Essen, Hähnchenhack Rezepte, Pfannkuchen Rezepte, Hähnchenschenkel Rezepte, Brownie Rezepte, Lasagne Rezepte, Scones Rezepte, Schokobällchen Rezepte, Waffeln Rezepte, Zimtschnecken Rezepte, Frikadellen Rezepte, Carbonara Rezepte, Jägerschnitzel Rezepte, Hähnchen Rezepte, Rührkuchen Rezepte, Lachs Rezepte, Muffins Rezepte, Apfelmus Rezepte, Apfelkuchen Rezepte, Pasta Rezepte, vegetarische Rezepte, gesundes Essen, italienische Küche, asiatische Küche, Salate, Suppen, Schritt-für-Schritt Rezepte, einfache Rezepte, schnelle Rezepte, Alltagsrezepte, Festessen, Partyessen',
   }),
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'),
   title: {
-    default: 'Bakstunden – Sveriges bästa matrecept för alla tillfällen',
+    default: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
   },
-  applicationName: 'Bakstunden',
+  applicationName: 'Kochera',
   generator: 'Next.js',
   icons: {
     icon: [
@@ -68,24 +68,24 @@ export const metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'sv_SE',
-    url: 'https://bakstunden.se',
-    siteName: 'Bakstunden',
-    title: 'Bakstunden – Sveriges bästa matrecept för alla tillfällen',
-    description: 'Upptäck tusentals enkla, goda recept – från klassiska pannkakor till saftiga kycklingfärsrätter. Snabba vardagsrätter och svenska favoriter för hela familjen!',
+    locale: 'de_DE',
+    url: 'https://kochera.de',
+    siteName: 'Kochera',
+    title: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
+    description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     images: [
       {
         url: '/bak-stunden.png',
         width: 1200,
         height: 630,
-        alt: 'Bakstunden - Sveriges bästa matrecept för alla tillfällen',
+        alt: 'Kochera - Deutschlands beste Rezepte für jeden Anlass',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bakstunden – Sveriges bästa matrecept för alla tillfällen',
-    description: 'Upptäck tusentals enkla, goda recept – från klassiska pannkakor till saftiga kycklingfärsrätter. Snabba vardagsrätter och svenska favoriter för hela familjen!',
+    title: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
+    description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     images: ['/bak-stunden.png'],
   },
   manifest: '/manifest.json',
@@ -104,7 +104,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="sv" dir="ltr">
+    <html lang="de" dir="ltr">
       <head>
         <meta name="google-site-verification" content="73a51c1ce7036450" />
         <meta name="ahrefs-site-verification" content="22d922fdf84d019c19ae72220da6b8c4acf4889a83938c151cdbc09ee00d5aa2" />
@@ -144,7 +144,7 @@ export default function RootLayout({ children }) {
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-lg"
         >
-          Hoppa till huvudinnehåll
+          Zum Hauptinhalt springen
         </a>
         
         {/* Google Tag Manager */}

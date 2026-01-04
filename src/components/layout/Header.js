@@ -78,7 +78,7 @@ export default function Header({ recipes = [] }) {
                   <Utensils className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  Bakstunden
+                  Kochera
                 </span>
               </div>
             </Link>

@@ -145,7 +145,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const recipeData = await getContentBySlug('recipes', slug);
 
-  if (!recipeData) return { title: 'Recept hittades inte' };
+  if (!recipeData) return { title: 'Rezept nicht gefunden' };
 
   // Extract frontmatter data for metadata generation
   const recipe = {
@@ -259,7 +259,7 @@ export default async function RecipePage({ params }) {
     content: recipe.content
   }, keywords);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
   
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -291,7 +291,7 @@ export default async function RecipePage({ params }) {
     title: displayRecipeName,
     excerpt: frontmatter.excerpt,
     image: frontmatter.image,
-    author: frontmatter.author || 'Bakstunden Team',
+    author: frontmatter.author || 'Kochera Team',
     publishedAt: frontmatter.publishedAt,
     updatedAt: frontmatter.updatedAt || frontmatter.publishedAt,
     url: normalizeUrl(siteUrl, `/recept/${slug}`), // Use correct recipe URL path
@@ -316,7 +316,7 @@ export default async function RecipePage({ params }) {
     '@id': primaryImageId,
     url: imageUrl,
     contentUrl: imageUrl,
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     // Include width/height if available from image object, otherwise use common recipe image dimensions
     ...(frontmatter.image?.width && frontmatter.image?.height ? {
       width: frontmatter.image.width,
@@ -337,7 +337,7 @@ export default async function RecipePage({ params }) {
     name: displayRecipeName,
     description: frontmatter.excerpt,
     ...(primaryImageObject ? { primaryImageOfPage: { '@id': primaryImageId } } : {}),
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
   };
 
   return (
@@ -448,7 +448,7 @@ export default async function RecipePage({ params }) {
                   <div className="relative overflow-hidden rounded-2xl ring-2 ring-purple-100 dark:ring-purple-900/50 shadow-xl group">
                     <img
                       src={frontmatter.image.src}
-                      alt={frontmatter.image.alt || `${displayRecipeName} - Bakstunden recept`}
+                      alt={frontmatter.image.alt || `${displayRecipeName} - Kochera Rezept`}
                       width="1200"
                       height="900"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

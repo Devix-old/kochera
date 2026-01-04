@@ -27,10 +27,10 @@ export async function generateMetadata({ params }) {
   });
 
   return generateSiteMetadata({
-    title: `${category.name} Recept - ${filteredRecipes.length}+ Goda Recept | Bakstunden`,
-    description: `${category.description} Hitta de bästa ${category.name.toLowerCase()} recept med steg-för-steg instruktioner. ${filteredRecipes.length}+ testade recept för alla nivåer.`,
+    title: `${category.name} Rezepte - ${filteredRecipes.length}+ Leckere Rezepte | Kochera`,
+    description: `${category.description} Finde die besten ${category.name.toLowerCase()} Rezepte mit Schritt-für-Schritt-Anleitungen. ${filteredRecipes.length}+ getestete Rezepte für alle Levels.`,
     url: `/kategorier/${slug}`,
-    keywords: `${category.name.toLowerCase()}, ${category.name.toLowerCase()} recept, goda ${category.name.toLowerCase()}, hur man lagar ${category.name.toLowerCase()}, svenska ${category.name.toLowerCase()}, ${category.name.toLowerCase()} tips, enkla ${category.name.toLowerCase()}, snabba ${category.name.toLowerCase()}`,
+    keywords: `${category.name.toLowerCase()}, ${category.name.toLowerCase()} Rezepte, leckere ${category.name.toLowerCase()}, wie man ${category.name.toLowerCase()} zubereitet, deutsche ${category.name.toLowerCase()}, ${category.name.toLowerCase()} Tipps, einfache ${category.name.toLowerCase()}, schnelle ${category.name.toLowerCase()}`,
   });
 }
 
@@ -76,7 +76,7 @@ export default async function CategoryPage({ params }) {
     '@type': 'CollectionPage',
     name: `${category.name} Recept`,
     description: category.description,
-    url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se', `/kategorier/${slug}`),
+    url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${slug}`),
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -84,19 +84,19 @@ export default async function CategoryPage({ params }) {
           '@type': 'ListItem',
           position: 1,
           name: 'Hem',
-          item: process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se'
+          item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Kategorier',
-          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se', '/kategorier')
+          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', '/kategorier')
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: category.name,
-          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se', `/kategorier/${slug}`)
+          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${slug}`)
         }
       ]
     },
@@ -111,7 +111,7 @@ export default async function CategoryPage({ params }) {
           // DO NOT use '@type': 'Recipe' here - only recipe pages should have Recipe schema
           // Use simple reference to avoid Google indexing multiple recipes from category pages
           name: recipe.title,
-          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se', `/recept/${recipe.slug}`),
+          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/recept/${recipe.slug}`),
           image: recipe.image?.src || recipe.image,
           description: recipe.excerpt
         }

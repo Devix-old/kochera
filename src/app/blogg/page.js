@@ -5,26 +5,26 @@ import StructuredData from '@/components/seo/StructuredData';
 import { generateItemListSchema } from '@/lib/seo';
 
 export const metadata = {
-  title: 'Blogg - Matguider, Tips & Inspiration | Bakstunden',
-  description: 'Utforska våra matguider, tips och inspiration för bättre matlagning. Lär dig nya tekniker, upptäck ingredienser och förbättra dina matlagningsfärdigheter.',
-  keywords: 'matguider, matlagningstips, koktips, matlagningsinspiration, recepttips, kökstips, matblogg, svensk matlagning, bakningstips',
+  title: 'Blog - Kochtipps, Guides & Inspiration | Kochera',
+  description: 'Entdecke unsere Kochtipps, Guides und Inspiration für besseres Kochen. Lerne neue Techniken, entdecke Zutaten und verbessere deine Kochfähigkeiten.',
+  keywords: 'Kochtipps, Kochguides, Rezepttipps, Kochinspiration, Küchentipps, Kochblog, deutsche Küche, Backtipps',
   openGraph: {
-    title: 'Blogg | Bakstunden',
-    description: 'Utforska våra matguider, tips och inspiration för bättre matlagning. Lär dig nya tekniker, upptäck ingredienser och förbättra dina matlagningsfärdigheter.',
+    title: 'Blog | Kochera',
+    description: 'Entdecke unsere Kochtipps, Guides und Inspiration für besseres Kochen. Lerne neue Techniken, entdecke Zutaten und verbessere deine Kochfähigkeiten.',
     type: 'website',
     images: [
       {
         url: '/images/fika-och-bakning-svensk-stil.webp',
         width: 1200,
         height: 630,
-        alt: 'Matguider och tips - Bakstunden',
+        alt: 'Kochtipps und Guides - Kochera',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blogg | Bakstunden',
-    description: 'Utforska våra matguider, tips och inspiration för bättre matlagning.',
+    title: 'Blog | Kochera',
+    description: 'Entdecke unsere Kochtipps, Guides und Inspiration für besseres Kochen.',
     images: ['/images/fika-och-bakning-svensk-stil.webp'],
   },
 };

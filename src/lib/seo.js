@@ -4,9 +4,9 @@
 
 import { normalizeUrl } from '@/lib/utils/url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se';
-const SITE_NAME = 'Bakstunden';
-const SITE_DESCRIPTION = 'Sveriges bästa samling av recept och matlagningsguider. Hitta inspiration för vardagsmiddagar, bakning och festmat.';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const SITE_NAME = 'Kochera';
+const SITE_DESCRIPTION = 'Deutschlands beste Sammlung von Rezepten und Kochtipps. Finde Inspiration für Alltagsgerichte, Backen und Festessen.';
 
 /**
  * MINOR #2: Generate keywords from title for better SEO
@@ -24,7 +24,7 @@ function generateKeywordsFromTitle(title) {
     .map(word => word.replace(/[.,!?;:()]/g, ''))
     .filter(word => word.length >= 4 && !stopwords.has(word));
   
-  return keywords.length > 0 ? keywords.join(', ') : 'recept, matlagning, bakning';
+  return keywords.length > 0 ? keywords.join(', ') : 'Rezepte, Kochen, Backen';
 }
 
 export function generateMetadata({
@@ -49,7 +49,7 @@ export function generateMetadata({
     title: fullTitle,
     description: description || SITE_DESCRIPTION,
     // MINOR #2: Derive keywords from title if missing for better SEO
-    keywords: keywords || (title ? generateKeywordsFromTitle(title) : 'recept, matlagning, bakning, svenska recept, matlagningsguider, bakning, dessert, middag, frukost'),
+    keywords: keywords || (title ? generateKeywordsFromTitle(title) : 'Rezepte, Kochen, Backen, deutsche Rezepte, Kochtipps, Backen, Dessert, Abendessen, Frühstück'),
     authors: author ? [{ name: author }] : undefined,
     creator: author || SITE_NAME,
     publisher: SITE_NAME,
@@ -83,7 +83,7 @@ export function generateMetadata({
           alt: title || SITE_NAME,
         },
       ],
-      locale: 'sv_SE',
+      locale: 'de_DE',
       type,
     },
     twitter: {
@@ -91,8 +91,8 @@ export function generateMetadata({
       title: fullTitle,
       description: description || SITE_DESCRIPTION,
       images: [imageUrl],
-      creator: '@bakstunden',
-      site: '@bakstunden',
+      creator: '@kochera',
+      site: '@kochera',
     },
     alternates: {
       canonical: fullUrl,
@@ -143,10 +143,10 @@ export function generateRecipeSchema(recipe) {
     description: recipe.excerpt,
     image: recipe.image?.src ? normalizeUrl(SITE_URL, recipe.image.src) : undefined,
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
-      name: recipe.author || 'Bakstunden Team',
+      name: recipe.author || 'Kochera Team',
     },
     publisher: {
       '@type': 'Organization',
@@ -278,10 +278,10 @@ export function generateArticleSchema(article) {
     description: article.excerpt || article.description,
     image: imageUrl ? [imageUrl] : undefined, // Use array format for multiple images support
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
-      name: article.author || 'Bakstunden Team',
+      name: article.author || 'Kochera Team',
     },
     publisher: {
       '@type': 'Organization',
@@ -322,7 +322,7 @@ export function generateBreadcrumbSchema(items) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -352,7 +352,7 @@ export function generateWebsiteSchema() {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -384,7 +384,7 @@ export function generateOrganizationSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     logo: {
       '@type': 'ImageObject',
       url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
@@ -431,7 +431,7 @@ export function generateFAQSchema(faqs) {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     mainEntity: faqs.map(faq => ({
       '@type': 'Question',
       name: faq.question,
@@ -463,7 +463,7 @@ export function generateItemListSchema(items, type = null, basePath = '/recept')
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     // MINOR #3: Add inLanguage for multilingual sites
-    inLanguage: 'sv-SE',
+    inLanguage: 'de-DE',
     itemListElement: items.map((item, index) => {
       // Use the provided basePath or default to /recept for recipes
       // If item already has a full URL, use it; otherwise construct from basePath

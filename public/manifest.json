@@ -1,7 +1,7 @@
 {
-  "name": "Bakstunden – Sveriges bästa matrecept för alla tillfällen",
-  "short_name": "Bakstunden",
-  "description": "Upptäck tusentals goda matrecept för frukost, lunch, middag och dessert. Vegetariskt, veganskt, glutenfritt och mycket mer – hitta din perfekta mat!",
+  "name": "Kochera – Deutschlands beste Rezepte für jeden Anlass",
+  "short_name": "Kochera",
+  "description": "Entdecke tausende leckere Rezepte für Frühstück, Mittagessen, Abendessen und Dessert. Vegetarisch, vegan, glutenfrei und vieles mehr – finde dein perfektes Essen!",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFF8F3",
@@ -21,7 +21,7 @@
       "purpose": "any"
     }
   ],
-  "categories": ["food", "cooking", "recipes", "swedish", "meals", "family"],
-  "lang": "sv",
+  "categories": ["food", "cooking", "recipes", "german", "meals", "family"],
+  "lang": "de",
   "dir": "ltr"
 }
