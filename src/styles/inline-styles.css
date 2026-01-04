@@ -1,0 +1,182 @@
+/* Inline Styles Replacement - SEO Optimized */
+
+/* Font Family Classes */
+.font-inter {
+  font-family: 'Inter', 'Poppins', 'Montserrat', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+.font-inter-system {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up-20 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp20 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up-10 {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp10 0.6s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Text Shadow Classes */
+.text-shadow-hero {
+  text-shadow: 0 2px 4px rgba(255,255,255,0.9), 
+               0 4px 8px rgba(255,255,255,0.7), 
+               0 8px 16px rgba(255,255,255,0.5), 
+               0 0 20px rgba(255,255,255,0.3);
+}
+
+.text-shadow-button {
+  box-shadow: 0 2px 8px rgba(200, 182, 255, 0.5), 
+              0 4px 16px rgba(200, 182, 255, 0.3), 
+              0 8px 32px rgba(200, 182, 255, 0.2), 
+              inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background-image: linear-gradient(to right, #FF7A7A, #FFA07A);
+}
+
+.bg-gradient-accent {
+  background-image: linear-gradient(to right, #6FCF97, #A8E6CF);
+}
+
+.bg-gradient-secondary {
+  background-image: linear-gradient(to right, #FFA07A, #FFB4B4);
+}
+
+.bg-gradient-tertiary {
+  background-image: linear-gradient(to right, #FF7A7A, #6FCF97);
+}
+
+/* Position Classes */
+.absolute-full {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Visibility Classes */
+.hidden-iframe {
+  display: none;
+  visibility: hidden;
+}
+
+/* Filter Classes */
+.filter-drop-shadow {
+  filter: drop-shadow(0 1px 2px rgba(255,255,255,0.8));
+}
+
+.filter-drop-shadow-button {
+  filter: drop-shadow(0 1px 2px rgba(200, 182, 255, 0.4));
+}
+
+/* Letter Spacing */
+.letter-spacing-tight {
+  letter-spacing: -0.02em;
+}
+
+/* Box Shadow Vignette */
+.box-shadow-vignette {
+  box-shadow: inset 0 0 100px rgba(255,255,255,0.3), 
+              inset 0 0 200px rgba(255,255,255,0.1);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp20 {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp10 {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Font Sizes */
+.text-responsive-hero {
+  font-size: 2rem;
+}
+
+@media (min-width: 640px) {
+  .text-responsive-hero {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-responsive-hero {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-hero {
+    font-size: 4rem;
+  }
+}
+
+/* Utility Classes */
+.transparent-text {
+  color: transparent;
+}
+
+.leading-tight {
+  line-height: 1.1;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Bakstunden – Sveriges bästa matrecept för alla tillfällen",
+  "short_name": "Bakstunden",
+  "description": "Upptäck tusentals goda matrecept för frukost, lunch, middag och dessert. Vegetariskt, veganskt, glutenfritt och mycket mer – hitta din perfekta mat!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F3",
+  "theme_color": "#FF7A7A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["food", "cooking", "recipes", "swedish", "meals", "family"],
+  "lang": "sv",
+  "dir": "ltr"
+}

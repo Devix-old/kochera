@@ -1,0 +1,31 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Emma Andersson -- Mat-entusiast och receptutvecklare
+    Sara Bergman -- Kokkonsult och matskribent  
+    Erik Lindström -- Matbloggare och grill-expert
+
+# THANKS
+
+    Alla som bidragit med recept och feedback
+    Open source-communityn
+
+# TECHNOLOGY COLOPHON
+
+    Next.js 15.5.4
+    React 19.1.0
+    Tailwind CSS v4
+    Framer Motion
+    Lucide React Icons
+    MDX for content
+    Vercel for hosting
+    
+# SITE
+
+    Last update: 2024-10-12
+    Language: Svenska / Swedish
+    Doctype: HTML5
+    IDE: VS Code, Cursor
+

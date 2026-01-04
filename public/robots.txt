@@ -1,0 +1,22 @@
+User-agent: *
+# Allow everything by default (includes /recept, /kategorier, /images, etc.)
+Allow: /
+
+# Block ONLY dangerous/admin areas
+Disallow: /admin/
+Disallow: /api/internal
+Disallow: /api/admin
+Disallow: /private/
+Disallow: /seo-optiz/
+
+# Block removed pages (Snabbmat and Måltider)
+Disallow: /snabbmat/
+Disallow: /maltider/
+
+# Google Image Bot - explicitly allow all images (redundant but good for clarity)
+User-agent: Googlebot-Image
+Allow: /
+
+# Sitemap
+Sitemap: https://bakstunden.se/sitemap.xml
+Sitemap: https://bakstunden.se/stories-sitemap.xml
