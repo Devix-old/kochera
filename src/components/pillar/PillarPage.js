@@ -1,24 +1,30 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import { normalizeUrl } from '@/lib/utils/url';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PillarHero from './PillarHero';
-import PillarContentBlock from './PillarContentBlock';
-import PillarRecipeGrid from './PillarRecipeGrid';
+import QuickNavRail from './QuickNavRail';
+import MasterClassGuide from './MasterClassGuide';
+import FlagshipRecipeCard from './FlagshipRecipeCard';
+import VariationsGrid from './VariationsGrid';
 import PillarFAQ from './PillarFAQ';
-import PillarCTASection from './PillarCTASection';
 import { PillarSocialSection, RelatedPillarsSection } from './PillarSEOSections';
 import { generatePillarSchema, generatePillarBreadcrumbSchema, generatePillarFAQSchema, generatePillarHowToSchema } from '@/lib/seo/pillar-seo';
 import { getRelatedPillars } from '@/lib/pillars';
 import StructuredData from '@/components/seo/StructuredData';
 
 /**
- * Main pillar page component
- * Renders pillar content with flexible section-based layout
+ * Main pillar page component with new structure:
+ * 1. Semantic Hero (Top)
+ * 2. Quick-Nav Rail (UX)
+ * 3. Master Class Guide (Authority Content)
+ * 4. Flagship Recipe Card
+ * 5. Variations Grid (The Cluster)
+ * 6. FAQ & Troubleshooting Section
+ * 7. Related Pillars
  */
 export default async function PillarPage({ pillar }) {
   const { frontmatter, content, slug } = pillar;
   
-  // Generate related content (wrap in try-catch to prevent blocking)
+  // Generate related content
   let relatedPillars = [];
   try {
     relatedPillars = await getRelatedPillars(slug, 3);
@@ -27,34 +33,18 @@ export default async function PillarPage({ pillar }) {
     relatedPillars = [];
   }
 
-  // Generate breadcrumbs
+  // Generate breadcrumbs: Home > Topic (e.g., Pfannkuchen)
   const breadcrumbs = [
     { name: 'Home', url: '/' },
-    { name: 'Guides', url: '/guides' },
-    ...(frontmatter.pillarTopic ? [
-      { 
-        name: frontmatter.pillarTopic, 
-        url: `/guides?topic=${encodeURIComponent(frontmatter.pillarTopic)}` 
-      }
-    ] : []),
     { name: frontmatter.title }
   ];
 
   // Generate structured data
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
-  
-  // Determine schema type: Article or HowTo (if steps exist)
-  const hasSteps = frontmatter.steps && Array.isArray(frontmatter.steps) && frontmatter.steps.length > 0;
   const articleSchema = generatePillarSchema({
     ...frontmatter,
     slug,
     content
   });
-  
-  const howToSchema = hasSteps ? generatePillarHowToSchema({
-    ...frontmatter,
-    slug
-  }) : null;
   
   const breadcrumbSchema = generatePillarBreadcrumbSchema({
     ...frontmatter,
@@ -63,138 +53,84 @@ export default async function PillarPage({ pillar }) {
   
   const faqSchema = frontmatter.faqs ? generatePillarFAQSchema(frontmatter.faqs) : null;
 
-  // Process sections if defined in frontmatter
-  // Filter out sections with placeholder/invalid data
-  const sections = (frontmatter.sections || []).filter(section => {
-    // Skip recipe-grid sections with placeholder slugs
-    if (section.type === 'recipe-grid') {
-      const validRecipes = (section.relatedRecipes || []).filter(
-        slug => slug && !slug.includes('recipe-slug-')
-      );
-      return validRecipes.length > 0;
-    }
-    return true;
-  });
-  
-  // If no valid sections defined, use default layout
-  const useDefaultLayout = sections.length === 0;
+  // Extract introduction text (first 100-150 words from content or frontmatter)
+  const introductionText = frontmatter.introductionText || 
+    (content ? content.split('\n\n')[0].substring(0, 800) : frontmatter.excerpt);
+
+  // Build sections for Quick Nav (from masterClassGuide sections)
+  const masterClassSections = frontmatter.masterClassGuide?.sections || [];
+  const navSections = masterClassSections.map((section, index) => ({
+    id: `section-${index}`,
+    title: section.title,
+    label: section.label || section.title
+  })).filter(section => section.title); // Only include sections with titles
 
   return (
     <>
       {/* Structured Data */}
       <StructuredData data={articleSchema} />
-      {howToSchema && <StructuredData data={howToSchema} />}
       <StructuredData data={breadcrumbSchema} />
       {faqSchema && <StructuredData data={faqSchema} />}
 
-      {/* Breadcrumb Section */}
+      {/* 1. Breadcrumbs: Home > Pfannkuchen */}
       <section className="bg-gray-50 dark:bg-gray-950 dark:border-gray-800 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={breadcrumbs.slice(1)} />
         </div>
       </section>
 
-      {/* Hero Section */}
-      <PillarHero pillar={frontmatter} />
+      {/* 2. Semantic Hero (Top) */}
+      <PillarHero 
+        pillar={frontmatter} 
+        introductionText={introductionText}
+      />
 
-      {/* Main Content */}
-      <article className="bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {useDefaultLayout ? (
-            /* Default Layout: Render MDX content directly */
-            <>
-              {content && (
-                <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-12">
-                  <MDXRemote source={content} />
-                </div>
-              )}
-            </>
-          ) : (
-            /* Custom Layout: Render sections defined in frontmatter */
-            <>
-              {sections.map((section, index) => {
-                // Hero is already rendered above, skip if present in sections
-                if (section.type === 'hero') {
-                  return null;
-                }
-
-                // Render recipe grid
-                if (section.type === 'recipe-grid') {
-                  return (
-                    <PillarRecipeGrid
-                      key={`section-${index}`}
-                      recipeSlugs={section.relatedRecipes || []}
-                      title={section.title || 'Related Recipes'}
-                    />
-                  );
-                }
-
-                // Render FAQ
-                if (section.type === 'faq') {
-                  return (
-                    <PillarFAQ
-                      key={`section-${index}`}
-                      faqs={section.faqs || frontmatter.faqs || []}
-                      title={section.title || 'Frequently Asked Questions'}
-                    />
-                  );
-                }
-
-                // Render CTA
-                if (section.type === 'cta') {
-                  return (
-                    <PillarCTASection
-                      key={`section-${index}`}
-                      title={section.title}
-                      description={section.description}
-                      primaryAction={section.primaryAction}
-                      secondaryAction={section.secondaryAction}
-                    />
-                  );
-                }
-
-                // Render content block (mdx, text, html)
-                return (
-                  <PillarContentBlock
-                    key={`section-${index}`}
-                    section={section}
-                    index={index}
-                  />
-                );
-              })}
-            </>
-          )}
-        </div>
-      </article>
-
-      {/* FAQ Section (if using default layout and FAQs exist) */}
-      {useDefaultLayout && frontmatter.faqs && frontmatter.faqs.length > 0 && (
-        <PillarFAQ faqs={frontmatter.faqs} />
+      {/* 3. Quick-Nav Rail (UX) - Sticky navigation */}
+      {navSections.length > 0 && (
+        <QuickNavRail sections={navSections} />
       )}
 
-      {/* Social Sharing */}
-      <PillarSocialSection pillar={{ ...frontmatter, slug }} />
-
-      {/* Related Recipes (if defined in frontmatter) */}
-      {frontmatter.relatedRecipes && frontmatter.relatedRecipes.length > 0 && (
-        <PillarRecipeGrid
-          recipeSlugs={frontmatter.relatedRecipes}
-          title="Related Recipes"
+      {/* 4. Master Class Guide (Authority Content) */}
+      {frontmatter.masterClassGuide && (
+        <MasterClassGuide 
+          content={content}
+          sections={frontmatter.masterClassGuide.sections}
         />
       )}
 
-      {/* Related Pillars */}
+      {/* 5. Flagship Recipe Card */}
+      {frontmatter.isFlagShip && frontmatter.flagshipRecipeSlug && (
+        <FlagshipRecipeCard flagshipSlug={frontmatter.flagshipRecipeSlug} />
+      )}
+
+      {/* 6. Variations Grid (The Cluster) */}
+      {frontmatter.filterTag && (
+        <VariationsGrid 
+          filterTag={frontmatter.filterTag}
+          title={frontmatter.variationsTitle || "Variations"}
+        />
+      )}
+
+      {/* 7. FAQ & Troubleshooting Section */}
+      {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+        <div className="bg-gray-50 dark:bg-gray-950 py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <PillarFAQ 
+              faqs={frontmatter.faqs} 
+              title="Frequently Asked Questions"
+              pillarTitle={frontmatter.title}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* 8. Social Sharing */}
+      <PillarSocialSection pillar={{ ...frontmatter, slug }} />
+
+      {/* 9. Related Pillars */}
       {relatedPillars.length > 0 && (
         <RelatedPillarsSection relatedPillars={relatedPillars} />
       )}
-
-      {/* CTA Section */}
-      <PillarCTASection
-        title="Ready to Start Cooking?"
-        description="Explore our collection of recipes and guides to improve your cooking skills."
-        primaryAction={{ text: "Browse Recipes", href: "/rezepte" }}
-        secondaryAction={{ text: "View All Guides", href: "/guides" }}
-      />
     </>
   );
 }
