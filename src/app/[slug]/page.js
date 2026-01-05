@@ -1,4 +1,5 @@
 import { getContentBySlug, getAllContent, getRelatedContent } from '@/lib/mdx';
+import { getPillarBySlug } from '@/lib/pillars';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -36,10 +37,12 @@ import {
 } from '@/components/recipe/RecipeSEOSections';
 import CategoryCarousel from '@/components/seo/CategoryCarousel';
 import { generateRecipeMetadata, generateEnhancedRecipeSchema, generateRelatedContentSchema, generateRecipeKeywords } from '@/lib/seo/recipe-seo';
+import { generatePillarMetadata } from '@/lib/seo/pillar-seo';
 import { generateInternalLinks, generateContextualLinks } from '@/lib/seo/internal-linking';
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
 import { generateArticleSchema } from '@/lib/seo';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
+import PillarPage from '@/components/pillar/PillarPage';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 import StructuredData from '@/components/seo/StructuredData';
 import LeaderboardAd from '@/components/ads/LeaderboardAd';
@@ -137,8 +140,12 @@ function StarRating({ rating, size = 'w-5 h-5' }) {
 // Allow dynamic params not in generateStaticParams (enables 404 handling)
 export const dynamicParams = true;
 
-// Generate static params for both recipes and categories
+// Generate static params for pillars, recipes, and categories
 export async function generateStaticParams() {
+  // Get all pillars (highest priority)
+  const pillars = await getAllContent('pillars');
+  const pillarSlugs = pillars.map(pillar => ({ slug: pillar.slug }));
+
   // Get all recipes
   const recipes = await getAllContent('recipes');
   const recipeSlugs = recipes.map(recipe => ({ slug: recipe.slug }));
@@ -147,15 +154,26 @@ export async function generateStaticParams() {
   const categories = getAllCategories();
   const categorySlugs = categories.map(category => ({ slug: category.slug }));
 
-  // Combine both (recipes first for priority in case of conflicts)
-  return [...recipeSlugs, ...categorySlugs];
+  // Combine with priority: pillars first, then recipes, then categories
+  return [...pillarSlugs, ...recipeSlugs, ...categorySlugs];
 }
 
 // Generate comprehensive metadata - dispatcher
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  // First, check if it's a recipe
+  // First, check if it's a pillar page (highest priority)
+  const pillarData = await getPillarBySlug(slug);
+  if (pillarData) {
+    const pillar = {
+      ...pillarData.frontmatter,
+      slug: pillarData.slug,
+      content: pillarData.content,
+    };
+    return generatePillarMetadata(pillar);
+  }
+
+  // Second, check if it's a recipe
   const recipeData = await getContentBySlug('recipes', slug);
   if (recipeData) {
     const recipe = {
@@ -167,7 +185,7 @@ export async function generateMetadata({ params }) {
     return generateRecipeMetadata(recipe);
   }
 
-  // Second, check if it's a category
+  // Third, check if it's a category
   const category = getCategoryBySlug(slug);
   if (category) {
     const { generateMetadata: generateSiteMetadata } = await import('@/lib/seo');
@@ -187,7 +205,7 @@ export async function generateMetadata({ params }) {
     });
   }
 
-  // If neither, return 404 metadata
+  // If none match, return 404 metadata
   return { title: 'Seite nicht gefunden' };
 }
 
@@ -195,7 +213,14 @@ export async function generateMetadata({ params }) {
 export default async function SlugPage({ params }) {
   const { slug } = await params;
 
-  // First, check if it's a recipe
+  // First, check if it's a pillar page (highest priority)
+  const pillar = await getPillarBySlug(slug);
+  if (pillar) {
+    // Render pillar page
+    return <PillarPage pillar={pillar} />;
+  }
+
+  // Second, check if it's a recipe
   const recipe = await getContentBySlug('recipes', slug);
   if (recipe) {
     // Render recipe page

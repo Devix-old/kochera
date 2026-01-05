@@ -24,7 +24,7 @@ export default function RecipeCard({ recipe, index = 0, className }) {
         className
       )}
     >
-      <Link href={`/recept/${recipe.slug}`} className="block">
+      <Link href={`/${recipe.slug}`} className="block">
       <div className="recipe-card relative aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-gray-700">
         {recipe.image?.src ? (
           <img
