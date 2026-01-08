@@ -166,7 +166,7 @@ export default function ExpandableTipText({ content }) {
           onClick={() => setIsExpanded(!isExpanded)}
           className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-sm font-medium transition-colors"
         >
-          {isExpanded ? 'Visa mindre' : 'Visa mer'}
+          {isExpanded ? 'Weniger anzeigen' : 'Mehr anzeigen'}
         </button>
       </div>
     </div>

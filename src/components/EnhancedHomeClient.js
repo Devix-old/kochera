@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Star, ChefHat } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Star, ChefHat, ArrowRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getAllCategories } from '@/lib/categories';
 import HomePageSearchBar from '@/components/ui/HomePageSearchBar';
 
@@ -10,10 +11,10 @@ export default function EnhancedHomeClient({
   totalRecipes,
   featuredRecipes = [],
   allRecipes = [],
-  articles = [],
   authors = []
 }) {
   const allCategories = getAllCategories();
+  const carouselRef = useRef(null);
 
   // Story categories for the stories rail
   const STORY_CATEGORIES = [
@@ -77,6 +78,22 @@ export default function EnhancedHomeClient({
     );
   };
 
+  // Carousel scroll functions
+  const scrollCarousel = (direction) => {
+    if (carouselRef.current) {
+      const scrollAmount = 340; // Card width (320px) + gap (20px)
+      const currentScroll = carouselRef.current.scrollLeft;
+      const newScroll = direction === 'left' 
+        ? currentScroll - scrollAmount 
+        : currentScroll + scrollAmount;
+      
+      carouselRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* SEARCH & STORIES HEADER */}
@@ -86,15 +103,15 @@ export default function EnhancedHomeClient({
           <HomePageSearchBar recipes={allRecipes} placeholder="Was kochst du heute?" />
         </div>
 
-        {/* STORIES RAIL */}
-        <div className="flex overflow-x-auto gap-4 px-4 pb-4 scrollbar-hide snap-x snap-mandatory md:justify-center md:overflow-x-visible">
+        {/* STORIES RAIL - Bigger Circles */}
+        <div className="flex overflow-x-auto gap-5 md:gap-6 px-4 pb-4 scrollbar-hide snap-x snap-mandatory md:justify-center md:overflow-x-visible">
           {STORY_CATEGORIES.map((story) => (
             <Link
               key={story.slug}
               href={`/${story.slug}`}
-              className="flex-shrink-0 snap-start flex flex-col items-center gap-2 min-w-[80px]"
+              className="flex-shrink-0 snap-start flex flex-col items-center gap-3 min-w-[110px] md:min-w-[120px]"
             >
-              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 p-[2px] border-2 border-orange-400">
+              <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-100 p-[3px] border-[3px] border-orange-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
                 <img
                   src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop"
                   alt={story.name}
@@ -102,7 +119,7 @@ export default function EnhancedHomeClient({
                   loading="lazy"
                 />
               </div>
-              <span className="text-xs font-medium text-gray-700 text-center">
+              <span className="text-sm font-semibold text-gray-700 text-center">
                 {story.name}
               </span>
             </Link>
@@ -150,91 +167,160 @@ export default function EnhancedHomeClient({
         </div>
       </section>
 
-      {/* TRUST SECTION */}
-      <section className="w-full py-8 bg-white">
-        <div className="rounded-xl p-6 mx-4 my-8 flex flex-col md:flex-row items-center gap-4 md:gap-6 bg-purple-50">
-          {/* Avatar */}
-          <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-gray-200">
-            <img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop"
-              alt="Author"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      {/* trust section */}    
+      <section className="w-full py-12 bg-white">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100 shadow-lg p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
           
+          {/* Decorative Background Blob (Optional aesthetic touch) */}
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-purple-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+          {/* Avatar Section */}
+          <div className="relative flex-shrink-0">
+            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full p-1 bg-white ring-4 ring-purple-100 shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop"
+                alt="Profilbild på författaren"
+                className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            {/* Small Floating Badge */}
+            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-white text-purple-600 p-2 rounded-full shadow-md border border-purple-50">
+              <ChefHat size={20} className="stroke-2" />
+            </div>
+          </div>
+
           {/* Text Content */}
-          <div className="flex-1 text-center md:text-left">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
-              Hi, ich bin [Name].
+          <div className="flex-1 text-center md:text-left z-10">
+            <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-purple-700 uppercase bg-purple-100 rounded-full">
+              Din Matkreatör
+            </span>
+            
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+              Hej! Jag heter <span className="text-purple-600">[Ditt Namn]</span>.
             </h3>
-            <p className="text-sm text-gray-600 mb-2">
-              Jedes Rezept wird von mir persönlich getestet und perfektioniert.
-            </p>
+            
+            <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
+              <p>
+                Välkommen till mitt kök! Jag grundade denna sida för att dela min passion för matlagning och bakning med dig.
+              </p>
+              <p className="hidden md:block">
+                Jag tror på kvalitet framför kvantitet. Därför är varje recept du hittar här noggrant testat, provsmakat och perfektionerat för att garantera att du lyckas varje gång.
+              </p>
+            </div>
+
             <Link
               href="/om"
-              className="inline-flex items-center text-purple-600 hover:text-purple-700 font-bold text-sm"
+              className="group inline-flex items-center justify-center md:justify-start gap-2 text-purple-700 font-bold hover:text-purple-900 transition-colors duration-200"
             >
-              Mehr über mich →
+              <span className="border-b-2 border-purple-200 group-hover:border-purple-600 transition-all duration-200">
+                Läs mer om min resa
+              </span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </div>
+          
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* LATEST RECIPES */}
-      <section className="w-full py-8 bg-gray-50">
-        <div className="px-4 mb-6">
+      {/* LATEST RECIPES - Carousel */}
+      <section className="w-full py-8 bg-gray-50 relative">
+        <div className="px-4 mb-6 flex items-center justify-between">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Neueste Rezepte
           </h2>
+          <Link
+            href="/rezepte"
+            className="text-sm md:text-base text-purple-600 hover:text-purple-700 font-semibold hidden md:inline-flex items-center gap-1"
+          >
+            Alle ansehen
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
         
-        <div className="flex flex-col gap-6 px-4">
-          {latestRecipes.map((recipe) => (
-            <Link
-              key={getRecipeSlug(recipe)}
-              href={`/${getRecipeSlug(recipe)}`}
-              className="group"
-            >
-              <div className="flex gap-4 bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow p-4 md:p-0">
-                {/* Image - 30% width on larger screens */}
-                <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 relative overflow-hidden rounded-lg bg-gray-100">
-                  <img
-                    src={getRecipeImage(recipe) || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop"}
-                    alt={getRecipeName(recipe)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Text Content - 70% width */}
-                <div className="flex-1 flex flex-col justify-center min-w-0">
-                  <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2">
-                    {getRecipeName(recipe)}
-                  </h3>
-                  {recipe?.excerpt && (
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">
-                      {recipe.excerpt}
-                    </p>
-                  )}
-                  <div className="flex items-center gap-4 text-xs text-gray-500">
-                    {recipe?.totalTimeMinutes && (
-                      <span>{recipe.totalTimeMinutes} Min</span>
+        {/* Carousel Container with Arrows */}
+        <div className="relative">
+          {/* Left Arrow - Only visible on large screens */}
+          <button
+            onClick={() => scrollCarousel('left')}
+            className="hidden lg:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-purple-600"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Right Arrow - Only visible on large screens */}
+          <button
+            onClick={() => scrollCarousel('right')}
+            className="hidden lg:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-purple-600"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Horizontal Scrollable Carousel */}
+          <div 
+            ref={carouselRef}
+            className="overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 pb-4 lg:px-16"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
+            <div className="flex gap-4 md:gap-6">
+            {latestRecipes.map((recipe) => (
+              <Link
+                key={getRecipeSlug(recipe)}
+                href={`/${getRecipeSlug(recipe)}`}
+                className="group flex-shrink-0 snap-start w-[280px] md:w-[320px]"
+              >
+                <div className="flex flex-col gap-3 bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
+                  {/* Image */}
+                  <div className="relative w-full aspect-[3/2] overflow-hidden bg-gray-100">
+                    <img
+                      src={getRecipeImage(recipe) || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=267&fit=crop"}
+                      alt={getRecipeName(recipe)}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      width="320"
+                      height="213"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  
+                  {/* Text Content */}
+                  <div className="p-4 flex-1 flex flex-col">
+                    <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                      {getRecipeName(recipe)}
+                    </h3>
+                    {recipe?.excerpt && (
+                      <p className="text-sm text-gray-600 line-clamp-2 mb-3 flex-1">
+                        {recipe.excerpt}
+                      </p>
                     )}
-                    {recipe?.ratingAverage && renderStarRating(recipe.ratingAverage)}
+                    <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                      {recipe?.totalTimeMinutes && (
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {recipe.totalTimeMinutes} Min
+                        </span>
+                      )}
+                      {recipe?.ratingAverage && renderStarRating(recipe.ratingAverage)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+            </div>
+          </div>
         </div>
 
-        {/* View All Link */}
-        <div className="px-4 mt-8 text-center">
+        {/* View All Link - Mobile */}
+        <div className="px-4 mt-6 text-center md:hidden">
           <Link
             href="/rezepte"
             className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-semibold"
           >
             Alle Rezepte ansehen
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

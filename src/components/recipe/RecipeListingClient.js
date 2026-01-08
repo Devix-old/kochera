@@ -252,12 +252,6 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
                 Till startsidan
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link
-                href="/blogg"
-                className="inline-flex items-center px-8 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-full font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
-                Läs våra matguider
-              </Link>
             </div>
           </div>
         </div>

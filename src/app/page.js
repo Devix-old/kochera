@@ -6,15 +6,6 @@ import { generateWebsiteSchema, generateOrganizationSchema, generateItemListSche
 export default async function Home() {
   // Load all recipes to calculate dynamic counts
   const allRecipes = await getAllContent('recipes');
-  
-  // Try to load articles (may not exist yet)
-  let allArticles = [];
-  try {
-    allArticles = await getAllContent('articles');
-  } catch (error) {
-    // Articles don't exist yet, use empty array
-    allArticles = [];
-  }
 
   // Try to load authors (may not exist yet)
   let allAuthors = [];
@@ -127,7 +118,6 @@ export default async function Home() {
         totalRecipes={allRecipes.length}
         featuredRecipes={featuredRecipes}
         allRecipes={allRecipes}
-        articles={allArticles}
         authors={allAuthors}
       />
     </>

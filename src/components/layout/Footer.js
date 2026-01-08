@@ -3,17 +3,17 @@ import { Instagram, Youtube, Facebook } from 'lucide-react';
 
 export default function Footer() {
   const mainLinks = [
-    { name: "hem", href: '/' },
-    { name: 'Recept', href: '/recept' },
-    { name: 'Kategorier', href: '/kategorier' },
-    { name: 'Om Bakstunden', href: '/om' },
+    { name: "Startseite", href: '/' },
+    { name: 'Rezepte', href: '/rezepte' },
+    { name: 'Kategorien', href: '/kategorier' },
+    { name: 'Über uns', href: '/om' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 
   const socialLinks = [
-    { name: 'Instagram', href: 'https://www.instagram.com/alissam407/', icon: Instagram },
-    { name: 'YouTube', href: 'https://youtube.com/@malty', icon: Youtube },
-    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61581970813224', icon: Facebook },
+    { name: 'Instagram', href: '#', icon: Instagram },
+    { name: 'YouTube', href: '#', icon: Youtube },
+    { name: 'Facebook', href: '#', icon: Facebook },
   ];
 
   return (
@@ -22,13 +22,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-          <Link href="/" className="flex items-center space-x-2" aria-label="Bakstunden startsida">
+          <Link href="/" className="flex items-center space-x-2" aria-label="Kochera Startseite">
             <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg font-playfair">
-              Bakstunden
+              Kochera
             </div>
           </Link>
             <p className="text-sm text-gray-400 mb-4">
-              Sveriges bästa samling av recept och matlagningsguider.
+              Deutschlands beste Sammlung von Rezepten und Kochführern.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Följ oss</h3>
+            <h3 className="text-white font-semibold mb-4">Folge uns</h3>
             <div className="flex space-x-3">
               {socialLinks.map((link) => {
                 const Icon = link.icon;
@@ -76,14 +76,14 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Bakstunden. Alla rättigheter reserverade.
+              © {new Date().getFullYear()} Kochera. Alle Rechte vorbehalten.
             </p>
             <div className="flex gap-6 text-sm">
               <Link
                 href="/privacy-policy"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Integritetspolicy
+                Datenschutzerklärung
               </Link>
             </div>
           </div>

@@ -46,13 +46,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Load MDX content
   let recipes: any[] = [];
-  let blogs: any[] = [];
   let categories: any[] = [];
 
   try {
-    [recipes, blogs, categories] = await Promise.all([
+    [recipes, categories] = await Promise.all([
       getAllContent('recipes'),
-      getAllContent('blogg'),
       getAllCategories(),
     ]);
   } catch {
@@ -81,8 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: mostRecent, changeFrequency: 'daily', priority: 1 },
-    { url: normalizeUrl(baseUrl, '/recept'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
-    { url: normalizeUrl(baseUrl, '/blogg'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.8 },
+    { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
     { url: normalizeUrl(baseUrl, '/kategorier'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
     { url: normalizeUrl(baseUrl, '/om'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.6 },
   ];
@@ -126,44 +123,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  // Dynamic blog routes
-  const blogRoutes: MetadataRoute.Sitemap = blogs.map((blog) => {
-    const lastModified = new Date(
-      blog.updatedAt ||
-        blog.publishedAt ||
-        new Date()
-    );
-
-    const priority =
-      (new Date().getTime() - lastModified.getTime()) / 86400000 < 7 ? 0.85 : 0.75;
-
-    // Extract valid image URL
-    const raw = normalizeImageSrc(blog.image);
-    let imageUrl: string | null = null;
-
-    if (raw && typeof raw === 'string') {
-      imageUrl = raw.startsWith('http')
-        ? raw
-        : normalizeUrl(baseUrl, raw);
-
-      // Verify local file exists
-      if (!raw.startsWith('http')) {
-        const imgPath = path.join(process.cwd(), 'public', raw.replace(/^\//, ''));
-        if (!fs.existsSync(imgPath)) imageUrl = null;
-      }
-    }
-
-    // Images must be an array of STRINGS
-    const images = imageUrl ? [imageUrl] : undefined;
-
-    return {
-      url: normalizeUrl(baseUrl, `/blogg/${blog.slug}`),
-      lastModified,
-      changeFrequency: 'monthly',
-      priority,
-      ...(images ? { images } : {}),
-    };
-  });
 
   // Category routes
   const categoryDateMap = new Map();
@@ -196,5 +155,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...recipeRoutes, ...blogRoutes, ...categoryRoutes];
+  return [...staticRoutes, ...recipeRoutes, ...categoryRoutes];
 }

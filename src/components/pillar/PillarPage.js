@@ -2,24 +2,26 @@ import { normalizeUrl } from '@/lib/utils/url';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PillarHero from './PillarHero';
 import QuickNavRail from './QuickNavRail';
-import MasterClassGuide from './MasterClassGuide';
+import TippsSection from './TippsSection';
+import VariantsSection from './VariantsSection';
 import FlagshipRecipeCard from './FlagshipRecipeCard';
-import VariationsGrid from './VariationsGrid';
 import PillarFAQ from './PillarFAQ';
 import { PillarSocialSection, RelatedPillarsSection } from './PillarSEOSections';
 import { generatePillarSchema, generatePillarBreadcrumbSchema, generatePillarFAQSchema, generatePillarHowToSchema } from '@/lib/seo/pillar-seo';
 import { getRelatedPillars } from '@/lib/pillars';
+import { getAllContent } from '@/lib/mdx';
 import StructuredData from '@/components/seo/StructuredData';
 
 /**
  * Main pillar page component with new structure:
  * 1. Semantic Hero (Top)
  * 2. Quick-Nav Rail (UX)
- * 3. Master Class Guide (Authority Content)
- * 4. Flagship Recipe Card
- * 5. Variations Grid (The Cluster)
+ * 3. Variants Section (Variants from MDX)
+ * 4. Tipps Section (Tips matching recipe page design)
+ * 5. Flagship Recipe Card
  * 6. FAQ & Troubleshooting Section
- * 7. Related Pillars
+ * 7. Variations Grid (The Cluster) - Carousel
+ * 8. Related Pillars
  */
 export default async function PillarPage({ pillar }) {
   const { frontmatter, content, slug } = pillar;
@@ -33,9 +35,31 @@ export default async function PillarPage({ pillar }) {
     relatedPillars = [];
   }
 
+  // Load variations if filterTag exists
+  let variations = [];
+  if (frontmatter.filterTag) {
+    try {
+      const allRecipes = await getAllContent('recipes');
+      variations = allRecipes
+        .filter(recipe => {
+          const tags = recipe.tags || [];
+          const category = recipe.category || '';
+          const recipeName = (recipe.recipeName || recipe.title || '').toLowerCase();
+          const filterLower = frontmatter.filterTag.toLowerCase();
+          
+          return tags.some(tag => tag.toLowerCase().includes(filterLower)) ||
+                 category.toLowerCase().includes(filterLower) ||
+                 recipeName.includes(filterLower);
+        })
+        .slice(0, 12);
+    } catch (error) {
+      console.error('Error loading variations:', error);
+    }
+  }
+
   // Generate breadcrumbs: Home > Topic (e.g., Pfannkuchen)
   const breadcrumbs = [
-    { name: 'Home', url: '/' },
+    { name: 'Startseite', url: '/' },
     { name: frontmatter.title }
   ];
 
@@ -57,9 +81,9 @@ export default async function PillarPage({ pillar }) {
   const introductionText = frontmatter.introductionText || 
     (content ? content.split('\n\n')[0].substring(0, 800) : frontmatter.excerpt);
 
-  // Build sections for Quick Nav (from masterClassGuide sections)
-  const masterClassSections = frontmatter.masterClassGuide?.sections || [];
-  const navSections = masterClassSections.map((section, index) => ({
+  // Build sections for Quick Nav (from tipps sections)
+  const tippsSections = frontmatter.tipps?.sections || [];
+  const navSections = tippsSections.map((section, index) => ({
     id: `section-${index}`,
     title: section.title,
     label: section.label || section.title
@@ -90,25 +114,28 @@ export default async function PillarPage({ pillar }) {
         <QuickNavRail sections={navSections} />
       )}
 
-      {/* 4. Master Class Guide (Authority Content) */}
-      {frontmatter.masterClassGuide && (
-        <MasterClassGuide 
-          content={content}
-          sections={frontmatter.masterClassGuide.sections}
+      {/* 4. Variants Section - Shows all related recipes */}
+      {variations.length > 0 && (
+        <VariantsSection 
+          recipes={variations}
+          pillarTitle={frontmatter.title}
+          pillarDescription={frontmatter.introductionText}
         />
       )}
 
-      {/* 5. Flagship Recipe Card */}
+      {/* 5. Tipps Section (Matching Recipe Page Design) */}
+      {frontmatter.tipps && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <TippsSection 
+            pillar={frontmatter}
+            tips={frontmatter.tipps.tips || []}
+          />
+        </div>
+      )}
+
+      {/* 6. Flagship Recipe Card */}
       {frontmatter.isFlagShip && frontmatter.flagshipRecipeSlug && (
         <FlagshipRecipeCard flagshipSlug={frontmatter.flagshipRecipeSlug} />
-      )}
-
-      {/* 6. Variations Grid (The Cluster) */}
-      {frontmatter.filterTag && (
-        <VariationsGrid 
-          filterTag={frontmatter.filterTag}
-          title={frontmatter.variationsTitle || "Variations"}
-        />
       )}
 
       {/* 7. FAQ & Troubleshooting Section */}
@@ -117,12 +144,13 @@ export default async function PillarPage({ pillar }) {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <PillarFAQ 
               faqs={frontmatter.faqs} 
-              title="Frequently Asked Questions"
+              title="Häufig gestellte Fragen"
               pillarTitle={frontmatter.title}
             />
           </div>
         </div>
       )}
+
 
       {/* 8. Social Sharing */}
       <PillarSocialSection pillar={{ ...frontmatter, slug }} />

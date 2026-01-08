@@ -103,40 +103,44 @@ export default function HomePageSearchBar({
   };
 
   return (
-    <div className="relative w-full" ref={searchRef}>
-      {/* Search Input */}
+    <div className="relative w-full max-w-4xl mx-auto" ref={searchRef}>
+      {/* Search Input - Enhanced Design */}
       <form onSubmit={handleSearch} className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-        <input
-          ref={inputRef}
-          type="text"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setIsOpen(true);
-          }}
-          onFocus={() => setIsOpen(true)}
-          placeholder={placeholder}
-          className="w-full h-12 pl-12 pr-12 rounded-full shadow-sm border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-        />
-        {isOpen && (
-          <button
-            type="button"
-            onClick={() => {
-              setIsOpen(false);
-              setQuery('');
-              setShowResults(false);
-            }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        )}
+        <div className="relative bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 rounded-2xl p-1 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="relative bg-white dark:bg-gray-900 rounded-xl">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-purple-500 dark:text-purple-400 z-10" />
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setIsOpen(true);
+              }}
+              onFocus={() => setIsOpen(true)}
+              placeholder={placeholder}
+              className="w-full h-14 md:h-16 pl-14 pr-14 rounded-xl bg-transparent text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all text-base md:text-lg font-medium"
+            />
+            {isOpen && (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setQuery('');
+                  setShowResults(false);
+                }}
+                className="absolute right-5 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+        </div>
       </form>
 
-      {/* Dropdown Panel */}
+      {/* Dropdown Panel - Enhanced Design */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 z-50 max-h-[600px] overflow-hidden flex flex-col">
+        <div className="absolute top-full left-0 right-0 mt-3 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 max-h-[600px] overflow-hidden flex flex-col backdrop-blur-sm">
           {/* Search Results */}
           {showResults && (
             <div className="max-h-[500px] overflow-y-auto">

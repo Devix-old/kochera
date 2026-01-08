@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Utensils, Clock, Home, Grid3X3, Users, Mail, BookOpen } from 'lucide-react';
+import { Menu, X, Utensils, Clock, Home, Grid3X3, Users, Mail } from 'lucide-react';
 import { getAllCategories } from '@/lib/categories';
 import EnhancedSearchBar from '@/components/ui/EnhancedSearchBar';
 
@@ -17,7 +17,7 @@ export default function Header({ recipes = [] }) {
 
   const navigationItems = [
     {
-      label: 'Hem',
+      label: 'Startseite',
       href: '/',
       icon: Home
     },
@@ -33,12 +33,7 @@ export default function Header({ recipes = [] }) {
       }))
     },
     {
-      label: 'Blogg',
-      href: '/blogg',
-      icon: BookOpen
-    },
-    {
-      label: 'Om oss',
+      label: 'Über uns',
       href: '/om',
       icon: Users
     },
@@ -199,7 +194,7 @@ export default function Header({ recipes = [] }) {
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <span className="text-sm">📋</span>
-                        <span>Alla {item.label.toLowerCase()}</span>
+                        <span>Alle {item.label.toLowerCase()}</span>
                       </Link>
                       {item.dropdown.map((dropdownItem) => (
                         <Link
