@@ -18,14 +18,14 @@ export default function EnhancedHomeClient({
 
   // Story categories for the stories rail
   const STORY_CATEGORIES = [
-    { name: 'Frühstück', slug: 'fruehstueck', image: '/images/categories/fruehstueck.webp', icon: '🌅' },
-    { name: 'Pasta', slug: 'pasta', image: '/images/categories/pasta.webp', icon: '🍝' },
-    { name: 'Vegan', slug: 'vegan', image: '/images/categories/vegan.webp', icon: '🌱' },
+    { name: 'Pfannkuchen', slug: 'pfannkuchen', image: '/images/amerikanska-pannkakor-hero.webp', icon: '🥞' },
+    { name: 'Waffeln', slug: 'waffeln', image: '/images/categories/waffeln.webp', icon: '🧇' },
     { name: 'Kuchen', slug: 'kuchen', image: '/images/categories/kuchen.webp', icon: '🍰' },
-    { name: 'Hähnchen', slug: 'haehnchen', image: '/images/categories/haehnchen.webp', icon: '🍗' },
-    { name: 'Dessert', slug: 'dessert', image: '/images/categories/dessert.webp', icon: '🍨' },
-    { name: 'Vegetarisch', slug: 'vegetarisch', image: '/images/categories/vegetarisch.webp', icon: '🥗' },
+    { name: 'Lasagne', slug: 'lasagne', image: '/images/categories/lasagne.webp', icon: '🍝' },
+    { name: 'Airfryer', slug: 'airfryer', image: '/images/categories/airfryer.webp', icon: '💨' },
     { name: 'Schnell', slug: 'schnell', image: '/images/categories/schnell.webp', icon: '⚡' },
+    { name: 'Gesund', slug: 'gesund', image: '/images/categories/gesund.webp', icon: '🥗' },
+    { name: 'Vegetarisch', slug: 'vegetarisch', image: '/images/categories/vegetarisch.webp', icon: '🌱' },
   ];
 
   // Get trending recipes (can use featured recipes or slice of all recipes)
@@ -111,9 +111,9 @@ export default function EnhancedHomeClient({
               href={`/${story.slug}`}
               className="flex-shrink-0 snap-start flex flex-col items-center gap-3 min-w-[110px] md:min-w-[120px]"
             >
-              <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-100 p-[3px] border-[3px] border-orange-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
                 <img
-                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop"
+                  src={story.image}
                   alt={story.name}
                   className="w-full h-full rounded-full object-cover"
                   loading="lazy"
@@ -142,9 +142,9 @@ export default function EnhancedHomeClient({
               href={`/${getRecipeSlug(recipe)}`}
               className="group"
             >
-              <div className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="bg-white overflow-hidden hover:shadow-lg transition-shadow">
                 {/* Image */}
-                <div className="aspect-[4/3] w-full relative overflow-hidden rounded-xl bg-gray-100">
+                <div className="aspect-[2/3] w-full relative overflow-hidden bg-gray-100">
                   <img
                     src={getRecipeImage(recipe) || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"}
                     alt={getRecipeName(recipe)}
