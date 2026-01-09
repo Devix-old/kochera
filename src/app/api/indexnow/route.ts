@@ -5,7 +5,7 @@ export const runtime = 'nodejs';
 
 const INDEXNOW_API_URL = 'https://api.indexnow.org/IndexNow';
 const MAX_URLS = 10000;
-const BASE_URL = 'https://bakstunden.se';
+const BASE_URL = 'https://kochera.de';
 
 interface IndexNowRequest {
   urls: string[];
@@ -40,12 +40,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validation: each URL must start with https://bakstunden.se/
+    // Validation: each URL must start with https://kochera.de/
     const invalidUrls = urls.filter(url => !url.startsWith(`${BASE_URL}/`));
     if (invalidUrls.length > 0) {
       return NextResponse.json(
         { 
-          error: 'All URLs must start with https://bakstunden.se/',
+          error: 'All URLs must start with https://kochera.de/',
           invalidUrls 
         },
         { status: 400 }
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
     }
 
     // Get environment variables
-    const host = process.env.INDEXNOW_HOST || 'bakstunden.se';
+    const host = process.env.INDEXNOW_HOST || 'kochera.de';
     const key = process.env.INDEXNOW_KEY;
     const keyLocation = process.env.INDEXNOW_KEY_LOCATION;
 

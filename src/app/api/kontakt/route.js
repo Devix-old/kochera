@@ -116,10 +116,10 @@ export async function POST(request) {
     }
 
     // Get recipient email from environment or use default
-    const recipientEmail = process.env.CONTACT_EMAIL || 'info@bakstunden.se';
+    const recipientEmail = process.env.CONTACT_EMAIL || 'info@kochera.de';
     
     // Get from email (must be verified domain in Resend)
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Bakstunden <noreply@bakstunden.se>';
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'kochera <noreply@kochera.de>';
     
     // Send email using Resend
     const emailPayload = {
@@ -207,7 +207,7 @@ export async function POST(request) {
               </div>
             </div>
             <div class="footer">
-              <p>Detta meddelande skickades från kontaktformuläret på bakstunden.se</p>
+              <p>Detta meddelande skickades från kontaktformuläret på kochera.de</p>
               <p>Du kan svara direkt på detta e-postmeddelande för att kontakta ${sanitizedName}.</p>
             </div>
           </body>
@@ -223,7 +223,7 @@ Meddelande:
 ${sanitizedMessage}
 
 ---
-Detta meddelande skickades från kontaktformuläret på bakstunden.se
+Detta meddelande skickades från kontaktformuläret på kochera.de
       `.trim(),
     };
 
@@ -251,8 +251,8 @@ Detta meddelande skickades från kontaktformuläret på bakstunden.se
 
     // Send auto-reply confirmation email to the user
     try {
-      // Use info@bakstunden.se for auto-reply (not noreply)
-      const confirmationFromEmail = 'Bakstunden <info@bakstunden.se>';
+      // Use info@kochera.de for auto-reply (not noreply)
+      const confirmationFromEmail = 'kochera <info@kochera.de>';
       
       await resend.emails.send({
         from: confirmationFromEmail,
@@ -314,7 +314,7 @@ Detta meddelande skickades från kontaktformuläret på bakstunden.se
               <div class="content">
                 <p>Hej ${sanitizedName},</p>
                 
-                <p>Tack för att du kontaktade oss på Bakstunden! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.</p>
+                <p>Tack för att du kontaktade oss på kochera! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.</p>
                 
                 <div class="message-box">
                   <p style="margin: 0 0 10px 0; font-weight: bold; color: #6b7280; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Ditt meddelande:</p>
@@ -323,11 +323,11 @@ Detta meddelande skickades från kontaktformuläret på bakstunden.se
                 
                 <p>Vi svarar vanligtvis inom <span class="highlight">24-48 timmar</span> på vardagar.</p>
                 
-                <p>Med vänliga hälsningar,<br><strong>Teamet på Bakstunden</strong></p>
+                <p>Med vänliga hälsningar,<br><strong>Teamet på kochera</strong></p>
               </div>
               <div class="footer">
                 <p>Detta är ett automatiskt bekräftelsemeddelande. Du behöver inte svara på detta e-postmeddelande.</p>
-                <p>Bakstunden.se | Sveriges bästa receptsamling</p>
+                <p>kochera.de | Sveriges bästa receptsamling</p>
               </div>
             </body>
           </html>
@@ -337,7 +337,7 @@ Tack för ditt meddelande!
 
 Hej ${sanitizedName},
 
-Tack för att du kontaktade oss på Bakstunden! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.
+Tack för att du kontaktade oss på kochera! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.
 
 Ditt meddelande:
 ${sanitizedMessage}
@@ -345,11 +345,11 @@ ${sanitizedMessage}
 Vi svarar vanligtvis inom 24-48 timmar på vardagar. Om din fråga är brådskande, kan du också nå oss via våra sociala medier.
 
 Med vänliga hälsningar,
-Teamet på Bakstunden
+Teamet på kochera
 
 ---
 Detta är ett automatiskt bekräftelsemeddelande. Du behöver inte svara på detta e-postmeddelande.
-Bakstunden.se | Sveriges bästa receptsamling
+kochera.de | Sveriges bästa receptsamling
         `.trim(),
       });
     } catch (confirmationError) {

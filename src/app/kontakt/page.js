@@ -1,26 +1,26 @@
 import KontaktClient from '@/components/kontakt/KontaktClient';
 
 export const metadata = {
-  title: 'Kontakta oss - Bakstunden',
-  description: 'Kontakta Bakstunden för frågor, förslag eller bara för att säga hej. Vi svarar vanligtvis inom 24-48 timmar.',
-  keywords: 'kontakt bakstunden, frågor recept, feedback, support, kontaktformulär, e-post',
+  title: 'Kontakt - Kochera',
+  description: 'Kontaktiere Kochera für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
+  keywords: 'kontakt kochera, Fragen Rezepte, Feedback, Support, Kontaktformular, E-Mail',
   openGraph: {
-    title: 'Kontakta oss - Bakstunden',
-    description: 'Kontakta Bakstunden för frågor, förslag eller bara för att säga hej. Vi svarar vanligtvis inom 24-48 timmar.',
+    title: 'Kontakt - Kochera',
+    description: 'Kontaktiere Kochera für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
     type: 'website',
     images: [
       {
         url: '/images/fika-och-bakning-svensk-stil.webp',
         width: 1200,
         height: 630,
-        alt: 'Kontakta Bakstunden',
+        alt: 'Kontakt Kochera',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kontakta oss - Bakstunden',
-    description: 'Kontakta Bakstunden för frågor, förslag eller bara för att säga hej.',
+    title: 'Kontakt - Kochera',
+    description: 'Kontaktiere Kochera für Fragen, Vorschläge oder einfach um Hallo zu sagen.',
     images: ['/images/fika-och-bakning-svensk-stil.webp'],
   },
 };

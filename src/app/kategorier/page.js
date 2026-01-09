@@ -8,9 +8,9 @@ import { normalizeUrl } from '@/lib/utils/url';
 export async function generateMetadata() {
   return generateSiteMetadata({
     title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | Kochera',
-    description: 'Utforska alla våra receptkategorier: Kyckling, Pasta, Vegetariska, Kladdkaka, Pannkakor och mycket mer. Över 100+ recept i 16 kategorier för alla smaker och tillfällen.',
+    description: 'Entdecke alle unsere Rezeptkategorien: Hähnchen, Pasta, Vegetarisch, Kuchen, Pfannkuchen und vieles mehr. Über 100+ Rezepte in 16 Kategorien für alle Geschmäcker und Anlässe.',
     url: '/kategorier',
-    keywords: 'receptkategorier, matkategorier, kyckling recept, pasta recept, vegetariska recept, kladdkaka recept, pannkakor recept, svenska recept, matlagning, kokbok, recept inspiration, kategorier mat, alla recept, recept sortering',
+    keywords: 'Rezeptkategorien, Matkategorien, Hähnchen Rezepte, Pasta Rezepte, vegetarische Rezepte, Kuchen Rezepte, Pfannkuchen Rezepte, deutsche Rezepte, Kochen, Kochbuch, Rezept Inspiration, Kategorien Essen, alle Rezepte, Rezept Sortierung',
     openGraph: {
       images: [
         {
@@ -109,34 +109,34 @@ export default async function KategorierPage() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Hur många receptkategorier finns det?',
+        name: 'Wie viele Rezeptkategorien gibt es?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Vi har ${allCategories.length} olika receptkategorier med över ${totalRecipes} recept totalt. Kategorierna inkluderar allt från kyckling och pasta till vegetariska rätter och klassiska svenska desserter.`
+          text: `Wir haben ${allCategories.length} verschiedene Rezeptkategorien mit über ${totalRecipes} Rezepten insgesamt. Die Kategorien umfassen alles von Hähnchen und Pasta bis zu vegetarischen Gerichten und klassischen deutschen Desserts.`
         }
       },
       {
         '@type': 'Question',
-        name: 'Vilka är de populäraste receptkategorierna?',
+        name: 'Welche sind die beliebtesten Rezeptkategorien?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Våra mest populära kategorier är ${popularCategories.slice(0, 3).map(cat => cat.name).join(', ')} och ${popularCategories[3].name}. Dessa kategorier innehåller de flesta recepten och är favoriter bland våra användare.`
+          text: `Unsere beliebtesten Kategorien sind ${popularCategories.slice(0, 3).map(cat => cat.name).join(', ')} und ${popularCategories[3]?.name || 'weitere Kategorien'}. Diese Kategorien enthalten die meisten Rezepte und sind Favoriten bei unseren Nutzern.`
         }
       },
       {
         '@type': 'Question',
-        name: 'Finns det vegetariska receptkategorier?',
+        name: 'Gibt es vegetarische Rezeptkategorien?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Ja, vi har en dedikerad vegetariska kategorier med många recept. Dessutom hittar du vegetariska alternativ i andra kategorier som pasta, sallader och tillbehör.'
+          text: 'Ja, wir haben eine eigene vegetarische Kategorie mit vielen Rezepten. Außerdem findest du vegetarische Alternativen in anderen Kategorien wie Pasta, Salate und Beilagen.'
         }
       },
       {
         '@type': 'Question',
-        name: 'Kan jag filtrera recept efter svårighetsgrad?',
+        name: 'Kann ich Rezepte nach Schwierigkeitsgrad filtern?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Ja, alla våra recept är märkta med svårighetsgrad (Lätt, Medel, Svår) så du enkelt kan hitta recept som passar din erfarenhetsnivå. Perfekt för både nybörjare och erfarna kockar!'
+          text: 'Ja, alle unsere Rezepte sind mit Schwierigkeitsgrad (Einfach, Mittel, Fortgeschritten) gekennzeichnet, sodass du einfach Rezepte finden kannst, die zu deinem Erfahrungsniveau passen. Perfekt für Anfänger und erfahrene Köche!'
         }
       }
     ]

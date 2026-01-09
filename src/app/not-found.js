@@ -1,8 +1,8 @@
 import NotFoundClient from '@/components/404/NotFoundClient';
 
 export const metadata = {
-  title: '404 - Sidan hittades inte | Bakstunden',
-  description: 'Den sida du letar efter finns inte. Hitta dina favoritrecept på Bakstunden istället!',
+  title: '404 - Seite nicht gefunden | Kochera',
+  description: 'Die Seite, die Sie suchen, existiert nicht. Finden Sie stattdessen Ihre Lieblingsrezepte auf Kochera!',
   robots: 'noindex, nofollow',
 };
 

@@ -2,17 +2,17 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Web Stories - Bakstunden | Interaktiva Recept & Matinspiration',
+  title: 'Web Stories - kochera | Interaktiva Recept & Matinspiration',
   description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept, matinspiration och bakningstips. Perfekt för mobil och desktop!',
   keywords: 'web stories, recept stories, interaktiva recept, matinspiration, bakning, pannkakor, brunch',
   openGraph: {
-    title: 'Web Stories - Bakstunden | Interaktiva Recept',
+    title: 'Web Stories - kochera | Interaktiva Recept',
     description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept och matinspiration.',
-    url: 'https://bakstunden.se/stories',
-    siteName: 'Bakstunden',
+    url: 'https://kochera.de/stories',
+    siteName: 'kochera',
     images: [
       {
-        url: 'https://bakstunden.se/images/stories/amerikanska-pannkakor-cover-1.webp',
+        url: 'https://kochera.de/images/stories/amerikanska-pannkakor-cover-1.webp',
         width: 720,
         height: 1280,
         alt: 'Amerikanska Pannkakor Web Story',
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web Stories - Bakstunden | Interaktiva Recept',
+    title: 'Web Stories - kochera | Interaktiva Recept',
     description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept och matinspiration.',
-    images: ['https://bakstunden.se/images/stories/amerikanska-pannkakor-cover-1.webp'],
+    images: ['https://kochera.de/images/stories/amerikanska-pannkakor-cover-1.webp'],
   },
   alternates: {
-    canonical: 'https://bakstunden.se/stories',
+    canonical: 'https://kochera.de/stories',
   },
 }
 
@@ -78,9 +78,9 @@ export default function StoriesPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Web Stories - Bakstunden",
+            "name": "Web Stories - kochera",
             "description": "Interaktiva Web Stories med steg-för-steg recept och matinspiration",
-            "url": "https://bakstunden.se/stories",
+            "url": "https://kochera.de/stories",
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": stories.map((story, index) => ({
@@ -90,8 +90,8 @@ export default function StoriesPage() {
                   "@type": "CreativeWork",
                   "name": story.title,
                   "description": story.description,
-                  "url": `https://bakstunden.se/stories/${story.slug}`,
-                  "image": `https://bakstunden.se${story.image}`,
+                  "url": `https://kochera.de/stories/${story.slug}`,
+                  "image": `https://kochera.de${story.image}`,
                 }
               }))
             }

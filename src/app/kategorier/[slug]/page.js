@@ -126,18 +126,18 @@ export default async function CategoryPage({ params }) {
     mainEntity: [
       {
         '@type': 'Question',
-        name: `Hur många ${category.name.toLowerCase()} recept finns det?`,
+        name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Vi har ${filteredRecipes.length} olika ${category.name.toLowerCase()} recept att välja mellan.`
+          text: `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
         }
       },
       {
         '@type': 'Question',
-        name: `Hur lång tid tar det att laga ${category.name.toLowerCase()}?`,
+        name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Tiden varierar beroende på recept, men de flesta ${category.name.toLowerCase()} recept tar mellan 20-45 minuter att tillaga.`
+          text: `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
         }
       },
       {
@@ -145,7 +145,7 @@ export default async function CategoryPage({ params }) {
         name: `Är ${category.name.toLowerCase()} recept lämpliga för nybörjare?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Ja! Vi har många enkla ${category.name.toLowerCase()} recept märkta som "Lätt" svårighetsgrad som är perfekta för nybörjare.`
+          text: `Ja! Wir haben viele einfache ${category.name.toLowerCase()} Rezepte mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
         }
       }
     ]

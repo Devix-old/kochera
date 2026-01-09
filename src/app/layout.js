@@ -4,9 +4,6 @@ import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import Script from "next/script";
 // Modern sans-serif for body text (excellent readability)
 const inter = Inter({
   variable: "--font-inter",
@@ -106,39 +103,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
-        <meta name="google-site-verification" content="73a51c1ce7036450" />
-        <meta name="ahrefs-site-verification" content="22d922fdf84d019c19ae72220da6b8c4acf4889a83938c151cdbc09ee00d5aa2" />
-        <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
-        <link rel="preconnect" href="https://challenges.cloudflare.com" />
-        <script 
-          async 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7907405885837592"
-          crossOrigin="anonymous"
-        />
-        <Script
-          src="https://d3u598arehftfk.cloudfront.net/prebid_hb_37238_28732.js"
-          strategy="afterInteractive"
-        />
-        <script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          async
-          defer
-        />
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} ${lora.variable} ${crimson.variable} antialiased min-h-screen flex flex-col font-inter`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5B3M9L45"
-            height="0" 
-            width="0" 
-            className="noscript-hidden"
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
-        
         <HeaderWrapper />
         <a 
           href="#main-content" 
@@ -147,21 +115,6 @@ export default function RootLayout({ children }) {
           Zum Hauptinhalt springen
         </a>
         
-        {/* Google Tag Manager */}
-        <Script
-          id="google-tag-manager"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5B3M9L45');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
-        
-        
         {/* Scroll to top on route change - professional scroll restoration */}
         <ScrollToTop />
         
@@ -169,13 +122,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {children}
         </main>
         <Footer />
-        {/* Vercel Analytics and Speed Insights - Only works in production on Vercel */}
-        {process.env.NODE_ENV === 'production' && (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        )}
       </body>
     </html>
   );

@@ -50,10 +50,10 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.bakstunden.se',
+            value: 'www.kochera.de',
           },
         ],
-        destination: 'https://bakstunden.se/:path*',
+        destination: 'https://kochera.de/:path*',
         permanent: true, // 301 redirect
       },
       // Redirect /categories/* to /kategorier/* (Swedish)

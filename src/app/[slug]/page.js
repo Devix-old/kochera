@@ -45,18 +45,6 @@ import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 import PillarPage from '@/components/pillar/PillarPage';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 import StructuredData from '@/components/seo/StructuredData';
-import LeaderboardAd from '@/components/ads/LeaderboardAd';
-import MobileLearderboard from '@/components/ads/MobileLearderboard';
-import HeaderBanner from '@/components/ads/HeaderBanner';
-import InArticle from '@/components/ads/InArticle';
-import HalfPage from '@/components/ads/half_page';
-import LeaderboardAfterRelatedRecipes from '@/components/ads/LeaderboardAfterRelatedRecipes';
-import HeaderAd from '@/components/ads/adsense/HeaderAd';
-import Billboard_970x250 from '@/components/ads/Billboard_970x250';
-import Leaderboard_before_ingredients from '@/components/ads/Leaderboard_before_ingredients';
-import Leaderboard_after_ingredients from '@/components/ads/leaderboard_after_ingredients';
-import Leaderboard_after_nutrition from '@/components/ads/leaderboard_after_nutrition';
-// import InterScroller from '@/components/ads/InterScroller';
 
 // Icon mapping function
 function getIconComponent(iconName) {
@@ -260,12 +248,12 @@ export default async function SlugPage({ params }) {
     ? frontmatter.faqs 
     : [
         {
-          question: `Hur lång tid tar det att laga ${displayRecipeName}?`,
-          answer: `Det tar cirka ${frontmatter.totalTimeMinutes} minuter att laga ${displayRecipeName}.${frontmatter.prepTimeMinutes ? ` Förberedelse: ${frontmatter.prepTimeMinutes} minuter.` : ''}${frontmatter.cookTimeMinutes ? ` Tillagning: ${frontmatter.cookTimeMinutes} minuter.` : ''}`
+          question: `Wie lange dauert es, ${displayRecipeName} zuzubereiten?`,
+          answer: `Es dauert etwa ${frontmatter.totalTimeMinutes} Minuten, ${displayRecipeName} zuzubereiten.${frontmatter.prepTimeMinutes ? ` Vorbereitung: ${frontmatter.prepTimeMinutes} Minuten.` : ''}${frontmatter.cookTimeMinutes ? ` Kochzeit: ${frontmatter.cookTimeMinutes} Minuten.` : ''}`
         },
         {
-          question: `Hur många portioner ger ${displayRecipeName}?`,
-          answer: `Detta recept ger ${frontmatter.servings} portioner.`
+          question: `Wie viele Portionen ergibt ${displayRecipeName}?`,
+          answer: `Dieses Rezept ergibt ${frontmatter.servings} Portionen.`
         },
         {
           question: `Vilken svårighetsgrad har ${displayRecipeName}?`,
@@ -443,11 +431,6 @@ export default async function SlugPage({ params }) {
         />
       )}
       <div className="w-full flex justify-center py-4">
-        <div className="hb-ad-static hb-ad-billboard">
-            <div className="hb-ad-inner">
-                <div className="hbagency_cls_static" id="hbagency_space_271592" ></div>
-            </div>
-        </div>
       </div>
       {/* 🧭 BREADCRUMB SECTION */}
       <section className="bg-gray-50 dark:bg-gray-950 dark:border-gray-800 py-5">
@@ -572,7 +555,6 @@ export default async function SlugPage({ params }) {
               </div>
             </section>
           )}
-          <Leaderboard_before_ingredients />
           {/* Recipe two-column layout */}
           <section className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 mb-16 lg:items-start">
             {/* Left column - Ingredients */}
@@ -641,7 +623,6 @@ export default async function SlugPage({ params }) {
                 </div>
               )}
             </aside>
-            <Leaderboard_after_ingredients />
             {/* Right column - Steps and details */}
             <div className="space-y-8">
               <div className="bg-white dark:bg-gray-900 borde r border-gray-200 dark:border-gray-700">
@@ -659,7 +640,6 @@ export default async function SlugPage({ params }) {
             </div>
           </section>
           
-            <LeaderboardAd />
 
           {/* Nutrition Information Section */}
           {frontmatter.nutrition && frontmatter.nutrition.length > 0 && (
@@ -670,15 +650,12 @@ export default async function SlugPage({ params }) {
               />
             </section>
           )}
-          <Leaderboard_after_nutrition />
           {/* SEO Sections - Placed FIRST after recipe steps for optimal SEO */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <RecipeTipsSection recipe={frontmatter} tips={tips} />
-              <InArticle />
             <RecipeFAQSection recipe={frontmatter} faqs={faqs} />
           </div>
 
-          <MobileLearderboard />
           {/* Comments Section - Placed after SEO sections, before related recipes */}
           <CommentsSection pageSlug={slug} />
 
@@ -696,29 +673,17 @@ export default async function SlugPage({ params }) {
                 </h2>
               </div>
               
-              {/* Desktop: 2 columns (recipes) + 1 column (ad) | Mobile: full width recipes */}
-              <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
-                {/* Recipes grid - 2 columns on desktop, 1 column on mobile */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                  {relatedRecipes.map((r, i) => (
-                    <RecipeCard key={`${r.slug}-${i}`} recipe={r} index={i} />
-                  ))}
-                </div>
-                
-                {/* Half-page ad on desktop - right side, sticky (only renders on large screens) */}
-                <aside className="sticky top-4">
-                  <div className="flex justify-center">
-                    <HalfPage />
-                  </div>
-                </aside>
+              {/* Recipes grid - 2 columns on desktop, 1 column on mobile */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {relatedRecipes.map((r, i) => (
+                  <RecipeCard key={`${r.slug}-${i}`} recipe={r} index={i} />
+                ))}
               </div>
               
               
             </section>
           )}
 
-          {/* Leaderboard Ad after Related Recipes */}
-          <LeaderboardAfterRelatedRecipes />
 
           {/* Additional SEO Sections - Placed after related recipes */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

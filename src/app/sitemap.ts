@@ -47,11 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Load MDX content
   let recipes: any[] = [];
   let categories: any[] = [];
+  let pillars: any[] = [];
 
   try {
-    [recipes, categories] = await Promise.all([
+    [recipes, categories, pillars] = await Promise.all([
       getAllContent('recipes'),
       getAllCategories(),
+      getAllContent('pillars').catch(() => []), // Pillars might not exist yet
     ]);
   } catch {
     return [
@@ -82,6 +84,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
     { url: normalizeUrl(baseUrl, '/kategorier'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
     { url: normalizeUrl(baseUrl, '/om'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.6 },
+    { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: normalizeUrl(baseUrl, '/impressum'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/agb'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/disclaimer'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/cookie-policy'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/privacy-policy'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   // Dynamic recipe routes
@@ -115,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const images = imageUrl ? [imageUrl] : undefined;
 
     return {
-      url: normalizeUrl(baseUrl, `/recept/${recipe.slug}`),
+      url: normalizeUrl(baseUrl, `/${recipe.slug}`),
       lastModified,
       changeFrequency: 'monthly',
       priority,
@@ -155,5 +163,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...recipeRoutes, ...categoryRoutes];
+  // Pillar page routes (high priority for SEO hubs)
+  const pillarRoutes: MetadataRoute.Sitemap = pillars.map((pillar) => {
+    const lastModified = new Date(
+      pillar.updatedAt || pillar.publishedAt || new Date()
+    );
+
+    return {
+      url: normalizeUrl(baseUrl, `/${pillar.slug}`),
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.85, // High priority for SEO hubs
+    };
+  });
+
+  return [...staticRoutes, ...recipeRoutes, ...categoryRoutes, ...pillarRoutes];
 }

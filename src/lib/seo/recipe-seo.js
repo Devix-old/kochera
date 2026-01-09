@@ -745,10 +745,10 @@ export function generateOrganizationSchema() {
     sameAs: [
       // TODO: Add social media profiles once accounts are created
       // Uncomment and update with actual social media URLs:
-      // 'https://www.instagram.com/bakstunden',
-      // 'https://www.facebook.com/bakstunden',
-      // 'https://twitter.com/bakstunden',
-      // 'https://pinterest.com/bakstunden',
+      // 'https://www.instagram.com/kochera',
+      // 'https://www.facebook.com/kochera',
+      // 'https://twitter.com/kochera',
+      // 'https://pinterest.com/kochera',
     ].filter(Boolean), // Remove empty entries
   };
 }

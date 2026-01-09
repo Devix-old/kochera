@@ -72,7 +72,7 @@ export default function OmClient() {
                   Jag heter Elsa och matlagning är min passion. Jag älskar att testa nya recept, experimentera i köket och framför allt – dela med mig av det som fungerar.
                 </p>
                 <p>
-                  Bakstunden är min plats där jag delar mina favoritrecept med dig. Varje recept har jag testat själv, ofta flera gånger, för att säkerställa att det verkligen fungerar.
+                  kochera är min plats där jag delar mina favoritrecept med dig. Varje recept har jag testat själv, ofta flera gånger, för att säkerställa att det verkligen fungerar.
                 </p>
                 <p>
                   Min filosofi är enkel: matlagning ska vara roligt och tillgängligt för alla. Inga komplicerade tekniker eller svåråtkomliga ingredienser – bara goda, enkla recept som ger resultat.

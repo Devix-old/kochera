@@ -49,7 +49,7 @@ export default function PrivacyPolicyClient() {
             <section>
               <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">1. Inledning</h2>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                På Bakstunden.se respekterar vi din integritet och är engagerade i att skydda dina personuppgifter. 
+                På kochera.de respekterar vi din integritet och är engagerade i att skydda dina personuppgifter. 
                 Denna integritetspolicy förklarar hur vi samlar in, använder och skyddar dina personuppgifter när du 
                 använder vår webbplats.
               </p>
@@ -59,11 +59,11 @@ export default function PrivacyPolicyClient() {
             <section>
               <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">2. Personuppgiftsansvarig</h2>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Bakstunden är personuppgiftsansvarig för behandlingen av dina personuppgifter.
+                kochera är personuppgiftsansvarig för behandlingen av dina personuppgifter.
               </p>
               <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-gray-800">
                 <Mail className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-700 dark:text-gray-300 font-medium">info@bakstunden.se</span>
+                <span className="text-gray-700 dark:text-gray-300 font-medium">info@kochera.de</span>
               </div>
             </section>
 
@@ -205,8 +205,8 @@ export default function PrivacyPolicyClient() {
                     <div className="flex items-center gap-2 mb-2 text-gray-900 dark:text-white font-semibold">
                       <Mail className="w-4 h-4" /> E-post
                     </div>
-                    <a href="mailto:info@bakstunden.se" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
-                      info@bakstunden.se
+                    <a href="mailto:info@kochera.de" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
+                      info@kochera.de
                     </a>
                   </div>
                   <div className="flex-1">

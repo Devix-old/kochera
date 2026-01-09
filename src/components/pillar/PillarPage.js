@@ -1,7 +1,6 @@
 import { normalizeUrl } from '@/lib/utils/url';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PillarHero from './PillarHero';
-import QuickNavRail from './QuickNavRail';
 import TippsSection from './TippsSection';
 import VariantsSection from './VariantsSection';
 import FlagshipRecipeCard from './FlagshipRecipeCard';
@@ -81,13 +80,6 @@ export default async function PillarPage({ pillar }) {
   const introductionText = frontmatter.introductionText || 
     (content ? content.split('\n\n')[0].substring(0, 800) : frontmatter.excerpt);
 
-  // Build sections for Quick Nav (from tipps sections)
-  const tippsSections = frontmatter.tipps?.sections || [];
-  const navSections = tippsSections.map((section, index) => ({
-    id: `section-${index}`,
-    title: section.title,
-    label: section.label || section.title
-  })).filter(section => section.title); // Only include sections with titles
 
   return (
     <>
@@ -109,18 +101,18 @@ export default async function PillarPage({ pillar }) {
         introductionText={introductionText}
       />
 
-      {/* 3. Quick-Nav Rail (UX) - Sticky navigation */}
-      {navSections.length > 0 && (
-        <QuickNavRail sections={navSections} />
-      )}
-
-      {/* 4. Variants Section - Shows all related recipes */}
+      {/* 3. Variants Section - Shows all related recipes (moved before tips) */}
       {variations.length > 0 && (
         <VariantsSection 
           recipes={variations}
           pillarTitle={frontmatter.title}
           pillarDescription={frontmatter.introductionText}
         />
+      )}
+
+      {/* 4. Flagship Recipe Card (Master Recipe) */}
+      {frontmatter.isFlagShip && frontmatter.flagshipRecipeSlug && (
+        <FlagshipRecipeCard flagshipSlug={frontmatter.flagshipRecipeSlug} />
       )}
 
       {/* 5. Tipps Section (Matching Recipe Page Design) */}
@@ -131,11 +123,6 @@ export default async function PillarPage({ pillar }) {
             tips={frontmatter.tipps.tips || []}
           />
         </div>
-      )}
-
-      {/* 6. Flagship Recipe Card */}
-      {frontmatter.isFlagShip && frontmatter.flagshipRecipeSlug && (
-        <FlagshipRecipeCard flagshipSlug={frontmatter.flagshipRecipeSlug} />
       )}
 
       {/* 7. FAQ & Troubleshooting Section */}

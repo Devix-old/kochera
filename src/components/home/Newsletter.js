@@ -113,7 +113,7 @@ export default function Newsletter() {
                     className="mt-1 w-5 h-5 text-[#FF7A7A] border-2 border-gray-300 rounded focus:ring-2 focus:ring-[#FF7A7A]/20 cursor-pointer"
                   />
                   <label htmlFor="gdpr-consent" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
-                    Jag godkänner att Bakstunden lagrar min e-postadress för att skicka nyhetsbrev. 
+                    Jag godkänner att kochera lagrar min e-postadress för att skicka nyhetsbrev. 
                     Du kan avregistrera dig när som helst. Läs mer i vår{' '}
                     <a href="/integritetspolicy" className="text-[#FF7A7A] hover:underline font-medium">
                       integritetspolicy

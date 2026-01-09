@@ -18,5 +18,5 @@ User-agent: Googlebot-Image
 Allow: /
 
 # Sitemap
-Sitemap: https://bakstunden.se/sitemap.xml
-Sitemap: https://bakstunden.se/stories-sitemap.xml
+Sitemap: https://kochera.de/sitemap.xml
+Sitemap: https://kochera.de/stories-sitemap.xml

@@ -1,5 +1,5 @@
 /**
- * Comprehensive food categories for Bakstunden
+ * Comprehensive food categories for kochera
  * Organized for optimal user experience and SEO
  */
 

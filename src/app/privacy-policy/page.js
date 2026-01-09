@@ -1,10 +1,10 @@
 import PrivacyPolicyClient from '@/components/privacy/PrivacyPolicyClient';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakstunden.se';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
 
 export const metadata = {
-  title: 'Integritetspolicy - Bakstunden',
-  description: 'Läs vår integritetspolicy och hur vi hanterar dina personuppgifter på Bakstunden.se',
+  title: 'Datenschutzerklärung - Kochera',
+  description: 'Lesen Sie unsere Datenschutzerklärung und wie wir Ihre personenbezogenen Daten auf kochera.de verarbeiten',
   robots: {
     index: false,
     follow: false,
@@ -13,8 +13,8 @@ export const metadata = {
     canonical: `${siteUrl}/privacy-policy`,
   },
   openGraph: {
-    title: 'Integritetspolicy - Bakstunden',
-    description: 'Läs vår integritetspolicy och hur vi hanterar dina personuppgifter',
+    title: 'Datenschutzerklärung - Kochera',
+    description: 'Lesen Sie unsere Datenschutzerklärung und wie wir Ihre personenbezogenen Daten verarbeiten',
     type: 'website',
     url: `${siteUrl}/privacy-policy`,
   },

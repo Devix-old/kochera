@@ -396,11 +396,11 @@ export function generateOrganizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@bakstunden.se',
+      email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochera.de',
     },
     sameAs: [
-      'https://instagram.com/bakstunden',
-      'https://pinterest.com/bakstunden',
+      'https://instagram.com/kochera',
+      'https://pinterest.com/kochera',
     ],
     potentialAction: {
       '@type': 'SearchAction',

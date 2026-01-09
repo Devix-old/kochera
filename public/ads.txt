@@ -1,8 +1,8 @@
 google.com, pub-7907405885837592, DIRECT, f08c47fec0942fa0
-# HBAgency , Bakstunden 
+# HBAgency , kochera 
 # info@hbagency.it
 managerdomain=hbagency.it 
-ownerdomain=bakstunden.se 
+ownerdomain=kochera.de 
 google.com, pub-5849238611809526, RESELLER, f08c47fec0942fa0
 smartadserver.com, 3278, RESELLER, 060d053dcf45cbf3
 smartadserver.com, 3278-OB, RESELLER, 060d053dcf45cbf3

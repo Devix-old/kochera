@@ -155,7 +155,7 @@ export default function EnhancedHomeClient({
                 
                 {/* Text Content */}
                 <div className="p-3">
-                  <h3 className="font-semibold text-gray-900 text-sm md:text-base line-clamp-2 mb-2 min-h-[2.5rem]">
+                  <h3 className="font-semibold text-gray-900 text-sm md:text-base line-clamp-3 mb-2 min-h-[3.5rem]">
                     {getRecipeName(recipe)}
                   </h3>
                   {/* Star Rating */}
@@ -180,7 +180,7 @@ export default function EnhancedHomeClient({
             <div className="w-32 h-32 md:w-48 md:h-48 rounded-full p-1 bg-white ring-4 ring-purple-100 shadow-md">
               <img
                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop"
-                alt="Profilbild på författaren"
+                alt="Profilbild des Autors"
                 className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
               />
             </div>
@@ -197,15 +197,15 @@ export default function EnhancedHomeClient({
             </span>
             
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-              Hej! Jag heter <span className="text-purple-600">[Ditt Namn]</span>.
+              Hallo! Ich bin <span className="text-purple-600">Kochera</span>.
             </h3>
             
             <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
               <p>
-                Välkommen till mitt kök! Jag grundade denna sida för att dela min passion för matlagning och bakning med dig.
+                Willkommen in meiner Küche! Ich habe diese Seite gegründet, um meine Leidenschaft für Kochen und Backen mit dir zu teilen.
               </p>
               <p className="hidden md:block">
-                Jag tror på kvalitet framför kvantitet. Därför är varje recept du hittar här noggrant testat, provsmakat och perfektionerat för att garantera att du lyckas varje gång.
+                Ich glaube an Qualität vor Quantität. Daher ist jedes Rezept, das du hier findest, sorgfältig getestet, verkostet und perfektioniert, um sicherzustellen, dass du jedes Mal erfolgreich bist.
               </p>
             </div>
 
@@ -214,7 +214,7 @@ export default function EnhancedHomeClient({
               className="group inline-flex items-center justify-center md:justify-start gap-2 text-purple-700 font-bold hover:text-purple-900 transition-colors duration-200"
             >
               <span className="border-b-2 border-purple-200 group-hover:border-purple-600 transition-all duration-200">
-                Läs mer om min resa
+                Mehr über unsere Reise erfahren
               </span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>

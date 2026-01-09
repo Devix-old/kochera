@@ -58,13 +58,11 @@ export default function Footer() {
                 return (
                   <a
                     key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+                    href="#"
+                    className="p-3 hover:bg-gray-800 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                     aria-label={link.name}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-6 h-6" />
                   </a>
                 );
               })}
@@ -78,12 +76,36 @@ export default function Footer() {
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} Kochera. Alle Rechte vorbehalten.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap gap-6 text-sm">
               <Link
                 href="/privacy-policy"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Datenschutzerklärung
+              </Link>
+              <Link
+                href="/impressum"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Impressum
+              </Link>
+              <Link
+                href="/agb"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                AGB
+              </Link>
+              <Link
+                href="/disclaimer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Haftungsausschluss
+              </Link>
+              <Link
+                href="/cookie-policy"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Cookie-Richtlinie
               </Link>
             </div>
           </div>

@@ -7,7 +7,7 @@ export async function GET() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <title>Amerikanska Pannkakor – Fluffiga till Brunch</title>
-    <link rel="canonical" href="https://bakstunden.se/amerikanska-pannkakor" />
+    <link rel="canonical" href="https://kochera.de/amerikanska-pannkakor" />
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -21,7 +21,7 @@ export async function GET() {
     <!-- This AMP story page links to the actual recipe at /recept/amerikanska-pannkakor -->
   </head>
   <body>
-    <amp-story standalone title="Amerikanska Pannkakor – Fluffiga till Brunch" publisher="Bakstunden" publisher-logo-src="https://bakstunden.se/bak-stunden.png" poster-portrait-src="/images/stories/amerikanska-pannkakor-cover-1.webp" poster-square-src="/images/stories/amerikanska-pannkakor-cover-1.webp" poster-landscape-src="/images/stories/amerikanska-pannkakor-cover-1.webp">
+    <amp-story standalone title="Amerikanska Pannkakor – Fluffiga till Brunch" publisher="kochera" publisher-logo-src="https://kochera.de/bak-stunden.png" poster-portrait-src="/images/stories/amerikanska-pannkakor-cover-1.webp" poster-square-src="/images/stories/amerikanska-pannkakor-cover-1.webp" poster-landscape-src="/images/stories/amerikanska-pannkakor-cover-1.webp">
       <amp-story-page id="page-1">
         <amp-story-grid-layer template="fill">
           <amp-img src="/images/stories/amerikanska-pannkakor-cover-1.webp" width="720" height="1280" layout="responsive" alt="Cover"></amp-img>
@@ -111,7 +111,7 @@ export async function GET() {
         </amp-story-grid-layer>
         <amp-story-grid-layer template="vertical" class="layer">
           <h2 class="headline" animate-in="fade-in">✨ Färdiga på 20 minuter!</h2>
-          <p class="subtext" animate-in="fade-in" animate-in-delay="0.2s">Se fler recept på bakstunden.se</p>
+          <p class="subtext" animate-in="fade-in" animate-in-delay="0.2s">Se fler recept på kochera.de</p>
           <a class="button" href="/recept/amerikanska-pannkakor" animate-in="fade-in" animate-in-delay="0.4s">Läs hela receptet</a>
         </amp-story-grid-layer>
       </amp-story-page>
