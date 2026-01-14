@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Utensils, Clock, Home, Grid3X3, Users, Mail } from 'lucide-react';
+import { Menu, X, Utensils, Home, Users, Mail, Grid3X3 } from 'lucide-react';
 import { getAllCategories } from '@/lib/categories';
 import EnhancedSearchBar from '@/components/ui/EnhancedSearchBar';
 
@@ -24,7 +24,12 @@ export default function Header({ recipes = [] }) {
     {
       label: 'Rezepte',
       href: '/rezepte',
-      icon: Utensils,
+      icon: Utensils
+    },
+    {
+      label: 'Kategorien',
+      href: '/kategorien',
+      icon: Grid3X3,
       dropdown: allCategories.map(cat => ({
         label: cat.name,
         href: `/${cat.slug}`,

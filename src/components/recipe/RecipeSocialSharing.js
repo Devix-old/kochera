@@ -66,10 +66,10 @@ export default function RecipeSocialSharing({ recipe }) {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center justify-center">
           <Share2 className="w-6 h-6 mr-3 text-purple-600" />
-          Dela detta recept
+          Dieses Rezept teilen
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Sprid glädjen och dela {recipe.recipeName || recipe.title} med dina vänner och familj!
+          Teile {recipe.recipeName || recipe.title} mit deinen Freunden und deiner Familie!
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {shareLinks.map((link) => {
@@ -80,7 +80,7 @@ export default function RecipeSocialSharing({ recipe }) {
                   key={link.name}
                   onClick={link.onClick}
                   className={`${link.color} text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl`}
-                  aria-label={`Dela på ${link.name}`}
+                  aria-label={`Auf ${link.name} teilen`}
                 >
                   <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" />
                 </button>

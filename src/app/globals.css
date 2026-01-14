@@ -363,22 +363,6 @@ img {
   }
 }
 
-/* Ad component styles */
-.hb-ad-leaderbord {
-  width: 728px;
-  max-width: 100%;
-}
-
-.hb-ad-half {
-  width: 300px;
-  height: 600px;
-  max-width: 100%;
-}
-
-.hb-ad-inarticle {
-  width: 100%;
-  max-width: 100%;
-}
 
 /* Star rating styles */
 .star-rating-size {

@@ -56,8 +56,8 @@ export default function VariantsSection({ recipes = [], pillarTitle = '', pillar
             const recipeSlug = getRecipeSlug(recipe);
             const recipeName = getRecipeName(recipe);
             const recipeImage = getRecipeImage(recipe);
-            const recipeTitle = recipe?.title || recipeName;
-            const recipeDescription = recipe?.description || recipe?.excerpt || '';
+            const recipeTitle = recipe?.pillarTitle || recipe?.title || recipeName;
+            const recipeDescription = recipe?.pillarDescription || recipe?.description || recipe?.excerpt || '';
             const totalTime = recipe?.totalTimeMinutes || recipe?.cookTimeMinutes || 0;
             const servings = recipe?.servings || 0;
             const rating = recipe?.ratingAverage || 0;

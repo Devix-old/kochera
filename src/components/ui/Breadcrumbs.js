@@ -1,20 +1,17 @@
 import Link from 'next/link';
-import { ChevronRight, Home, ArrowLeft } from 'lucide-react';
+import { ChevronRight, Home } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
 export default function Breadcrumbs({ items, className }) {
-  // Get the last item (recipe name) and parent items (category)
-  const lastItem = items[items.length - 1];
-  const parentItems = items.slice(0, -1);
 
   return (
     <nav aria-label="Brödsmulor" className={cn('w-full', className)}>
-      {/* Desktop: Full breadcrumb in one line */}
-      <div className="hidden md:flex items-center gap-2 text-sm font-semibold">
+      {/* Full breadcrumb - visible on all screen sizes */}
+      <div className="flex items-center gap-2 text-sm font-semibold">
         <Link
           href="/"
           className="text-purple-600 hover:text-purple-700 transition-colors flex-shrink-0"
-          aria-label="Startsida"
+          aria-label="Startseite"
         >
           <Home className="w-4 h-4" />
         </Link>
@@ -46,29 +43,6 @@ export default function Breadcrumbs({ items, className }) {
             </div>
           );
         })}
-      </div>
-
-      {/* Mobile: Only arrow left + category */}
-      <div className="md:hidden flex items-center gap-2 text-sm">
-        {parentItems.length > 0 ? (
-          <Link
-            href={parentItems[0].url}
-            className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors"
-            title={parentItems[0].name}
-          >
-            <ArrowLeft className="w-4 h-4 flex-shrink-0" />
-            <span className="truncate">{parentItems[0].name}</span>
-          </Link>
-        ) : items.length > 0 && items[0].url ? (
-          <Link
-            href={items[0].url}
-            className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors"
-            title={items[0].name}
-          >
-            <ArrowLeft className="w-4 h-4 flex-shrink-0" />
-            <span className="truncate">{items[0].name}</span>
-          </Link>
-        ) : null}
       </div>
     </nav>
   );

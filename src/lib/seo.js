@@ -153,7 +153,7 @@ export function generateRecipeSchema(recipe) {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/bak-stunden.png`,
+        url: `${SITE_URL}/logo.png`,
         width: 512,
         height: 512,
       },
@@ -289,7 +289,7 @@ export function generateArticleSchema(article) {
       // MINOR #12: Add width/height to logo
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+        url: normalizeUrl(SITE_URL, '/logo.png'),
         width: 512,
         height: 512,
       },
@@ -387,7 +387,7 @@ export function generateOrganizationSchema() {
     inLanguage: 'de-DE',
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+      url: normalizeUrl(SITE_URL, '/logo.png'),
       width: 512,
       height: 512,
     },

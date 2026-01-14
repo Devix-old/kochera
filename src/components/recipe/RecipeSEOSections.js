@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import { Clock, Users, Star, ChefHat, Lightbulb, Heart, Share2, BookOpen, ArrowRight } from 'lucide-react';
 import RecipeSocialSharing from './RecipeSocialSharing';
 import ExpandableTipText from './ExpandableTipText';
-import ConditionalInArticle from '@/components/ads/ConditionalInArticle';
 
 // Memoized markdown components config for FAQ section
 const faqMarkdownComponents = {
@@ -37,77 +36,34 @@ export function RecipeTipsSection({ recipe, tips = [] }) {
 
   const displayTips = tips.length > 0 ? tips : defaultTips;
 
-  // Create mixed list: [tip, tip, ad, tip] for mobile, [tip, tip, tip, ad] for desktop
-  const createMixedList = () => {
-    const items = [];
-    
-    displayTips.forEach((tip, index) => {
-      // Add tip
-      items.push({ type: 'tip', data: tip, index });
-      
-      // Insert ad after 2nd tip (index 1) for mobile
-      // This will create: [tip0, tip1, ad-mobile, tip2, ...]
-      if (index === 1) {
-        items.push({ type: 'ad-mobile', key: 'ad-tips-mobile' });
-      }
-      
-      // Insert ad after 3rd tip (index 2) for desktop
-      // This will create: [tip0, tip1, tip2, ad-desktop, ...]
-      if (index === 2) {
-        items.push({ type: 'ad-desktop', key: 'ad-tips-desktop' });
-      }
-    });
-    
-    return items;
-  };
-
-  const mixedItems = createMixedList();
-
   return (
-    <section className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 mb-12">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-4 mb-12">
+      <div className="px-2 lg:px-8 py-4 mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
           <Lightbulb className="w-6 h-6 mr-3 text-purple-600" />
           Tips för {recipe.recipeName}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {mixedItems.map((item, index) => {
-            if (item.type === 'tip') {
-              const tip = item.data;
-              const IconComponent = tip.icon || Lightbulb;
-              const tipKey = tip.title || `tip-${item.index}`;
-              
-              return (
-                <div 
-                  key={tipKey}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700"
-                >
-                  <div className="flex items-center mb-4">
-                    <IconComponent className="w-5 h-5 text-purple-600 mr-3" />
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{tip.title}</h3>
-                  </div>
-                  <ExpandableTipText content={tip.content} />
-                </div>
-              );
-            }
+          {displayTips.map((tip, index) => {
+            const IconComponent = tip.icon || Lightbulb;
+            const tipKey = tip.title || `tip-${index}`;
             
-            if (item.type === 'ad-mobile') {
-              return (
-                <div key={item.key} className="col-span-1 md:hidden">
-                  <ConditionalInArticle showOnMobile={true} />
+            return (
+              <div
+                key={tipKey}
+                className="relative rounded-2xl bg-white border border-gray-200 shadow-sm p-6 dark:bg-gray-900 dark:border-gray-800"
+              >
+                {/* Circle BG + centered icon */}
+                <div className="absolute top-[-8px] right-[-8px] w-12 h-12 rounded-full bg-purple-100/70 dark:bg-purple-900/25 flex items-center justify-center">
+                  <IconComponent className="w-5 h-5 text-purple-700/80 dark:text-purple-200/80" />
                 </div>
-              );
-            }
-            
-            if (item.type === 'ad-desktop') {
-              return (
-                <div key={item.key} className="hidden md:block col-span-3">
-                  <ConditionalInArticle showOnDesktop={true} />
-                </div>
-              );
-            }
-            
-            return null;
+
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  {tip.title}
+                </h3>
+                <ExpandableTipText content={tip.content} />
+              </div>
+            );
           })}
         </div>
       </div>
@@ -244,54 +200,9 @@ export function RelatedRecipesSection({ relatedRecipes, category, categoryUrl, c
         
         {/* Mobile: 2 columns, Desktop: 3 columns, Large: 4 columns */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-          {/* Recipe 0 */}
-          {recipes[0] && <RelatedRecipeCard key={recipes[0].slug} recipe={recipes[0]} />}
-          
-          {/* Recipe 1 */}
-          {recipes[1] && <RelatedRecipeCard key={recipes[1].slug} recipe={recipes[1]} />}
-          
-          {/* First InArticle ad: after 2 recipes on mobile */}
-          <div key="ad-related-1-mobile" className="col-span-2 md:hidden">
-            <ConditionalInArticle showOnMobile={true} />
-          </div>
-          
-          {/* Recipe 2 */}
-          {recipes[2] && <RelatedRecipeCard key={recipes[2].slug} recipe={recipes[2]} />}
-          
-          {/* First InArticle ad: after 3 recipes on desktop (hidden on mobile) */}
-          <div key="ad-related-1-desktop" className="hidden md:block lg:hidden col-span-3">
-            <ConditionalInArticle showOnDesktop={true} />
-          </div>
-          
-          {/* Recipe 3 */}
-          {recipes[3] && <RelatedRecipeCard key={recipes[3].slug} recipe={recipes[3]} />}
-          
-          {/* First InArticle ad: after 4 recipes on large */}
-          <div key="ad-related-1-large" className="hidden lg:block col-span-4">
-            <ConditionalInArticle showOnDesktop={true} />
-          </div>
-          
-          {/* Second InArticle ad: after 4 recipes on mobile */}
-          <div key="ad-related-2-mobile" className="col-span-2 md:hidden">
-            <ConditionalInArticle showOnMobile={true} />
-          </div>
-          
-          {/* Recipe 4 */}
-          {recipes[4] && <RelatedRecipeCard key={recipes[4].slug} recipe={recipes[4]} />}
-          
-          {/* Recipe 5 */}
-          {recipes[5] && <RelatedRecipeCard key={recipes[5].slug} recipe={recipes[5]} />}
-          
-          {/* Second InArticle ad: after 6 recipes on desktop/large */}
-          <div key="ad-related-2-desktop" className="hidden md:block col-span-3 lg:col-span-4">
-            <ConditionalInArticle showOnDesktop={true} />
-          </div>
-          
-          {/* Recipe 6 */}
-          {recipes[6] && <RelatedRecipeCard key={recipes[6].slug} recipe={recipes[6]} />}
-          
-          {/* Recipe 7 */}
-          {recipes[7] && <RelatedRecipeCard key={recipes[7].slug} recipe={recipes[7]} />}
+          {recipes.map((recipe) => (
+            <RelatedRecipeCard key={recipe.slug} recipe={recipe} />
+          ))}
         </div>
         
         {/* Show more button */}
@@ -325,7 +236,7 @@ export function RecipeCategoriesSection({ categories, currentCategory }) {
           {categories.map((category) => (
             <Link
               key={category.slug}
-              href={`/kategorier/${category.slug}`}
+              href={`/${category.slug}`}
               className={`p-4 rounded-lg text-center transition-all duration-300 ${
                 currentCategory === category.slug
                   ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'

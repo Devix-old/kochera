@@ -5,7 +5,7 @@ export default function Footer() {
   const mainLinks = [
     { name: "Startseite", href: '/' },
     { name: 'Rezepte', href: '/rezepte' },
-    { name: 'Kategorien', href: '/kategorier' },
+    { name: 'Kategorien', href: '/kategorien' },
     { name: 'Über uns', href: '/om' },
     { name: 'Kontakt', href: '/kontakt' },
   ];

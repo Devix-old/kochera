@@ -80,10 +80,10 @@ export default function NotFoundClient() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
-                { name: 'Kyckling', href: '/kategorier/kyckling-recept', emoji: '🐔' },
-                { name: 'Pasta', href: '/kategorier/pasta-recept', emoji: '🍝' },
-                { name: 'Kladdkaka', href: '/kategorier/kladdkaka-recept', emoji: '🍰' },
-                { name: 'Pannkakor', href: '/kategorier/pannkakor-recept', emoji: '🥞' },
+                { name: 'Pfannkuchen', href: '/pfannkuchen', emoji: '🥞' },
+                { name: 'Kuchen', href: '/kuchen', emoji: '🍰' },
+                { name: 'Waffeln', href: '/waffeln', emoji: '🧇' },
+                { name: 'Vegetarisch', href: '/vegetarisch', emoji: '🌱' },
               ].map((category, index) => (
                 <Link
                   key={category.name}

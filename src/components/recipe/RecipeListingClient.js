@@ -11,7 +11,6 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { filterRecipes, sortRecipes, getUniqueFilterValues } from '@/lib/utils/search';
 import { smartSearch } from '@/lib/utils/smartSearch';
-import LeaderboardAd from '@/components/ads/LeaderboardAd';
 
 export default function RecipeListingClient({ initialRecipes, categoryName = null, showHero = false }) {
   const searchParams = useSearchParams();
@@ -181,9 +180,6 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
             Visar <span className="font-bold text-purple-600">{filteredRecipes.length}</span> recept
           </p>
         </div>
-
-        {/* Leaderboard Ad */}
-        <LeaderboardAd />
 
         {/* Recipe Grid */}
         {paginatedRecipes.length > 0 ? (

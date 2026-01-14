@@ -83,14 +83,14 @@ export default async function CategoryPage({ params }) {
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Hem',
+          name: 'Startseite',
           item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'
         },
         {
           '@type': 'ListItem',
           position: 2,
-          name: 'Kategorier',
-          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', '/kategorier')
+          name: 'Kategorien',
+          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', '/kategorien')
         },
         {
           '@type': 'ListItem',

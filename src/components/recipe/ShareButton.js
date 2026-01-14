@@ -7,7 +7,7 @@ import { FaFacebook, FaInstagram, FaPinterest, FaWhatsapp } from 'react-icons/fa
 export default function ShareButton({ title, excerpt, url }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const shareText = excerpt || `Kolla in detta recept: ${title}`;
+  const shareText = excerpt || `Schau dir dieses Rezept an: ${title}`;
 
   const shareLinks = [
     {
@@ -87,10 +87,10 @@ export default function ShareButton({ title, excerpt, url }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors border border-purple-200 dark:border-purple-800 cursor-pointer"
-        aria-label="Dela recept"
+        aria-label="Rezept teilen"
       >
         <Share2 className="w-4 h-4" />
-        <span className="text-sm font-medium">Dela</span>
+        <span className="text-sm font-medium">Teilen</span>
       </button>
 
       {/* Small Dropdown Popup */}

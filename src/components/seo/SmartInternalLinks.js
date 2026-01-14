@@ -151,7 +151,7 @@ export function CategoryNavigation({ categories, currentCategory }) {
           {categories.map((category) => (
             <Link
               key={category.slug}
-              href={`/kategorier/${category.slug}`}
+              href={`/${category.slug}`}
               className={`p-4 rounded-lg text-center transition-all duration-300 ${
                 currentCategory === category.slug
                   ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'

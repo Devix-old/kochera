@@ -4,6 +4,7 @@
  */
 
 import { normalizeUrl } from '@/lib/utils/url';
+import { normalizeNutritionData } from '@/lib/utils/nutrition';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
 
@@ -317,7 +318,6 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
       // HIGH PRIORITY #4: Enhanced HowToStep with URL anchors and proper ImageObject
       const stepSchema = {
         '@type': 'HowToStep',
-        position: index + 1,
         name: step.title || `Schritt ${index + 1}`,
         text: step.description.trim(), // Ensure text is trimmed and not empty
         url: normalizeUrl(SITE_URL, `/${slug}#step-${index + 1}`),
@@ -386,7 +386,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+        url: normalizeUrl(SITE_URL, '/logo.png'),
         width: 512,
         height: 512,
       },
@@ -401,9 +401,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     // CRITICAL #2: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: category || undefined,
     recipeCuisine: cuisine || 'German',
-    // Google recommends keywords field for Recipe schema (optional but recommended)
-    // Provides additional descriptive terms like season, occasion, descriptors
-    keywords: schemaKeywords,
+    // Keywords removed from schema per user request (keep only in metadata)
     recipeInstructions: validStepsWithDescriptions,
     recipeIngredient: validIngredients,
     suitableForDiet: generateDietaryInfo(allergens, tags),
@@ -448,37 +446,13 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     }));
   }
 
-  // MEDIUM PRIORITY #7: Improved nutrition schema with English and proper property mapping
-  if (nutrition.length > 0 || caloriesPerServing) {
-    // Map Swedish nutrition names to Schema.org property names
-    const propertyMap = {
-      'kalorier': 'calories',
-      'fett': 'fatContent',
-      'protein': 'proteinContent',
-      'kolhydrater': 'carbohydrateContent',
-      'socker': 'sugarContent',
-      'fiber': 'fiberContent',
-      'natrium': 'sodiumContent',
-      'kalcium': 'calciumContent',
-      'järn': 'ironContent',
-    };
-    
+  // MEDIUM PRIORITY #7: Schema.org-compliant nutrition data
+  // Use normalized nutrition function for 100% Schema.org compliance
+  const normalizedNutrition = normalizeNutritionData(nutrition, caloriesPerServing, servings);
+  if (normalizedNutrition) {
     schema.nutrition = {
       '@type': 'NutritionInformation',
-      // Use kcal format (standard format for calories in Schema.org)
-      calories: caloriesPerServing ? `${caloriesPerServing} kcal` : undefined,
-      servingSize: servings ? `1 portion` : undefined,
-      // Map nutrition properties to Schema.org standard names
-      // MINOR #3: Remove space between value and unit for better Google compliance ("5g" vs "5 g")
-      ...nutrition.reduce((acc, item) => {
-        if (!item || !item.name || item.value === undefined || item.value === null) {
-          return acc; // Skip invalid nutrition items
-        }
-        const propertyName = propertyMap[item.name.toLowerCase()] || item.name;
-        const unit = item.unit || 'g';
-        acc[propertyName] = `${item.value}${unit}`;
-        return acc;
-      }, {}),
+      ...normalizedNutrition,
     };
   }
 
@@ -672,19 +646,13 @@ export function generateRecipeBreadcrumbSchema(recipe, category) {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'Start',
+      name: 'Startseite',
       item: SITE_URL,
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Rezepte',
-      item: normalizeUrl(SITE_URL, '/recept'),
     },
   ];
 
   // Add category breadcrumb if available
-  // Use proper category routes /kategorier/[slug]
+  // Use flat category routes /[slug]
   if (category) {
     // Try to find category slug from categories
     let categorySlug = null;
@@ -698,7 +666,7 @@ export function generateRecipeBreadcrumbSchema(recipe, category) {
     }
     
     const categoryUrl = categorySlug 
-      ? normalizeUrl(SITE_URL, `/kategorier/${categorySlug}`)
+      ? normalizeUrl(SITE_URL, `/${categorySlug}`)
       : normalizeUrl(SITE_URL, `/recept?category=${encodeURIComponent(category)}`);
     
     itemListElement.push({
@@ -736,7 +704,7 @@ export function generateOrganizationSchema() {
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+      url: normalizeUrl(SITE_URL, '/logo.png'),
       width: 512,
       height: 512,
     },

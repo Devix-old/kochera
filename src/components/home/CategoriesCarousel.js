@@ -51,7 +51,7 @@ export default function CategoriesCarousel({ collections }) {
           >
             {collections.map((collection, index) => (
               <SwiperSlide key={collection.slug}>
-                <Link href={`/kategorier/${collection.slug}`}>
+                <Link href={`/${collection.slug}`}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

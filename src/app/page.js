@@ -29,27 +29,21 @@ export default async function Home() {
     }
   });
 
-  // Get all categories and select the 12 most relevant ones for homepage
+  // Get all categories and select the most relevant ones for homepage
   const { getAllCategories } = await import('@/lib/categories');
   const allCategories = getAllCategories();
   
-  // Select the 12 most relevant categories for homepage display
-  const selectedCategoryKeys = [
-    'pannkakor', 'kladdkaka', 'pasta', 'kyckling', 'vegetariska', 'vafflor',
-    'appelpaj', 'chokladbollar', 'kycklingfars', 'lax', 'scones', 'lasagne'
-  ];
-  
-  const popularCategories = selectedCategoryKeys.map(key => {
-    const category = allCategories.find(cat => cat.slug === `${key}-recept`);
+  // Use all available categories (new structure uses German categories)
+  const popularCategories = allCategories.map(category => {
     return {
       name: category.name,
       slug: category.slug,
       image: category.image,
       icon: category.icon,
       description: category.description,
-      count: `${tagCounts[category.name] || 0}+ recept`
+      count: `${tagCounts[category.name] || 0}+ Rezepte`
     };
-  });
+  }).filter(cat => cat.name); // Filter out any undefined categories
 
   // Generate structured data
   const websiteSchema = generateWebsiteSchema();

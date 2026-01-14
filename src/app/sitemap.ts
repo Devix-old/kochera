@@ -47,13 +47,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Load MDX content
   let recipes: any[] = [];
   let categories: any[] = [];
-  let pillars: any[] = [];
 
   try {
-    [recipes, categories, pillars] = await Promise.all([
+    [recipes, categories] = await Promise.all([
       getAllContent('recipes'),
       getAllCategories(),
-      getAllContent('pillars').catch(() => []), // Pillars might not exist yet
     ]);
   } catch {
     return [
@@ -82,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: mostRecent, changeFrequency: 'daily', priority: 1 },
     { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
-    { url: normalizeUrl(baseUrl, '/kategorier'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
+    { url: normalizeUrl(baseUrl, '/kategorien'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
     { url: normalizeUrl(baseUrl, '/om'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.6 },
     { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.5 },
     { url: normalizeUrl(baseUrl, '/impressum'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
@@ -157,25 +155,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const categoryRoutes: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: normalizeUrl(baseUrl, `/kategorier/${category.slug}`),
+    url: normalizeUrl(baseUrl, `/${category.slug}`),
     lastModified: categoryDateMap.get(category.name) || new Date('2024-01-01'),
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
 
-  // Pillar page routes (high priority for SEO hubs)
-  const pillarRoutes: MetadataRoute.Sitemap = pillars.map((pillar) => {
-    const lastModified = new Date(
-      pillar.updatedAt || pillar.publishedAt || new Date()
-    );
-
-    return {
-      url: normalizeUrl(baseUrl, `/${pillar.slug}`),
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85, // High priority for SEO hubs
-    };
-  });
-
-  return [...staticRoutes, ...recipeRoutes, ...categoryRoutes, ...pillarRoutes];
+  return [...staticRoutes, ...recipeRoutes, ...categoryRoutes];
 }

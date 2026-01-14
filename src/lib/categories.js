@@ -1,217 +1,137 @@
 /**
- * Comprehensive food categories for kochera
+ * Comprehensive food categories for kochera (German)
  * Organized for optimal user experience and SEO
+ * Categories match pillar pages and home page story categories
  */
 
 export const PRIMARY_CATEGORIES = {
-  'kycklingfars': {
-    name: 'Kycklingfärs',
-    slug: 'kycklingfars-recept',
-    description: 'Saftiga kycklingfärsrecept för vardag och fest',
-    icon: '🍗',
-    color: 'from-orange-400 to-red-500',
-    image: '/images/recipes/kycklingfarsbullar-i-tomatsas.webp',
-    subcategories: ['Köttbullar', 'Färsbiffar', 'Köttfärs', 'Kycklingfärs']
-  },
-  'kyckling': {
-    name: 'Kyckling',
-    slug: 'kyckling-recept',
-    description: 'Mörbakat kycklingrecept med perfekt smak',
-    icon: '🐔',
+  'pfannkuchen': {
+    name: 'Pfannkuchen',
+    slug: 'pfannkuchen',
+    description: 'Fluffige Pfannkuchen und Pancakes für jedes Frühstück',
+    icon: '🥞',
     color: 'from-yellow-400 to-orange-500',
-    image: '/images/recipes/varldens-godaste-kyckling-i-ugn.webp',
-    subcategories: ['Kycklingbröst', 'Kycklinglår', 'Hel kyckling', 'Kycklingfilé']
+    image: '/images/kategorien/pfannkuchen.webp',
+    subcategories: ['Pfannkuchen', 'Pancakes', 'Crêpes', 'American Pancakes']
   },
-  'pasta': {
-    name: 'Pasta',
-    slug: 'pasta-recept',
-    description: 'Autentiska pastarecept från Italien och världen',
-    icon: '🍝',
+  'waffeln': {
+    name: 'Waffeln',
+    slug: 'waffeln',
+    description: 'Knusprige Waffeln für süße Momente',
+    icon: '🧇',
     color: 'from-yellow-400 to-orange-500',
-    image: '/images/recipes/kramig-pasta-soltorkade-tomater.webp',
-    subcategories: ['Spaghetti', 'Penne', 'Fettuccine', 'Lasagne', 'Ravioli']
+    image: '/images/kategorien/waffeln.webp',
+    subcategories: ['Waffeln', 'Belgische Waffeln', 'Knusperwaffeln']
   },
-  'kycklinglarfile': {
-    name: 'Kycklinglårfilé',
-    slug: 'kycklinglarfile-recept',
-    description: 'Mör kycklinglårfilé med saftig smak',
-    icon: '🍖',
-    color: 'from-amber-400 to-yellow-500',
-    image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&h=600&fit=crop',
-    subcategories: ['Kycklinglår', 'Lårfilé', 'Kycklingben']
-  },
-  'lax': {
-    name: 'Lax',
-    slug: 'lax-recept',
-    description: 'Färsk lax med omega-3 och fantastisk smak',
-    icon: '🐟',
+  'kuchen': {
+    name: 'Kuchen',
+    slug: 'kuchen',
+    description: 'Saftige Kuchen und Torten für jede Gelegenheit',
+    icon: '🍰',
     color: 'from-pink-400 to-red-500',
-    image: '/images/recipes/lax-i-ugn-med-honung-och-soja.webp',
-    subcategories: ['Laxfilé', 'Gravad lax', 'Rökt lax', 'Laxburgare']
+    image: '/images/kategorien/kuchen-marmorkuchen.webp',
+    subcategories: ['Kuchen', 'Torten', 'Marmorkuchen', 'Gugelhupf']
   },
   'lasagne': {
     name: 'Lasagne',
-    slug: 'lasagne-recept',
-    description: 'Klassisk lasagne med köttfärs och ost',
-    icon: '🍽️',
+    slug: 'lasagne',
+    description: 'Klassische Lasagne mit köstlichen Zutaten',
+    icon: '🍝',
     color: 'from-orange-400 to-red-500',
-    image: '/images/recipes/klassisk-lasagne.webp',
-    subcategories: ['Köttfärslasagne', 'Vegetarisk lasagne', 'Fiskelassagne']
+    image: '/images/kategorien/lasagne.webp',
+    subcategories: ['Lasagne', 'Vegetarische Lasagne', 'Fischlasagne']
   },
-  'scones': {
-    name: 'Scones',
-    slug: 'scones-recept',
-    description: 'Fluffiga scones med te och sylt',
-    icon: '🥐',
-    color: 'from-amber-400 to-yellow-500',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=600&fit=crop',
-    subcategories: ['Klassiska scones', 'Chokladscones', 'Fruktscones']
+  'airfryer': {
+    name: 'Airfryer',
+    slug: 'airfryer',
+    description: 'Köstliche Rezepte für die Heißluftfritteuse',
+    icon: '💨',
+    color: 'from-blue-400 to-purple-500',
+    image: '/images/kategorien/airfryer-kartoffeln.webp',
+    subcategories: ['Airfryer', 'Heißluftfritteuse', 'Frittieren']
   },
-  'vegetariska': {
-    name: 'Vegetariska',
-    slug: 'vegetariska-recept',
-    description: 'Näringsrika vegetariska recept för alla',
+  'schnell': {
+    name: 'Schnell',
+    slug: 'schnell',
+    description: 'Schnelle Rezepte für unterwegs',
+    icon: '⚡',
+    color: 'from-yellow-400 to-orange-500',
+    image: '/images/kategorien/schnelles-abendessen-quesadilla.webp',
+    subcategories: ['Schnell', 'Schnelle Gerichte', 'Unter 30 Minuten']
+  },
+  'gesund': {
+    name: 'Gesund',
+    slug: 'gesund',
+    description: 'Gesunde und nährstoffreiche Rezepte',
+    icon: '🥗',
+    color: 'from-green-400 to-emerald-500',
+    image: '/images/kategorien/gesunde-fruhstucks-bowl.webp',
+    subcategories: ['Gesund', 'Gesunde Ernährung', 'Nährstoffreich']
+  },
+  'vegetarisch': {
+    name: 'Vegetarisch',
+    slug: 'vegetarisch',
+    description: 'Leckere vegetarische Rezepte für jeden Tag',
     icon: '🌱',
     color: 'from-green-400 to-emerald-500',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-    subcategories: ['Vegetariska', 'Veganska', 'Plantbaserade']
-  },
-  'appelmos': {
-    name: 'Äppelmos',
-    slug: 'appelmos-recept',
-    description: 'Hemlagat äppelmos med kanel och socker',
-    icon: '🍎',
-    color: 'from-red-400 to-pink-500',
-    image: '/images/recipes/appelmos.webp',
-    subcategories: ['Klassiskt äppelmos', 'Kanelmos', 'Söta äpplen']
-  },
-  'kladdkaka': {
-    name: 'Kladdkaka',
-    slug: 'kladdkaka-recept',
-    description: 'Kladdig chokladkaka som smälter i munnen',
-    icon: '🍫',
-    color: 'from-amber-600 to-yellow-700',
-    image: '/images/recipes/klassisk-kladdkaka.webp',
-    subcategories: ['Kladdkaka', 'Chokladkaka', 'Brownies']
-  },
-  'chokladbollar': {
-    name: 'Chokladbollar recept',
-    slug: 'chokladbollar-recept',
-    description: 'Hemlagade chokladbollar utan bakning',
-    icon: '🍪',
-    color: 'from-amber-600 to-yellow-700',
-    image: '/images/recipes/chokladbollar-med-kaffe-recept.webp',
-    subcategories: ['Chokladbollar', 'Kokosbollar', 'No-bake']
-  },
-  'appelpaj': {
-    name: 'Äppelpaj',
-    slug: 'appelpaj-recept',
-    description: 'Klassisk äppelpaj med smuldeg och kanel',
-    icon: '🥧',
-    color: 'from-amber-400 to-orange-500',
-    image: '/images/recipes/appelpaj-klassisk-svensk.webp',
-    subcategories: ['Äppelpaj', 'Smuldeg', 'Fruktpaj']
-  },
-  'kaka-cookies': {
-    name: 'Kaka & cookies',
-    slug: 'kaka-cookies-recept',
-    description: 'Hemlagade kakor och cookies för fika',
-    icon: '🍪',
-    color: 'from-amber-400 to-yellow-500',
-    image: '/images/nygräddade-kakor-med-strössel-hero-banner.webp',
-    subcategories: ['Kakor', 'Cookies', 'Fikabröd']
-  },
-  'vafflor': {
-    name: 'Våfflor',
-    slug: 'vafflor-recept',
-    description: 'Fluffiga våfflor med sylt och grädde',
-    icon: '🧇',
-    color: 'from-yellow-400 to-orange-500',
-    image: '/images/recipes/belgiska-vafflor.webp',
-    subcategories: ['Klassiska våfflor', 'Belgiska våfflor', 'Frasvåfflor']
-  },
-  'pannkakor': {
-    name: 'Pannkakor',
-    slug: 'pannkakor-recept',
-    description: 'Svenska pannkakor med sylt och grädde',
-    icon: '🥞',
-    color: 'from-yellow-400 to-orange-500',
-    image: '/images/recipes/amerikanska-pannkakor.webp',
-    subcategories: ['Svenska pannkakor', 'Amerikanska pannkakor', 'Glutenfria pannkakor']
-  },
-  'pinsa': {
-    name: 'Pinsa',
-    slug: 'pinsa-recept',
-    description: 'Italiensk pinsa med krispig botten och saftiga pålägg',
-    icon: '🍕',
-    color: 'from-orange-400 to-red-500',
-    image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&h=600&fit=crop',
-    subcategories: ['Klassisk pinsa', 'Pinsa med ost', 'Vegetarisk pinsa']
-  },
-  'soppor': {
-    name: 'Soppor',
-    slug: 'soppor',
-    description: 'Värmande och mättande soppor för alla årstider',
-    icon: '🍲',
-    color: 'from-orange-500 to-red-600',
-    image: '/images/recipes/gronkalssoppa.webp',
-    subcategories: ['Vegetarisk soppa', 'Krämig soppa', 'Köttsoppa', 'Fisksoppa', 'Grönsakssoppa']
+    image: '/images/kategorien/vegetarisches-ofengericht.webp',
+    subcategories: ['Vegetarisch', 'Vegan', 'Pflanzenbasiert']
   }
 };
 
-
 export const MEAL_TYPES = {
-  'frukost': { name: 'Frukost', icon: '🌅' },
-  'lunch': { name: 'Lunch', icon: '☀️' },
-  'middag': { name: 'Middag', icon: '🌙' },
+  'fruhstuck': { name: 'Frühstück', icon: '🌅' },
+  'lunch': { name: 'Mittagessen', icon: '☀️' },
+  'mittag': { name: 'Mittagessen', icon: '☀️' },
+  'abendessen': { name: 'Abendessen', icon: '🌙' },
   'snack': { name: 'Snack', icon: '🍪' },
   'dessert': { name: 'Dessert', icon: '🍰' }
 };
 
 export const COOKING_METHODS = {
   'grill': { name: 'Grill & BBQ', icon: '🔥' },
-  'stekning': { name: 'Stekning & Wok', icon: '🍳' },
-  'kokning': { name: 'Kokning & Gryta', icon: '🍲' },
-  'ra': { name: 'Rå mat & Sallader', icon: '🥄' },
-  'snabb': { name: 'Snabbmat (< 30 min)', icon: '⚡' },
-  'langsam': { name: 'Långsam matlagning', icon: '⏰' },
-  'enkel': { name: 'Enkelt & Nybörjarvänligt', icon: '🍳' }
+  'stekning': { name: 'Braten & Wok', icon: '🍳' },
+  'kokning': { name: 'Kochen & Eintopf', icon: '🍲' },
+  'ra': { name: 'Roh & Salate', icon: '🥄' },
+  'snabb': { name: 'Schnell (< 30 min)', icon: '⚡' },
+  'langsam': { name: 'Langsames Kochen', icon: '⏰' },
+  'enkel': { name: 'Einfach & Anfängerfreundlich', icon: '🍳' }
 };
 
 export const DIETARY_TAGS = {
-  'vegetariskt': { name: 'Vegetariskt', icon: '🌱', color: 'green' },
-  'veganskt': { name: 'Veganskt', icon: '🌿', color: 'emerald' },
-  'glutenfritt': { name: 'Glutenfritt', icon: '🌾', color: 'amber' },
-  'nötfritt': { name: 'Nötfritt', icon: '🥜', color: 'orange' },
-  'laktosfritt': { name: 'Laktosfritt', icon: '🥛', color: 'blue' },
-  'sockerfritt': { name: 'Sockerfritt', icon: '🍯', color: 'yellow' },
+  'vegetarisch': { name: 'Vegetarisch', icon: '🌱', color: 'green' },
+  'vegan': { name: 'Vegan', icon: '🌿', color: 'emerald' },
+  'glutenfrei': { name: 'Glutenfrei', icon: '🌾', color: 'amber' },
+  'nussfrei': { name: 'Nussfrei', icon: '🥜', color: 'orange' },
+  'laktosefrei': { name: 'Laktosefrei', icon: '🥛', color: 'blue' },
+  'zuckerfrei': { name: 'Zuckerfrei', icon: '🍯', color: 'yellow' },
   'keto': { name: 'Keto', icon: '🥑', color: 'purple' },
-  'lågkolhydrat': { name: 'Lågkolhydrat', icon: '🏃‍♀️', color: 'red' },
-  'proteinfokuserat': { name: 'Proteinfokuserat', icon: '💪', color: 'indigo' }
+  'low-carb': { name: 'Low-Carb', icon: '🏃‍♀️', color: 'red' },
+  'proteinreich': { name: 'Proteinreich', icon: '💪', color: 'indigo' }
 };
 
 export const LIFESTYLE_TAGS = {
-  'barnvänligt': { name: 'Barnvänligt', icon: '👶', color: 'pink' },
-  'seniorvänligt': { name: 'Seniorvänligt', icon: '👴', color: 'gray' },
-  'budgetvänligt': { name: 'Budgetvänligt', icon: '💰', color: 'green' },
-  'snabbmat': { name: 'Snabbmat', icon: '⚡', color: 'yellow' },
-  'vardagsmat': { name: 'Vardagsmat', icon: '🏠', color: 'blue' },
-  'festmat': { name: 'Festmat', icon: '🎉', color: 'purple' },
-  'hälsosam': { name: 'Hälsosam', icon: '💚', color: 'green' },
-  'komfort': { name: 'Komfortmat', icon: '🤗', color: 'orange' }
+  'kinderfreundlich': { name: 'Kinderfreundlich', icon: '👶', color: 'pink' },
+  'seniorenfreundlich': { name: 'Seniorenfreundlich', icon: '👴', color: 'gray' },
+  'budgetfreundlich': { name: 'Budgetfreundlich', icon: '💰', color: 'green' },
+  'schnell': { name: 'Schnell', icon: '⚡', color: 'yellow' },
+  'alltag': { name: 'Alltag', icon: '🏠', color: 'blue' },
+  'fest': { name: 'Fest', icon: '🎉', color: 'purple' },
+  'gesund': { name: 'Gesund', icon: '💚', color: 'green' },
+  'komfort': { name: 'Komfort', icon: '🤗', color: 'orange' }
 };
 
 export const DIFFICULTY_LEVELS = {
-  'lätt': { name: 'Lätt', color: 'green', description: 'Perfekt för nybörjare' },
-  'medel': { name: 'Medel', color: 'yellow', description: 'Kräver lite erfarenhet' },
-  'svår': { name: 'Svår', color: 'red', description: 'För erfarna kockar' }
+  'leicht': { name: 'Leicht', color: 'green', description: 'Perfekt für Anfänger' },
+  'mittel': { name: 'Mittel', color: 'yellow', description: 'Benötigt etwas Erfahrung' },
+  'schwer': { name: 'Schwer', color: 'red', description: 'Für erfahrene Köche' }
 };
 
 export const TIME_CATEGORIES = {
-  'snabb': { name: 'Snabbmat', maxMinutes: 30, description: 'Under 30 minuter' },
-  'medel': { name: 'Medellång', maxMinutes: 60, description: '30-60 minuter' },
-  'lång': { name: 'Lång', maxMinutes: 120, description: '1-2 timmar' },
-  'mycket-lång': { name: 'Mycket lång', maxMinutes: 999, description: 'Över 2 timmar' }
+  'schnell': { name: 'Schnell', maxMinutes: 30, description: 'Unter 30 Minuten' },
+  'mittel': { name: 'Mittellang', maxMinutes: 60, description: '30-60 Minuten' },
+  'lang': { name: 'Lang', maxMinutes: 120, description: '1-2 Stunden' },
+  'sehr-lang': { name: 'Sehr lang', maxMinutes: 999, description: 'Über 2 Stunden' }
 };
 
 /**
@@ -225,11 +145,8 @@ export function getAllCategories() {
  * Get category by slug
  */
 export function getCategoryBySlug(slug) {
-  // Handle both 'kladdkaka' and 'kladdkaka-recept' formats
-  const key = slug.replace('-recept', '');
-  return PRIMARY_CATEGORIES[key];
+  return PRIMARY_CATEGORIES[slug];
 }
-
 
 /**
  * Get all meal types

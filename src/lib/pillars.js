@@ -102,3 +102,37 @@ export async function getPillarTopics() {
   
   return Array.from(topics).sort();
 }
+
+/**
+ * Get pillar by category name or filterTag
+ * Tries to match recipe category to pillar filterTag or title
+ * @param {string} categoryName - The category name from recipe
+ * @returns {Promise<Object|null>} The pillar data with { frontmatter, content, slug } structure or null if not found
+ */
+export async function getPillarByCategory(categoryName) {
+  if (!categoryName) return null;
+  
+  const allPillars = await getAllPillars();
+  const categoryLower = categoryName.toLowerCase();
+  
+  // Try to find pillar by filterTag matching category
+  // getAllPillars returns { slug, ...frontmatter } structure (frontmatter is spread)
+  const matchedPillar = allPillars.find(pillar => {
+    const filterTag = pillar.filterTag?.toLowerCase() || '';
+    const title = pillar.title?.toLowerCase() || '';
+    const slug = pillar.slug?.toLowerCase() || '';
+    
+    return filterTag === categoryLower || 
+           filterTag.includes(categoryLower) ||
+           categoryLower.includes(filterTag) ||
+           title === categoryLower ||
+           slug === categoryLower ||
+           title.includes(categoryLower);
+  });
+  
+  if (!matchedPillar) return null;
+  
+  // Return in same format as getPillarBySlug: { frontmatter, content, slug }
+  const fullPillar = await getPillarBySlug(matchedPillar.slug);
+  return fullPillar;
+}

@@ -46,8 +46,8 @@ export default async function PillarPage({ pillar }) {
           const recipeName = (recipe.recipeName || recipe.title || '').toLowerCase();
           const filterLower = frontmatter.filterTag.toLowerCase();
           
-          return tags.some(tag => tag.toLowerCase().includes(filterLower)) ||
-                 category.toLowerCase().includes(filterLower) ||
+          return tags.some(tag => category.toLowerCase().includes(filterLower) ||
+                 tag.toLowerCase().includes(filterLower)) ||
                  recipeName.includes(filterLower);
         })
         .slice(0, 12);

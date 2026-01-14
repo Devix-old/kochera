@@ -10,7 +10,7 @@ const EMPTY_RECIPES = [];
 export default function EnhancedSearchBar({ 
   recipes, 
   onSearch, 
-  placeholder = "Sök recept, ingredienser eller taggar..." 
+  placeholder = "Rezepte, Zutaten oder Tags suchen..." 
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -152,7 +152,7 @@ export default function EnhancedSearchBar({
                 {isLoading ? (
                   <div className="p-8 text-center">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto"></div>
-                    <p className="mt-2 text-gray-600 dark:text-gray-400">Söker...</p>
+                    <p className="mt-2 text-gray-600 dark:text-gray-400">Suche...</p>
                   </div>
                 ) : results.length > 0 ? (
                   <div className="p-2">
@@ -223,10 +223,10 @@ export default function EnhancedSearchBar({
             {!showResults && query.length < 2 && (
               <div className="p-4">
                 <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                  Populära sökningar
+                  Beliebte Suchen
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {['Pasta', 'Vegetariskt', 'Snabbmat', 'Dessert', 'Frukost', 'Kött', 'Fisk', 'Sallad'].map((suggestion) => (
+                  {['Pasta', 'Vegetarisch', 'Schnell', 'Dessert', 'Frühstück', 'Fleisch', 'Fisch', 'Salat'].map((suggestion) => (
                     <button
                       key={suggestion}
                       onClick={() => setQuery(suggestion)}

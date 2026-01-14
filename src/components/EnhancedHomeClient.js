@@ -18,14 +18,14 @@ export default function EnhancedHomeClient({
 
   // Story categories for the stories rail
   const STORY_CATEGORIES = [
-    { name: 'Pfannkuchen', slug: 'pfannkuchen', image: '/images/amerikanska-pannkakor-hero.webp', icon: '🥞' },
-    { name: 'Waffeln', slug: 'waffeln', image: '/images/categories/waffeln.webp', icon: '🧇' },
-    { name: 'Kuchen', slug: 'kuchen', image: '/images/categories/kuchen.webp', icon: '🍰' },
-    { name: 'Lasagne', slug: 'lasagne', image: '/images/categories/lasagne.webp', icon: '🍝' },
-    { name: 'Airfryer', slug: 'airfryer', image: '/images/categories/airfryer.webp', icon: '💨' },
-    { name: 'Schnell', slug: 'schnell', image: '/images/categories/schnell.webp', icon: '⚡' },
-    { name: 'Gesund', slug: 'gesund', image: '/images/categories/gesund.webp', icon: '🥗' },
-    { name: 'Vegetarisch', slug: 'vegetarisch', image: '/images/categories/vegetarisch.webp', icon: '🌱' },
+    { name: 'Pfannkuchen', slug: 'pfannkuchen', image: '/images/kategorien/pfannkuchen.webp', icon: '🥞' },
+    { name: 'Waffeln', slug: 'waffeln', image: '/images/kategorien/waffeln.webp', icon: '🧇' },
+    { name: 'Kuchen', slug: 'kuchen', image: '/images/kategorien/kuchen-marmorkuchen.webp', icon: '🍰' },
+    { name: 'Lasagne', slug: 'lasagne', image: '/images/kategorien/lasagne.webp', icon: '🍝' },
+    { name: 'Airfryer', slug: 'airfryer', image: '/images/kategorien/airfryer-kartoffeln.webp', icon: '💨' },
+    { name: 'Schnell', slug: 'schnell', image: '/images/kategorien/schnelles-abendessen-quesadilla.webp', icon: '⚡' },
+    { name: 'Gesund', slug: 'gesund', image: '/images/kategorien/gesunde-fruhstucks-bowl.webp', icon: '🥗' },
+    { name: 'Vegetarisch', slug: 'vegetarisch', image: '/images/kategorien/vegetarisches-ofengericht.webp', icon: '🌱' },
   ];
 
   // Get trending recipes (can use featured recipes or slice of all recipes)

@@ -1,5 +1,4 @@
 import { getContentBySlug, getAllContent, getRelatedContent } from '@/lib/mdx';
-import { getPillarBySlug } from '@/lib/pillars';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -36,15 +35,13 @@ import {
   RecipeSocialSection 
 } from '@/components/recipe/RecipeSEOSections';
 import CategoryCarousel from '@/components/seo/CategoryCarousel';
-import { generateRecipeMetadata, generateEnhancedRecipeSchema, generateRelatedContentSchema, generateRecipeKeywords } from '@/lib/seo/recipe-seo';
-import { generatePillarMetadata } from '@/lib/seo/pillar-seo';
+import { generateRecipeMetadata, generateEnhancedRecipeSchema, generateRecipeKeywords } from '@/lib/seo/recipe-seo';
 import { generateInternalLinks, generateContextualLinks } from '@/lib/seo/internal-linking';
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
-import { generateArticleSchema } from '@/lib/seo';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
-import PillarPage from '@/components/pillar/PillarPage';
-import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
+import { normalizeNutritionData } from '@/lib/utils/nutrition';
 import StructuredData from '@/components/seo/StructuredData';
+import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 
 // Icon mapping function
 function getIconComponent(iconName) {
@@ -61,6 +58,22 @@ function getIconComponent(iconName) {
     'Timer': Timer
   };
   return iconMap[iconName] || Lightbulb;
+}
+
+// Difficulty mapping function (Swedish → German)
+function mapDifficulty(difficulty) {
+  if (!difficulty) return 'Mittel';
+  const difficultyLower = difficulty.toLowerCase();
+  const mapping = {
+    'lätt': 'Einfach',
+    'medel': 'Mittel',
+    'medium': 'Mittel',
+    'svår': 'Schwer',
+    'schwer': 'Schwer',
+    'einfach': 'Einfach',
+    'mittel': 'Mittel'
+  };
+  return mapping[difficultyLower] || difficulty;
 }
 
 // Advanced 5-star rating component with precise percentage-based partial fill
@@ -128,55 +141,26 @@ function StarRating({ rating, size = 'w-5 h-5' }) {
 // Allow dynamic params not in generateStaticParams (enables 404 handling)
 export const dynamicParams = true;
 
-// Generate static params for pillars, recipes, and categories
+// Generate static params for categories and recipes
 export async function generateStaticParams() {
-  // Get all pillars (highest priority)
-  const pillars = await getAllContent('pillars');
-  const pillarSlugs = pillars.map(pillar => ({ slug: pillar.slug }));
-
-  // Get all recipes
+  // Get all categories and recipes
+  const categories = getAllCategories();
+  const categorySlugs = categories.map(cat => ({ slug: cat.slug }));
+  
   const recipes = await getAllContent('recipes');
   const recipeSlugs = recipes.map(recipe => ({ slug: recipe.slug }));
 
-  // Get all categories
-  const categories = getAllCategories();
-  const categorySlugs = categories.map(category => ({ slug: category.slug }));
-
-  // Combine with priority: pillars first, then recipes, then categories
-  return [...pillarSlugs, ...recipeSlugs, ...categorySlugs];
+  // Categories first, then recipes
+  return [...categorySlugs, ...recipeSlugs];
 }
 
 // Generate comprehensive metadata - dispatcher
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
-  // First, check if it's a pillar page (highest priority)
-  const pillarData = await getPillarBySlug(slug);
-  if (pillarData) {
-    const pillar = {
-      ...pillarData.frontmatter,
-      slug: pillarData.slug,
-      content: pillarData.content,
-    };
-    return generatePillarMetadata(pillar);
-  }
-
-  // Second, check if it's a recipe
-  const recipeData = await getContentBySlug('recipes', slug);
-  if (recipeData) {
-    const recipe = {
-      ...recipeData.frontmatter,
-      slug: recipeData.slug,
-      content: recipeData.content,
-      title: recipeData.frontmatter.title || recipeData.frontmatter.recipeName,
-    };
-    return generateRecipeMetadata(recipe);
-  }
-
-  // Third, check if it's a category
+  // First check if it's a category
   const category = getCategoryBySlug(slug);
   if (category) {
-    const { generateMetadata: generateSiteMetadata } = await import('@/lib/seo');
     const allRecipes = await getAllContent('recipes');
     const filteredRecipes = allRecipes.filter(r => {
       return r.category === category.name || 
@@ -193,6 +177,18 @@ export async function generateMetadata({ params }) {
     });
   }
 
+  // Second check if it's a recipe
+  const recipeData = await getContentBySlug('recipes', slug);
+  if (recipeData) {
+    const recipe = {
+      ...recipeData.frontmatter,
+      slug: recipeData.slug,
+      content: recipeData.content,
+      title: recipeData.frontmatter.title || recipeData.frontmatter.recipeName,
+    };
+    return generateRecipeMetadata(recipe);
+  }
+
   // If none match, return 404 metadata
   return { title: 'Seite nicht gefunden' };
 }
@@ -201,14 +197,133 @@ export async function generateMetadata({ params }) {
 export default async function SlugPage({ params }) {
   const { slug } = await params;
 
-  // First, check if it's a pillar page (highest priority)
-  const pillar = await getPillarBySlug(slug);
-  if (pillar) {
-    // Render pillar page
-    return <PillarPage pillar={pillar} />;
+  // First check if it's a category
+  const category = getCategoryBySlug(slug);
+  if (category) {
+    // Load all recipes
+    const allRecipes = await getAllContent('recipes');
+    
+    // Filter recipes based on category
+    const filteredRecipes = allRecipes.filter(r => {
+      return r.category === category.name || 
+             (r.tags && r.tags.some(tag => 
+               category.subcategories && category.subcategories.includes(tag)
+             ));
+    });
+
+    // Get all categories for related categories section
+    const allCategories = getAllCategories();
+
+    // Calculate category stats
+    const categoryStats = {
+      avgTime: filteredRecipes.length > 0 
+        ? filteredRecipes.reduce((sum, r) => sum + (r.totalTimeMinutes || 0), 0) / filteredRecipes.length
+        : 0,
+      avgRating: filteredRecipes.length > 0
+        ? filteredRecipes.reduce((sum, r) => sum + (r.ratingAverage || 0), 0) / filteredRecipes.length
+        : 0,
+      easyRecipes: filteredRecipes.filter(r => r.difficulty?.toLowerCase() === 'lätt').length,
+      quickRecipes: filteredRecipes.filter(r => (r.totalTimeMinutes || 0) < 30).length,
+      popularRecipes: filteredRecipes.filter(r => (r.ratingAverage || 0) >= 4.5).length
+    };
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+
+    // Generate JSON-LD structured data for category
+    const categorySchema = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `${category.name} Rezept`,
+      description: category.description,
+      url: normalizeUrl(siteUrl, `/${slug}`),
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Startseite',
+            item: siteUrl
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Kategorien',
+            item: normalizeUrl(siteUrl, '/kategorien')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: category.name,
+            item: normalizeUrl(siteUrl, `/${slug}`)
+          }
+        ]
+      },
+      numberOfItems: filteredRecipes.length,
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: filteredRecipes.length,
+        itemListElement: filteredRecipes.slice(0, 20).map((recipe, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Recipe',
+            name: recipe.title || recipe.recipeName,
+            url: normalizeUrl(siteUrl, `/${recipe.slug}`)
+          }
+        }))
+      }
+    };
+
+    // Generate FAQ Schema
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
+          }
+        },
+        {
+          '@type': 'Question',
+          name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
+          }
+        },
+        {
+          '@type': 'Question',
+          name: `Sind ${category.name.toLowerCase()} Rezepte für Anfänger geeignet?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Ja! Wir haben viele einfache ${category.name.toLowerCase()} Rezepte mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
+          }
+        }
+      ]
+    };
+
+    return (
+      <>
+        {/* Structured Data */}
+        <StructuredData data={categorySchema} />
+        <StructuredData data={faqSchema} />
+        
+        <EnhancedCategoryClient
+          category={category}
+          recipes={filteredRecipes}
+          allCategories={allCategories}
+          categoryStats={categoryStats}
+        />
+      </>
+    );
   }
 
-  // Second, check if it's a recipe
+  // Second check if it's a recipe
   const recipe = await getContentBySlug('recipes', slug);
   if (recipe) {
     // Render recipe page
@@ -231,10 +346,13 @@ export default async function SlugPage({ params }) {
   // Get all categories for navigation
   const allCategories = getAllCategories();
 
-  // Find category slug for breadcrumb
-  const categoryObj = allCategories.find(cat => cat.name === frontmatter.category);
-  const categorySlug = categoryObj ? categoryObj.slug : null;
-  const categoryUrl = categorySlug ? `/${categorySlug}` : `/rezepte?category=${encodeURIComponent(frontmatter.category)}`;
+  // Find category from recipe category (try slug first, then name)
+  let categoryObj = getCategoryBySlug(frontmatter.category);
+  if (!categoryObj) {
+    categoryObj = allCategories.find(cat => cat.name === frontmatter.category);
+  }
+  const categoryUrl = categoryObj ? `/${categoryObj.slug}` : null;
+  const categoryName = categoryObj ? categoryObj.name : frontmatter.category;
 
   // Generate internal links
   const internalLinks = await generateInternalLinks(frontmatter);
@@ -256,8 +374,8 @@ export default async function SlugPage({ params }) {
           answer: `Dieses Rezept ergibt ${frontmatter.servings} Portionen.`
         },
         {
-          question: `Vilken svårighetsgrad har ${displayRecipeName}?`,
-          answer: `Detta recept har svårighetsgrad ${frontmatter.difficulty || 'medel'}.`
+          question: `Welchen Schwierigkeitsgrad hat ${displayRecipeName}?`,
+          answer: `Dieses Rezept hat einen Schwierigkeitsgrad von ${frontmatter.difficulty || 'mittel'}.`
         }
       ];
 
@@ -269,28 +387,27 @@ export default async function SlugPage({ params }) {
       }))
     : [
         {
-          title: 'Proffstips',
-          content: `För bästa resultat med ${displayRecipeName}, se till att alla ingredienser är i rumstemperatur.`,
+          title: 'Profi-Tipps',
+          content: `Für das beste Ergebnis mit ${displayRecipeName} achten Sie darauf, dass alle Zutaten Raumtemperatur haben.`,
           icon: Lightbulb
         },
         {
-          title: 'Tidssparande',
-          content: 'Förbered alla ingredienser innan du börjar för att spara tid under tillagningen.',
+          title: 'Zeitsparend',
+          content: 'Bereiten Sie alle Zutaten vor, bevor Sie beginnen, um Zeit beim Kochen zu sparen.',
           icon: Clock
         },
         {
-          title: 'Lagring',
-          content: `${displayRecipeName} kan förvaras i kylskåp i upp till 3 dagar eller frysas i 2 månader.`,
+          title: 'Aufbewahrung',
+          content: `${displayRecipeName} kann bis zu 3 Tage im Kühlschrank aufbewahrt oder 2 Monate eingefroren werden.`,
           icon: Heart
         }
       ];
 
-  // Generate breadcrumbs
+  // Generate breadcrumbs - Home > Category > Recipe
   const breadcrumbs = [
-    { name: 'Hem', url: '/' },
-    { name: 'Rezepte', url: '/rezepte' },
-    { name: frontmatter.category, url: categoryUrl },
-    { name: displayRecipeName }
+    { name: 'Startseite', url: '/' },
+    ...(categoryUrl ? [{ name: categoryName, url: categoryUrl }] : []),
+    { name: displayRecipeName, url: `/${slug}` }
   ];
 
   // CRITICAL #2: Generate keywords once and use in both metadata and schema
@@ -316,8 +433,8 @@ export default async function SlugPage({ params }) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: item.url ? normalizeUrl(siteUrl, item.url) : undefined,
-    })),
+      item: item.url ? (item.url === '/' ? `${siteUrl}/` : normalizeUrl(siteUrl, item.url)) : (index === breadcrumbs.length - 1 ? normalizeUrl(siteUrl, `/${slug}`) : undefined),
+    })).filter(item => item.item), // Remove items without URLs
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -332,61 +449,13 @@ export default async function SlugPage({ params }) {
       },
     })),
   } : null;
-  const relatedSchema = relatedRecipes.length > 0 ? generateRelatedContentSchema(relatedRecipes, frontmatter.category) : null;
-  
-  // Generate Article schema - recipe pages are also articles
-  const articleSchema = generateArticleSchema({
-    title: displayRecipeName,
-    excerpt: frontmatter.excerpt,
-    image: frontmatter.image,
-    author: frontmatter.author || 'Kochera Team',
-    publishedAt: frontmatter.publishedAt,
-    updatedAt: frontmatter.updatedAt || frontmatter.publishedAt,
-    url: normalizeUrl(siteUrl, `/${slug}`), // Use flat URL structure
-  });
 
-  // Generate WebPage schema with primaryImageOfPage (CRITICAL for image SEO)
-  const webpageUrl = normalizeUrl(siteUrl, `/${slug}`);
-  const webpageId = `${webpageUrl}#webpage`;
-  const primaryImageId = `${webpageUrl}#primaryimage`;
-  
-  // Normalize image URL
-  const imageUrl = frontmatter.image?.src
-    ? (frontmatter.image.src.startsWith('http') 
-        ? frontmatter.image.src 
-        : normalizeUrl(siteUrl, frontmatter.image.src))
-    : null;
-
-  // Create ImageObject for primaryImageOfPage
-  const primaryImageObject = imageUrl ? {
-    '@context': 'https://schema.org',
-    '@type': 'ImageObject',
-    '@id': primaryImageId,
-    url: imageUrl,
-    contentUrl: imageUrl,
-    inLanguage: 'de-DE',
-    // Include width/height if available from image object, otherwise use common recipe image dimensions
-    ...(frontmatter.image?.width && frontmatter.image?.height ? {
-      width: frontmatter.image.width,
-      height: frontmatter.image.height,
-    } : {
-      width: 1200,
-      height: 900,
-    }),
-    ...(frontmatter.image?.alt ? { caption: frontmatter.image.alt } : {}),
-  } : null;
-
-  // Generate WebPage schema
-  const webpageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': webpageId,
-    url: webpageUrl,
-    name: displayRecipeName,
-    description: frontmatter.excerpt,
-    ...(primaryImageObject ? { primaryImageOfPage: { '@id': primaryImageId } } : {}),
-    inLanguage: 'de-DE',
-  };
+  // Normalize nutrition data for UI component (same format as JSON-LD)
+  const normalizedNutrition = normalizeNutritionData(
+    frontmatter.nutrition || [],
+    frontmatter.caloriesPerServing,
+    frontmatter.servings
+  );
 
   return (
     <>
@@ -402,20 +471,6 @@ export default async function SlugPage({ params }) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }}
-      />
-      {primaryImageObject ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(primaryImageObject) }}
-        />
-      ) : null}
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema && (
@@ -424,20 +479,13 @@ export default async function SlugPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {relatedSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(relatedSchema) }}
-        />
-      )}
-      <div className="w-full flex justify-center py-4">
-      </div>
+
       {/* 🧭 BREADCRUMB SECTION */}
       <section className="bg-gray-50 dark:bg-gray-950 dark:border-gray-800 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
-              { name: frontmatter.category, url: categoryUrl },
+              ...(categoryUrl ? [{ name: categoryName, url: categoryUrl }] : []),
               { name: displayRecipeName },
             ]}
           />
@@ -488,20 +536,27 @@ export default async function SlugPage({ params }) {
 
               {frontmatter.image?.src && (
                 <div className="order-3 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-4">
-                  <div className="relative overflow-hidden rounded-2xl ring-2 ring-purple-100 dark:ring-purple-900/50 shadow-xl group">
+                <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5 dark:ring-white/10 shadow-xl">
+                  
+                  {/* 4:3 frame */}
+                  <div className="relative aspect-[4/3] w-full bg-gray-100 dark:bg-gray-900">
                     <img
                       src={frontmatter.image.src}
                       alt={frontmatter.image.alt || `${displayRecipeName} - Kochera Rezept`}
-                      width="1200"
-                      height="900"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
                       loading="eager"
                       decoding="async"
-                      data-primary-image="true"
+                      fetchPriority="high"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* subtle vignette + contrast (always on, not only hover) */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                    
+                    {/* optional: very light film grain to kill “AI clean” feeling */}
+                    <div className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay bg-[url('/images/ui/grain.png')]" />
                   </div>
                 </div>
+              </div>
               )}
 
               {/* 4. RECIPE INFO - Order 4 */}
@@ -520,7 +575,7 @@ export default async function SlugPage({ params }) {
                       <Utensils className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {ingredientsCount} ingredienser
+                      {ingredientsCount} Zutaten
                     </span>
                   </div>
                   <div className="flex flex-col items-center text-center">
@@ -528,7 +583,7 @@ export default async function SlugPage({ params }) {
                       <Flame className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {frontmatter.difficulty || 'Medel'}
+                      {mapDifficulty(frontmatter.difficulty)}
                     </span>
                   </div>
                 </div>
@@ -555,97 +610,99 @@ export default async function SlugPage({ params }) {
               </div>
             </section>
           )}
-          {/* Recipe two-column layout */}
-          <section className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 mb-16 lg:items-start">
-            {/* Left column - Ingredients */}
-            <aside className="space-y-6 recipe-ingredients-sticky">
-              <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                <div className="bg-gradient-to-r from-slate-400 to-slate-500 p-6">
-                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                    <ChefHat className="w-6 h-6" />
-                    Ingredienser
-                  </h2>
+          {/* Recipe two-column responsive layout - single source, no duplication */}
+          <section className="mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 lg:items-start">
+              {/* Left column - Ingredients (sticky on desktop) */}
+              <aside className="space-y-6 recipe-ingredients-sticky order-1">
+                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
+                  <div className="bg-gradient-to-r from-slate-400 to-slate-500 p-6">
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                      <ChefHat className="w-6 h-6" />
+                      Zutaten
+                    </h2>
+                  </div>
+                  <div className="p-4">
+                    <IngredientsList
+                      ingredients={frontmatter.ingredients || []}
+                      defaultServings={frontmatter.servings || 4}
+                    />
+                  </div>
                 </div>
-                <div className="p-4">
-                  <IngredientsList
-                    ingredients={frontmatter.ingredients || []}
-                    defaultServings={frontmatter.servings || 4}
-                  />
-                </div>
-              </div>
 
-              {/* Equipment */}
-              {frontmatter.equipment?.length > 0 && (
-                <div className="bg-white dark:bg-gray-900 p-6 border border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                      <Utensils className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                {/* Equipment */}
+                {frontmatter.equipment?.length > 0 && (
+                  <div className="bg-white dark:bg-gray-900 p-6 border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                        <Utensils className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                        Utrustning
+                      </h3>
                     </div>
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">
-                      Utrustning
-                    </h3>
+                    <ul className="space-y-3">
+                      {frontmatter.equipment.map((item, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-gray-700 dark:text-gray-300 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        >
+                          <span className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-3">
-                    {frontmatter.equipment.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-gray-700 dark:text-gray-300 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        <span className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                )}
 
-              {/* Allergens */}
-              {frontmatter.allergens?.length > 0 && (
-                <div className="bg-white dark:bg-gray-900 p-6 border border-rose-200 dark:border-rose-700">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center">
-                      <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
+                {/* Allergens */}
+                {frontmatter.allergens?.length > 0 && (
+                  <div className="bg-white dark:bg-gray-900 p-6 border border-rose-200 dark:border-rose-700">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center">
+                        <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
+                      </div>
+                      <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                        Allergene
+                      </h3>
                     </div>
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">
-                      Allergener
-                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {frontmatter.allergens.map((a, i) => (
+                        <span
+                          key={i}
+                          className="px-4 py-2 bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 rounded-full text-sm font-semibold border border-rose-200 dark:border-rose-800"
+                        >
+                          {a}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {frontmatter.allergens.map((a, i) => (
-                      <span
-                        key={i}
-                        className="px-4 py-2 bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 rounded-full text-sm font-semibold border border-rose-200 dark:border-rose-800"
-                      >
-                        {a}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </aside>
-            {/* Right column - Steps and details */}
-            <div className="space-y-8">
-              <div className="bg-white dark:bg-gray-900 borde r border-gray-200 dark:border-gray-700">
-                <div className="bg-gradient-to-r from-stone-400 to-stone-500 p-6">
-                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                    <Timer className="w-6 h-6" />
-                    Så här gör du
-                  </h2>
-                </div>
-                <div className="p-6 md:p-8">
-                  <RecipeSteps steps={frontmatter.steps || []} />
-                </div>
-              </div>
+                )}
+              </aside>
               
+              {/* Right column - Steps */}
+              <div className="space-y-8 order-2">
+                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
+                  <div className="bg-gradient-to-r from-stone-400 to-stone-500 p-6">
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                      <Timer className="w-6 h-6" />
+                      Zubereitung
+                    </h2>
+                  </div>
+                  <div className="p-6 md:p-8">
+                    <RecipeSteps steps={frontmatter.steps || []} />
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
           
 
           {/* Nutrition Information Section */}
-          {frontmatter.nutrition && frontmatter.nutrition.length > 0 && (
-            <section className="mb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {normalizedNutrition && (
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <NutritionInfo 
-                nutrition={frontmatter.nutrition} 
+                nutrition={normalizedNutrition} 
                 servings={frontmatter.servings || 1}
               />
             </section>
@@ -657,7 +714,7 @@ export default async function SlugPage({ params }) {
           </div>
 
           {/* Comments Section - Placed after SEO sections, before related recipes */}
-          <CommentsSection pageSlug={slug} />
+          {/* <CommentsSection pageSlug={slug} /> */}
 
           {/* Related Recipes - Placed after comments */}
           {relatedRecipes.length > 0 && (
@@ -687,10 +744,10 @@ export default async function SlugPage({ params }) {
 
           {/* Additional SEO Sections - Placed after related recipes */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <CategoryCarousel 
+            {/* <CategoryCarousel 
               categories={allCategories.slice(0, 8)} 
               currentCategory={frontmatter.category?.toLowerCase()}
-            />
+            /> */}
             <RecipeSocialSection recipe={frontmatter} />
           </div>
         </div>
@@ -700,136 +757,6 @@ export default async function SlugPage({ params }) {
   );
   }
 
-  // Second, check if it's a category
-  const category = getCategoryBySlug(slug);
-  if (category) {
-    // Load all recipes
-    const allRecipes = await getAllContent('recipes');
-    
-    // Filter recipes based on new category system
-    const filteredRecipes = allRecipes.filter(r => {
-      // Check if recipe belongs to this category
-      return r.category === category.name || 
-             (r.tags && r.tags.some(tag => 
-               category.subcategories && category.subcategories.includes(tag)
-             ));
-    });
-
-    // Get all categories for related categories section
-    const allCategories = getAllCategories();
-
-    // Calculate category stats
-    const categoryStats = {
-      avgTime: filteredRecipes.length > 0 
-        ? filteredRecipes.reduce((sum, r) => sum + (r.totalTimeMinutes || 0), 0) / filteredRecipes.length
-        : 0,
-      avgRating: filteredRecipes.length > 0
-        ? filteredRecipes.reduce((sum, r) => sum + (r.ratingAverage || 0), 0) / filteredRecipes.length
-        : 0,
-      easyRecipes: filteredRecipes.filter(r => r.difficulty?.toLowerCase() === 'lätt').length,
-      quickRecipes: filteredRecipes.filter(r => (r.totalTimeMinutes || 0) < 30).length,
-      popularRecipes: filteredRecipes.filter(r => (r.ratingAverage || 0) >= 4.5).length
-    };
-
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
-
-    // Generate JSON-LD structured data for category
-    const categorySchema = {
-      '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: `${category.name} Rezepte`,
-      description: category.description,
-      url: normalizeUrl(siteUrl, `/${slug}`),
-      breadcrumb: {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Startseite',
-            item: siteUrl
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Kategorien',
-            item: normalizeUrl(siteUrl, '/kategorien')
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: category.name,
-            item: normalizeUrl(siteUrl, `/${slug}`)
-          }
-        ]
-      },
-      numberOfItems: filteredRecipes.length,
-      mainEntity: {
-        '@type': 'ItemList',
-        numberOfItems: filteredRecipes.length,
-        itemListElement: filteredRecipes.slice(0, 10).map((recipe, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            // DO NOT use '@type': 'Recipe' here - only recipe pages should have Recipe schema
-            // Use simple reference to avoid Google indexing multiple recipes from category pages
-            name: recipe.title,
-            url: normalizeUrl(siteUrl, `/${recipe.slug}`),
-            image: recipe.image?.src || recipe.image,
-            description: recipe.excerpt
-          }
-        }))
-      }
-    };
-
-    // Generate FAQ Schema
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
-          }
-        },
-        {
-          '@type': 'Question',
-          name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte benötigen zwischen 20-45 Minuten zur Zubereitung.`
-          }
-        },
-        {
-          '@type': 'Question',
-          name: `Sind ${category.name.toLowerCase()} Rezepte für Anfänger geeignet?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Ja! Wir haben viele einfache ${category.name.toLowerCase()} Rezepte, die als "Einfach" gekennzeichnet sind und perfekt für Anfänger sind.`
-          }
-        }
-      ]
-    };
-
-    return (
-      <>
-        {/* Structured Data */}
-        <StructuredData data={categorySchema} />
-        <StructuredData data={faqSchema} />
-        
-        <EnhancedCategoryClient
-          category={category}
-          recipes={filteredRecipes}
-          allCategories={allCategories}
-          categoryStats={categoryStats}
-        />
-      </>
-    );
-  }
-
-  // If neither, return 404
+  // If not a category or recipe, return 404
   notFound();
 }

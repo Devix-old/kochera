@@ -5,6 +5,7 @@ import StructuredData from '@/components/seo/StructuredData';
 import { generateItemListSchema } from '@/lib/seo';
 import { getAllCategories } from '@/lib/categories';
 import { redirect } from 'next/navigation';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'Alle Rezepte - Kochrezepte für jeden Anlass',
@@ -32,7 +33,7 @@ export const metadata = {
 };
 
 export default async function RecipesPage({ searchParams }) {
-  // Redirect /recept?category=... to /kategorier/[slug]
+  // Redirect /recept?category=... to /[slug]
   const params = await searchParams;
 
   if (params?.category) {
@@ -41,7 +42,7 @@ export default async function RecipesPage({ searchParams }) {
     const categoryObj = allCategories.find(cat => cat.name === categoryName);
     
     if (categoryObj) {
-      redirect(`/kategorier/${categoryObj.slug}`);
+      redirect(`/${categoryObj.slug}`);
     }
   }
 
@@ -56,6 +57,17 @@ export default async function RecipesPage({ searchParams }) {
     <>
       {/* Structured Data */}
       <StructuredData data={recipeListSchema} />
+      
+      {/* 🧭 BREADCRUMB SECTION */}
+      <section className="bg-gray-50 dark:bg-gray-950 dark:border-gray-800 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs
+            items={[
+              { name: 'Rezepte' },
+            ]}
+          />
+        </div>
+      </section>
       
       <Suspense>
         <RecipeListingClient initialRecipes={recipes} />

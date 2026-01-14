@@ -50,35 +50,40 @@ export default function TippsSection({ pillar, tips = [] }) {
   }
 
   return (
-    <section id="section-0" className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 mb-12">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-          <Lightbulb className="w-6 h-6 mr-3 text-purple-600" />
-          Tipps für {pillar?.title || 'Pfannkuchen'}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {displayTips.map((tip, index) => {
-            const IconComponent = tip.icon || Lightbulb;
-            const tipKey = tip.title || `tip-${index}`;
-            const sectionId = `section-${index}`;
-            
-            return (
-              <div 
-                key={tipKey}
-                id={sectionId}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 scroll-mt-24"
-              >
-                <div className="flex items-center mb-4">
-                  <IconComponent className="w-5 h-5 text-purple-600 mr-3" />
-                  <h3 className="font-semibold text-gray-900 dark:text-white">{tip.title}</h3>
-                </div>
-                <ExpandableTipText content={tip.content} />
-              </div>
-            );
-          })}
-        </div>
+
+  <section
+    id="section-0"
+    className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 mb-12"
+  >
+    <div className="max-w-4xl mx-auto">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+        <Lightbulb className="w-6 h-6 mr-3 text-purple-600" />
+        Tips för Perfekt {category.name}
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {getCategoryTips(category.name).map((tip, index) => (
+          <div
+            key={index}
+            id={`section-${index}`}
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 scroll-mt-24"
+          >
+            <div className="flex items-center mb-4">
+              <CheckCircle className="w-6 h-6 text-purple-600 mr-3" />
+              <h3 className="font-semibold text-gray-900 dark:text-white">
+                {tip.title}
+              </h3>
+            </div>
+
+            <div className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              {tip.content}
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
+
   );
 }
 

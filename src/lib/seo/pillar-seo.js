@@ -211,7 +211,7 @@ export function generatePillarSchema(pillar) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+        url: normalizeUrl(SITE_URL, '/logo.png'),
         width: 512,
         height: 512,
       },
@@ -285,7 +285,7 @@ export function generatePillarHowToSchema(pillar) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/bak-stunden.png'),
+        url: normalizeUrl(SITE_URL, '/logo.png'),
         width: 512,
         height: 512,
       },
@@ -328,7 +328,7 @@ export function generatePillarBreadcrumbSchema(pillar) {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'Start',
+      name: 'Startseite',
       item: SITE_URL,
     },
   ];

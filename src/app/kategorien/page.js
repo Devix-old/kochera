@@ -9,7 +9,7 @@ export async function generateMetadata() {
   return generateSiteMetadata({
     title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | Kochera',
     description: 'Entdecke alle unsere Rezeptkategorien: Hähnchen, Pasta, Vegetarisch, Kuchen, Pfannkuchen und vieles mehr. Über 100+ Rezepte in 16 Kategorien für alle Geschmäcker und Anlässe.',
-    url: '/kategorier',
+    url: '/kategorien',
     keywords: 'Rezeptkategorien, Matkategorien, Hähnchen Rezepte, Pasta Rezepte, vegetarische Rezepte, Kuchen Rezepte, Pfannkuchen Rezepte, deutsche Rezepte, Kochen, Kochbuch, Rezept Inspiration, Kategorien Essen, alle Rezepte, Rezept Sortierung',
     openGraph: {
       images: [
@@ -28,7 +28,7 @@ export async function generateMetadata() {
   });
 }
 
-export default async function KategorierPage() {
+export default async function KategorienPage() {
   // Load all recipes and categories
   const allRecipes = await getAllContent('recipes');
   const allCategories = getAllCategories();
@@ -86,7 +86,7 @@ export default async function KategorierPage() {
     '@type': 'CollectionPage',
     name: 'Alle Rezeptkategorien',
     description: 'Entdecke alle unsere Rezeptkategorien mit über 100+ Rezepten für alle Geschmäcker und Anlässe',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'}/kategorier`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'}/kategorien`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: allCategories.length,
@@ -97,7 +97,7 @@ export default async function KategorierPage() {
           '@type': 'Thing',
           name: category.name,
           description: category.description,
-          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${category.slug}`)
+          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/${category.slug}`)
         }
       }))
     }

@@ -87,7 +87,7 @@ export default function CategoryCarousel({ categories, currentCategory }) {
             return (
               <SwiperSlide key={category.slug}>
                 <Link
-                  href={`/kategorier/${category.slug}`}
+                  href={`/${category.slug}`}
                   className={`group block rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 ${
                     isActive
                       ? 'ring-2 ring-purple-600 dark:ring-purple-400 shadow-2xl shadow-purple-500/20'
