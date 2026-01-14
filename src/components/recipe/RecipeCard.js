@@ -42,17 +42,10 @@ export default function RecipeCard({ recipe, index = 0, className }) {
             <ChefHat className="w-16 h-16 text-gray-400" />
           </div>
         )}
-          {recipe.category && (
-            <div className="absolute top-3 left-3 z-10">
-              <Tag variant="accent" size="sm">
-                {recipe.category}
-              </Tag>
-            </div>
-          )}
         </div>
 
         <div className="pt-2">
-          <h3 
+          <h3
             className="text-sm md:text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2"
             style={{ 
               fontFamily: "'Inter', 'SF Pro Display', -apple-system, sans-serif",
@@ -62,15 +55,6 @@ export default function RecipeCard({ recipe, index = 0, className }) {
           >
             {recipe.recipeName || recipe.title}
           </h3>
-
-          {recipe.excerpt && (
-            <p 
-              className="text-gray-600 dark:text-gray-400 text-xs mb-2 line-clamp-2"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {recipe.excerpt}
-            </p>
-          )}
 
           <div className="flex items-center gap-2 md:gap-3 text-xs md:text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center gap-1">
@@ -104,15 +88,6 @@ export default function RecipeCard({ recipe, index = 0, className }) {
             />
           )}
 
-          {recipe.tags && recipe.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {recipe.tags.slice(0, 3).map((tag) => (
-                <Tag key={tag} size="sm">
-                  {tag}
-                </Tag>
-              ))}
-            </div>
-          )}
         </div>
       </Link>
     </motion.article>

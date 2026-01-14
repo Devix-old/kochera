@@ -70,83 +70,111 @@ export default async function CategoryPage({ params }) {
     popularRecipes: filteredRecipes.filter(r => (r.ratingAverage || 0) >= 4.5).length
   };
 
-  // Generate JSON-LD structured data for category
-  const categorySchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: `${category.name} Recept`,
-    description: category.description,
-    url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${slug}`),
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Startseite',
-          item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Kategorien',
-          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', '/kategorien')
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: category.name,
-          item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/kategorier/${slug}`)
-        }
-      ]
-    },
-    numberOfItems: filteredRecipes.length,
-    mainEntity: {
-      '@type': 'ItemList',
-      numberOfItems: filteredRecipes.length,
-      itemListElement: filteredRecipes.slice(0, 10).map((recipe, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          // DO NOT use '@type': 'Recipe' here - only recipe pages should have Recipe schema
-          // Use simple reference to avoid Google indexing multiple recipes from category pages
-          name: recipe.title,
-          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/recept/${recipe.slug}`),
-          image: recipe.image?.src || recipe.image,
-          description: recipe.excerpt
-        }
-      }))
-    }
-  };
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+  const categoryUrl = normalizeUrl(siteUrl, `/kategorier/${slug}`);
+  const webpageId = `${categoryUrl}#webpage`;
+  const itemListId = `${categoryUrl}#itemlist`;
+  const breadcrumbId = `${categoryUrl}#breadcrumb`;
+  const faqPageId = `${categoryUrl}#faqpage`;
 
-  // Generate FAQ Schema
-  const faqSchema = {
+  // Calculate easy recipes count for accurate FAQ
+  const easyRecipesCount = filteredRecipes.filter(r => {
+    const diff = (r.difficulty || '').toLowerCase();
+    return diff.includes('lätt') || diff.includes('leicht') || diff.includes('easy');
+  }).length;
+
+  // Generate JSON-LD structured data for category using @graph format
+  const categorySchemaGraph = {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
+    '@graph': [
+      // WebPage/CollectionPage
       {
-        '@type': 'Question',
-        name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
+        '@id': webpageId,
+        '@type': 'CollectionPage',
+        name: `${category.name} Rezepte`,
+        description: category.description,
+        url: categoryUrl,
+        inLanguage: 'de-DE',
+        breadcrumb: { '@id': breadcrumbId },
+        mainEntity: { '@id': itemListId },
+        hasPart: { '@id': faqPageId },
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': `${siteUrl}/#website`
         }
       },
+      // BreadcrumbList
       {
-        '@type': 'Question',
-        name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
-        }
+        '@id': breadcrumbId,
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Startseite',
+            item: siteUrl
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Kategorien',
+            item: normalizeUrl(siteUrl, '/kategorien')
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: category.name,
+            item: categoryUrl
+          }
+        ]
       },
+      // ItemList (summary page - only URLs, no Recipe objects)
       {
-        '@type': 'Question',
-        name: `Är ${category.name.toLowerCase()} recept lämpliga för nybörjare?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Ja! Wir haben viele einfache ${category.name.toLowerCase()} Rezepte mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
-        }
+        '@id': itemListId,
+        '@type': 'ItemList',
+        numberOfItems: filteredRecipes.length,
+        itemListElement: filteredRecipes.map((recipe, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: normalizeUrl(siteUrl, `/${recipe.slug}`)
+        }))
+      },
+      // FAQPage (only if FAQs are visible on page)
+      {
+        '@id': faqPageId,
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: filteredRecipes.length === 1
+                ? `Wir haben ${filteredRecipes.length} ${category.name.toLowerCase()} Rezept zur Auswahl.`
+                : `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
+            }
+          },
+          {
+            '@type': 'Question',
+            name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: filteredRecipes.length === 1
+                ? `Dieses ${category.name} Rezept dauert etwa 20-45 Minuten.`
+                : `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
+            }
+          },
+          {
+            '@type': 'Question',
+            name: `Sind ${category.name.toLowerCase()} Rezepte für Anfänger geeignet?`,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: easyRecipesCount > 0
+                ? `Ja! Wir haben ${easyRecipesCount} ${easyRecipesCount === 1 ? 'einfaches' : 'einfache'} ${category.name.toLowerCase()} Rezept${easyRecipesCount === 1 ? '' : 'e'} mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
+                : `Die Rezepte in dieser Kategorie haben unterschiedliche Schwierigkeitsgrade. Einfache Rezepte sind für Anfänger geeignet.`
+            }
+          }
+        ]
       }
     ]
   };
@@ -154,8 +182,7 @@ export default async function CategoryPage({ params }) {
   return (
     <>
       {/* Structured Data */}
-      <StructuredData data={categorySchema} />
-      <StructuredData data={faqSchema} />
+      <StructuredData data={categorySchemaGraph} />
       
       <EnhancedCategoryClient
         category={category}

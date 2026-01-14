@@ -80,7 +80,7 @@ export default function EnhancedSearchBar({
   };
 
   const handleResultClick = (recipe) => {
-    router.push(`/recept/${recipe.slug}`);
+    router.push(`/${recipe.slug}`);
     setIsOpen(false);
     setQuery('');
     setShowResults(false);

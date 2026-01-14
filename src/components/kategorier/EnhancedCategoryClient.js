@@ -57,8 +57,8 @@ export default function EnhancedCategoryClient({
 
   // ---------- Helpers ----------
   const heroImage =
-    (showAllCategories ? '/images/kategorien/hero.webp' : category?.image) ||
-    '/images/kategorien/hero.webp';
+    (showAllCategories ? '/images/kategorien/alle-kategorien.webp' : category?.image) ||
+    '/images/kategorien/alle-kategorien.webp';
 
   const heroTitle = showAllCategories
     ? 'Alle Kategorien'
@@ -226,9 +226,11 @@ export default function EnhancedCategoryClient({
         initial="hidden"
         animate="show"
         className="
-          bg-white
-          border border-gray-200
-          shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25)]
+          bg-gradient-to-b
+  from-white/50
+  via-white/9
+  to-white
+  shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25)]
         "
       >
         <div className="p-6 md:p-10 text-gray-900">

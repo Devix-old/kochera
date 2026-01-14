@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useRef } from 'react';
-import { Star, ChefHat, ArrowRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ArrowRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getAllCategories } from '@/lib/categories';
 import HomePageSearchBar from '@/components/ui/HomePageSearchBar';
 
@@ -129,7 +129,7 @@ export default function EnhancedHomeClient({
 
       {/* TRENDING SECTION */}
       <section className="w-full py-8 bg-white">
-        <div className="px-4 mb-6">
+        <div className="px-4 mb-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Beliebt diese Woche
           </h2>
@@ -142,24 +142,34 @@ export default function EnhancedHomeClient({
               href={`/${getRecipeSlug(recipe)}`}
               className="group"
             >
-              <div className="bg-white overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="flex flex-col gap-3 bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
                 {/* Image */}
-                <div className="aspect-[2/3] w-full relative overflow-hidden bg-gray-100">
+                <div className="relative w-full aspect-[3/2] overflow-hidden bg-gray-100">
                   <img
-                    src={getRecipeImage(recipe) || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"}
+                    src={getRecipeImage(recipe) || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=267&fit=crop"}
                     alt={getRecipeName(recipe)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
+                    width="320"
+                    height="213"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Text Content */}
-                <div className="p-3">
-                  <h3 className="font-semibold text-gray-900 text-sm md:text-base line-clamp-3 mb-2 min-h-[3.5rem]">
+                <div className="p-1 flex-1 flex flex-col">
+                  <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
                     {getRecipeName(recipe)}
                   </h3>
-                  {/* Star Rating */}
-                  {renderStarRating(recipe?.ratingAverage)}
+                  <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                    {recipe?.totalTimeMinutes && (
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {recipe.totalTimeMinutes} Min
+                      </span>
+                    )}
+                    {recipe?.ratingAverage && renderStarRating(recipe.ratingAverage)}
+                  </div>
                 </div>
               </div>
             </Link>
@@ -167,67 +177,57 @@ export default function EnhancedHomeClient({
         </div>
       </section>
 
-      {/* trust section */}    
+      {/* DIN MATKREATÖR section */}    
       <section className="w-full py-12 bg-white">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100 shadow-lg p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          
-          {/* Decorative Background Blob (Optional aesthetic touch) */}
-          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-purple-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-
-          {/* Avatar Section */}
-          <div className="relative flex-shrink-0">
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full p-1 bg-white ring-4 ring-purple-100 shadow-md">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="relative overflow-hidden rounded-2xl bg-orange-50 border border-gray-100 shadow-lg flex flex-col md:flex-row">
+            
+            {/* Image Section - Left on desktop, top on mobile */}
+            <div className="w-full md:w-1/2 h-64 md:h-auto">
               <img
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop"
-                alt="Profilbild des Autors"
-                className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+                src="/images/din-matkreator-kochera-in-kitchen.webp"
+                alt="Kochera in der Küche"
+                className="w-full h-full object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+                loading="lazy"
               />
             </div>
-            {/* Small Floating Badge */}
-            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 bg-white text-purple-600 p-2 rounded-full shadow-md border border-purple-50">
-              <ChefHat size={20} className="stroke-2" />
-            </div>
-          </div>
 
-          {/* Text Content */}
-          <div className="flex-1 text-center md:text-left z-10">
-            <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-purple-700 uppercase bg-purple-100 rounded-full">
-              Din Matkreatör
-            </span>
-            
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-              Hallo! Ich bin <span className="text-purple-600">Kochera</span>.
-            </h3>
-            
-            <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
-              <p>
-                Willkommen in meiner Küche! Ich habe diese Seite gegründet, um meine Leidenschaft für Kochen und Backen mit dir zu teilen.
-              </p>
-              <p className="hidden md:block">
-                Ich glaube an Qualität vor Quantität. Daher ist jedes Rezept, das du hier findest, sorgfältig getestet, verkostet und perfektioniert, um sicherzustellen, dass du jedes Mal erfolgreich bist.
-              </p>
-            </div>
-
-            <Link
-              href="/om"
-              className="group inline-flex items-center justify-center md:justify-start gap-2 text-purple-700 font-bold hover:text-purple-900 transition-colors duration-200"
-            >
-              <span className="border-b-2 border-purple-200 group-hover:border-purple-600 transition-all duration-200">
-                Mehr über unsere Reise erfahren
+            {/* Text Content Section - Right on desktop, bottom on mobile */}
+            <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
+              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-purple-600 rounded-full w-fit">
+                Din Matkreatör
               </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                Hallo! Ich bin <span className="text-purple-600">Kochera</span>.
+              </h3>
+              
+              <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
+                <p>
+                  Willkommen in meiner Küche! Ich habe diese Seite gegründet, um meine Leidenschaft für Kochen und Backen mit dir zu teilen.
+                </p>
+                <p className="hidden md:block">
+                  Ich glaube an Qualität vor Quantität. Daher ist jedes Rezept, das du hier findest, sorgfältig getestet, verkostet und perfektioniert, um sicherzustellen, dass du jedes Mal erfolgreich bist.
+                </p>
+              </div>
+
+              <Link
+                href="/om"
+                className="group inline-flex items-center justify-center md:justify-start gap-2 bg-purple-600 text-white font-bold px-5 py-3 rounded-lg border-2 border-black shadow-md hover:bg-purple-700 transition-all duration-200 w-fit"
+              >
+                <span>Mehr über unsere Reise erfahren</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            
           </div>
-          
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* LATEST RECIPES - Carousel */}
       <section className="w-full py-8 bg-gray-50 relative">
         <div className="px-4 mb-6 flex items-center justify-between">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 flex-1 text-center">
             Neueste Rezepte
           </h2>
           <Link
@@ -291,11 +291,6 @@ export default function EnhancedHomeClient({
                     <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
                       {getRecipeName(recipe)}
                     </h3>
-                    {recipe?.excerpt && (
-                      <p className="text-sm text-gray-600 line-clamp-2 mb-3 flex-1">
-                        {recipe.excerpt}
-                      </p>
-                    )}
                     <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
                       {recipe?.totalTimeMinutes && (
                         <span className="flex items-center gap-1">

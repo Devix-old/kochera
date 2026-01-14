@@ -228,81 +228,110 @@ export default async function SlugPage({ params }) {
     };
 
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+    const categoryUrl = normalizeUrl(siteUrl, `/${slug}`);
+    const webpageId = `${categoryUrl}#webpage`;
+    const itemListId = `${categoryUrl}#itemlist`;
+    const breadcrumbId = `${categoryUrl}#breadcrumb`;
+    const faqPageId = `${categoryUrl}#faqpage`;
 
-    // Generate JSON-LD structured data for category
-    const categorySchema = {
+    // Calculate easy recipes count for accurate FAQ
+    const easyRecipesCount = filteredRecipes.filter(r => {
+      const diff = (r.difficulty || '').toLowerCase();
+      return diff.includes('lätt') || diff.includes('leicht') || diff.includes('easy');
+    }).length;
+
+    // Generate JSON-LD structured data for category using @graph format
+    const categorySchemaGraph = {
       '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: `${category.name} Rezept`,
-      description: category.description,
-      url: normalizeUrl(siteUrl, `/${slug}`),
-      breadcrumb: {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: 'Startseite',
-            item: siteUrl
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Kategorien',
-            item: normalizeUrl(siteUrl, '/kategorien')
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: category.name,
-            item: normalizeUrl(siteUrl, `/${slug}`)
+      '@graph': [
+        // WebPage/CollectionPage
+        {
+          '@id': webpageId,
+          '@type': 'CollectionPage',
+          name: `${category.name} Rezepte`,
+          description: category.description,
+          url: categoryUrl,
+          inLanguage: 'de-DE',
+          breadcrumb: { '@id': breadcrumbId },
+          mainEntity: { '@id': itemListId },
+          hasPart: { '@id': faqPageId },
+          isPartOf: {
+            '@type': 'WebSite',
+            '@id': `${siteUrl}/#website`
           }
-        ]
-      },
-      numberOfItems: filteredRecipes.length,
-      mainEntity: {
-        '@type': 'ItemList',
-        numberOfItems: filteredRecipes.length,
-        itemListElement: filteredRecipes.slice(0, 20).map((recipe, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@type': 'Recipe',
-            name: recipe.title || recipe.recipeName,
+        },
+        // BreadcrumbList
+        {
+          '@id': breadcrumbId,
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Startseite',
+              item: siteUrl
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Kategorien',
+              item: normalizeUrl(siteUrl, '/kategorien')
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: category.name,
+              item: categoryUrl
+            }
+          ]
+        },
+        // ItemList (summary page - only URLs, no Recipe objects)
+        {
+          '@id': itemListId,
+          '@type': 'ItemList',
+          numberOfItems: filteredRecipes.length,
+          itemListElement: filteredRecipes.map((recipe, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
             url: normalizeUrl(siteUrl, `/${recipe.slug}`)
-          }
-        }))
-      }
-    };
-
-    // Generate FAQ Schema
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
-          }
+          }))
         },
+        // FAQPage (only if FAQs are visible on page)
         {
-          '@type': 'Question',
-          name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
-          }
-        },
-        {
-          '@type': 'Question',
-          name: `Sind ${category.name.toLowerCase()} Rezepte für Anfänger geeignet?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Ja! Wir haben viele einfache ${category.name.toLowerCase()} Rezepte mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
-          }
+          '@id': faqPageId,
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: `Wie viele ${category.name.toLowerCase()} Rezepte gibt es?`,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: filteredRecipes.length === 1
+                  ? `Wir haben ${filteredRecipes.length} ${category.name.toLowerCase()} Rezept zur Auswahl.`
+                  : `Wir haben ${filteredRecipes.length} verschiedene ${category.name.toLowerCase()} Rezepte zur Auswahl.`
+              }
+            },
+            {
+              '@type': 'Question',
+              name: `Wie lange dauert es, ${category.name.toLowerCase()} zuzubereiten?`,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: filteredRecipes.length === 1
+                  ? `Dieses ${category.name} Rezept dauert etwa 20-45 Minuten.`
+                  : `Die Zeit variiert je nach Rezept, aber die meisten ${category.name.toLowerCase()} Rezepte dauern zwischen 20-45 Minuten.`
+              }
+            },
+            {
+              '@type': 'Question',
+              name: `Sind ${category.name.toLowerCase()} Rezepte für Anfänger geeignet?`,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: easyRecipesCount > 0
+                  ? `Ja! Wir haben ${easyRecipesCount} ${easyRecipesCount === 1 ? 'einfaches' : 'einfache'} ${category.name.toLowerCase()} Rezept${easyRecipesCount === 1 ? '' : 'e'} mit "Einfach" Schwierigkeitsgrad, die perfekt für Anfänger sind.`
+                  : `Die Rezepte in dieser Kategorie haben unterschiedliche Schwierigkeitsgrade. Einfache Rezepte sind für Anfänger geeignet.`
+              }
+            }
+          ]
         }
       ]
     };
@@ -310,8 +339,7 @@ export default async function SlugPage({ params }) {
     return (
       <>
         {/* Structured Data */}
-        <StructuredData data={categorySchema} />
-        <StructuredData data={faqSchema} />
+        <StructuredData data={categorySchemaGraph} />
         
         <EnhancedCategoryClient
           category={category}

@@ -42,11 +42,11 @@ export default function Header({ recipes = [] }) {
       href: '/om',
       icon: Users
     },
-    {
-      label: 'Kontakt',
-      href: '/kontakt',
-      icon: Mail
-    }
+    // {
+    //   label: 'Kontakt',
+    //   href: '/kontakt',
+    //   icon: Mail
+    // }
   ];
 
   const isActive = (href) => {
