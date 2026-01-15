@@ -24,12 +24,12 @@ export default function OmClient() {
 
             {/* Text Content Section - Right on desktop, bottom on mobile */}
             <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-purple-600 rounded-full w-fit">
+              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-[var(--color-primary)] rounded-full w-fit">
                 Din Matkreatör
               </span>
               
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                Hallo! Ich bin <span className="text-purple-600">Kochera</span>.
+                Hallo! Ich bin <span className="text-[var(--color-primary)]">Kochera</span>.
               </h1>
               
               <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
@@ -80,7 +80,7 @@ export default function OmClient() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white rounded-xl p-6 text-center border border-gray-200"
             >
-              <Heart className="w-8 h-8 text-purple-600 mx-auto mb-4" />
+              <Heart className="w-8 h-8 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2 text-gray-900">Liebe zum Kochen</h3>
               <p className="text-gray-600 text-sm">
                 Jedes Rezept kommt von Herzen
@@ -94,7 +94,7 @@ export default function OmClient() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-white rounded-xl p-6 text-center border border-gray-200"
             >
-              <ChefHat className="w-8 h-8 text-purple-600 mx-auto mb-4" />
+              <ChefHat className="w-8 h-8 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2 text-gray-900">Einfach & getestet</h3>
               <p className="text-gray-600 text-sm">
                 Alle Rezepte sind mehrfach erprobt
@@ -108,7 +108,7 @@ export default function OmClient() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="bg-white rounded-xl p-6 text-center border border-gray-200"
             >
-              <Heart className="w-8 h-8 text-purple-600 mx-auto mb-4" />
+              <Heart className="w-8 h-8 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2 text-gray-900">Teilen</h3>
               <p className="text-gray-600 text-sm">
                 Freude mit allen teilen, die gerne kochen

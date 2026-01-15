@@ -1,12 +1,12 @@
 import { format, parseISO } from 'date-fns';
-import { sv } from 'date-fns/locale';
+import { de } from 'date-fns/locale';
 
 /**
- * Format date to Swedish locale
+ * Format date to German locale
  */
 export function formatDate(date, formatStr = 'd MMMM yyyy') {
   const dateObj = typeof date === 'string' ? parseISO(date) : date;
-  return format(dateObj, formatStr, { locale: sv });
+  return format(dateObj, formatStr, { locale: de });
 }
 
 /**

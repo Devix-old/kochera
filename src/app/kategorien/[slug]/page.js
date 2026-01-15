@@ -12,8 +12,8 @@ export async function generateMetadata({ params }) {
   
   if (!category) {
     return {
-      title: 'Kategori hittades inte',
-      description: 'Den begärda kategorin kunde inte hittas.'
+      title: 'Kategorie nicht gefunden',
+      description: 'Die angeforderte Kategorie konnte nicht gefunden werden.'
     };
   }
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
   return generateSiteMetadata({
     title: `${category.name} Rezepte - ${filteredRecipes.length}+ Leckere Rezepte | Kochera`,
     description: `${category.description} Finde die besten ${category.name.toLowerCase()} Rezepte mit Schritt-für-Schritt-Anleitungen. ${filteredRecipes.length}+ getestete Rezepte für alle Levels.`,
-    url: `/kategorier/${slug}`,
+    url: `/kategorien/${slug}`,
     keywords: `${category.name.toLowerCase()}, ${category.name.toLowerCase()} Rezepte, leckere ${category.name.toLowerCase()}, wie man ${category.name.toLowerCase()} zubereitet, deutsche ${category.name.toLowerCase()}, ${category.name.toLowerCase()} Tipps, einfache ${category.name.toLowerCase()}, schnelle ${category.name.toLowerCase()}`,
   });
 }
@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }) {
   };
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
-  const categoryUrl = normalizeUrl(siteUrl, `/kategorier/${slug}`);
+  const categoryUrl = normalizeUrl(siteUrl, `/kategorien/${slug}`);
   const webpageId = `${categoryUrl}#webpage`;
   const itemListId = `${categoryUrl}#itemlist`;
   const breadcrumbId = `${categoryUrl}#breadcrumb`;

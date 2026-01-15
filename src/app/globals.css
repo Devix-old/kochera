@@ -6,26 +6,100 @@
   --foreground: #171717;
 }
 
+:root {
+  /* ============================================
+     MAIN APP COLOR SYSTEM - CHANGE HERE TO UPDATE ENTIRE APP
+     ============================================
+     
+     TO CHANGE THE MAIN APP COLOR:
+     1. Update --color-primary below (main brand color)
+     2. Update --color-primary-hover (hover state - usually darker)
+     3. Update --color-primary-light (light variant - usually lighter)
+     4. Update --color-gradient-to if using gradients
+     5. All other colors will auto-adjust based on these values
+     
+     Example: To change from purple to blue:
+     --color-primary: rgb(59, 130, 246); // blue-500
+     --color-primary-hover: rgb(37, 99, 235); // blue-600
+     --color-primary-light: rgb(147, 197, 253); // blue-400
+     ============================================ */
+  
+  /* Primary Color (Main Brand Color) - CHANGE THESE VALUES TO CHANGE APP COLOR */
+  --color-primary: rgb(147, 51, 234); /* purple-600 - Main brand color */
+  --color-primary-hover: rgb(126, 34, 206); /* purple-700 - Hover state */
+  --color-primary-light: rgb(196, 181, 253); /* purple-400 - Light variant */
+  --color-primary-lighter: rgb(221, 214, 254); /* purple-300 - Lighter variant */
+  --color-primary-dark: rgb(126, 34, 206); /* purple-700 - Dark variant */
+  --color-primary-darker: rgb(88, 28, 135); /* purple-800 - Darker variant */
+  --color-primary-darkest: rgb(59, 7, 100); /* purple-900 - Darkest variant */
+  
+  /* Secondary Color (Used in gradients) */
+  --color-secondary: rgb(219, 39, 119); /* pink-600 - Secondary brand color */
+  --color-secondary-hover: rgb(190, 24, 93); /* pink-700 - Secondary hover */
+  --color-secondary-light: rgb(244, 114, 182); /* pink-400 - Secondary light */
+  
+  /* Accent Color */
+  --color-accent: rgb(168, 85, 247); /* purple-500 - Accent color */
+  --color-accent-hover: rgb(147, 51, 234); /* purple-600 - Accent hover */
+  
+  /* Background Colors */
+  --color-bg-primary: rgba(147, 51, 234, 0.05); /* Primary tinted background */
+  --color-bg-primary-alt: rgba(147, 51, 234, 0.08); /* Primary tinted background alt */
+  --color-bg-primary-light: rgba(147, 51, 234, 0.1); /* Primary tinted background light */
+  --color-bg-secondary: rgba(219, 39, 119, 0.05); /* Secondary tinted background */
+  
+  /* Text Colors */
+  --color-text-primary: rgb(147, 51, 234); /* Primary text color */
+  --color-text-primary-hover: rgb(126, 34, 206); /* Primary text hover */
+  --color-text-primary-light: rgb(196, 181, 253); /* Primary text light */
+  
+  /* Border Colors */
+  --color-border-primary: rgba(147, 51, 234, 0.2); /* Primary border */
+  --color-border-primary-light: rgba(147, 51, 234, 0.1); /* Primary border light */
+  --color-border-primary-dark: rgba(147, 51, 234, 0.3); /* Primary border dark */
+  
+  /* Gradient Colors */
+  --color-gradient-from: rgb(147, 51, 234); /* Gradient start */
+  --color-gradient-to: rgb(219, 39, 119); /* Gradient end (pink-600) */
+  
+  /* Legacy support (keeping for backward compatibility) */
+  --color-secondary-legacy: #6FCF97; /* Soft sage/mint */
+  --color-secondary-dark-legacy: #5FB87E;
+  --color-secondary-light-legacy: #A8E6CF;
+  --color-warm-bg: rgba(147, 51, 234, 0.05);
+  --color-warm-bg-alt: rgba(147, 51, 234, 0.08);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   
-  /* Purple color palette for food blog */
-  --color-primary: rgb(147, 51, 234); /* purple-600 */
-  --color-primary-dark: rgb(126, 34, 206); /* purple-700 */
-  --color-primary-light: rgb(196, 181, 253); /* purple-400 */
-  
-  --color-secondary: #6FCF97; /* Soft sage/mint */
-  --color-secondary-dark: #5FB87E;
-  --color-secondary-light: #A8E6CF;
-  
-  --color-accent: rgb(168, 85, 247); /* purple-500 */
-  --color-accent-dark: rgb(126, 34, 206); /* purple-700 */
-  --color-accent-light: rgb(196, 181, 253); /* purple-400 */
-  
-  --color-warm-bg: rgba(147, 51, 234, 0.05); /* Purple tinted background */
-  --color-warm-bg-alt: rgba(147, 51, 234, 0.08);
+  /* Expose custom colors as Tailwind utilities */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-lighter: var(--color-primary-lighter);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-darker: var(--color-primary-darker);
+  --color-primary-darkest: var(--color-primary-darkest);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-primary-alt: var(--color-bg-primary-alt);
+  --color-bg-primary-light: var(--color-bg-primary-light);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-primary-hover: var(--color-text-primary-hover);
+  --color-text-primary-light: var(--color-text-primary-light);
+  --color-border-primary: var(--color-border-primary);
+  --color-border-primary-light: var(--color-border-primary-light);
+  --color-border-primary-dark: var(--color-border-primary-dark);
+  --color-gradient-from: var(--color-gradient-from);
+  --color-gradient-to: var(--color-gradient-to);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,11 +136,11 @@ img {
 
 @keyframes highlightStep {
   0% {
-    background-color: rgba(139, 92, 246, 0.1);
+    background-color: var(--color-bg-primary);
     transform: scale(1);
   }
   50% {
-    background-color: rgba(139, 92, 246, 0.2);
+    background-color: var(--color-bg-primary-alt);
     transform: scale(1.01);
   }
   100% {
@@ -143,7 +217,7 @@ img {
   line-height: 0.85;
   float: left;
   margin-right: 0.75rem;
-  color: rgb(147, 51, 234); /* Purple-600 */
+  color: var(--color-primary);
 }
 
 /* Smooth reading experience */
@@ -203,7 +277,7 @@ img {
   line-height: 1;
   float: left;
   margin: 0.1em 0.15em 0 0;
-  color: rgb(147, 51, 234); /* purple-600 */
+  color: var(--color-primary);
 }
 
 .blog-content strong {
@@ -226,32 +300,32 @@ img {
 }
 
 .blog-content ul li::marker {
-  color: rgb(147, 51, 234); /* purple-600 */
+  color: var(--color-primary);
 }
 
 .blog-content ol li::marker {
-  color: rgb(147, 51, 234); /* purple-600 */
+  color: var(--color-primary);
   font-weight: 600;
 }
 
 .blog-content a {
-  color: rgb(147, 51, 234); /* purple-600 */
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s;
 }
 
 .blog-content a:hover {
-  color: rgb(126, 34, 206); /* purple-700 */
+  color: var(--color-primary-hover);
 }
 
 .blog-content blockquote {
-  border-left: 4px solid rgb(147, 51, 234); /* purple-600 */
+  border-left: 4px solid var(--color-primary);
   padding-left: 1.5rem;
   margin: 2rem 0;
   font-style: italic;
   color: #4b5563;
-  background: linear-gradient(to right, rgba(147, 51, 234, 0.1), transparent);
+  background: linear-gradient(to right, var(--color-bg-primary-light), transparent);
   padding: 1.5rem;
   border-radius: 0 0.5rem 0.5rem 0;
 }
@@ -262,7 +336,7 @@ img {
   border-radius: 0.25rem;
   font-size: 0.9em;
   font-family: 'Monaco', 'Courier New', monospace;
-  color: rgb(147, 51, 234); /* purple-600 */
+  color: var(--color-primary);
 }
 
 .blog-content pre {
@@ -312,7 +386,7 @@ img {
   
   .blog-content blockquote {
     color: #d1d5db;
-    background: linear-gradient(to right, rgba(147, 51, 234, 0.1), transparent);
+    background: linear-gradient(to right, var(--color-bg-primary-light), transparent);
   }
   .blog-content code {
     background: #374151;
@@ -411,4 +485,133 @@ img {
 .noscript-hidden {
   display: none;
   visibility: hidden;
+}
+
+/* ============================================
+   GLOBAL COLOR UTILITY CLASSES
+   Use these classes instead of hardcoded colors
+   ============================================ */
+
+/* Background Colors */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-primary-hover:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.bg-primary-light {
+  background-color: var(--color-primary-light);
+}
+
+.bg-primary-lighter {
+  background-color: var(--color-primary-lighter);
+}
+
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.bg-primary-darker {
+  background-color: var(--color-primary-darker);
+}
+
+.bg-primary-darkest {
+  background-color: var(--color-primary-darkest);
+}
+
+.bg-primary-tint {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-primary-tint-alt {
+  background-color: var(--color-bg-primary-alt);
+}
+
+.bg-primary-tint-light {
+  background-color: var(--color-bg-primary-light);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-secondary-hover:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.bg-secondary-light {
+  background-color: var(--color-secondary-light);
+}
+
+.bg-secondary-tint {
+  background-color: var(--color-bg-secondary);
+}
+
+/* Text Colors */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-primary-hover:hover {
+  color: var(--color-text-primary-hover);
+}
+
+.text-primary-light {
+  color: var(--color-text-primary-light);
+}
+
+/* Border Colors */
+.border-primary {
+  border-color: var(--color-border-primary);
+}
+
+.border-primary-light {
+  border-color: var(--color-border-primary-light);
+}
+
+.border-primary-dark {
+  border-color: var(--color-border-primary-dark);
+}
+
+/* Gradient Utilities */
+.bg-gradient-primary {
+  background: linear-gradient(to right, var(--color-gradient-from), var(--color-gradient-to));
+}
+
+.bg-gradient-primary-br {
+  background: linear-gradient(to bottom right, var(--color-gradient-from), var(--color-gradient-to));
+}
+
+.bg-gradient-primary-tb {
+  background: linear-gradient(to bottom, var(--color-gradient-from), var(--color-gradient-to));
+}
+
+/* Hover States */
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.hover\:text-primary:hover {
+  color: var(--color-text-primary-hover);
+}
+
+.hover\:border-primary:hover {
+  border-color: var(--color-border-primary-dark);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .dark\:text-primary-light {
+    color: var(--color-primary-light);
+  }
+  
+  .dark\:bg-primary-darkest {
+    background-color: var(--color-primary-darkest);
+  }
+  
+  .dark\:bg-primary-tint {
+    background-color: var(--color-bg-primary);
+  }
 }

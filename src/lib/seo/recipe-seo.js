@@ -144,55 +144,52 @@ function generateRecipeDescription(excerpt = '', category = '', totalTimeMinutes
 }
 
 /**
- * Swedish stopwords that should be filtered from keywords
+ * German stopwords that should be filtered from keywords
  * These are common words Google ignores and can be treated as keyword spam
  */
-const SWEDISH_STOPWORDS = new Set([
-  'och', 'att', 'i', 'det', 'som', 'en', 'på', 'är', 'av', 'för', 'med',
-  'till', 'den', 'de', 'har', 'om', 'du', 'han', 'hon', 'vi', 'ni', 'så',
-  'här', 'där', 'gör', 'ska', 'kan', 'utan', 'eller', 'men', 'vad', 'hur',
-  'var', 'när', 'från', 'ut', 'in', 'all', 'alla', 'allt', 'mycket', 'lite',
-  'mer', 'få', 'något', 'några', 'just', 'bara', 'då', 'sedan', 'efter',
-  'innan', 'över', 'under', 'vid', 'mot', 'den', 'detta', 'denna', 'dessa',
-  'dig', 'mig', 'sig', 'oss', 'er', 'dem', 'sin', 'sitt', 'sina', 'vår',
-  'vårt', 'våra', 'deras', 'vars', 'vilken', 'vilket', 'vilka', 'vem',
-  // Generic adjectives that create keyword spam (WARNING #1)
-  // MINOR #5: Removed duplicate 'mycket' and 'lite' (already in line above)
-  'god', 'goda', 'super', 'extra', 'stor', 'stora', 'liten', 'små'
+const GERMAN_STOPWORDS = new Set([
+  'der', 'die', 'das', 'und', 'in', 'den', 'von', 'zu', 'dem', 'mit', 'sich',
+  'des', 'auf', 'für', 'ist', 'im', 'ein', 'eine', 'als', 'auch', 'es', 'an',
+  'werden', 'aus', 'er', 'hat', 'dass', 'sie', 'nach', 'wird', 'bei', 'einer',
+  'um', 'am', 'sind', 'noch', 'wie', 'einem', 'über', 'einen', 'so', 'zum',
+  'war', 'haben', 'nur', 'oder', 'aber', 'vor', 'zur', 'bis', 'mehr', 'durch',
+  'man', 'sein', 'wurde', 'sei', 'in', 'der', 'zu', 'als', 'für', 'im', 'ist',
+  // Generic adjectives that create keyword spam
+  'gut', 'gute', 'gutes', 'super', 'extra', 'groß', 'große', 'klein', 'kleine'
 ]);
 
 /**
  * Known recipe terms that should always be kept even if they match stopword patterns
  */
 const RECIPE_TERMS = new Set([
-  'recept', 'kladdkaka', 'pannkakor', 'vafflor', 'kakor', 'tårtor',
-  'kyckling', 'pasta', 'lasagne', 'biffar', 'köttbullar', 'fisk',
-  'lax', 'vegetariskt', 'veganskt', 'glutenfritt', 'dessert', 'efterrätt'
+  'rezept', 'rezepte', 'pfannkuchen', 'waffeln', 'kuchen', 'torten',
+  'hähnchen', 'pasta', 'lasagne', 'fleisch', 'fisch',
+  'lachs', 'vegetarisch', 'vegan', 'glutenfrei', 'dessert', 'nachspeise'
 ]);
 
 /**
  * Generate comprehensive keywords
- * Filters out Swedish stopwords and only keeps meaningful words
+ * Filters out German stopwords and only keeps meaningful words
  * CRITICAL #2: Exported to use as single source of truth
  */
 export function generateRecipeKeywords(tags = [], category = '', title = '') {
   const baseKeywords = [
-    'recept',
-    'matlagning',
-    'svenska recept',
-    'bakning',
-    'matlagningsguider',
-    'hemlagad mat',
-    'familjerecept'
+    'rezepte',
+    'kochen',
+    'deutsche rezepte',
+    'backen',
+    'kochtipps',
+    'hausgemachtes essen',
+    'familienrezepte'
   ];
   
   const categoryKeywords = {
-    'Dessert': ['dessert', 'efterrätt', 'söta recept', 'bakning', 'kakor', 'tårtor'],
-    'Huvudrätt': ['huvudrätt', 'middag', 'kött', 'fisk', 'kyckling', 'vegetariskt'],
-    'Frukost': ['frukost', 'brunch', 'pannkakor', 'vafflor', 'morgonmat'],
-    'Förrätt': ['förrätt', 'sallad', 'soppa', 'snacks'], // WARNING #3: Removed duplicate
-    'Bakning': ['bakning', 'bröd', 'kakor', 'tårtor', 'fika', 'söta bakverk'],
-    'Soppor': ['soppa', 'soppor', 'krämig soppa', 'vegetarisk soppa', 'köttsoppa', 'fisksoppa', 'grönsakssoppa', 'varm soppa']
+    'Dessert': ['dessert', 'nachspeise', 'süße rezepte', 'backen', 'kuchen', 'torten'],
+    'Hauptgericht': ['hauptgericht', 'mittagessen', 'abendessen', 'fleisch', 'fisch', 'hähnchen', 'vegetarisch'],
+    'Frühstück': ['frühstück', 'brunch', 'pfannkuchen', 'waffeln', 'morgens'],
+    'Vorspeise': ['vorspeise', 'salat', 'suppe', 'snacks'],
+    'Backen': ['backen', 'brot', 'kuchen', 'torten', 'kekse', 'süße backwaren'],
+    'Suppen': ['suppe', 'suppen', 'cremige suppe', 'vegetarische suppe', 'fleischsuppe', 'fischsuppe', 'gemüsesuppe', 'warme suppe']
   };
   
   // Extract meaningful words from title
@@ -210,7 +207,7 @@ export function generateRecipeKeywords(tags = [], category = '', title = '') {
     })
     .filter(word => {
       // Remove stopwords, but keep recipe terms
-      return !SWEDISH_STOPWORDS.has(word) || RECIPE_TERMS.has(word);
+      return !GERMAN_STOPWORDS.has(word) || RECIPE_TERMS.has(word);
     })
     .filter(word => word.length > 0); // Remove empty strings
   
@@ -224,7 +221,7 @@ export function generateRecipeKeywords(tags = [], category = '', title = '') {
     })
     .filter(tag => {
       // Remove stopwords, but keep recipe terms
-      return !SWEDISH_STOPWORDS.has(tag) || RECIPE_TERMS.has(tag);
+      return !GERMAN_STOPWORDS.has(tag) || RECIPE_TERMS.has(tag);
     });
   
   const allKeywords = [
@@ -386,7 +383,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
         width: 512,
         height: 512,
       },
@@ -667,7 +664,7 @@ export function generateRecipeBreadcrumbSchema(recipe, category) {
     
     const categoryUrl = categorySlug 
       ? normalizeUrl(SITE_URL, `/${categorySlug}`)
-      : normalizeUrl(SITE_URL, `/recept?category=${encodeURIComponent(category)}`);
+      : normalizeUrl(SITE_URL, `/rezepte?category=${encodeURIComponent(category)}`);
     
     itemListElement.push({
       '@type': 'ListItem',
@@ -704,7 +701,7 @@ export function generateOrganizationSchema() {
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/logo.png'),
+      url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
       width: 512,
       height: 512,
     },

@@ -51,7 +51,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
   const getActiveFiltersCount = () => {
     let count = 0;
     Object.values(filters).forEach(value => {
-      if (value && value !== 'alla') {
+      if (value && value !== 'alle' && value !== 'alla') {
         if (Array.isArray(value)) {
           count += value.length;
         } else {
@@ -65,10 +65,10 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
   const activeFiltersCount = getActiveFiltersCount();
 
   const tabs = [
-    { id: 'kategorier', label: 'Kategorier', icon: Utensils },
-    { id: 'tid', label: 'Tid & Svårighet', icon: Clock },
-    { id: 'kost', label: 'Kost & Livsstil', icon: Heart },
-    { id: 'metod', label: 'Tillagningsmetod', icon: Search }
+    { id: 'kategorier', label: 'Kategorien', icon: Utensils },
+    { id: 'tid', label: 'Zeit & Schwierigkeit', icon: Clock },
+    { id: 'kost', label: 'Ernährung & Lifestyle', icon: Heart },
+    { id: 'metod', label: 'Zubereitungsmethode', icon: Search }
   ];
 
   return (
@@ -93,7 +93,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
                 onClick={clearAllFilters}
                 className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               >
-                Rensa alla
+                Alle löschen
               </button>
             )}
             <button
@@ -158,7 +158,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
 
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Måltidstyp
+                    Mahlzeittyp
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {allMealTypes.map(mealType => (
@@ -209,7 +209,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
 
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Svårighetsgrad
+                    Schwierigkeitsgrad
                   </h4>
                   <div className="grid grid-cols-3 gap-2">
                     {difficultyLevels.map(difficulty => (
@@ -238,12 +238,12 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
               </div>
             )}
 
-            {/* Kost & Livsstil Tab */}
+            {/* Ernährung & Lifestyle Tab */}
             {activeTab === 'kost' && (
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Kostpreferenser
+                    Ernährungspräferenzen
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {allDietaryTags.map(tag => (
@@ -287,12 +287,12 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
               </div>
             )}
 
-            {/* Tillagningsmetod Tab */}
+            {/* Zubereitungsmethode Tab */}
             {activeTab === 'metod' && (
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Tillagningsmetod
+                    Zubereitungsmethode
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {allCookingMethods.map(method => (

@@ -72,7 +72,7 @@ export const metadata = {
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     images: [
       {
-        url: '/bak-stunden.png',
+        url: '/kochera.png',
         width: 1200,
         height: 630,
         alt: 'Kochera - Deutschlands beste Rezepte für jeden Anlass',
@@ -83,12 +83,12 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
-    images: ['/bak-stunden.png'],
+    images: ['/kochera.png'],
   },
   manifest: '/manifest.json',
   other: {
-    'msapplication-TileColor': '#FF7A7A',
-    'theme-color': '#FF7A7A',
+    'msapplication-TileColor': '#9333EA',
+    'theme-color': '#9333EA',
   },
 };
 
@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
         <HeaderWrapper />
         <a 
           href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-primary)] focus:text-white focus:rounded-lg"
         >
           Zum Hauptinhalt springen
         </a>

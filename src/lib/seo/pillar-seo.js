@@ -39,7 +39,7 @@ export function generatePillarMetadata(pillar) {
   const canonicalUrl = normalizeUrl(SITE_URL, urlPath);
   
   // Generate image URL
-  const imageUrl = image?.src ? normalizeUrl(SITE_URL, image.src) : normalizeUrl(SITE_URL, '/bak-stunden.png');
+  const imageUrl = image?.src ? normalizeUrl(SITE_URL, image.src) : normalizeUrl(SITE_URL, '/kochera.png');
   const imageAlt = image?.alt || title;
   
   const imageMeta = {
@@ -188,7 +188,7 @@ export function generatePillarSchema(pillar) {
 
   const imageArray = image?.src
     ? [normalizeUrl(SITE_URL, image.src)]
-    : [normalizeUrl(SITE_URL, '/bak-stunden.png')];
+    : [normalizeUrl(SITE_URL, '/kochera.png')];
 
   const schema = {
     '@context': 'https://schema.org',
@@ -211,7 +211,7 @@ export function generatePillarSchema(pillar) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
         width: 512,
         height: 512,
       },
@@ -262,7 +262,7 @@ export function generatePillarHowToSchema(pillar) {
 
   const imageArray = image?.src
     ? [normalizeUrl(SITE_URL, image.src)]
-    : [normalizeUrl(SITE_URL, '/bak-stunden.png')];
+    : [normalizeUrl(SITE_URL, '/kochera.png')];
 
   const schema = {
     '@context': 'https://schema.org',
@@ -285,7 +285,7 @@ export function generatePillarHowToSchema(pillar) {
       name: 'Kochera',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
         width: 512,
         height: 512,
       },

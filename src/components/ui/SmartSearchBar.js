@@ -172,7 +172,7 @@ export default function SmartSearchBar({
     
     if (term) {
       saveToHistory(term);
-      router.push(`/recept?q=${encodeURIComponent(term)}`);
+      router.push(`/rezepte?q=${encodeURIComponent(term)}`);
       setIsOpen(false);
       setQuery('');
       setShowResults(false);
@@ -180,7 +180,7 @@ export default function SmartSearchBar({
   };
 
   const handleResultClick = (recipe) => {
-    router.push(`/recept/${recipe.slug}`);
+    router.push(`/${recipe.slug}`);
     setIsOpen(false);
     setQuery('');
     setShowResults(false);
@@ -402,7 +402,7 @@ export default function SmartSearchBar({
                       Inga recept hittades
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                      Prova att söka på ingredienser, taggar eller kategorier
+                      Versuchen Sie nach Zutaten, Tags oder Kategorien zu suchen
                     </p>
                     {suggestions.length > 0 && (
                       <div className="flex flex-wrap gap-2 justify-center">

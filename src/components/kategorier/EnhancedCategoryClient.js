@@ -315,7 +315,7 @@ export default function EnhancedCategoryClient({
                 <div className="mt-10 flex justify-center">
                   <button
                     onClick={() => setDisplayCount((p) => p + 12)}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-primary text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition"
                   >
                     Mehr anzeigen
                     <ArrowRight className="w-5 h-5" />
@@ -331,7 +331,7 @@ export default function EnhancedCategoryClient({
               <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mb-10">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-800">
-                    <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                      <Sparkles className="w-5 h-5 text-[var(--color-primary)] dark:text-[var(--color-primary-light)]" />
                   </span>
                   <div>
                     <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white">
@@ -445,7 +445,7 @@ export default function EnhancedCategoryClient({
                         <span className="font-semibold text-gray-900 dark:text-white">
                           {faq.question}
                         </span>
-                        <span className="text-purple-600 dark:text-purple-400 group-open:rotate-180 transition-transform">
+                        <span className="text-[var(--color-primary)] dark:text-[var(--color-primary-light)] group-open:rotate-180 transition-transform">
                           ▼
                         </span>
                       </summary>
@@ -456,7 +456,7 @@ export default function EnhancedCategoryClient({
                               <Link
                                 {...props}
                                 href={props.href || '#'}
-                                className="text-purple-600 dark:text-purple-400 underline hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors"
+                                className="text-[var(--color-primary)] dark:text-[var(--color-primary-light)] underline hover:text-[var(--color-primary-hover)] dark:hover:text-[var(--color-primary-light)] font-medium transition-colors"
                               />
                             ),
                           }}
@@ -479,7 +479,7 @@ export default function EnhancedCategoryClient({
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="rounded-3xl overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-2xl"
+                className="rounded-3xl overflow-hidden bg-gradient-primary text-white shadow-2xl"
               >
 <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 dark:border-white/10 dark:bg-white/5">
   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -579,7 +579,7 @@ function AllCategoriesSection({ categories }) {
 function EmptyState({ title, description, onReset }) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:bg-gray-900 dark:border-gray-800">
-      <div className="mx-auto w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center dark:bg-purple-900/30 dark:text-purple-200">
+      <div className="mx-auto w-12 h-12 rounded-2xl bg-[var(--color-bg-primary)] text-[var(--color-primary-hover)] flex items-center justify-center dark:bg-[var(--color-primary-darkest)]/30 dark:text-[var(--color-primary-light)]">
         <Search className="w-6 h-6" />
       </div>
       <h3 className="mt-4 text-lg font-extrabold text-gray-900 dark:text-white">{title}</h3>

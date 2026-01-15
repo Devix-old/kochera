@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow } from 'date-fns';
-import { sv } from 'date-fns/locale/sv';
+import { de } from 'date-fns/locale/de';
 import { useState } from 'react';
 import { Trash2, Check, Clock, AlertTriangle } from 'lucide-react';
 
@@ -13,10 +13,10 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
     try {
       return formatDistanceToNow(new Date(dateString), {
         addSuffix: true,
-        locale: sv,
+        locale: de,
       });
     } catch {
-      return new Date(dateString).toLocaleString('sv-SE');
+      return new Date(dateString).toLocaleString('de-DE');
     }
   };
 
@@ -51,12 +51,12 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
       pending: {
         icon: <Clock className="w-3 h-3" />,
         className: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
-        label: 'Väntar'
+        label: 'Wartend'
       },
       approved: {
         icon: <Check className="w-3 h-3" />,
         className: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-        label: 'Godkänd'
+        label: 'Genehmigt'
       },
       spam: {
         icon: <AlertTriangle className="w-3 h-3" />,
@@ -108,7 +108,7 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
 
       {comment.parent_id && (
         <div className="mb-4 p-3 bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-400 dark:border-purple-600 rounded text-sm text-purple-700 dark:text-purple-300">
-          💬 Svar på kommentar ID: {comment.parent_id}
+          💬 Antwort auf Kommentar ID: {comment.parent_id}
         </div>
       )}
 
@@ -121,10 +121,10 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
               ? 'bg-green-500 text-white cursor-not-allowed'
               : 'bg-green-600 hover:bg-green-700 text-white hover:shadow-md transform hover:scale-105 active:scale-95'
           }`}
-          title={currentStatus === 'approved' ? 'Redan godkänd' : 'Godkänn denna kommentar'}
+          title={currentStatus === 'approved' ? 'Bereits genehmigt' : 'Diesen Kommentar genehmigen'}
         >
           <Check className="w-4 h-4" />
-          {currentStatus === 'approved' ? 'Godkänd' : 'Godkänn'}
+          {currentStatus === 'approved' ? 'Genehmigt' : 'Genehmigen'}
         </button>
 
         {currentStatus !== 'pending' && (
@@ -145,7 +145,7 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
             className="px-4 py-2 text-sm bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-md transform hover:scale-105 active:scale-95"
           >
             <AlertTriangle className="w-4 h-4" />
-            Markera som spam
+            Als Spam markieren
           </button>
         )}
 

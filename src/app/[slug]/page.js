@@ -26,7 +26,7 @@ import RecipeSteps from '@/components/recipe/RecipeSteps';
 import NutritionInfo from '@/components/recipe/NutritionInfo';
 import RecipeCard from '@/components/recipe/RecipeCard';
 import ShareButton from '@/components/recipe/ShareButton';
-import CommentsSection from '@/components/recipe/CommentsSection';
+// import CommentsSection from '@/components/recipe/CommentsSection'; // Disabled - unused
 import { 
   RecipeTipsSection, 
   RecipeFAQSection, 
@@ -525,14 +525,14 @@ export default async function SlugPage({ params }) {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
           {/* Title, Description, and Image Section */}
-          <section className="mb-12 bg-gradient-to-br from-white to-purple-50/30 dark:from-gray-900 dark:to-purple-950/20 p-6 md:p-10 shadow-lg md:rounded-2xl border border-purple-100/50 dark:border-purple-900/30 backdrop-blur-sm transition-all duration-300 hover:shadow-xl">
+          <section className="mb-12 bg-gradient-to-br from-white to-[var(--color-bg-primary)] dark:from-gray-900 dark:to-[var(--color-primary-darkest)]/20 p-6 md:p-10 shadow-lg md:rounded-2xl border border-[var(--color-border-primary-light)] dark:border-[var(--color-primary-darkest)]/30 backdrop-blur-sm transition-all duration-300 hover:shadow-xl">
             
             {/* Single Grid Container: 1 column on mobile, 2 columns on desktop */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
               
               {/* 1. TITLE - Always first in DOM */}
               <div className="lg:col-start-1">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 to-purple-900 dark:from-white dark:to-purple-300 bg-clip-text text-transparent leading-tight font-crimson recipe-title-spacing mb-2">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 to-[var(--color-primary-darker)] dark:from-white dark:to-[var(--color-primary-light)] bg-clip-text text-transparent leading-tight font-crimson recipe-title-spacing mb-2">
                   {displayRecipeName}
                 </h1>
                 {/* 2. RATING & SHARE - Order 2 on both */}
@@ -591,8 +591,8 @@ export default async function SlugPage({ params }) {
               <div className="order-4 lg:col-start-1">
                 <div className="grid grid-cols-3 gap-2 py-3 border-t border-b border-purple-200/60 dark:border-purple-800/40">
                   <div className="flex flex-col items-center text-center">
-                    <div className="p-2 rounded-xl bg-purple-50 dark:bg-purple-900/30 mb-1.5">
-                      <Timer className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                    <div className="p-2 rounded-xl bg-[var(--color-bg-primary)] dark:bg-[var(--color-primary-darkest)]/30 mb-1.5">
+                      <Timer className="w-5 h-5 text-[var(--color-primary)] dark:text-[var(--color-primary-light)]" />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">
                       {frontmatter.totalTimeMinutes || 0} min
@@ -748,7 +748,7 @@ export default async function SlugPage({ params }) {
           {relatedRecipes.length > 0 && (
             <section aria-hidden="true" data-secondary-content className="pt-12 border-t border-gray-200 dark:border-gray-800 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <div className="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold mb-4">
+                <div className="inline-block px-4 py-2 bg-[var(--color-bg-primary-alt)] dark:bg-[var(--color-primary-darkest)]/30 text-[var(--color-primary-hover)] dark:text-[var(--color-primary-light)] rounded-full text-sm font-semibold mb-4">
                   {frontmatter.category}
                 </div>
                 <h2

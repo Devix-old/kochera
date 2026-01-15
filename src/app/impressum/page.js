@@ -24,9 +24,9 @@ export default function ImpressumPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Angaben gemäß § 5 TMG</h2>
             <p className="text-gray-700 leading-relaxed">
-              Kochera<br />
-              [Ihre Straße]<br />
-              [Ihre PLZ] [Ihr Ort]<br />
+            Nina Albrecht<br />
+              Gertrudenstraße 10<br />
+              41236 Mönchengladbach<br />
               Deutschland
             </p>
           </section>
@@ -34,8 +34,8 @@ export default function ImpressumPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontakt</h2>
             <p className="text-gray-700 leading-relaxed">
-              Telefon: [Ihre Telefonnummer]<br />
-              E-Mail: kontakt@kochera.de
+              Telefon: 0176 20000000<br />
+              E-Mail: info@kochera.de
             </p>
           </section>
 

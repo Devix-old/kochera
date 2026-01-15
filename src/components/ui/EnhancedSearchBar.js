@@ -72,7 +72,7 @@ export default function EnhancedSearchBar({
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      router.push(`/recept?q=${encodeURIComponent(query.trim())}`);
+      router.push(`/rezepte?q=${encodeURIComponent(query.trim())}`);
       setIsOpen(false);
       setQuery('');
       setShowResults(false);

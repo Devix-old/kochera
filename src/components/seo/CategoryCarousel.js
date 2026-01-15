@@ -22,17 +22,17 @@ export default function CategoryCarousel({ categories, currentCategory }) {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent mb-2">
-              Utforska fler kategorier
+              Weitere Kategorien entdecken
             </h2>
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-              Upptäck vårt urval av recept från olika kategorier
+              Entdecke unsere Auswahl an Rezepten aus verschiedenen Kategorien
             </p>
           </div>
           
           {/* Category count badge */}
           <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full">
             <span className="text-sm font-semibold text-purple-700 dark:text-purple-300">
-              {categories.length} kategorier
+              {categories.length} Kategorien
             </span>
           </div>
         </div>

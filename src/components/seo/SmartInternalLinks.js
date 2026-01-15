@@ -28,7 +28,7 @@ export default function SmartInternalLinks({ links, currentRecipe }) {
                 {linkGroup.links.map((recipe) => (
                   <Link
                     key={recipe.slug}
-                    href={`/recept/${recipe.slug}`}
+                    href={`/${recipe.slug}`}
                     className="group bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-300 hover:scale-105"
                   >
                     <div className="flex items-start space-x-3">
@@ -145,7 +145,7 @@ export function CategoryNavigation({ categories, currentCategory }) {
     <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-12 border border-gray-200 dark:border-gray-700">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Utforska fler kategorier
+          Weitere Kategorien entdecken
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category) => (
@@ -186,7 +186,7 @@ export function TrendingRecipes({ recipes, title = "Populära recept just nu" })
           {recipes.slice(0, 6).map((recipe) => (
             <Link
               key={recipe.slug}
-              href={`/recept/${recipe.slug}`}
+              href={`/${recipe.slug}`}
               className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700"
             >
               {recipe.image?.src && (

@@ -43,7 +43,7 @@ export function generateMetadata({
 }) {
   const fullTitle = title || SITE_NAME;
   const fullUrl = url ? normalizeUrl(SITE_URL, url) : SITE_URL;
-  const imageUrl = image ? normalizeUrl(SITE_URL, image) : normalizeUrl(SITE_URL, '/bak-stunden.png');
+  const imageUrl = image ? normalizeUrl(SITE_URL, image) : normalizeUrl(SITE_URL, '/kochera.png');
 
   const metadata = {
     title: fullTitle,
@@ -106,8 +106,8 @@ export function generateMetadata({
       yahoo: process.env.YAHOO_VERIFICATION,
     },
     other: {
-      'msapplication-TileColor': '#FF7A7A',
-      'theme-color': '#FF7A7A',
+      'msapplication-TileColor': '#9333EA',
+      'theme-color': '#9333EA',
       'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION,
     },
     category: type === 'article' ? 'Food & Cooking' : 'Food & Cooking',
@@ -153,7 +153,7 @@ export function generateRecipeSchema(recipe) {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/kochera-logo.png`,
         width: 512,
         height: 512,
       },
@@ -167,11 +167,11 @@ export function generateRecipeSchema(recipe) {
     recipeYield: recipe.servings ? `${recipe.servings} servings` : undefined,
     // MINOR #7: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: recipe.category || undefined,
-    recipeCuisine: 'Swedish',
+    recipeCuisine: 'German',
     // MINOR #5: Add mainEntityOfPage to reduce canonical mistakes
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': normalizeUrl(SITE_URL, `/recept/${recipe.slug || ''}`),
+      '@id': normalizeUrl(SITE_URL, `/${recipe.slug || ''}`),
     },
     keywords: recipe.tags?.join(', '),
     aggregateRating: recipe.ratingAverage ? {
@@ -214,7 +214,7 @@ export function generateRecipeSchema(recipe) {
     // Helper function to find nutrition value by Swedish name
     const findNutrition = (swedishName) => {
       const item = recipe.nutrition.find(n => 
-        n.name.toLowerCase() === swedishName.toLowerCase()
+        n.name.toLowerCase() === name.toLowerCase()
       );
       if (item) {
         const unit = item.unit || '';
@@ -289,7 +289,7 @@ export function generateArticleSchema(article) {
       // MINOR #12: Add width/height to logo
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
         width: 512,
         height: 512,
       },
@@ -387,7 +387,7 @@ export function generateOrganizationSchema() {
     inLanguage: 'de-DE',
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/logo.png'),
+      url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
       width: 512,
       height: 512,
     },
@@ -455,19 +455,19 @@ export function generateFAQSchema(faqs) {
 /**
  * Generate ItemList JSON-LD schema for listing pages
  * CRITICAL: Do NOT use @type: 'Recipe' for items in listings
- * Only actual recipe pages (/recept/[slug]) should have Recipe schema
+ * Only actual recipe pages ([slug]) should have Recipe schema
  * Listings should use simple references (name, url, image) without type
  */
-export function generateItemListSchema(items, type = null, basePath = '/recept') {
+export function generateItemListSchema(items, type = null, basePath = '') {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     // MINOR #3: Add inLanguage for multilingual sites
     inLanguage: 'de-DE',
     itemListElement: items.map((item, index) => {
-      // Use the provided basePath or default to /recept for recipes
+      // Use the provided basePath or default to direct slug for recipes
       // If item already has a full URL, use it; otherwise construct from basePath
-      const itemUrl = item.url || normalizeUrl(SITE_URL, `${basePath}/${item.slug}`);
+      const itemUrl = item.url || normalizeUrl(SITE_URL, basePath ? `${basePath}/${item.slug}` : `/${item.slug}`);
       
       const itemData = {
         name: item.title,

@@ -179,7 +179,7 @@ export function sortRecipes(recipes, sortBy = 'newest') {
       return sorted.sort((a, b) => a.totalTimeMinutes - b.totalTimeMinutes);
     
     case 'title':
-      return sorted.sort((a, b) => a.title.localeCompare(b.title, 'sv'));
+      return sorted.sort((a, b) => a.title.localeCompare(b.title, 'de'));
     
     default:
       return sorted;

@@ -158,7 +158,7 @@ export default function EnhancedHomeClient({
                 
                 {/* Text Content */}
                 <div className="p-1 flex-1 flex flex-col">
-                  <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                  <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-[var(--color-primary)] transition-colors">
                     {getRecipeName(recipe)}
                   </h3>
                   <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
@@ -194,14 +194,14 @@ export default function EnhancedHomeClient({
 
             {/* Text Content Section - Right on desktop, bottom on mobile */}
             <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-purple-600 rounded-full w-fit">
+              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-[var(--color-primary)] rounded-full w-fit">
                 Din Matkreatör
               </span>
               
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                Hallo! Ich bin <span className="text-purple-600">Kochera</span>.
+                Hallo! Ich bin <span className="text-[var(--color-primary)]">Nina Albrecht</span>.
               </h3>
-              
+               
               <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
                 <p>
                   Willkommen in meiner Küche! Ich habe diese Seite gegründet, um meine Leidenschaft für Kochen und Backen mit dir zu teilen.
@@ -213,7 +213,7 @@ export default function EnhancedHomeClient({
 
               <Link
                 href="/om"
-                className="group inline-flex items-center justify-center md:justify-start gap-2 bg-purple-600 text-white font-bold px-5 py-3 rounded-lg border-2 border-black shadow-md hover:bg-purple-700 transition-all duration-200 w-fit"
+                className="group inline-flex items-center justify-center md:justify-start gap-2 bg-[var(--color-primary)] text-white font-bold px-5 py-3 rounded-lg border-2 border-black shadow-md hover:bg-[var(--color-primary-hover)] transition-all duration-200 w-fit"
               >
                 <span>Mehr über unsere Reise erfahren</span>
                 <ArrowRight className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function EnhancedHomeClient({
           </h2>
           <Link
             href="/rezepte"
-            className="text-sm md:text-base text-purple-600 hover:text-purple-700 font-semibold hidden md:inline-flex items-center gap-1"
+            className="text-sm md:text-base text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-semibold hidden md:inline-flex items-center gap-1"
           >
             Alle ansehen
             <ArrowRight className="w-4 h-4" />
@@ -288,7 +288,7 @@ export default function EnhancedHomeClient({
                   
                   {/* Text Content */}
                   <div className="p-4 flex-1 flex flex-col">
-                    <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                    <h3 className="font-semibold text-gray-900 text-base md:text-lg mb-2 line-clamp-2 group-hover:text-[var(--color-primary)] transition-colors">
                       {getRecipeName(recipe)}
                     </h3>
                     <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
@@ -312,7 +312,7 @@ export default function EnhancedHomeClient({
         <div className="px-4 mt-6 text-center md:hidden">
           <Link
             href="/rezepte"
-            className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-semibold"
+            className="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-semibold"
           >
             Alle Rezepte ansehen
             <ArrowRight className="w-4 h-4" />

@@ -207,23 +207,23 @@ export async function POST(request) {
               </div>
             </div>
             <div class="footer">
-              <p>Detta meddelande skickades från kontaktformuläret på kochera.de</p>
-              <p>Du kan svara direkt på detta e-postmeddelande för att kontakta ${sanitizedName}.</p>
+              <p>Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet</p>
+              <p>Sie können direkt auf diese E-Mail antworten, um ${sanitizedName} zu kontaktieren.</p>
             </div>
           </body>
         </html>
       `,
       text: `
-Nytt meddelande från kontaktformuläret
+Neue Nachricht vom Kontaktformular
 
-Från: ${sanitizedName} (${sanitizedEmail})
-Ämne: ${sanitizedSubject}
+Von: ${sanitizedName} (${sanitizedEmail})
+Betreff: ${sanitizedSubject}
 
-Meddelande:
+Nachricht:
 ${sanitizedMessage}
 
 ---
-Detta meddelande skickades från kontaktformuläret på kochera.de
+Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet
       `.trim(),
     };
 
@@ -309,47 +309,47 @@ Detta meddelande skickades från kontaktformuläret på kochera.de
             </head>
             <body>
               <div class="header">
-                <h1 style="margin: 0; font-size: 24px;">Tack för ditt meddelande!</h1>
+                <h1 style="margin: 0; font-size: 24px;">Vielen Dank für Ihre Nachricht!</h1>
               </div>
               <div class="content">
-                <p>Hej ${sanitizedName},</p>
+                <p>Hallo ${sanitizedName},</p>
                 
-                <p>Tack för att du kontaktade oss på kochera! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.</p>
+                <p>Vielen Dank, dass Sie uns bei kochera kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.</p>
                 
                 <div class="message-box">
-                  <p style="margin: 0 0 10px 0; font-weight: bold; color: #6b7280; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Ditt meddelande:</p>
+                  <p style="margin: 0 0 10px 0; font-weight: bold; color: #6b7280; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Ihre Nachricht:</p>
                   <p style="margin: 0; color: #111827;">${sanitizedMessage.replace(/\n/g, '<br>')}</p>
                 </div>
                 
-                <p>Vi svarar vanligtvis inom <span class="highlight">24-48 timmar</span> på vardagar.</p>
+                <p>Wir antworten normalerweise innerhalb von <span class="highlight">24-48 Stunden</span> an Werktagen.</p>
                 
-                <p>Med vänliga hälsningar,<br><strong>Teamet på kochera</strong></p>
+                <p>Mit freundlichen Grüßen,<br><strong>Das Team von kochera</strong></p>
               </div>
               <div class="footer">
-                <p>Detta är ett automatiskt bekräftelsemeddelande. Du behöver inte svara på detta e-postmeddelande.</p>
-                <p>kochera.de | Sveriges bästa receptsamling</p>
+                <p>Dies ist eine automatische Bestätigungsnachricht. Sie müssen nicht auf diese E-Mail antworten.</p>
+                <p>kochera.de | Deutschlands beste Rezeptsammlung</p>
               </div>
             </body>
           </html>
         `,
         text: `
-Tack för ditt meddelande!
+Vielen Dank für Ihre Nachricht!
 
-Hej ${sanitizedName},
+Hallo ${sanitizedName},
 
-Tack för att du kontaktade oss på kochera! Vi har mottagit ditt meddelande och kommer att återkomma så snart som möjligt.
+Vielen Dank, dass Sie uns bei kochera kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.
 
-Ditt meddelande:
+Ihre Nachricht:
 ${sanitizedMessage}
 
-Vi svarar vanligtvis inom 24-48 timmar på vardagar. Om din fråga är brådskande, kan du också nå oss via våra sociala medier.
+Wir antworten normalerweise innerhalb von 24-48 Stunden an Werktagen. Wenn Ihre Frage dringend ist, können Sie uns auch über unsere Social-Media-Kanäle erreichen.
 
-Med vänliga hälsningar,
-Teamet på kochera
+Mit freundlichen Grüßen,
+Das Team von kochera
 
 ---
-Detta är ett automatiskt bekräftelsemeddelande. Du behöver inte svara på detta e-postmeddelande.
-kochera.de | Sveriges bästa receptsamling
+Dies ist eine automatische Bestätigungsnachricht. Sie müssen nicht auf diese E-Mail antworten.
+kochera.de | Deutschlands beste Rezeptsammlung
         `.trim(),
       });
     } catch (confirmationError) {

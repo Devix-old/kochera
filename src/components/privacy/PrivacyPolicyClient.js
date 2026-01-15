@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Shield, ArrowLeft, Mail, Globe, Building2 } from 'lucide-react';
 
 export default function PrivacyPolicyClient() {
-  const lastUpdated = new Date().toLocaleDateString('sv-SE', { 
+  const lastUpdated = new Date().toLocaleDateString('de-DE', { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
@@ -47,11 +47,11 @@ export default function PrivacyPolicyClient() {
             
             {/* 1. Introduction */}
             <section>
-              <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">1. Inledning</h2>
+              <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">1. Einleitung</h2>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                På kochera.de respekterar vi din integritet och är engagerade i att skydda dina personuppgifter. 
-                Denna integritetspolicy förklarar hur vi samlar in, använder och skyddar dina personuppgifter när du 
-                använder vår webbplats.
+                Auf kochera.de respektieren wir Ihre Privatsphäre und sind bestrebt, Ihre personenbezogenen Daten zu schützen. 
+                Diese Datenschutzerklärung erläutert, wie wir Ihre personenbezogenen Daten sammeln, verwenden und schützen, wenn Sie 
+                unsere Website nutzen.
               </p>
             </section>
 
@@ -118,8 +118,8 @@ export default function PrivacyPolicyClient() {
                   <p className="text-sm text-gray-600 dark:text-gray-400">För att driva, analysera och förbättra vår tjänst.</p>
                 </div>
                 <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-1">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Rättslig förpliktelse</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">För att följa svensk lagstiftning.</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Rechtliche Verpflichtung</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Um der deutschen Gesetzgebung zu entsprechen.</p>
                 </div>
               </div>
             </section>

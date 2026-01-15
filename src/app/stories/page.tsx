@@ -2,12 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Web Stories - kochera | Interaktiva Recept & Matinspiration',
-  description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept, matinspiration och bakningstips. Perfekt för mobil och desktop!',
-  keywords: 'web stories, recept stories, interaktiva recept, matinspiration, bakning, pannkakor, brunch',
+  title: 'Web Stories - kochera | Interaktive Rezepte & Kochenspiration',
+  description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten, Kochenspiration und Backtipps. Perfekt für Mobil und Desktop!',
+  keywords: 'web stories, rezept stories, interaktive rezepte, kochenspiration, backen, pfannkuchen, brunch',
   openGraph: {
-    title: 'Web Stories - kochera | Interaktiva Recept',
-    description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept och matinspiration.',
+    title: 'Web Stories - kochera | Interaktive Rezepte',
+    description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten und Kochenspiration.',
     url: 'https://kochera.de/stories',
     siteName: 'kochera',
     images: [
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
         alt: 'Amerikanska Pannkakor Web Story',
       },
     ],
-    locale: 'sv_SE',
+    locale: 'de_DE',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web Stories - kochera | Interaktiva Recept',
-    description: 'Upptäck våra interaktiva Web Stories med steg-för-steg recept och matinspiration.',
+    title: 'Web Stories - kochera | Interaktive Rezepte',
+    description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten und Kochenspiration.',
     images: ['https://kochera.de/images/stories/amerikanska-pannkakor-cover-1.webp'],
   },
   alternates: {
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 const stories = [
   {
     id: 'amerikanska-pannkakor',
-    title: 'Amerikanska Pannkakor – Fluffiga till Brunch',
-    description: 'Klassiskt recept för hela familjen med lönnsirap och blåbär',
+    title: 'Amerikanische Pfannkuchen – Fluffig zum Brunch',
+    description: 'Klassisches Rezept für die ganze Familie mit Ahornsirup und Blaubeeren',
     image: '/images/stories/amerikanska-pannkakor-cover-1.webp',
     duration: '20 min',
     difficulty: 'Enkel',
@@ -47,8 +47,8 @@ const stories = [
   // Placeholder for future stories
   {
     id: 'coming-soon-1',
-    title: 'Kladdkaka – Världens Godaste',
-    description: 'Mörk chokladkaka med perfekt kladdig konsistens',
+    title: 'Schokokuchen – Der Beste',
+    description: 'Dunkler Schokokuchen mit perfekt klebriger Konsistenz',
     image: '/images/recipes/kladdkaka-godaste-och-harligaste.webp',
     duration: '45 min',
     difficulty: 'Enkel',
@@ -58,8 +58,8 @@ const stories = [
   },
   {
     id: 'coming-soon-2',
-    title: 'Svenska Pannkakor – Klassisk',
-    description: 'Tunna pannkakor med sylt och grädde',
+    title: 'Klassische Pfannkuchen',
+    description: 'Dünne Pfannkuchen mit Marmelade und Sahne',
     image: '/images/recipes/svenska-pannkakor-klassisk.webp',
     duration: '30 min',
     difficulty: 'Enkel',
@@ -107,8 +107,8 @@ export default function StoriesPage() {
               📱 Web Stories
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              Upptäck våra interaktiva recept i form av engagerande Web Stories. 
-              Perfekt för mobil och desktop med steg-för-steg instruktioner.
+              Entdecke unsere interaktiven Rezepte in Form von ansprechenden Web Stories. 
+              Perfekt für Mobil und Desktop mit Schritt-für-Schritt Anleitungen.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
               <span className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
@@ -141,7 +141,7 @@ export default function StoriesPage() {
                 >
                   {story.featured && (
                     <div className="absolute top-4 left-4 z-10 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      ⭐ Populär
+                      ⭐ Beliebt
                     </div>
                   )}
                   
@@ -187,12 +187,12 @@ export default function StoriesPage() {
                         href={`/stories/${story.slug}`}
                         className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors group-hover:shadow-lg"
                       >
-                        Öppna Story
+                        Story öffnen
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                       </Link>
                     ) : (
                       <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-500 px-6 py-3 rounded-full font-semibold cursor-not-allowed">
-                        Kommer Snart
+                        Kommt Bald
                         <span>⏳</span>
                       </div>
                     )}
@@ -207,25 +207,25 @@ export default function StoriesPage() {
         <section className="py-16 px-4 bg-white/50">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Vill du se fler Web Stories?
+              Möchten Sie mehr Web Stories sehen?
             </h2>
             <p className="text-xl text-gray-700 mb-8">
-              Vi arbetar ständigt med att skapa nya interaktiva recept. 
-              Följ oss för att vara först med de senaste Web Stories!
+              Wir arbeiten ständig daran, neue interaktive Rezepte zu erstellen. 
+              Folgen Sie uns, um als Erster die neuesten Web Stories zu sehen!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/recept"
+                href="/rezepte"
                 className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
               >
-                Se alla recept
+                Alle Rezepte ansehen
                 <span>🍳</span>
               </Link>
               <Link
                 href="/"
                 className="inline-flex items-center gap-2 bg-white text-orange-500 border-2 border-orange-500 px-8 py-4 rounded-full font-semibold hover:bg-orange-50 transition-colors"
               >
-                Tillbaka till startsidan
+                Zurück zur Startseite
                 <span>🏠</span>
               </Link>
             </div>

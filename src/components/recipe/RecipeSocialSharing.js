@@ -6,7 +6,7 @@ import { normalizeUrl } from '@/lib/utils/url';
 
 export default function RecipeSocialSharing({ recipe }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
-  const shareUrl = normalizeUrl(siteUrl, `/recept/${recipe.slug}`);
+  const shareUrl = normalizeUrl(siteUrl, `/${recipe.slug}`);
   const shareText = `Kolla in detta fantastiska recept: ${recipe.recipeName || recipe.title}`;
 
   const handleInstagramClick = async (e) => {

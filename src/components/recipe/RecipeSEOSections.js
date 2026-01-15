@@ -135,7 +135,7 @@ export function RecipeFAQSection({ recipe, faqs = [] }) {
 function RelatedRecipeCard({ recipe }) {
   return (
     <Link
-      href={`/recept/${recipe.slug}`}
+      href={`/${recipe.slug}`}
       className="group bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-700"
     >
       {recipe.image?.src && (
@@ -230,7 +230,7 @@ export function RecipeCategoriesSection({ categories, currentCategory }) {
     <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-12 border border-gray-200 dark:border-gray-700">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-          Utforska fler kategorier
+          Weitere Kategorien entdecken
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category) => (
@@ -265,9 +265,12 @@ export function RecipeSocialSection({ recipe }) {
  */
 function getDifficultyDescription(difficulty) {
   const descriptions = {
-    'Lätt': 'Perfekt för nybörjare med enkla tekniker och få ingredienser.',
-    'Medel': 'Kräver lite erfarenhet och några grundläggande matlagningsfärdigheter.',
-    'Svår': 'Avancerat recept som kräver erfarenhet och precision.'
+    'Lätt': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
+    'Einfach': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
+    'Medel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
+    'Mittel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
+    'Svår': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.',
+    'Schwer': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.'
   };
-  return descriptions[difficulty] || descriptions['Medel'];
+  return descriptions[difficulty] || descriptions['Mittel'] || 'Mittlerer Schwierigkeitsgrad.';
 }

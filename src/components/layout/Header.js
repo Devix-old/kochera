@@ -68,14 +68,12 @@ export default function Header({ recipes = [] }) {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                  <Utensils className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  Kochera
-                </span>
-              </div>
+              <img
+                src="/kochera-logo.png"
+                alt="Kochera Logo"
+                className="h-12 w-auto"
+                loading="eager"
+              />
             </Link>
           </div>
 
@@ -92,8 +90,8 @@ export default function Header({ recipes = [] }) {
                   href={item.href}
                   className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive(item.href)
-                      ? 'text-purple-600 dark:text-purple-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+                      ? 'text-[var(--color-primary)] dark:text-[var(--color-primary-light)]'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary-light)]'
                   }`}
                 >
                   <item.icon className="w-4 h-4" />
@@ -163,8 +161,8 @@ export default function Header({ recipes = [] }) {
                       onClick={() => toggleMobileDropdown(item.label)}
                       className={`flex items-center justify-between w-full px-3 py-2 rounded-md text-base font-medium ${
                         isActive(item.href)
-                          ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          ? 'text-[var(--color-primary)] dark:text-[var(--color-primary-light)] bg-[var(--color-bg-primary)] dark:bg-[var(--color-primary-darkest)]/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary-light)] hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
                       <div className="flex items-center space-x-2">
@@ -180,8 +178,8 @@ export default function Header({ recipes = [] }) {
                       href={item.href}
                       className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium ${
                         isActive(item.href)
-                          ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          ? 'text-[var(--color-primary)] dark:text-[var(--color-primary-light)] bg-[var(--color-bg-primary)] dark:bg-[var(--color-primary-darkest)]/20'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary-light)] hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -195,7 +193,7 @@ export default function Header({ recipes = [] }) {
                     <div className="ml-6 space-y-1 max-h-[60vh] overflow-y-auto overscroll-contain">
                       <Link
                         href={item.href}
-                        className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm text-purple-600 dark:text-purple-400 font-semibold sticky top-0 bg-white dark:bg-gray-900 z-10"
+                        className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm text-[var(--color-primary)] dark:text-[var(--color-primary-light)] font-semibold sticky top-0 bg-white dark:bg-gray-900 z-10"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         <span className="text-sm">📋</span>
@@ -205,7 +203,7 @@ export default function Header({ recipes = [] }) {
                         <Link
                           key={dropdownItem.href}
                           href={dropdownItem.href}
-                          className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+                          className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm text-gray-600 dark:text-gray-400 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary-light)]"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           <span className="text-sm">{dropdownItem.icon}</span>

@@ -3,14 +3,13 @@
 
 # TEAM
 
-    Emma Andersson -- Mat-entusiast och receptutvecklare
-    Sara Bergman -- Kokkonsult och matskribent  
-    Erik Lindström -- Matbloggare och grill-expert
+    Kochera Team -- Koch-Enthusiasten und Rezeptentwickler
+    Kochera Team -- Küchenberater und Food-Blogger  
 
 # THANKS
 
-    Alla som bidragit med recept och feedback
-    Open source-communityn
+    Alle, die Rezepte und Feedback beigetragen haben
+    Open-Source-Community
 
 # TECHNOLOGY COLOPHON
 
@@ -25,7 +24,6 @@
 # SITE
 
     Last update: 2024-10-12
-    Language: Svenska / Swedish
+    Language: Deutsch / German
     Doctype: HTML5
     IDE: VS Code, Cursor
-

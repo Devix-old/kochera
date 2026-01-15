@@ -56,10 +56,16 @@ const nextConfig = {
         destination: 'https://kochera.de/:path*',
         permanent: true, // 301 redirect
       },
-      // Redirect /categories/* to /kategorier/* (Swedish)
+      // Redirect /categories/* to /kategorien/* (German)
       {
         source: '/categories/:path*',
-        destination: '/kategorier/:path*',
+        destination: '/kategorien/:path*',
+        permanent: true, // 301 redirect
+      },
+      // Redirect /kategorier/* to /kategorien/* (consolidate routes)
+      {
+        source: '/kategorier/:path*',
+        destination: '/kategorien/:path*',
         permanent: true, // 301 redirect
       },
     ];

@@ -60,7 +60,7 @@ export default function NotFoundClient() {
             </Link>
             
             <Link
-              href="/recept"
+              href="/rezepte"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-orange-300 dark:hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transform hover:scale-105 transition-all duration-300"
             >
               <Search className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function NotFoundClient() {
             className="mt-12"
           >
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">
-              Populära kategorier
+              Beliebte Kategorien
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
