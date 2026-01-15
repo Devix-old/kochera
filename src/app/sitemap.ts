@@ -76,18 +76,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         )
       : new Date();
 
-  // Static pages
+  // Static pages - use static date for legal pages
+  const staticDate = new Date('2026-01-15');
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: mostRecent, changeFrequency: 'daily', priority: 1 },
     { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
     { url: normalizeUrl(baseUrl, '/kategorien'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
-    { url: normalizeUrl(baseUrl, '/om'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.6 },
-    { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: new Date('2024-01-01'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: normalizeUrl(baseUrl, '/impressum'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
-    { url: normalizeUrl(baseUrl, '/agb'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
-    { url: normalizeUrl(baseUrl, '/disclaimer'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
-    { url: normalizeUrl(baseUrl, '/cookie-policy'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
-    { url: normalizeUrl(baseUrl, '/privacy-policy'), lastModified: new Date('2024-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/ueber-uns'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.5 },
+    { url: normalizeUrl(baseUrl, '/impressum'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/datenschutz'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },
   ];
 
   // Dynamic recipe routes
@@ -156,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const categoryRoutes: MetadataRoute.Sitemap = categories.map((category) => ({
     url: normalizeUrl(baseUrl, `/${category.slug}`),
-    lastModified: categoryDateMap.get(category.name) || new Date('2024-01-01'),
+    lastModified: categoryDateMap.get(category.name) || staticDate,
     changeFrequency: 'weekly',
     priority: 0.7,
   }));

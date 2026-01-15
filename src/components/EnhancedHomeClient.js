@@ -212,7 +212,7 @@ export default function EnhancedHomeClient({
               </div>
 
               <Link
-                href="/om"
+                href="/ueber-uns"
                 className="group inline-flex items-center justify-center md:justify-start gap-2 bg-[var(--color-primary)] text-white font-bold px-5 py-3 rounded-lg border-2 border-black shadow-md hover:bg-[var(--color-primary-hover)] transition-all duration-200 w-fit"
               >
                 <span>Mehr über unsere Reise erfahren</span>

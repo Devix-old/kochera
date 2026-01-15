@@ -6,7 +6,7 @@ export default function Footer() {
     { name: "Startseite", href: '/' },
     { name: 'Rezepte', href: '/rezepte' },
     { name: 'Kategorien', href: '/kategorien' },
-    { name: 'Über uns', href: '/om' },
+    { name: 'Über uns', href: '/ueber-uns' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 
@@ -78,7 +78,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <Link
-                href="/privacy-policy"
+                href="/datenschutz"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Datenschutzerklärung
@@ -88,24 +88,6 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Impressum
-              </Link>
-              <Link
-                href="/agb"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                AGB
-              </Link>
-              <Link
-                href="/disclaimer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Haftungsausschluss
-              </Link>
-              <Link
-                href="/cookie-policy"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Cookie-Richtlinie
               </Link>
             </div>
           </div>

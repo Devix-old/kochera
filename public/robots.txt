@@ -1,5 +1,5 @@
 User-agent: *
-# Allow everything by default (includes /recept, /kategorier, /images, etc.)
+# Allow everything by default
 Allow: /
 
 # Block ONLY dangerous/admin areas
@@ -7,13 +7,9 @@ Disallow: /admin/
 Disallow: /api/internal
 Disallow: /api/admin
 Disallow: /private/
-Disallow: /seo-optiz/
 
-# Block removed pages (Snabbmat and Måltider)
-Disallow: /snabbmat/
-Disallow: /maltider/
 
-# Google Image Bot - explicitly allow all images (redundant but good for clarity)
+# Google Image Bot - explicitly allow all images
 User-agent: Googlebot-Image
 Allow: /
 

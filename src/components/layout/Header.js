@@ -39,7 +39,7 @@ export default function Header({ recipes = [] }) {
     },
     {
       label: 'Über uns',
-      href: '/om',
+      href: '/ueber-uns',
       icon: Users
     },
     // {

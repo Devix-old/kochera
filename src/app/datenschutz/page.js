@@ -6,20 +6,20 @@ export const metadata = {
   title: 'Datenschutzerklärung - Kochera',
   description: 'Lesen Sie unsere Datenschutzerklärung und wie wir Ihre personenbezogenen Daten auf kochera.de verarbeiten',
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   alternates: {
-    canonical: `${siteUrl}/privacy-policy`,
+    canonical: `${siteUrl}/datenschutz`,
   },
   openGraph: {
     title: 'Datenschutzerklärung - Kochera',
     description: 'Lesen Sie unsere Datenschutzerklärung und wie wir Ihre personenbezogenen Daten verarbeiten',
     type: 'website',
-    url: `${siteUrl}/privacy-policy`,
+    url: `${siteUrl}/datenschutz`,
   },
 };
 
-export default function PrivacyPolicyPage() {
+export default function DatenschutzPage() {
   return <PrivacyPolicyClient />;
 }

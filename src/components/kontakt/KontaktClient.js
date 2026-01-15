@@ -273,7 +273,7 @@ export default function KontaktClient() {
                   <span className="font-medium text-gray-700 dark:text-gray-300">Vanliga frågor</span>
                 </div>
                 <Link 
-                  href="/om" 
+                  href="/ueber-uns" 
                   className="flex items-center gap-1 text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:gap-2 transition-all"
                 >
                   Läs mer <ArrowRight className="w-4 h-4" />

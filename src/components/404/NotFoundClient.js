@@ -111,7 +111,7 @@ export default function NotFoundClient() {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Om du tror att detta är ett fel,{' '}
               <Link 
-                href="/om" 
+                href="/ueber-uns" 
                 className="text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 underline"
               >
                 kontakta oss
