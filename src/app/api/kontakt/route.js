@@ -4,8 +4,13 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialize Resend only when needed
+function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    return null;
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 // Simple rate limiting store (in production, use Redis or similar)
 const rateLimitStore = new Map();
@@ -100,17 +105,10 @@ export async function POST(request) {
     }
 
     // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json(
-        { error: 'Email service is not configured. Please contact the administrator.' },
-        { status: 500 }
-      );
-    }
-
-    // Verify Resend is initialized
+    const resend = getResend();
     if (!resend) {
       return NextResponse.json(
-        { error: 'Email service initialization failed.' },
+        { error: 'Email service is not configured. Please contact the administrator.' },
         { status: 500 }
       );
     }
