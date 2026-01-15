@@ -50,10 +50,10 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.kochera.de',
+            value: 'www.kochira.de',
           },
         ],
-        destination: 'https://kochera.de/:path*',
+        destination: 'https://kochira.de/:path*',
         permanent: true, // 301 redirect
       },
       // Redirect /categories/* to /kategorien/* (German)

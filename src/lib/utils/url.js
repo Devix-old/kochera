@@ -2,14 +2,14 @@
  * Normalize URL by removing double slashes
  * Handles cases where base URL and path are concatenated
  * 
- * @param {string} baseUrl - The base URL (e.g., "https://kochera.de")
+ * @param {string} baseUrl - The base URL (e.g., "https://kochira.de")
  * @param {string} path - The path to append (e.g., "/recipe-slug" or "recipe-slug")
  * @returns {string} - Normalized URL with single slashes
  * 
  * @example
- * normalizeUrl("https://kochera.de", "/recipe") // "https://kochera.de/recipe"
- * normalizeUrl("https://kochera.de/", "/recipe") // "https://kochera.de/recipe"
- * normalizeUrl("https://kochera.de", "recipe") // "https://kochera.de/recipe"
+ * normalizeUrl("https://kochira.de", "/recipe") // "https://kochira.de/recipe"
+ * normalizeUrl("https://kochira.de/", "/recipe") // "https://kochira.de/recipe"
+ * normalizeUrl("https://kochira.de", "recipe") // "https://kochira.de/recipe"
  */
 export function normalizeUrl(baseUrl, path) {
   if (!path) return baseUrl;

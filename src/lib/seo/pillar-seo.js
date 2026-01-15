@@ -5,7 +5,7 @@
 
 import { normalizeUrl } from '@/lib/utils/url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 /**
  * Generate comprehensive pillar page metadata
@@ -16,7 +16,7 @@ export function generatePillarMetadata(pillar) {
     title = '',
     excerpt = '',
     image,
-    author = 'Kochera Team',
+    author = 'kochira Team',
     publishedAt,
     updatedAt,
     tags = [],
@@ -39,7 +39,7 @@ export function generatePillarMetadata(pillar) {
   const canonicalUrl = normalizeUrl(SITE_URL, urlPath);
   
   // Generate image URL
-  const imageUrl = image?.src ? normalizeUrl(SITE_URL, image.src) : normalizeUrl(SITE_URL, '/kochera.png');
+  const imageUrl = image?.src ? normalizeUrl(SITE_URL, image.src) : normalizeUrl(SITE_URL, '/kochira.png');
   const imageAlt = image?.alt || title;
   
   const imageMeta = {
@@ -62,13 +62,13 @@ export function generatePillarMetadata(pillar) {
       title: seoTitle,
       description: seoDescription,
       url: canonicalUrl,
-      siteName: 'Kochera',
+      siteName: 'kochira',
       images: [imageMeta],
       locale: 'de_DE',
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: updatedAt || publishedAt,
-      authors: author ? [author] : ['Kochera Team'],
+      authors: author ? [author] : ['kochira Team'],
       tags: tags,
     },
     twitter: {
@@ -76,8 +76,8 @@ export function generatePillarMetadata(pillar) {
       title: seoTitle,
       description: seoDescription,
       images: [imageUrl],
-      creator: '@kochera',
-      site: '@kochera',
+      creator: '@kochira',
+      site: '@kochira',
     },
     robots: {
       index: true,
@@ -91,7 +91,7 @@ export function generatePillarMetadata(pillar) {
       },
     },
     other: {
-      'article:author': author || 'Kochera Team',
+      'article:author': author || 'kochira Team',
       'accessibility': 'screen-reader-optimized',
     },
     alternates: {
@@ -109,7 +109,7 @@ function generatePillarTitle(title = '', mainKeyword = '') {
     return trimmedTitle;
   }
   // Fallback to keyword-based title
-  return mainKeyword ? `${mainKeyword} - Complete Guide | Kochera` : 'Complete Guide | Kochera';
+  return mainKeyword ? `${mainKeyword} - Complete Guide | kochira` : 'Complete Guide | kochira';
 }
 
 /**
@@ -136,7 +136,7 @@ export function generatePillarKeywords(tags = [], mainKeyword = '', relatedKeywo
     'best practices',
     'tutorial',
     'complete guide',
-    'kochera'
+    'kochira'
   ];
   
   // Extract meaningful words from title
@@ -173,7 +173,7 @@ export function generatePillarSchema(pillar) {
     title,
     excerpt,
     image,
-    author = 'Kochera Team',
+    author = 'kochira Team',
     publishedAt,
     updatedAt,
     mainKeyword = '',
@@ -188,7 +188,7 @@ export function generatePillarSchema(pillar) {
 
   const imageArray = image?.src
     ? [normalizeUrl(SITE_URL, image.src)]
-    : [normalizeUrl(SITE_URL, '/kochera.png')];
+    : [normalizeUrl(SITE_URL, '/kochira.png')];
 
   const schema = {
     '@context': 'https://schema.org',
@@ -208,10 +208,10 @@ export function generatePillarSchema(pillar) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Kochera',
+      name: 'kochira',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
         width: 512,
         height: 512,
       },
@@ -247,7 +247,7 @@ export function generatePillarHowToSchema(pillar) {
     title,
     excerpt,
     image,
-    author = 'Kochera Team',
+    author = 'kochira Team',
     publishedAt,
     updatedAt,
     steps = [],
@@ -262,7 +262,7 @@ export function generatePillarHowToSchema(pillar) {
 
   const imageArray = image?.src
     ? [normalizeUrl(SITE_URL, image.src)]
-    : [normalizeUrl(SITE_URL, '/kochera.png')];
+    : [normalizeUrl(SITE_URL, '/kochira.png')];
 
   const schema = {
     '@context': 'https://schema.org',
@@ -282,10 +282,10 @@ export function generatePillarHowToSchema(pillar) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Kochera',
+      name: 'kochira',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
         width: 512,
         height: 512,
       },

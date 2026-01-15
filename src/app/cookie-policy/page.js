@@ -1,11 +1,11 @@
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 export const metadata = {
   ...generateSiteMetadata({
-    title: 'Cookie-Richtlinie - Kochera',
-    description: 'Informationen über die Verwendung von Cookies auf Kochera',
+    title: 'Cookie-Richtlinie - kochira',
+    description: 'Informationen über die Verwendung von Cookies auf kochira',
     url: '/cookie-policy',
   }),
   robots: {
@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Wie verwenden wir Cookies?</h2>
             <p className="text-gray-700 leading-relaxed">
-              Kochera verwendet Cookies, um:
+              kochira verwendet Cookies, um:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-2 text-gray-700">
               <li>Die Funktionalität der Website sicherzustellen</li>
@@ -98,7 +98,7 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontakt</h2>
             <p className="text-gray-700 leading-relaxed">
-              Wenn Sie Fragen zu unserer Cookie-Richtlinie haben, können Sie uns unter kontakt@kochera.de kontaktieren.
+              Wenn Sie Fragen zu unserer Cookie-Richtlinie haben, können Sie uns unter kontakt@kochira.de kontaktieren.
             </p>
           </section>
 

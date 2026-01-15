@@ -9,25 +9,25 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata = {
   title: 'Alle Rezepte - Kochrezepte für jeden Anlass',
-  description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
+  description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
   keywords: 'Rezepte, Essen, Kochen, Hähnchen, Pasta, vegetarisch, Brownie, Pfannkuchen, deutsche Rezepte, Frühstück, Mittagessen, Abendessen, Dessert, Familienrezepte',
   openGraph: {
-    title: 'Alle Rezepte | Kochera',
-    description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
+    title: 'Alle Rezepte | kochira',
+    description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
     type: 'website',
     images: [
       {
         url: '/images/fika-och-bakning-svensk-stil.webp',
         width: 1200,
         height: 630,
-        alt: 'Deutsche Rezepte - Kochera',
+        alt: 'Deutsche Rezepte - kochira',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alle Rezepte | Kochera',
-    description: 'Entdecke hunderte getestete Rezepte von Kochera. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
+    title: 'Alle Rezepte | kochira',
+    description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
     images: ['/images/fika-och-bakning-svensk-stil.webp'],
   },
 };

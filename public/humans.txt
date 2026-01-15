@@ -3,8 +3,8 @@
 
 # TEAM
 
-    Kochera Team -- Koch-Enthusiasten und Rezeptentwickler
-    Kochera Team -- Küchenberater und Food-Blogger  
+    kochira Team -- Koch-Enthusiasten und Rezeptentwickler
+    kochira Team -- Küchenberater und Food-Blogger  
 
 # THANKS
 

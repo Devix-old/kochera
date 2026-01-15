@@ -43,16 +43,16 @@ const crimson = Crimson_Text({
 
 export const metadata = {
   ...generateSiteMetadata({
-    title: 'Kochera – Deutschlands beste Rezepte | Kochen & Backen für jeden Anlass',
+    title: 'kochira – Deutschlands beste Rezepte | Kochen & Backen für jeden Anlass',
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     url: '/',
     keywords: 'Rezepte, Kochrezepte, Kochen, deutsche Rezepte, Backen, Backrezepte, vegetarisch, vegan, glutenfrei, Frühstück, Mittagessen, Abendessen, Dessert, Schnellgericht, Alltagsessen, Kochbuch, deutsche Küche, Familienrezepte, hausgemachtes Essen, Hähnchenhack Rezepte, Pfannkuchen Rezepte, Hähnchenschenkel Rezepte, Brownie Rezepte, Lasagne Rezepte, Scones Rezepte, Schokobällchen Rezepte, Waffeln Rezepte, Zimtschnecken Rezepte, Frikadellen Rezepte, Carbonara Rezepte, Jägerschnitzel Rezepte, Hähnchen Rezepte, Rührkuchen Rezepte, Lachs Rezepte, Muffins Rezepte, Apfelmus Rezepte, Apfelkuchen Rezepte, Pasta Rezepte, vegetarische Rezepte, gesundes Essen, italienische Küche, asiatische Küche, Salate, Suppen, Schritt-für-Schritt Rezepte, einfache Rezepte, schnelle Rezepte, Alltagsrezepte, Festessen, Partyessen',
   }),
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de'),
   title: {
-    default: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
+    default: 'kochira – Deutschlands beste Rezepte für jeden Anlass',
   },
-  applicationName: 'Kochera',
+  applicationName: 'kochira',
   generator: 'Next.js',
   icons: {
     icon: [
@@ -66,24 +66,24 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    url: 'https://kochera.de',
-    siteName: 'Kochera',
-    title: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
+    url: 'https://kochira.de',
+    siteName: 'kochira',
+    title: 'kochira – Deutschlands beste Rezepte für jeden Anlass',
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
     images: [
       {
-        url: '/kochera.png',
+        url: '/kochira.png',
         width: 1200,
         height: 630,
-        alt: 'Kochera - Deutschlands beste Rezepte für jeden Anlass',
+        alt: 'kochira - Deutschlands beste Rezepte für jeden Anlass',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kochera – Deutschlands beste Rezepte für jeden Anlass',
+    title: 'kochira – Deutschlands beste Rezepte für jeden Anlass',
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',
-    images: ['/kochera.png'],
+    images: ['/kochira.png'],
   },
   manifest: '/manifest.json',
   other: {

@@ -30,7 +30,7 @@ import ShareButton from '@/components/recipe/ShareButton';
  *   2) Single category pillar view with recipe grid and smart filters
  *
  * Notes:
- * - All UI texts are German (Kochera = DE).
+ * - All UI texts are German (kochira = DE).
  * - Design: modern, clean, strong hero, sticky controls, better spacing, glass overlays.
  */
 export default function EnhancedCategoryClient({
@@ -52,7 +52,7 @@ export default function EnhancedCategoryClient({
 
   // Get current URL for sharing
   const pathname = usePathname();
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de');
+  const siteUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de');
   const currentUrl = `${siteUrl}${pathname}`;
 
   // ---------- Helpers ----------
@@ -210,7 +210,7 @@ export default function EnhancedCategoryClient({
   <div className="px-0 sm:px-8 lg:px-16 relative h-[420px] sm:h-[380px] md:h-[460px] overflow-hidden">
     <img
       src={heroImage}
-      alt={showAllCategories ? 'Kategorien – Kochera' : `${category?.name || 'Kategorie'} – Kochera`}
+      alt={showAllCategories ? 'Kategorien – kochira' : `${category?.name || 'Kategorie'} – kochira`}
       className="w-full h-full object-cover"
     />
 
@@ -273,7 +273,7 @@ export default function EnhancedCategoryClient({
       ) : (
         <>
           {/* Recipes */}
-          <section id="kochera-recipes" className="py-10 md:py-14">
+          <section id="kochira-recipes" className="py-10 md:py-14">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 variants={fadeUp}

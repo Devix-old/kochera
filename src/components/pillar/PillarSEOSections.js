@@ -3,7 +3,7 @@ import { BookOpen, Share2, TrendingUp } from 'lucide-react';
 import ShareButton from '@/components/recipe/ShareButton';
 import { normalizeUrl } from '@/lib/utils/url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 /**
  * Social sharing section for pillar pages

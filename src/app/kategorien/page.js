@@ -7,7 +7,7 @@ import { normalizeUrl } from '@/lib/utils/url';
 
 export async function generateMetadata() {
   return generateSiteMetadata({
-    title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | Kochera',
+    title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | kochira',
     description: 'Entdecke alle unsere Rezeptkategorien: Hähnchen, Pasta, Vegetarisch, Kuchen, Pfannkuchen und vieles mehr. Über 100+ Rezepte in 16 Kategorien für alle Geschmäcker und Anlässe.',
     url: '/kategorien',
     keywords: 'Rezeptkategorien, Matkategorien, Hähnchen Rezepte, Pasta Rezepte, vegetarische Rezepte, Kuchen Rezepte, Pfannkuchen Rezepte, deutsche Rezepte, Kochen, Kochbuch, Rezept Inspiration, Kategorien Essen, alle Rezepte, Rezept Sortierung',
@@ -17,7 +17,7 @@ export async function generateMetadata() {
           url: '/images/fika-och-bakning-svensk-stil.webp',
           width: 1200,
           height: 630,
-          alt: 'Alle Rezeptkategorien auf Kochera',
+          alt: 'Alle Rezeptkategorien auf kochira',
         },
       ],
     },
@@ -70,13 +70,13 @@ export default async function KategorienPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Startseite',
-        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'
+        item: process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Kategorien',
-        item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', '/kategorien')
+        item: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de', '/kategorien')
       }
     ]
   };
@@ -86,7 +86,7 @@ export default async function KategorienPage() {
     '@type': 'CollectionPage',
     name: 'Alle Rezeptkategorien',
     description: 'Entdecke alle unsere Rezeptkategorien mit über 100+ Rezepten für alle Geschmäcker und Anlässe',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de'}/kategorien`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de'}/kategorien`,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: allCategories.length,
@@ -97,7 +97,7 @@ export default async function KategorienPage() {
           '@type': 'Thing',
           name: category.name,
           description: category.description,
-          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de', `/${category.slug}`)
+          url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de', `/${category.slug}`)
         }
       }))
     }

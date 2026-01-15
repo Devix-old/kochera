@@ -1,5 +1,5 @@
 /**
- * Comprehensive food categories for kochera (German)
+ * Comprehensive food categories for kochira (German)
  * Organized for optimal user experience and SEO
  * Categories match pillar pages and home page story categories
  */

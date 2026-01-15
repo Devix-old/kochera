@@ -220,10 +220,10 @@ export default function KontaktClient() {
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-1">E-post</h3>
                     <a 
-                      href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochera.de'}`}
+                      href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochira.de'}`}
                       className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
-                      {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochera.de'}
+                      {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochira.de'}
                     </a>
                   </div>
                 </div>

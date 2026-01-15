@@ -6,7 +6,7 @@
 import { normalizeUrl } from '@/lib/utils/url';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 /**
  * Generate comprehensive recipe metadata
@@ -21,7 +21,7 @@ export function generateRecipeMetadata(recipe) {
     title = '',
     excerpt = '',
     image,
-    author = 'Kochera Team',
+    author = 'kochira Team',
     publishedAt,
     updatedAt,
     tags = [],
@@ -76,7 +76,7 @@ export function generateRecipeMetadata(recipe) {
       title: seoTitle,
       description: seoDescription,
       url: canonicalUrl,
-      siteName: 'Kochera',
+      siteName: 'kochira',
       // Only include images if we have a valid recipe image
       // Empty array or missing images property is better than wrong image
       ...(imageMeta ? { images: [imageMeta] } : {}),
@@ -84,7 +84,7 @@ export function generateRecipeMetadata(recipe) {
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: updatedAt || publishedAt,
-      authors: author ? [author] : ['Kochera Team'],
+      authors: author ? [author] : ['kochira Team'],
       tags: tags,
       section: category,
     },
@@ -94,8 +94,8 @@ export function generateRecipeMetadata(recipe) {
       description: seoDescription,
       // Only include images if we have a valid recipe image
       ...(imageUrl ? { images: [imageUrl] } : {}),
-      creator: '@kochera',
-      site: '@kochera',
+      creator: '@kochira',
+      site: '@kochira',
     },
     robots: {
       index: true,
@@ -110,7 +110,7 @@ export function generateRecipeMetadata(recipe) {
     },
     // NICE-TO-HAVE #12: Add metadata for AI/LLM discovery
     other: {
-      'article:author': author || 'Kochera Team',
+      'article:author': author || 'kochira Team',
       // Add content accessibility hints
       'accessibility': 'screen-reader-optimized',
     },
@@ -140,7 +140,7 @@ function generateRecipeTitle(title = '', category = '', difficulty = '') {
  */
 function generateRecipeDescription(excerpt = '', category = '', totalTimeMinutes = 0, servings = 0) {
   // Use the exact excerpt from MDX file without any modifications
-  return excerpt || 'Lerne, wie du leckeres Essen mit unserer Schritt-für-Schritt-Anleitung auf Kochera zubereitest.';
+  return excerpt || 'Lerne, wie du leckeres Essen mit unserer Schritt-für-Schritt-Anleitung auf kochira zubereitest.';
 }
 
 /**
@@ -376,14 +376,14 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     },
     author: {
       '@type': 'Person',
-      name: author || 'Kochera Team',
+      name: author || 'kochira Team',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Kochera',
+      name: 'kochira',
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
         width: 512,
         height: 512,
       },
@@ -697,11 +697,11 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Kochera',
+    name: 'kochira',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+      url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
       width: 512,
       height: 512,
     },
@@ -710,10 +710,10 @@ export function generateOrganizationSchema() {
     sameAs: [
       // TODO: Add social media profiles once accounts are created
       // Uncomment and update with actual social media URLs:
-      // 'https://www.instagram.com/kochera',
-      // 'https://www.facebook.com/kochera',
-      // 'https://twitter.com/kochera',
-      // 'https://pinterest.com/kochera',
+      // 'https://www.instagram.com/kochira',
+      // 'https://www.facebook.com/kochira',
+      // 'https://twitter.com/kochira',
+      // 'https://pinterest.com/kochira',
     ].filter(Boolean), // Remove empty entries
   };
 }
@@ -726,7 +726,7 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Kochera',
+    name: 'kochira',
     url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',

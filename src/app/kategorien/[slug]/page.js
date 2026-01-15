@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
   });
 
   return generateSiteMetadata({
-    title: `${category.name} Rezepte - ${filteredRecipes.length}+ Leckere Rezepte | Kochera`,
+    title: `${category.name} Rezepte - ${filteredRecipes.length}+ Leckere Rezepte | kochira`,
     description: `${category.description} Finde die besten ${category.name.toLowerCase()} Rezepte mit Schritt-für-Schritt-Anleitungen. ${filteredRecipes.length}+ getestete Rezepte für alle Levels.`,
     url: `/kategorien/${slug}`,
     keywords: `${category.name.toLowerCase()}, ${category.name.toLowerCase()} Rezepte, leckere ${category.name.toLowerCase()}, wie man ${category.name.toLowerCase()} zubereitet, deutsche ${category.name.toLowerCase()}, ${category.name.toLowerCase()} Tipps, einfache ${category.name.toLowerCase()}, schnelle ${category.name.toLowerCase()}`,
@@ -70,7 +70,7 @@ export default async function CategoryPage({ params }) {
     popularRecipes: filteredRecipes.filter(r => (r.ratingAverage || 0) >= 4.5).length
   };
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
   const categoryUrl = normalizeUrl(siteUrl, `/kategorien/${slug}`);
   const webpageId = `${categoryUrl}#webpage`;
   const itemListId = `${categoryUrl}#itemlist`;

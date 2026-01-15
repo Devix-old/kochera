@@ -2,17 +2,17 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Web Stories - kochera | Interaktive Rezepte & Kochenspiration',
+  title: 'Web Stories - kochira | Interaktive Rezepte & Kochenspiration',
   description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten, Kochenspiration und Backtipps. Perfekt für Mobil und Desktop!',
   keywords: 'web stories, rezept stories, interaktive rezepte, kochenspiration, backen, pfannkuchen, brunch',
   openGraph: {
-    title: 'Web Stories - kochera | Interaktive Rezepte',
+    title: 'Web Stories - kochira | Interaktive Rezepte',
     description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten und Kochenspiration.',
-    url: 'https://kochera.de/stories',
-    siteName: 'kochera',
+    url: 'https://kochira.de/stories',
+    siteName: 'kochira',
     images: [
       {
-        url: 'https://kochera.de/images/stories/amerikanska-pannkakor-cover-1.webp',
+        url: 'https://kochira.de/images/stories/amerikanska-pannkakor-cover-1.webp',
         width: 720,
         height: 1280,
         alt: 'Amerikanska Pannkakor Web Story',
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web Stories - kochera | Interaktive Rezepte',
+    title: 'Web Stories - kochira | Interaktive Rezepte',
     description: 'Entdecke unsere interaktiven Web Stories mit Schritt-für-Schritt Rezepten und Kochenspiration.',
-    images: ['https://kochera.de/images/stories/amerikanska-pannkakor-cover-1.webp'],
+    images: ['https://kochira.de/images/stories/amerikanska-pannkakor-cover-1.webp'],
   },
   alternates: {
-    canonical: 'https://kochera.de/stories',
+    canonical: 'https://kochira.de/stories',
   },
 }
 
@@ -78,9 +78,9 @@ export default function StoriesPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Web Stories - kochera",
+            "name": "Web Stories - kochira",
             "description": "Interaktiva Web Stories med steg-för-steg recept och matinspiration",
-            "url": "https://kochera.de/stories",
+            "url": "https://kochira.de/stories",
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": stories.map((story, index) => ({
@@ -90,8 +90,8 @@ export default function StoriesPage() {
                   "@type": "CreativeWork",
                   "name": story.title,
                   "description": story.description,
-                  "url": `https://kochera.de/stories/${story.slug}`,
-                  "image": `https://kochera.de${story.image}`,
+                  "url": `https://kochira.de/stories/${story.slug}`,
+                  "image": `https://kochira.de${story.image}`,
                 }
               }))
             }

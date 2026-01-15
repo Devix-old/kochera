@@ -69,8 +69,8 @@ export default function Header({ recipes = [] }) {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <img
-                src="/kochera-logo.png"
-                alt="Kochera Logo"
+                src="/kochira-logo.png"
+                alt="kochira Logo"
                 className="h-12 w-auto"
                 loading="eager"
               />

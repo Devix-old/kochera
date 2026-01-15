@@ -1,11 +1,11 @@
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 export const metadata = {
   ...generateSiteMetadata({
-    title: 'Haftungsausschluss - Kochera',
-    description: 'Haftungsausschluss und rechtliche Hinweise zu Kochera',
+    title: 'Haftungsausschluss - kochira',
+    description: 'Haftungsausschluss und rechtliche Hinweise zu kochira',
     url: '/disclaimer',
   }),
   robots: {
@@ -44,7 +44,7 @@ export default function DisclaimerPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Haftungsausschluss für Rezepte und kulinarische Inhalte</h2>
             <p className="text-gray-700 leading-relaxed">
-              Die auf Kochera bereitgestellten Rezepte und kulinarischen Informationen dienen ausschließlich zu Informationszwecken. Die Verwendung dieser Rezepte erfolgt auf eigene Verantwortung des Nutzers. Kochera übernimmt keine Haftung für:
+              Die auf kochira bereitgestellten Rezepte und kulinarischen Informationen dienen ausschließlich zu Informationszwecken. Die Verwendung dieser Rezepte erfolgt auf eigene Verantwortung des Nutzers. kochira übernimmt keine Haftung für:
             </p>
             <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-700">
               <li>Allergische Reaktionen oder gesundheitliche Schäden, die durch die Verwendung von Rezepten oder Zutaten entstehen</li>
@@ -70,7 +70,7 @@ export default function DisclaimerPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Keine medizinische oder ernährungsphysiologische Beratung</h2>
             <p className="text-gray-700 leading-relaxed">
-              Die auf Kochera bereitgestellten Informationen und Rezepte stellen keine medizinische, ernährungsphysiologische oder diätetische Beratung dar. Sie ersetzen nicht die Beratung durch einen Arzt, Ernährungsberater oder andere qualifizierte Fachpersonen. Bei gesundheitlichen Fragen oder Problemen sollten Sie immer einen Arzt konsultieren.
+              Die auf kochira bereitgestellten Informationen und Rezepte stellen keine medizinische, ernährungsphysiologische oder diätetische Beratung dar. Sie ersetzen nicht die Beratung durch einen Arzt, Ernährungsberater oder andere qualifizierte Fachpersonen. Bei gesundheitlichen Fragen oder Problemen sollten Sie immer einen Arzt konsultieren.
             </p>
           </section>
         </div>

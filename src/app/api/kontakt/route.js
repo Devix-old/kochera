@@ -114,10 +114,10 @@ export async function POST(request) {
     }
 
     // Get recipient email from environment or use default
-    const recipientEmail = process.env.CONTACT_EMAIL || 'info@kochera.de';
+    const recipientEmail = process.env.CONTACT_EMAIL || 'info@kochira.de';
     
     // Get from email (must be verified domain in Resend)
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'kochera <noreply@kochera.de>';
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'kochira <noreply@kochira.de>';
     
     // Send email using Resend
     const emailPayload = {
@@ -205,7 +205,7 @@ export async function POST(request) {
               </div>
             </div>
             <div class="footer">
-              <p>Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet</p>
+              <p>Diese Nachricht wurde über das Kontaktformular auf kochira.de gesendet</p>
               <p>Sie können direkt auf diese E-Mail antworten, um ${sanitizedName} zu kontaktieren.</p>
             </div>
           </body>
@@ -221,7 +221,7 @@ Nachricht:
 ${sanitizedMessage}
 
 ---
-Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet
+Diese Nachricht wurde über das Kontaktformular auf kochira.de gesendet
       `.trim(),
     };
 
@@ -249,8 +249,8 @@ Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet
 
     // Send auto-reply confirmation email to the user
     try {
-      // Use info@kochera.de for auto-reply (not noreply)
-      const confirmationFromEmail = 'kochera <info@kochera.de>';
+      // Use info@kochira.de for auto-reply (not noreply)
+      const confirmationFromEmail = 'kochira <info@kochira.de>';
       
       await resend.emails.send({
         from: confirmationFromEmail,
@@ -312,7 +312,7 @@ Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet
               <div class="content">
                 <p>Hallo ${sanitizedName},</p>
                 
-                <p>Vielen Dank, dass Sie uns bei kochera kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.</p>
+                <p>Vielen Dank, dass Sie uns bei kochira kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.</p>
                 
                 <div class="message-box">
                   <p style="margin: 0 0 10px 0; font-weight: bold; color: #6b7280; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Ihre Nachricht:</p>
@@ -321,11 +321,11 @@ Diese Nachricht wurde über das Kontaktformular auf kochera.de gesendet
                 
                 <p>Wir antworten normalerweise innerhalb von <span class="highlight">24-48 Stunden</span> an Werktagen.</p>
                 
-                <p>Mit freundlichen Grüßen,<br><strong>Das Team von kochera</strong></p>
+                <p>Mit freundlichen Grüßen,<br><strong>Das Team von kochira</strong></p>
               </div>
               <div class="footer">
                 <p>Dies ist eine automatische Bestätigungsnachricht. Sie müssen nicht auf diese E-Mail antworten.</p>
-                <p>kochera.de | Deutschlands beste Rezeptsammlung</p>
+                <p>kochira.de | Deutschlands beste Rezeptsammlung</p>
               </div>
             </body>
           </html>
@@ -335,7 +335,7 @@ Vielen Dank für Ihre Nachricht!
 
 Hallo ${sanitizedName},
 
-Vielen Dank, dass Sie uns bei kochera kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.
+Vielen Dank, dass Sie uns bei kochira kontaktiert haben! Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.
 
 Ihre Nachricht:
 ${sanitizedMessage}
@@ -343,11 +343,11 @@ ${sanitizedMessage}
 Wir antworten normalerweise innerhalb von 24-48 Stunden an Werktagen. Wenn Ihre Frage dringend ist, können Sie uns auch über unsere Social-Media-Kanäle erreichen.
 
 Mit freundlichen Grüßen,
-Das Team von kochera
+Das Team von kochira
 
 ---
 Dies ist eine automatische Bestätigungsnachricht. Sie müssen nicht auf diese E-Mail antworten.
-kochera.de | Deutschlands beste Rezeptsammlung
+kochira.de | Deutschlands beste Rezeptsammlung
         `.trim(),
       });
     } catch (confirmationError) {

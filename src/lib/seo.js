@@ -4,8 +4,8 @@
 
 import { normalizeUrl } from '@/lib/utils/url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochera.de';
-const SITE_NAME = 'Kochera';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
+const SITE_NAME = 'kochira';
 const SITE_DESCRIPTION = 'Deutschlands beste Sammlung von Rezepten und Kochtipps. Finde Inspiration für Alltagsgerichte, Backen und Festessen.';
 
 /**
@@ -43,7 +43,7 @@ export function generateMetadata({
 }) {
   const fullTitle = title || SITE_NAME;
   const fullUrl = url ? normalizeUrl(SITE_URL, url) : SITE_URL;
-  const imageUrl = image ? normalizeUrl(SITE_URL, image) : normalizeUrl(SITE_URL, '/kochera.png');
+  const imageUrl = image ? normalizeUrl(SITE_URL, image) : normalizeUrl(SITE_URL, '/kochira.png');
 
   const metadata = {
     title: fullTitle,
@@ -91,8 +91,8 @@ export function generateMetadata({
       title: fullTitle,
       description: description || SITE_DESCRIPTION,
       images: [imageUrl],
-      creator: '@kochera',
-      site: '@kochera',
+      creator: '@kochira',
+      site: '@kochira',
     },
     alternates: {
       canonical: fullUrl,
@@ -146,14 +146,14 @@ export function generateRecipeSchema(recipe) {
     inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
-      name: recipe.author || 'Kochera Team',
+      name: recipe.author || 'kochira Team',
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/kochera-logo.png`,
+        url: `${SITE_URL}/kochira-logo.png`,
         width: 512,
         height: 512,
       },
@@ -281,7 +281,7 @@ export function generateArticleSchema(article) {
     inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
-      name: article.author || 'Kochera Team',
+      name: article.author || 'kochira Team',
     },
     publisher: {
       '@type': 'Organization',
@@ -289,7 +289,7 @@ export function generateArticleSchema(article) {
       // MINOR #12: Add width/height to logo
       logo: {
         '@type': 'ImageObject',
-        url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+        url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
         width: 512,
         height: 512,
       },
@@ -387,7 +387,7 @@ export function generateOrganizationSchema() {
     inLanguage: 'de-DE',
     logo: {
       '@type': 'ImageObject',
-      url: normalizeUrl(SITE_URL, '/kochera-logo.png'),
+      url: normalizeUrl(SITE_URL, '/kochira-logo.png'),
       width: 512,
       height: 512,
     },
@@ -396,11 +396,11 @@ export function generateOrganizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochera.de',
+      email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochira.de',
     },
     sameAs: [
-      'https://instagram.com/kochera',
-      'https://pinterest.com/kochera',
+      'https://instagram.com/kochira',
+      'https://pinterest.com/kochira',
     ],
     potentialAction: {
       '@type': 'SearchAction',

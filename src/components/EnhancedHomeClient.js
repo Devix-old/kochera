@@ -177,7 +177,7 @@ export default function EnhancedHomeClient({
         </div>
       </section>
 
-      {/* DIN MATKREATÖR section */}    
+      {/* about us section */}    
       <section className="w-full py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="relative overflow-hidden rounded-2xl bg-orange-50 border border-gray-100 shadow-lg flex flex-col md:flex-row">
@@ -185,8 +185,8 @@ export default function EnhancedHomeClient({
             {/* Image Section - Left on desktop, top on mobile */}
             <div className="w-full md:w-1/2 h-64 md:h-auto">
               <img
-                src="/images/din-matkreator-kochera-in-kitchen.webp"
-                alt="Kochera in der Küche"
+                src="/images/din-matkreator-kochira-in-kitchen.webp"
+                alt="kochira in der Küche"
                 className="w-full h-full object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
                 loading="lazy"
               />
@@ -194,9 +194,7 @@ export default function EnhancedHomeClient({
 
             {/* Text Content Section - Right on desktop, bottom on mobile */}
             <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-[var(--color-primary)] rounded-full w-fit">
-                Din Matkreatör
-              </span>
+
               
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                 Hallo! Ich bin <span className="text-[var(--color-primary)]">Nina Albrecht</span>.
@@ -204,10 +202,10 @@ export default function EnhancedHomeClient({
                
               <div className="space-y-3 text-gray-600 text-base md:text-lg leading-relaxed mb-6">
                 <p>
-                  Willkommen in meiner Küche! Ich habe diese Seite gegründet, um meine Leidenschaft für Kochen und Backen mit dir zu teilen.
+                  Willkommen in meiner Küche. Diese Seite habe ich ins Leben gerufen, um meine Leidenschaft für gutes Kochen und Backen weiterzugeben.
                 </p>
                 <p className="hidden md:block">
-                  Ich glaube an Qualität vor Quantität. Daher ist jedes Rezept, das du hier findest, sorgfältig getestet, verkostet und perfektioniert, um sicherzustellen, dass du jedes Mal erfolgreich bist.
+                  Qualität steht für mich an erster Stelle. Jedes Rezept, das Sie hier finden, wurde mehrfach ausprobiert, verkostet und verfeinert, damit es Ihnen garantiert gelingt.
                 </p>
               </div>
 

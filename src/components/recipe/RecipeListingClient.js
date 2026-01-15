@@ -121,12 +121,12 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
             <h1 
               className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white font-playfair"
             >
-              Alla recept
+              Alle Rezepte
             </h1>
             <p 
               className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-inter"
             >
-              Utforska {recipes.length} provlagade recept för alla tillfällen
+              Entdecke {recipes.length} getestete Rezepte für jeden Anlass
             </p>
           </div>
         )}
@@ -137,7 +137,7 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
             <SmartSearchBar
               recipes={recipes}
               onSearch={setSearchQuery}
-              placeholder="Sök recept, ingredienser eller taggar..."
+              placeholder="Suche Rezepte, Zutaten oder Tags..."
               className="w-full"
             />
           </div>
@@ -146,10 +146,10 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
           {(searchQuery || Object.keys(filters).length > 0) && (
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Aktiva filter:</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Aktive Filter:</span>
                 {searchQuery && (
                   <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">
-                    Sökning: &ldquo;{searchQuery}&rdquo;
+                    Suche: &ldquo;{searchQuery}&rdquo;
                   </span>
                 )}
                 {filters.category && (
@@ -164,7 +164,7 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
                   }}
                   className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium transition-colors"
                 >
-                  Rensa alla
+                  Alle löschen
                 </button>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
             className="text-gray-600 dark:text-gray-400 font-medium"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            Visar <span className="font-bold text-purple-600">{filteredRecipes.length}</span> recept
+            Zeige <span className="font-bold text-purple-600">{filteredRecipes.length}</span> Rezepte
           </p>
         </div>
 
@@ -210,10 +210,10 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
               className="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Inga recept hittades
+              Keine Rezepte gefunden
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Prova att justera dina filter eller sök efter något annat
+              Versuche deine Filter anzupassen oder suche nach etwas anderem
             </p>
             <button
               onClick={() => {
@@ -222,7 +222,7 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
               }}
               className="px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 font-semibold transition-colors"
             >
-              Återställ alla filter
+              Alle Filter zurücksetzen
             </button>
           </div>
         )}
@@ -235,17 +235,17 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
               className="text-3xl md:text-4xl font-bold mb-6"
               style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}
             >
-              Hittade du inte vad du sökte?
+              Hast du nicht gefunden, wonach du gesucht hast?
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              Vi lägger till nya recept varje vecka. Prenumerera på vårt nyhetsbrev så missar du inget!
+              Wir fügen jede Woche neue Rezepte hinzu. Abonniere unseren Newsletter, damit du nichts verpasst!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/"
                 className="inline-flex items-center justify-center px-8 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors shadow-lg"
               >
-                Till startsidan
+                Zur Startseite
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>

@@ -14,5 +14,5 @@ User-agent: Googlebot-Image
 Allow: /
 
 # Sitemap
-Sitemap: https://kochera.de/sitemap.xml
-Sitemap: https://kochera.de/stories-sitemap.xml
+Sitemap: https://kochira.de/sitemap.xml
+Sitemap: https://kochira.de/stories-sitemap.xml

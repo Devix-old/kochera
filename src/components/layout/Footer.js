@@ -22,9 +22,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-          <Link href="/" className="flex items-center space-x-2" aria-label="Kochera Startseite">
+          <Link href="/" className="flex items-center space-x-2" aria-label="kochira Startseite">
             <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg font-playfair">
-              Kochera
+              kochira
             </div>
           </Link>
             <p className="text-sm text-gray-400 mb-4">
@@ -74,7 +74,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Kochera. Alle Rechte vorbehalten.
+              © {new Date().getFullYear()} kochira. Alle Rechte vorbehalten.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
               <Link
