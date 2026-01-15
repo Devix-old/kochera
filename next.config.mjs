@@ -41,35 +41,6 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year for images (optimized)
     dangerouslyAllowSVG: true,
   },
-  
-  // SEO: 301 Redirects for www/non-www canonical domain
-  async redirects() {
-    return [
-      {
-        source: '/(.*)',
-        has: [
-          {
-            type: 'host',
-            value: 'www.kochira.de',
-          },
-        ],
-        destination: 'https://kochira.de/:path*',
-        permanent: true, // 301 redirect
-      },
-      // Redirect /categories/* to /kategorien/* (German)
-      {
-        source: '/categories/:path*',
-        destination: '/kategorien/:path*',
-        permanent: true, // 301 redirect
-      },
-      // Redirect /kategorier/* to /kategorien/* (consolidate routes)
-      {
-        source: '/kategorier/:path*',
-        destination: '/kategorien/:path*',
-        permanent: true, // 301 redirect
-      },
-    ];
-  },
 
   // SEO: Performance and security headers
   async headers() {
