@@ -104,6 +104,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
+      <script src="https://analytics.ahrefs.com/analytics.js" data-key="P0GZ5rI9GtpEbgJx8oURkQ" async></script>
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} ${lora.variable} ${crimson.variable} antialiased min-h-screen flex flex-col font-inter`}
