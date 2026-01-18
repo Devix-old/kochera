@@ -36,11 +36,11 @@ export default function NotFoundClient() {
               404
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
-              Oops! Sidan hittades inte
+              Oops! Seite nicht gefunden
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              Den sida du letar efter finns inte längre eller har flyttats. 
-              Men oroa dig inte - vi har massor av goda recept som väntar på dig!
+              Die Seite, die Sie suchen, existiert nicht mehr oder wurde verschoben. 
+              Aber keine Sorge - wir haben viele leckere Rezepte für Sie!
             </p>
           </motion.div>
 
@@ -56,7 +56,7 @@ export default function NotFoundClient() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Home className="w-5 h-5" />
-              Tillbaka till startsidan
+              Zur Startseite
             </Link>
             
             <Link
@@ -64,7 +64,7 @@ export default function NotFoundClient() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-600 hover:border-orange-300 dark:hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transform hover:scale-105 transition-all duration-300"
             >
               <Search className="w-5 h-5" />
-              Utforska alla recept
+              Alle Rezepte entdecken
             </Link>
           </motion.div>
 
@@ -109,14 +109,14 @@ export default function NotFoundClient() {
             className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700"
           >
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Om du tror att detta är ett fel,{' '}
+              Wenn Sie glauben, dass dies ein Fehler ist,{' '}
               <Link 
-                href="/ueber-uns" 
+                href="/kontakt" 
                 className="text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 underline"
               >
-                kontakta oss
+                kontaktieren Sie uns
               </Link>
-              {' '}så hjälper vi dig!
+              {' '}und wir helfen Ihnen gerne!
             </p>
           </motion.div>
         </motion.div>

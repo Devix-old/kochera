@@ -18,18 +18,18 @@ const faqMarkdownComponents = {
 export function RecipeTipsSection({ recipe, tips = [] }) {
   const defaultTips = [
     {
-      title: 'Proffstips',
-      content: `För bästa resultat med ${recipe.title}, se till att alla ingredienser är i rumstemperatur.`,
+      title: 'Profi-Tipps',
+      content: `Für beste Ergebnisse mit ${recipe.title}, achten Sie darauf, dass alle Zutaten Zimmertemperatur haben.`,
       icon: Lightbulb
     },
     {
-      title: 'Tidssparande',
-      content: 'Förbered alla ingredienser innan du börjar för att spara tid under tillagningen.',
+      title: 'Zeitsparend',
+      content: 'Bereiten Sie alle Zutaten vor, bevor Sie beginnen, um Zeit während des Kochens zu sparen.',
       icon: Clock
     },
     {
-      title: 'Lagring',
-      content: `${recipe.title} kan förvaras i kylskåp i upp till 3 dagar eller frysas i 2 månader.`,
+      title: 'Aufbewahrung',
+      content: `${recipe.title} kann im Kühlschrank bis zu 3 Tage aufbewahrt oder 2 Monate eingefroren werden.`,
       icon: Heart
     }
   ];
@@ -41,7 +41,7 @@ export function RecipeTipsSection({ recipe, tips = [] }) {
       <div className="px-2 lg:px-8 py-4 mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
           <Lightbulb className="w-6 h-6 mr-3 text-purple-600" />
-          Tips för {recipe.recipeName}
+          Tipps für {recipe.recipeName}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {displayTips.map((tip, index) => {
@@ -77,20 +77,20 @@ export function RecipeTipsSection({ recipe, tips = [] }) {
 export function RecipeFAQSection({ recipe, faqs = [] }) {
   const defaultFAQs = [
     {
-      question: `Hur lång tid tar det att laga ${recipe.title}?`,
-      answer: `Det tar cirka ${recipe.totalTimeMinutes} minuter att laga ${recipe.title}.${recipe.prepTimeMinutes ? ` Förberedelse: ${recipe.prepTimeMinutes} minuter.` : ''}${recipe.cookTimeMinutes ? ` Tillagning: ${recipe.cookTimeMinutes} minuter.` : ''}`
+      question: `Wie lange dauert es, ${recipe.title} zuzubereiten?`,
+      answer: `Es dauert etwa ${recipe.totalTimeMinutes} Minuten, ${recipe.title} zuzubereiten.${recipe.prepTimeMinutes ? ` Vorbereitung: ${recipe.prepTimeMinutes} Minuten.` : ''}${recipe.cookTimeMinutes ? ` Zubereitung: ${recipe.cookTimeMinutes} Minuten.` : ''}`
     },
     {
-      question: `Hur många portioner ger ${recipe.title}?`,
-      answer: `Detta recept ger ${recipe.servings} portioner.`
+      question: `Wie viele Portionen ergibt ${recipe.title}?`,
+      answer: `Dieses Rezept ergibt ${recipe.servings} Portionen.`
     },
     {
-      question: `Vilken svårighetsgrad har ${recipe.title}?`,
-      answer: `Detta recept har svårighetsgrad ${recipe.difficulty || 'medel'}. ${getDifficultyDescription(recipe.difficulty)}`
+      question: `Welchen Schwierigkeitsgrad hat ${recipe.title}?`,
+      answer: `Dieses Rezept hat den Schwierigkeitsgrad ${recipe.difficulty || 'Mittel'}. ${getDifficultyDescription(recipe.difficulty)}`
     },
     {
-      question: `Kan jag förvara ${recipe.title}?`,
-      answer: `${recipe.title} kan förvaras i kylskåp i upp till 3 dagar eller frysas i 2 månader.`
+      question: `Kann ich ${recipe.title} aufbewahren?`,
+      answer: `${recipe.title} kann im Kühlschrank bis zu 3 Tage aufbewahrt oder 2 Monate eingefroren werden.`
     }
   ];
 
@@ -101,7 +101,7 @@ export function RecipeFAQSection({ recipe, faqs = [] }) {
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
           <BookOpen className="w-6 h-6 mr-3 text-purple-600" />
-          Vanliga frågor om {recipe.recipeName}
+          Häufige Fragen zu {recipe.recipeName}
         </h2>
         <div className="space-y-4">
           {displayFAQs.map((faq) => {
@@ -195,7 +195,7 @@ export function RelatedRecipesSection({ relatedRecipes, category, categoryUrl, c
       <div className="max-w-7xl mx-auto">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 flex items-center">
           <ChefHat className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-purple-600" />
-          Fler {category} recept du kanske gillar
+          Weitere {category} Rezepte, die Sie mögen könnten
         </h2>
         
         {/* Mobile: 2 columns, Desktop: 3 columns, Large: 4 columns */}
@@ -212,7 +212,7 @@ export function RelatedRecipesSection({ relatedRecipes, category, categoryUrl, c
               href={categoryUrl}
               className="inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors text-sm font-medium"
             >
-              Se alla {category} recept
+              Alle {category} Rezepte ansehen
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>

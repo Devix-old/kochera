@@ -58,7 +58,7 @@ export default function KontaktClient() {
       setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'Ett fel uppstod. Försök igen.');
+      setErrorMessage(error.message || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
     } finally {
       setIsSubmitting(false);
     }
@@ -84,11 +84,11 @@ export default function KontaktClient() {
             Kontakt
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            Hör av dig till oss
+            Kontaktieren Sie uns
           </h1>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Har du frågor om recept, samarbeten eller vill du bara säga hej? 
-            Fyll i formuläret nedan så återkommer vi inom kort.
+            Haben Sie Fragen zu Rezepten, Kooperationen oder möchten Sie einfach nur Hallo sagen? 
+            Füllen Sie das Formular unten aus und wir melden uns bei Ihnen.
           </p>
         </motion.div>
       </section>
@@ -110,7 +110,7 @@ export default function KontaktClient() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Namn
+                        Name
                       </label>
                       <input
                         type="text"
@@ -120,12 +120,12 @@ export default function KontaktClient() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
-                        placeholder="Anna Andersson"
+                        placeholder="Max Mustermann"
                       />
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        E-post
+                        E-Mail
                       </label>
                       <input
                         type="email"
@@ -135,14 +135,14 @@ export default function KontaktClient() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
-                        placeholder="anna@exempel.se"
+                        placeholder="max@beispiel.de"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Ämne
+                      Betreff
                     </label>
                     <input
                       type="text"
@@ -152,13 +152,13 @@ export default function KontaktClient() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
-                      placeholder="Vad gäller saken?"
+                      placeholder="Worum geht es?"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Meddelande
+                      Nachricht
                     </label>
                     <textarea
                       id="message"
@@ -168,7 +168,7 @@ export default function KontaktClient() {
                       required
                       rows={6}
                       className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 resize-none"
-                      placeholder="Skriv ditt meddelande här..."
+                      placeholder="Schreiben Sie Ihre Nachricht hier..."
                     />
                   </div>
 
@@ -176,7 +176,7 @@ export default function KontaktClient() {
                   {submitStatus === 'success' && (
                     <div className="p-4 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
                       <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                      <p className="text-sm font-medium">Tack! Ditt meddelande har skickats.</p>
+                      <p className="text-sm font-medium">Danke! Ihre Nachricht wurde gesendet.</p>
                     </div>
                   )}
 
@@ -233,9 +233,9 @@ export default function KontaktClient() {
                     <Clock className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Svarstid</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Antwortzeit</h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Vi svarar vanligtvis inom 24 timmar på vardagar.
+                      Wir antworten normalerweise innerhalb von 24 Stunden an Werktagen.
                     </p>
                   </div>
                 </div>
@@ -243,9 +243,9 @@ export default function KontaktClient() {
 
               {/* Social Media Section */}
               <div className="p-8 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-100 dark:border-gray-800">
-                <h3 className="text-xl font-bold mb-4">Följ oss</h3>
+                <h3 className="text-xl font-bold mb-4">Folgen Sie uns</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
-                  För dagliga recept, tips och inspiration från köket.
+                  Für tägliche Rezepte, Tipps und Inspiration aus der Küche.
                 </p>
                 <div className="flex gap-3">
                   {socialLinks.map((social) => {

@@ -7,7 +7,7 @@ import { normalizeUrl } from '@/lib/utils/url';
 export default function RecipeSocialSharing({ recipe }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
   const shareUrl = normalizeUrl(siteUrl, `/${recipe.slug}`);
-  const shareText = `Kolla in detta fantastiska recept: ${recipe.recipeName || recipe.title}`;
+  const shareText = `Schauen Sie sich dieses fantastische Rezept an: ${recipe.recipeName || recipe.title}`;
 
   const handleInstagramClick = async (e) => {
     e.preventDefault();
@@ -24,9 +24,9 @@ export default function RecipeSocialSharing({ recipe }) {
         document.execCommand('copy');
         document.body.removeChild(textarea);
       }
-      alert('Länk kopierad! Klistra in den i Instagram.');
+      alert('Link kopiert! Fügen Sie ihn in Instagram ein.');
     } catch (error) {
-      alert(`Kopiera denna länk manuellt:\n${shareUrl}`);
+      alert(`Kopieren Sie diesen Link manuell:\n${shareUrl}`);
     }
   };
 
@@ -69,7 +69,7 @@ export default function RecipeSocialSharing({ recipe }) {
           Dieses Rezept teilen
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Teile {recipe.recipeName || recipe.title} mit deinen Freunden und deiner Familie!
+          Teilen Sie {recipe.recipeName || recipe.title} mit Ihren Freunden und Ihrer Familie!
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {shareLinks.map((link) => {
@@ -93,7 +93,7 @@ export default function RecipeSocialSharing({ recipe }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${link.color} text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl`}
-                aria-label={`Dela på ${link.name}`}
+                aria-label={`Auf ${link.name} teilen`}
               >
                 <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>

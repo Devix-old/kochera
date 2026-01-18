@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import RecipeCard from '@/components/recipe/RecipeCard';
-import SmartSearchBar from '@/components/ui/SmartSearchBar';
 import Pagination from '@/components/ui/Pagination';
 import CategoryHero from '@/components/ui/CategoryHero';
 import Tag from '@/components/ui/Tag';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import { filterRecipes, sortRecipes, getUniqueFilterValues } from '@/lib/utils/search';
 import { smartSearch } from '@/lib/utils/smartSearch';
@@ -131,15 +130,28 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
           </div>
         )}
 
-        {/* Search */}
+        {/* Search - Simple inline search without popup */}
         <div className="bg-white dark:bg-gray-800 p-4 md:p-6 lg:p-8 mb-12 border border-gray-100 dark:border-gray-700 rounded-xl">
           <div className="mb-4">
-            <SmartSearchBar
-              recipes={recipes}
-              onSearch={setSearchQuery}
-              placeholder="Suche Rezepte, Zutaten oder Tags..."
-              className="w-full"
-            />
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Suche Rezepte, Zutaten oder Tags..."
+                className="w-full pl-12 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                  aria-label="Suche löschen"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Active filters */}
@@ -213,7 +225,7 @@ export default function RecipeListingClient({ initialRecipes, categoryName = nul
               Keine Rezepte gefunden
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Versuche deine Filter anzupassen oder suche nach etwas anderem
+              Versuchen Sie, Ihre Filter anzupassen oder suchen Sie nach etwas anderem
             </p>
             <button
               onClick={() => {
