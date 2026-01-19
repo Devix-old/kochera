@@ -57,7 +57,7 @@ export default function TippsSection({ pillar, tips = [] }) {
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
           <Lightbulb className="w-6 h-6 mr-3 text-purple-600" />
-          Tips för Perfekt {pillar?.title || 'Kochen'}
+          Tipps für perfektes {pillar?.title || 'Kochen'}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

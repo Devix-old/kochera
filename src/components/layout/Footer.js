@@ -7,7 +7,6 @@ export default function Footer() {
     { name: 'Rezepte', href: '/rezepte' },
     { name: 'Kategorien', href: '/kategorien' },
     { name: 'Über uns', href: '/ueber-uns' },
-    { name: 'Kontakt', href: '/kontakt' },
   ];
 
   const socialLinks = [
