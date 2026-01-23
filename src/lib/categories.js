@@ -76,6 +76,24 @@ export const PRIMARY_CATEGORIES = {
     color: 'from-green-400 to-emerald-500',
     image: '/images/kategorien/vegetarisches-ofengericht.webp',
     subcategories: ['Vegetarisch', 'Vegan', 'Pflanzenbasiert']
+  },
+  'pasta': {
+    name: 'Pasta',
+    slug: 'pasta',
+    description: 'Klassische Pasta-Gerichte und Nudelrezepte für jeden Geschmack',
+    icon: '🍝',
+    color: 'from-orange-400 to-red-500',
+    image: '/images/kategorien/pfannkuchen.webp', // Will use default or can be updated later
+    subcategories: ['Pasta', 'Pasta mit Sahnesauce', 'Spaghetti', 'Penne', 'Fusilli', 'Tagliatelle', 'Carbonara', 'Bolognese', 'Trüffelpasta']
+  },
+  'gulasch': {
+    name: 'Gulasch',
+    slug: 'gulasch',
+    description: 'Traditionelle Gulasch-Rezepte von klassisch bis modern',
+    icon: '🍲',
+    color: 'from-orange-500 to-red-600',
+    image: '/images/kategorien/pfannkuchen.webp', // Will use default or can be updated later
+    subcategories: ['Gulasch', 'Rindergulasch', 'Rindergulasch Thermomix', 'Rindergulasch im Dutch Oven', 'Wiener Gulasch', 'Wildgulasch', 'Hirschgulasch', 'Rehgulasch', 'Veganes Gulasch', 'Ofen-Gulasch', 'Gulasch im Backofen', 'Schmorgericht', 'Wildgericht']
   }
 };
 

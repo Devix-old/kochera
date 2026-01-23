@@ -21,9 +21,11 @@ export async function generateMetadata({ params }) {
   const allRecipes = await getAllContent('recipes');
   const filteredRecipes = allRecipes.filter(r => {
     return r.category === category.name || 
+           r.primaryCategory === category.slug ||
            (r.tags && r.tags.some(tag => 
              category.subcategories && category.subcategories.includes(tag)
-           ));
+           )) ||
+           (r.subcategory && category.subcategories && category.subcategories.includes(r.subcategory));
   });
 
   return generateSiteMetadata({
@@ -49,9 +51,11 @@ export default async function CategoryPage({ params }) {
   const filteredRecipes = allRecipes.filter(r => {
     // Check if recipe belongs to this category
     return r.category === category.name || 
+           r.primaryCategory === category.slug ||
            (r.tags && r.tags.some(tag => 
              category.subcategories && category.subcategories.includes(tag)
-           ));
+           )) ||
+           (r.subcategory && category.subcategories && category.subcategories.includes(r.subcategory));
   });
 
   // Get all categories for related categories section

@@ -37,9 +37,11 @@ export default async function KategorienPage() {
   const categoriesWithCounts = allCategories.map(category => {
     const recipeCount = allRecipes.filter(recipe => 
       recipe.category === category.name ||
+      recipe.primaryCategory === category.slug ||
       (recipe.tags && recipe.tags.some(tag => 
         category.subcategories && category.subcategories.includes(tag)
-      ))
+      )) ||
+      (recipe.subcategory && category.subcategories && category.subcategories.includes(recipe.subcategory))
     ).length;
 
     return {

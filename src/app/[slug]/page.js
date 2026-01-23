@@ -206,9 +206,11 @@ export default async function SlugPage({ params }) {
     // Filter recipes based on category
     const filteredRecipes = allRecipes.filter(r => {
       return r.category === category.name || 
+             r.primaryCategory === category.slug ||
              (r.tags && r.tags.some(tag => 
                category.subcategories && category.subcategories.includes(tag)
-             ));
+             )) ||
+             (r.subcategory && category.subcategories && category.subcategories.includes(r.subcategory));
     });
 
     // Get all categories for related categories section
