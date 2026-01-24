@@ -209,17 +209,6 @@ img {
   }
 }
 
-/* First letter drop cap enhancement */
-.recipe-blog-content p:first-of-type::first-letter {
-  font-family: var(--font-crimson);
-  font-size: 4.5rem;
-  font-weight: 700;
-  line-height: 0.85;
-  float: left;
-  margin-right: 0.75rem;
-  color: var(--color-primary);
-}
-
 /* Smooth reading experience */
 .recipe-blog-content {
   text-rendering: optimizeLegibility;
@@ -268,16 +257,6 @@ img {
   font-size: 1.125rem;
   line-height: 1.9;
   margin-bottom: 1.75rem;
-}
-
-.blog-content p:first-of-type::first-letter {
-  font-family: var(--font-crimson);
-  font-size: 5rem;
-  font-weight: 700;
-  line-height: 1;
-  float: left;
-  margin: 0.1em 0.15em 0 0;
-  color: var(--color-primary);
 }
 
 .blog-content strong {

@@ -303,7 +303,13 @@ export default function EnhancedCategoryClient({
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
                   {displayedRecipes.map((recipe) => (
-                    <motion.div key={recipe.slug} variants={fadeUp}>
+                    <motion.div
+                      key={recipe.slug}
+                      variants={fadeUp}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                    >
                       <RecipeCard recipe={recipe} />
                     </motion.div>
                   ))}
@@ -596,7 +602,6 @@ function EmptyState({ title, description, onReset }) {
     </div>
   );
 }
-
 /* ----------------------------- Tips + FAQ (DE) ---------------------------- */
 
 function getCategoryTipsDE(categoryName = '') {
@@ -654,3 +659,4 @@ function getCategoryFAQsDE(categoryName = '', categorySlug = '', recipeCount = 0
 
   return base.slice(0, 6);
 }
+

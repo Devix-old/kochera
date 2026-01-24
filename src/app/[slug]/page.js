@@ -748,7 +748,7 @@ export default async function SlugPage({ params }) {
 
           {/* Related Recipes - Placed after comments */}
           {relatedRecipes.length > 0 && (
-            <section aria-hidden="true" data-secondary-content className="pt-12 border-t border-gray-200 dark:border-gray-800 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section data-secondary-content className="pt-12 border-t border-gray-200 dark:border-gray-800 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <div className="inline-block px-4 py-2 bg-[var(--color-bg-primary-alt)] dark:bg-[var(--color-primary-darkest)]/30 text-[var(--color-primary-hover)] dark:text-[var(--color-primary-light)] rounded-full text-sm font-semibold mb-4">
                   {frontmatter.category}
