@@ -413,6 +413,9 @@ export default async function SlugPage({ params }) {
         }
       ];
 
+  // Ensure we never have null/false entries (from conditional pushes)
+  const safeFaqs = (faqs || []).filter(Boolean);
+
   // Use frontmatter data or generate fallbacks
   const tips = frontmatter.tips && frontmatter.tips.length > 0 
     ? frontmatter.tips.map(tip => ({
@@ -471,10 +474,10 @@ export default async function SlugPage({ params }) {
     })).filter(item => item.item), // Remove items without URLs
   };
 
-  const faqSchema = faqs.length > 0 ? {
+  const faqSchema = safeFaqs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: safeFaqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
@@ -748,7 +751,7 @@ export default async function SlugPage({ params }) {
           {/* SEO Sections - Placed FIRST after recipe steps for optimal SEO */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <RecipeTipsSection recipe={frontmatter} tips={tips} />
-            <RecipeFAQSection recipe={frontmatter} faqs={faqs} />
+            <RecipeFAQSection recipe={frontmatter} faqs={safeFaqs} />
           </div>
 
           {/* Comments Section - Placed after SEO sections, before related recipes */}

@@ -1,4 +1,4 @@
-<import { getAllContent } from '@/lib/mdx';
+import { getAllContent } from '@/lib/mdx';
 import { getCategoryBySlug, getAllCategories } from '@/lib/categories';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 import { notFound } from 'next/navigation';
