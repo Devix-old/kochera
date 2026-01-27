@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Rating from '../ui/Rating';
 import Tag from '../ui/Tag';
 import { cn } from '@/lib/utils/cn';
+import { formatYieldLabel } from '@/lib/utils/yield';
 
 export default function RecipeCard({ recipe, index = 0, className }) {
   const difficultyLabels = {
@@ -13,6 +14,8 @@ export default function RecipeCard({ recipe, index = 0, className }) {
     'Medel': 'Medel',
     'Avancerad': 'Avancerad',
   };
+
+  const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
 
   return (
     <motion.article
@@ -61,10 +64,10 @@ export default function RecipeCard({ recipe, index = 0, className }) {
               <Clock className="w-3 h-3 md:w-4 md:h-4" />
               <span>{recipe.totalTimeMinutes || recipe.cookTimeMinutes || 30} min</span>
             </div>
-            {recipe.servings && (
+            {yieldLabel && (
               <div className="flex items-center gap-1">
                 <Users className="w-3 h-3 md:w-4 md:h-4" />
-                <span>{recipe.servings} port</span>
+                <span>{yieldLabel}</span>
               </div>
             )}
             {recipe.difficulty && (

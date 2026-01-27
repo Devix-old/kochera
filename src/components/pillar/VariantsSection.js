@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Clock, Users, Star } from 'lucide-react';
+import { formatYieldLabel } from '@/lib/utils/yield';
 
 /**
  * Variants Section - Shows recipes from recipe MDX files
@@ -59,7 +60,7 @@ export default function VariantsSection({ recipes = [], pillarTitle = '', pillar
             const recipeTitle = recipe?.pillarTitle || recipe?.title || recipeName;
             const recipeDescription = recipe?.pillarDescription || recipe?.description || recipe?.excerpt || '';
             const totalTime = recipe?.totalTimeMinutes || recipe?.cookTimeMinutes || 0;
-            const servings = recipe?.servings || 0;
+            const yieldLabel = formatYieldLabel(recipe?.yield, recipe?.servings);
             const rating = recipe?.ratingAverage || 0;
 
             return (
@@ -117,10 +118,10 @@ export default function VariantsSection({ recipes = [], pillarTitle = '', pillar
                             <span>{totalTime} Min</span>
                           </div>
                         )}
-                        {servings > 0 && (
+                        {yieldLabel && (
                           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                             <Users className="w-4 h-4" />
-                            <span>{servings} Portionen</span>
+                            <span>{yieldLabel}</span>
                           </div>
                         )}
                         {recipe?.difficulty && (

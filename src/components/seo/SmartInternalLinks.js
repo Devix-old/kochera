@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Clock, Users, Star, ArrowRight, ChefHat, Utensils, Calendar } from 'lucide-react';
+import { formatYieldLabel } from '@/lib/utils/yield';
 
 /**
  * Smart Internal Links Component
@@ -25,7 +26,9 @@ export default function SmartInternalLinks({ links, currentRecipe }) {
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {linkGroup.links.map((recipe) => (
+                {linkGroup.links.map((recipe) => {
+                  const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
+                  return (
                   <Link
                     key={recipe.slug}
                     href={`/${recipe.slug}`}
@@ -56,10 +59,12 @@ export default function SmartInternalLinks({ links, currentRecipe }) {
                             <Clock className="w-4 h-4 mr-1" />
                             <span>{recipe.totalTimeMinutes} min</span>
                           </div>
-                          <div className="flex items-center">
-                            <Users className="w-4 h-4 mr-1" />
-                            <span>{recipe.servings}</span>
-                          </div>
+                          {yieldLabel && (
+                            <div className="flex items-center">
+                              <Users className="w-4 h-4 mr-1" />
+                              <span>{yieldLabel}</span>
+                            </div>
+                          )}
                           {recipe.ratingAverage && (
                             <div className="flex items-center">
                               <Star className="w-4 h-4 mr-1 text-yellow-500" />
@@ -73,7 +78,7 @@ export default function SmartInternalLinks({ links, currentRecipe }) {
                       </div>
                     </div>
                   </Link>
-                ))}
+                )})}
               </div>
             </div>
           ))}
@@ -184,6 +189,9 @@ export function TrendingRecipes({ recipes, title = "Populära recept just nu" })
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recipes.slice(0, 6).map((recipe) => (
+            (() => {
+              const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
+              return (
             <Link
               key={recipe.slug}
               href={`/${recipe.slug}`}
@@ -217,10 +225,12 @@ export function TrendingRecipes({ recipes, title = "Populära recept just nu" })
                     <Clock className="w-4 h-4 mr-1" />
                     <span>{recipe.totalTimeMinutes} min</span>
                   </div>
-                  <div className="flex items-center">
-                    <Users className="w-4 h-4 mr-1" />
-                    <span>{recipe.servings}</span>
-                  </div>
+                  {yieldLabel && (
+                    <div className="flex items-center">
+                      <Users className="w-4 h-4 mr-1" />
+                      <span>{yieldLabel}</span>
+                    </div>
+                  )}
                   {recipe.ratingAverage && (
                     <div className="flex items-center">
                       <Star className="w-4 h-4 mr-1 text-yellow-500" />
@@ -230,6 +240,8 @@ export function TrendingRecipes({ recipes, title = "Populära recept just nu" })
                 </div>
               </div>
             </Link>
+            );
+            })()
           ))}
         </div>
       </div>

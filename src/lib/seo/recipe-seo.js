@@ -5,6 +5,7 @@
 
 import { normalizeUrl } from '@/lib/utils/url';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
+import { getYieldData } from '@/lib/utils/yield';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
@@ -286,7 +287,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     prepTimeMinutes,
     cookTimeMinutes,
     servings,
-    yield: recipeYield, // Use yield from MDX if available
+    yield: recipeYieldField, // Use yield from MDX if available
     ratingAverage,
     ratingCount,
     ingredients = [],
@@ -360,6 +361,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     ? keywords 
     : generateRecipeKeywords(tags, category, displayName);
 
+  const yieldData = getYieldData(recipeYieldField, servings);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
@@ -394,7 +396,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     cookTime: cookTimeMinutes ? `PT${cookTimeMinutes}M` : undefined,
     totalTime: totalTimeMinutes ? `PT${totalTimeMinutes}M` : undefined,
     // Use yield from MDX if available, otherwise use German localization
-    recipeYield: recipeYield || (servings ? `${servings} Portionen` : undefined),
+    recipeYield: yieldData ? `${yieldData.amount} ${yieldData.unit}` : undefined,
     // CRITICAL #2: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: category || undefined,
     recipeCuisine: cuisine || 'German',

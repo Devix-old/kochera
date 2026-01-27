@@ -40,6 +40,7 @@ import { generateInternalLinks, generateContextualLinks } from '@/lib/seo/intern
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
+import { formatYieldLabel } from '@/lib/utils/yield';
 import StructuredData from '@/components/seo/StructuredData';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 
@@ -391,6 +392,9 @@ export default async function SlugPage({ params }) {
   // Use recipeName if available, fallback to title for display
   const displayRecipeName = frontmatter.recipeName || frontmatter.title;
 
+  // Yield / servings label (yield takes precedence, then servings)
+  const yieldLabel = formatYieldLabel(frontmatter.yield, frontmatter.servings);
+
   // Use frontmatter data or generate fallbacks
   const faqs = frontmatter.faqs && frontmatter.faqs.length > 0 
     ? frontmatter.faqs 
@@ -399,9 +403,9 @@ export default async function SlugPage({ params }) {
           question: `Wie lange dauert es, ${displayRecipeName} zuzubereiten?`,
           answer: `Es dauert etwa ${frontmatter.totalTimeMinutes} Minuten, ${displayRecipeName} zuzubereiten.${frontmatter.prepTimeMinutes ? ` Vorbereitung: ${frontmatter.prepTimeMinutes} Minuten.` : ''}${frontmatter.cookTimeMinutes ? ` Kochzeit: ${frontmatter.cookTimeMinutes} Minuten.` : ''}`
         },
-        {
-          question: `Wie viele Portionen ergibt ${displayRecipeName}?`,
-          answer: `Dieses Rezept ergibt ${frontmatter.servings} Portionen.`
+        yieldLabel && {
+          question: `Wie viele Portionen / Stück ergibt ${displayRecipeName}?`,
+          answer: `Dieses Rezept ergibt ${yieldLabel}.`
         },
         {
           question: `Welchen Schwierigkeitsgrad hat ${displayRecipeName}?`,
@@ -655,7 +659,11 @@ export default async function SlugPage({ params }) {
                   <div className="p-4">
                     <IngredientsList
                       ingredients={frontmatter.ingredients || []}
-                      defaultServings={frontmatter.servings || 4}
+                      defaultServings={
+                        frontmatter.servings ??
+                        (frontmatter.yield?.amount || 4)
+                      }
+                      yieldLabel={yieldLabel} 
                     />
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Users, Minus, Plus } from 'lucide-react';
 import { scaleIngredients } from '@/lib/utils/portions';
 
-export default function IngredientsList({ ingredients, defaultServings }) {
+export default function IngredientsList({ ingredients, defaultServings, yieldLabel }) {
   const [servings, setServings] = useState(defaultServings);
   const [checkedItems, setCheckedItems] = useState({});
 
@@ -34,7 +34,9 @@ export default function IngredientsList({ ingredients, defaultServings }) {
           
           <div className="flex items-center gap-1.5 sm:gap-2 px-1 sm:px-2 min-w-[3ch] sm:min-w-[2ch]">
             <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 dark:text-gray-400 flex-shrink-0" />
-            <span className="font-semibold text-center text-sm sm:text-base">{servings}</span>
+            <span className="font-semibold text-center text-sm sm:text-base">
+              {yieldLabel || servings}
+            </span>
           </div>
           
           <button

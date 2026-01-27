@@ -83,7 +83,7 @@ export const PRIMARY_CATEGORIES = {
     description: 'Klassische Pasta-Gerichte und Nudelrezepte für jeden Geschmack',
     icon: '🍝',
     color: 'from-orange-400 to-red-500',
-    image: '/images/kategorien/pfannkuchen.webp', // Will use default or can be updated later
+    image: '/images/rezepte/trueffelpasta-mit-sahnesauce.webp', // Will use default or can be updated later
     subcategories: ['Pasta', 'Pasta mit Sahnesauce', 'Spaghetti', 'Penne', 'Fusilli', 'Tagliatelle', 'Carbonara', 'Bolognese', 'Trüffelpasta']
   },
   'gulasch': {
@@ -92,8 +92,17 @@ export const PRIMARY_CATEGORIES = {
     description: 'Traditionelle Gulasch-Rezepte von klassisch bis modern',
     icon: '🍲',
     color: 'from-orange-500 to-red-600',
-    image: '/images/kategorien/pfannkuchen.webp', // Will use default or can be updated later
+    image: '/images/rezepte/gulasch-ohne-anbraten.webp',
     subcategories: ['Gulasch', 'Rindergulasch', 'Rindergulasch Thermomix', 'Rindergulasch im Dutch Oven', 'Wiener Gulasch', 'Wildgulasch', 'Hirschgulasch', 'Rehgulasch', 'Veganes Gulasch', 'Ofen-Gulasch', 'Gulasch im Backofen', 'Schmorgericht', 'Wildgericht']
+  },
+  'muffins': {
+    name: 'Muffins',
+    slug: 'muffins',
+    description: 'Leckere Muffins für jede Gelegenheit',
+    icon: '🥧',
+    color: 'from-pink-400 to-red-500',
+    image: '/images/rezepte/glutenfreie-schokomuffins.webp',
+    subcategories: ['Muffins', 'Muffins mit Schokolade', 'Muffins mit Nüssen', 'Muffins mit Früchten']
   }
 };
 

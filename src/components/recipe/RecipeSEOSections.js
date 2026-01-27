@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import { Clock, Users, Star, ChefHat, Lightbulb, Heart, Share2, BookOpen, ArrowRight } from 'lucide-react';
+import { formatYieldLabel } from '@/lib/utils/yield';
 import RecipeSocialSharing from './RecipeSocialSharing';
 import ExpandableTipText from './ExpandableTipText';
 
@@ -75,14 +76,15 @@ export function RecipeTipsSection({ recipe, tips = [] }) {
  * Recipe FAQ Section
  */
 export function RecipeFAQSection({ recipe, faqs = [] }) {
+  const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
   const defaultFAQs = [
     {
       question: `Wie lange dauert es, ${recipe.title} zuzubereiten?`,
       answer: `Es dauert etwa ${recipe.totalTimeMinutes} Minuten, ${recipe.title} zuzubereiten.${recipe.prepTimeMinutes ? ` Vorbereitung: ${recipe.prepTimeMinutes} Minuten.` : ''}${recipe.cookTimeMinutes ? ` Zubereitung: ${recipe.cookTimeMinutes} Minuten.` : ''}`
     },
-    {
-      question: `Wie viele Portionen ergibt ${recipe.title}?`,
-      answer: `Dieses Rezept ergibt ${recipe.servings} Portionen.`
+    yieldLabel && {
+      question: `Wie viele Portionen / Stück ergibt ${recipe.title}?`,
+      answer: `Dieses Rezept ergibt ${yieldLabel}.`
     },
     {
       question: `Welchen Schwierigkeitsgrad hat ${recipe.title}?`,
@@ -133,6 +135,7 @@ export function RecipeFAQSection({ recipe, faqs = [] }) {
  * Recipe card component for related recipes
  */
 function RelatedRecipeCard({ recipe }) {
+  const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
   return (
     <Link
       href={`/${recipe.slug}`}
@@ -163,10 +166,12 @@ function RelatedRecipeCard({ recipe }) {
               <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
               <span className="truncate">{recipe.totalTimeMinutes} min</span>
             </div>
-            <div className="flex items-center">
-              <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
-              <span className="truncate">{recipe.servings}</span>
-            </div>
+            {yieldLabel && (
+              <div className="flex items-center">
+                <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="truncate">{yieldLabel}</span>
+              </div>
+            )}
           </div>
           {recipe.ratingAverage && (
             <div className="flex items-center justify-center sm:justify-start">
