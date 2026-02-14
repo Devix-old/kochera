@@ -104,7 +104,7 @@ export default function EnhancedHomeClient({
         </div>
 
         {/* STORIES RAIL - Bigger Circles */}
-        <div className="flex overflow-x-auto gap-5 md:gap-6 px-4 pb-4 scrollbar-hide snap-x snap-mandatory md:justify-center md:overflow-x-visible">
+        <div className="flex overflow-x-auto gap-5 md:gap-6 px-4 pb-4 scrollbar-hide snap-x snap-mandatory lg:justify-center sm:ml-1 md:ml-1">
           {STORY_CATEGORIES.map((story) => (
             <Link
               key={story.slug}
