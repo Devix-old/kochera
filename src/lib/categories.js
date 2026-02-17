@@ -103,6 +103,15 @@ export const PRIMARY_CATEGORIES = {
     color: 'from-pink-400 to-red-500',
     image: '/images/rezepte/glutenfreie-schokomuffins.webp',
     subcategories: ['Muffins', 'Muffins mit Schokolade', 'Muffins mit Nüssen', 'Muffins mit Früchten']
+  },
+  'kuerbissuppe': {
+    name: 'Kürbissuppe',
+    slug: 'kuerbissuppe',
+    description: 'Kürbissuppe mit verschiedenen Zutaten',
+    icon: '🍲',
+    color: 'from-orange-400 to-red-500',
+    image: '/images/rezepte/kuerbissuppe-mit-maronen.webp',
+    subcategories: ['Kürbissuppe', 'Kürbissuppe mit Maronen', 'Kürbissuppe mit Garnelen', 'Kürbissuppe mit Mango', 'Kürbissuppe mit Apfel', 'Kürbissuppe mit Lachs', 'Kürbissuppe mit Hackfleisch', 'Kürbissuppe mit Feta', 'Kürbissuppe im Ofen']
   }
 };
 
