@@ -418,10 +418,12 @@ export default async function SlugPage({ params }) {
 
   // Use frontmatter data or generate fallbacks
   const tips = frontmatter.tips && frontmatter.tips.length > 0 
-    ? frontmatter.tips.map(tip => ({
-        ...tip,
-        icon: getIconComponent(tip.icon)
-      }))
+    ? frontmatter.tips
+        .filter(tip => tip && tip.title) // Filter out null/undefined/empty tips
+        .map(tip => ({
+          ...tip,
+          icon: getIconComponent(tip.icon)
+        }))
     : [
         {
           title: 'Profi-Tipps',
