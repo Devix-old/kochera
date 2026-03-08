@@ -79,11 +79,11 @@ export const PRIMARY_CATEGORIES = {
   },
   'kaesepaetzle': {
     name: 'Käsespätzle',
-    slug: 'kaesepaetzle',
+    slug: 'kaesespaetzle',
     description: 'Traditionelle Käsespätzle – das beliebte schwäbische Nudelgericht mit viel Käse',
     icon: '🧀',
     color: 'from-amber-400 to-yellow-600',
-    image: '/images/kategorien/kaesepaetzle.webp',
+    image: '/images/rezepte/kaesespaetzle-mit-speck.webp',
     subcategories: ['Käsespätzle', 'Spätzle', 'Schwäbische Küche', 'Cheese Noodles']
   },
   'pasta': {
