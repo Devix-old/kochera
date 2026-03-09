@@ -77,7 +77,7 @@ export const PRIMARY_CATEGORIES = {
     image: '/images/kategorien/vegetarisches-ofengericht.webp',
     subcategories: ['Vegetarisch', 'Vegan', 'Pflanzenbasiert']
   },
-  'kaesepaetzle': {
+  'kaesespaetzle': {
     name: 'Käsespätzle',
     slug: 'kaesespaetzle',
     description: 'Traditionelle Käsespätzle – das beliebte schwäbische Nudelgericht mit viel Käse',
