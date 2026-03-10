@@ -137,23 +137,13 @@ export default function RecipeSteps({ steps }) {
 
                     return (
                       <>
-                        {/* Small screens: Description first, then Image */}
-                        <div className="lg:hidden space-y-4 mb-4">
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            {step.description}
-                          </p>
-                          {hasImage && renderImage()}
-                        </div>
+                      <div className="flex flex-col lg:flex-row gap-4 mb-4">
+                        {hasImage && renderImage()}
 
-                        {/* Large screens: Image + Description side by side */}
-                        <div className={`hidden lg:flex ${hasImage ? 'lg:flex-row' : ''} gap-4 mb-4`}>
-                          {hasImage && renderImage()}
-                          <div className="flex-1">
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                              {step.description}
-                            </p>
-                          </div>
-                        </div>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
                       </>
                     );
                   })()}
