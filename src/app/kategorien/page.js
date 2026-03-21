@@ -8,7 +8,7 @@ import { normalizeUrl } from '@/lib/utils/url';
 export async function generateMetadata() {
   return generateSiteMetadata({
     title: 'Alle Rezeptkategorien - Finde Dein Nächstes Lieblingsrezept | kochira',
-    description: 'Entdecke alle unsere Rezeptkategorien: Hähnchen, Pasta, Vegetarisch, Kuchen, Pfannkuchen und vieles mehr. Über 100+ Rezepte in 16 Kategorien für alle Geschmäcker und Anlässe.',
+    description: 'Entdecke alle unsere Rezeptkategorien: Hähnchen, Pasta, Vegetarisch, Kuchen, Pfannkuchen und vieles mehr. Über 100+ Rezepte in 22 Kategorien für alle Geschmäcker und Anlässe.',
     url: '/kategorien',
     keywords: 'Rezeptkategorien, Matkategorien, Hähnchen Rezepte, Pasta Rezepte, vegetarische Rezepte, Kuchen Rezepte, Pfannkuchen Rezepte, deutsche Rezepte, Kochen, Kochbuch, Rezept Inspiration, Kategorien Essen, alle Rezepte, Rezept Sortierung',
     openGraph: {

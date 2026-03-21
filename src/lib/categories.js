@@ -121,7 +121,79 @@ export const PRIMARY_CATEGORIES = {
     color: 'from-orange-400 to-red-500',
     image: '/images/rezepte/kuerbissuppe-mit-maronen.webp',
     subcategories: ['Kürbissuppe', 'Kürbissuppe mit Maronen', 'Kürbissuppe mit Garnelen', 'Kürbissuppe mit Mango', 'Kürbissuppe mit Apfel', 'Kürbissuppe mit Lachs', 'Kürbissuppe mit Hackfleisch', 'Kürbissuppe mit Feta', 'Kürbissuppe im Ofen']
-  }
+  },
+  'kartoffelsalat': {
+    name: 'Kartoffelsalat',
+    slug: 'kartoffelsalat',
+    description: 'Cremiger oder klassischer Kartoffelsalat – perfekt zu Grillen und Buffets',
+    icon: '🥔',
+    color: 'from-amber-400 to-yellow-600',
+    image: '/images/kategorien/kartoffelsalat.webp',
+    subcategories: ['Kartoffelsalat', 'Kartoffelsalat mit Mayo', 'Kartoffelsalat ohne Mayo', 'Kartoffelsalat warm']
+  },
+  'baerlauch': {
+    name: 'Bärlauch',
+    slug: 'baerlauch',
+    description: 'Rezepte mit Bärlauch – Pesto, Suppen und Frühlingsküche',
+    icon: '🌿',
+    color: 'from-green-500 to-emerald-600',
+    image: '/images/rezepte/baerlauch-dip.webp',
+    subcategories: ['Bärlauch', 'Bärlauchpesto', 'Bärlauchsuppe', 'Bärlauchbutter']
+  },
+  // 'karottenkuchen': {
+  //   name: 'Karottenkuchen',
+  //   slug: 'karottenkuchen',
+  //   description: 'Saftiger Karottenkuchen – mit Frosting oder klassisch aus dem Blech',
+  //   icon: '🥕',
+  //   color: 'from-orange-400 to-amber-500',
+  //   image: '/images/kategorien/karottenkuchen.webp',
+  //   subcategories: ['Karottenkuchen', 'Möhrenkuchen', 'Rüblikuchen', 'Carrot Cake']
+  // },
+  // 'quiche': {
+  //   name: 'Quiche',
+  //   slug: 'quiche',
+  //   description: 'Quiche und herzhafte Tartes – vom Klassiker bis vegetarisch',
+  //   icon: '🥧',
+  //   color: 'from-amber-500 to-orange-600',
+  //   image: '/images/kategorien/quiche.webp',
+  //   subcategories: ['Quiche', 'Quiche Lorraine', 'Gemüsequiche', 'Quiche ohne Boden']
+  // },
+  // 'rhabarber': {
+  //   name: 'Rhabarber',
+  //   slug: 'rhabarber',
+  //   description: 'Rhabarber-Rezepte – Kuchen, Kompott und süß-saure Klassiker',
+  //   icon: '🌸',
+  //   color: 'from-rose-400 to-pink-500',
+  //   image: '/images/kategorien/rhabarber.webp',
+  //   subcategories: ['Rhabarber', 'Rhabarberkuchen', 'Rhabarberkompott', 'Rhabarbertarte']
+  // },
+  // 'erdbeerkuchen': {
+  //   name: 'Erdbeerkuchen',
+  //   slug: 'erdbeerkuchen',
+  //   description: 'Erdbeerkuchen und Torten mit frischen Erdbeeren',
+  //   icon: '🍓',
+  //   color: 'from-pink-400 to-rose-500',
+  //   image: '/images/kategorien/erdbeerkuchen.webp',
+  //   subcategories: ['Erdbeerkuchen', 'Erdbeertorte', 'Erdbeerkuchen mit Sahne', 'Erdbeerboden']
+  // },
+  // 'focaccia': {
+  //   name: 'Focaccia',
+  //   slug: 'focaccia',
+  //   description: 'Luftige Focaccia – mit Rosmarin, Tomaten oder nach italienischer Art',
+  //   icon: '🫓',
+  //   color: 'from-amber-400 to-orange-500',
+  //   image: '/images/kategorien/focaccia.webp',
+  //   subcategories: ['Focaccia', 'Focaccia mit Rosmarin', 'Focaccia mit Tomaten', 'Italienisches Fladenbrot']
+  // },
+  // 'spargel': {
+  //   name: 'Spargel',
+  //   slug: 'spargel',
+  //   description: 'Spargel-Rezepte – weißer und grüner Spargel in der Spargelzeit',
+  //   icon: '🌱',
+  //   color: 'from-lime-400 to-green-600',
+  //   image: '/images/kategorien/spargel.webp',
+  //   subcategories: ['Spargel', 'Spargel weiß', 'Spargel grün', 'Spargel mit Sauce Hollandaise', 'Spargel aus dem Ofen']
+  // }
 };
 
 export const MEAL_TYPES = {
