@@ -140,6 +140,31 @@ export const PRIMARY_CATEGORIES = {
     image: '/images/rezepte/baerlauch-dip.webp',
     subcategories: ['Bärlauch', 'Bärlauchpesto', 'Bärlauchsuppe', 'Bärlauchbutter']
   },
+  'apfelmus': {
+    name: 'Apfelmus',
+    slug: 'apfelmus',
+    description: 'Selbstgemachtes Apfelmus und Apfelkompott – von klassisch bis ohne Zucker',
+    icon: '🍎',
+    color: 'from-amber-300 to-orange-400',
+    image: '/images/kategorien/apfelmus.webp',
+    subcategories: ['Apfelmus', 'Apfelmus selber machen', 'Apfelkompott', 'Apfelmus mit Zimt', 'Apfelmus ohne Zucker']
+  },
+  'spargel': {
+    name: 'Spargel',
+    slug: 'spargel',
+    description: 'Spargel-Rezepte – weißer und grüner Spargel in der Spargelzeit',
+    icon: '🌱',
+    color: 'from-lime-400 to-green-600',
+    image: '/images/rezepte/gruener-spargel-pasta.webp',
+    subcategories: [
+      'Spargel',
+      'Spargel weiß',
+      'Spargel grün',
+      'Spargelpasta',
+      'Spargel mit Sauce Hollandaise',
+      'Spargel aus dem Ofen'
+    ]
+  },
   // 'karottenkuchen': {
   //   name: 'Karottenkuchen',
   //   slug: 'karottenkuchen',
@@ -185,15 +210,6 @@ export const PRIMARY_CATEGORIES = {
   //   image: '/images/kategorien/focaccia.webp',
   //   subcategories: ['Focaccia', 'Focaccia mit Rosmarin', 'Focaccia mit Tomaten', 'Italienisches Fladenbrot']
   // },
-  // 'spargel': {
-  //   name: 'Spargel',
-  //   slug: 'spargel',
-  //   description: 'Spargel-Rezepte – weißer und grüner Spargel in der Spargelzeit',
-  //   icon: '🌱',
-  //   color: 'from-lime-400 to-green-600',
-  //   image: '/images/kategorien/spargel.webp',
-  //   subcategories: ['Spargel', 'Spargel weiß', 'Spargel grün', 'Spargel mit Sauce Hollandaise', 'Spargel aus dem Ofen']
-  // }
 };
 
 export const MEAL_TYPES = {
