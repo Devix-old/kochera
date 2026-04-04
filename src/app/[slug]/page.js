@@ -225,7 +225,7 @@ export default async function SlugPage({ params }) {
       avgRating: filteredRecipes.length > 0
         ? filteredRecipes.reduce((sum, r) => sum + (r.ratingAverage || 0), 0) / filteredRecipes.length
         : 0,
-      easyRecipes: filteredRecipes.filter(r => r.difficulty?.toLowerCase() === 'lätt').length,
+      easyRecipes: filteredRecipes.filter(r => { const d = r.difficulty?.toLowerCase() || ''; return d.includes('lätt') || d.includes('leicht') || d.includes('easy'); }).length,
       quickRecipes: filteredRecipes.filter(r => (r.totalTimeMinutes || 0) < 30).length,
       popularRecipes: filteredRecipes.filter(r => (r.ratingAverage || 0) >= 4.5).length
     };
