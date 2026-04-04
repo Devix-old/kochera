@@ -7,15 +7,6 @@ export default async function Home() {
   // Load all recipes to calculate dynamic counts
   const allRecipes = await getAllContent('recipes');
 
-  // Try to load authors (may not exist yet)
-  let allAuthors = [];
-  try {
-    allAuthors = await getAllContent('authors');
-  } catch (error) {
-    // Authors don't exist yet, use empty array
-    allAuthors = [];
-  }
-
   // Get manually selected homepage featured recipes
   const featuredRecipes = allRecipes.filter(r => r.homepageFeatured === true);
 
@@ -61,10 +52,8 @@ export default async function Home() {
       
       <EnhancedHomeClient
         popularCategories={popularCategories}
-        totalRecipes={allRecipes.length}
         featuredRecipes={featuredRecipes}
         allRecipes={allRecipes}
-        authors={allAuthors}
       />
     </>
   );

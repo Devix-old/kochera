@@ -9,6 +9,8 @@ import { getYieldData } from '@/lib/utils/yield';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
+const SEARCH_URL_TEMPLATE = '/rezepte?q={search_term_string}';
+
 /**
  * Generate comprehensive recipe metadata
  * 
@@ -487,14 +489,19 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
  */
 function generateDietaryInfo(allergens, tags) {
   const dietaryInfo = [];
-  
-  if (tags.includes('Vegetariskt')) dietaryInfo.push('VegetarianDiet');
-  if (tags.includes('Veganskt')) dietaryInfo.push('VeganDiet');
-  if (tags.includes('Glutenfritt')) dietaryInfo.push('GlutenFreeDiet');
-  if (tags.includes('Laktosfritt')) dietaryInfo.push('LowLactoseDiet');
-  if (tags.includes('Lågkolhydrat')) dietaryInfo.push('LowCarbDiet');
-  if (tags.includes('Lågfett')) dietaryInfo.push('LowFatDiet');
-  
+  const list = Array.isArray(tags) ? tags : [];
+  const lowered = new Set(list.map((t) => String(t).toLowerCase()));
+
+  const has = (de, ...aliases) =>
+    lowered.has(de) || aliases.some((a) => lowered.has(a));
+
+  if (has('vegetarisch', 'vegetariskt')) dietaryInfo.push('VegetarianDiet');
+  if (has('vegan', 'veganskt')) dietaryInfo.push('VeganDiet');
+  if (has('glutenfrei', 'glutenfritt')) dietaryInfo.push('GlutenFreeDiet');
+  if (has('laktosefrei', 'laktosfritt')) dietaryInfo.push('LowLactoseDiet');
+  if (has('low-carb', 'lågkolhydrat')) dietaryInfo.push('LowCarbDiet');
+  if (has('low-fat', 'lågfett')) dietaryInfo.push('LowFatDiet');
+
   return dietaryInfo.length > 0 ? dietaryInfo : undefined;
 }
 
@@ -734,7 +741,7 @@ export function generateWebsiteSchema() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: normalizeUrl(SITE_URL, '/sok?q={search_term_string}'),
+        urlTemplate: normalizeUrl(SITE_URL, SEARCH_URL_TEMPLATE),
       },
       'query-input': 'required name=search_term_string',
     },

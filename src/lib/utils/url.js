@@ -12,15 +12,17 @@
  * normalizeUrl("https://kochira.de", "recipe") // "https://kochira.de/recipe"
  */
 export function normalizeUrl(baseUrl, path) {
-  if (!path) return baseUrl;
-  
-  // Remove trailing slash from base URL
-  const cleanBase = baseUrl.replace(/\/+$/, '');
-  
-  // Remove leading slashes from path
-  const cleanPath = path.replace(/^\/+/, '');
-  
-  // Join with single slash
-  return cleanPath ? `${cleanBase}/${cleanPath}` : cleanBase;
+  if (path === undefined || path === null || path === '') {
+    return baseUrl && typeof baseUrl === 'string' ? baseUrl.replace(/\/+$/, '') : '';
+  }
+
+  const cleanBase =
+    baseUrl && typeof baseUrl === 'string' ? baseUrl.replace(/\/+$/, '') : '';
+
+  const cleanPath = String(path).replace(/^\/+/, '');
+
+  if (!cleanPath) return cleanBase;
+
+  return cleanBase ? `${cleanBase}/${cleanPath}` : `/${cleanPath}`;
 }
 

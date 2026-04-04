@@ -1,9 +1,10 @@
 /**
  * Comprehensive food categories for kochira (German)
  * Organized for optimal user experience and SEO
- * Categories match pillar pages and home page story categories
+ * Categories match pillar pages and homepage category rail
  */
 
+// Each entry is keyed by slug; `getCategoryBySlug(slug)` uses this key, so keep key === slug.
 export const PRIMARY_CATEGORIES = {
   'pfannkuchen': {
     name: 'Pfannkuchen',
@@ -211,6 +212,22 @@ export const PRIMARY_CATEGORIES = {
   //   subcategories: ['Focaccia', 'Focaccia mit Rosmarin', 'Focaccia mit Tomaten', 'Italienisches Fladenbrot']
   // },
 };
+
+if (process.env.NODE_ENV !== 'production') {
+  const slugValues = [];
+  for (const [key, cat] of Object.entries(PRIMARY_CATEGORIES)) {
+    if (cat?.slug !== key) {
+      console.warn(
+        `[categories] PRIMARY_CATEGORIES["${key}"].slug is "${cat?.slug}" — must equal key or getCategoryBySlug breaks.`
+      );
+    }
+    slugValues.push(cat?.slug);
+  }
+  const dupes = slugValues.filter((s, i) => s && slugValues.indexOf(s) !== i);
+  if (dupes.length) {
+    console.warn('[categories] Duplicate .slug values in PRIMARY_CATEGORIES:', [...new Set(dupes)]);
+  }
+}
 
 export const MEAL_TYPES = {
   'fruhstuck': { name: 'Frühstück', icon: '🌅' },

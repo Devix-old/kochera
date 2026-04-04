@@ -4,7 +4,10 @@ import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+
+const defaultSite = 'https://kochira.de';
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_URL || defaultSite;
 // Modern sans-serif for body text (excellent readability)
 const inter = Inter({
   variable: "--font-inter",
@@ -67,7 +70,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    url: 'https://kochira.de',
+    url: '/',
     siteName: 'kochira',
     title: 'kochira – Deutschlands beste Rezepte für jeden Anlass',
     description: 'Entdecke tausende einfache, leckere Rezepte – von klassischen Pfannkuchen bis zu saftigen Hähnchenhack-Gerichten. Schnelle Alltagsgerichte und deutsche Favoriten für die ganze Familie!',

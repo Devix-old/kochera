@@ -1,12 +1,19 @@
 import KontaktClient from '@/components/kontakt/KontaktClient';
+import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 
 export const metadata = {
-  title: 'Kontakt - kochira',
-  description: 'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
-  keywords: 'kontakt kochira, Fragen Rezepte, Feedback, Support, Kontaktformular, E-Mail',
+  ...generateSiteMetadata({
+    title: 'Kontakt - kochira',
+    description:
+      'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
+    url: '/kontakt',
+    keywords:
+      'kontakt kochira, Fragen Rezepte, Feedback, Support, Kontaktformular, E-Mail',
+  }),
   openGraph: {
     title: 'Kontakt - kochira',
-    description: 'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
+    description:
+      'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen. Wir antworten normalerweise innerhalb von 24-48 Stunden.',
     type: 'website',
     images: [
       {
@@ -20,7 +27,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kontakt - kochira',
-    description: 'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen.',
+    description:
+      'Kontaktiere kochira für Fragen, Vorschläge oder einfach um Hallo zu sagen.',
     images: ['/images/fika-och-bakning-svensk-stil.webp'],
   },
 };
@@ -28,4 +36,3 @@ export const metadata = {
 export default function KontaktPage() {
   return <KontaktClient />;
 }
-

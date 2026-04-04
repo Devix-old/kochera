@@ -8,10 +8,14 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   
-  // Redirect duplicate /kategorien/{slug} → /{slug} to consolidate category canonical URLs.
-  // All internal links already use /{slug} for categories; /kategorien/{slug} is an orphan duplicate.
+  // Categories live only at /{slug}. Legacy /kategorien URLs redirect here.
   async redirects() {
     return [
+      {
+        source: '/kategorien',
+        destination: '/rezepte',
+        permanent: true,
+      },
       {
         source: '/kategorien/:slug',
         destination: '/:slug',
@@ -20,20 +24,6 @@ const nextConfig = {
     ];
   },
 
-  // Exclude SEO dashboard from production builds
-  ...(process.env.NODE_ENV === 'production' && {
-    async rewrites() {
-      return {
-        beforeFiles: [
-          {
-            source: '/seo-optiz/:path*',
-            destination: '/404',
-          },
-        ],
-      };
-    },
-  }),
-  
   // SWC minification is enabled by default in Next.js 15
   
   images: {

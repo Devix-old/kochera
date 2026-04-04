@@ -15,4 +15,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://kochira.de/sitemap.xml
-Sitemap: https://kochira.de/stories-sitemap.xml

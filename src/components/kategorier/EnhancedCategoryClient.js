@@ -9,14 +9,10 @@ import {
   ArrowRight,
   BookOpen,
   ChefHat,
-  Clock,
-  Grid,
-  Heart,
   Search,
   Sparkles,
   Star,
   Timer,
-  TrendingUp,
   X,
 } from 'lucide-react';
 import RecipeCard from '@/components/recipe/RecipeCard';
@@ -24,22 +20,13 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import ShareButton from '@/components/recipe/ShareButton';
 
 /**
- * EnhancedCategoryClient
- * - Supports:
- *   1) "All categories" directory view (showAllCategories=true)
- *   2) Single category pillar view with recipe grid and smart filters
- *
- * Notes:
- * - All UI texts are German (kochira = DE).
- * - Design: modern, clean, strong hero, sticky controls, better spacing, glass overlays.
+ * EnhancedCategoryClient — category hub at /{slug} (recipe grid, tips, FAQs).
  */
 export default function EnhancedCategoryClient({
   category,
   recipes = [],
   allCategories,
   categoryStats = {},
-  totalRecipes = 0,
-  showAllCategories = false,
 }) {
   // Shared UI state
   const [sortBy] = useState('popular'); // popular | newest | time | rating | alpha
@@ -56,18 +43,13 @@ export default function EnhancedCategoryClient({
   const currentUrl = `${siteUrl}${pathname}`;
 
   // ---------- Helpers ----------
-  const heroImage =
-    (showAllCategories ? '/images/kategorien/alle-kategorien.webp' : category?.image) ||
-    '/images/kategorien/alle-kategorien.webp';
+  const heroImage = category?.image || '/images/kategorien/alle-kategorien.webp';
 
-  const heroTitle = showAllCategories
-    ? 'Alle Kategorien'
-    : category?.name || 'Kategorie';
+  const heroTitle = category?.name || 'Kategorie';
 
-  const heroDescription = showAllCategories
-    ? `Entdecke ${totalRecipes}+ Rezepte in ${allCategories?.length || 0} Kategorien – schnell, lecker und alltagstauglich.`
-    : category?.description ||
-      'Entdecke Rezepte, Tipps und Inspiration – perfekt für Alltag & Genuss.';
+  const heroDescription =
+    category?.description ||
+    'Entdecke Rezepte, Tipps und Inspiration – perfekt für Alltag & Genuss.';
 
   // Normalize “difficulty”
   const normalizeDifficulty = (val) => {
@@ -109,25 +91,7 @@ export default function EnhancedCategoryClient({
 
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
-  // ---------- ALL CATEGORIES VIEW ----------
-  const categoriesDisplayed = useMemo(() => {
-    if (!showAllCategories || !allCategories) return [];
-
-    const sorted = [...allCategories].sort((a, b) => {
-      if (categorySort === 'alphabetical') {
-        return (a?.name || '').localeCompare(b?.name || '', 'de');
-      }
-      // popular = by count desc
-      return (b?.count || 0) - (a?.count || 0);
-    });
-
-    return sorted;
-  }, [showAllCategories, allCategories, categorySort]);
-
-  // ---------- SINGLE CATEGORY VIEW ----------
   const filteredSortedRecipes = useMemo(() => {
-    if (showAllCategories) return [];
-
     // No filtering, just sort
     let list = [...(recipes || [])];
 
@@ -165,7 +129,7 @@ export default function EnhancedCategoryClient({
     });
 
     return list;
-  }, [recipes, showAllCategories, sortBy]);
+  }, [recipes, sortBy]);
 
   const displayedRecipes = useMemo(() => {
     return filteredSortedRecipes.slice(0, displayCount);
@@ -197,8 +161,8 @@ export default function EnhancedCategoryClient({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
-              ...(showAllCategories ? [] : [{ name: 'Kategorien', url: '/kategorien' }]),
-              { name: showAllCategories ? 'Kategorien' : heroTitle },
+              { name: 'Startseite', url: '/' },
+              { name: heroTitle },
             ]}
           />
         </div>
@@ -210,7 +174,7 @@ export default function EnhancedCategoryClient({
   <div className="px-0 sm:px-8 lg:px-16 relative h-[420px] sm:h-[380px] md:h-[460px] overflow-hidden">
     <img
       src={heroImage}
-      alt={showAllCategories ? 'Kategorien – kochira' : `${category?.name || 'Kategorie'} – kochira`}
+      alt={`${category?.name || 'Kategorie'} – kochira`}
       className="w-full h-full object-cover"
     />
 
@@ -268,10 +232,7 @@ export default function EnhancedCategoryClient({
 
 
       {/* CONTENT */}
-      {showAllCategories ? (
-        <AllCategoriesSection categories={categoriesDisplayed} />
-      ) : (
-        <>
+      <>
           {/* Recipes */}
           <section id="kochira-recipes" className="py-10 md:py-14">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -494,7 +455,7 @@ export default function EnhancedCategoryClient({
         Lust auf mehr Inspiration?
       </h2>
       <p className="mt-1.5 text-sm md:text-base text-gray-600 dark:text-gray-300">
-        Entdecke alle Rezepte oder stöbere durch Kategorien.
+        Entdecke alle Rezepte – filterbar nach Kategorie und Tags.
       </p>
     </div>
 
@@ -506,14 +467,6 @@ export default function EnhancedCategoryClient({
         Alle Rezepte
         <ArrowRight className="w-5 h-5" />
       </Link>
-
-      <Link
-        href="/kategorien"
-        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-transparent text-gray-700 font-medium hover:text-gray-900 transition dark:text-gray-300 dark:hover:text-white"
-      >
-        Kategorien
-        <ArrowRight className="w-5 h-5" />
-      </Link>
     </div>
   </div>
 </div>
@@ -523,64 +476,11 @@ export default function EnhancedCategoryClient({
             </div>
           </section>
         </>
-      )}
     </div>
   );
 }
 
 /* ----------------------------- UI Components ----------------------------- */
-
-function AllCategoriesSection({ categories }) {
-  return (
-    <section className="py-10 md:py-14">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white">
-            Kategorien
-          </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
-            Wähle eine Kategorie und entdecke passende Rezepte.
-          </p>
-        </motion.div>
-
-        {categories.length === 0 ? (
-          <EmptyState
-            title="Keine Kategorien gefunden"
-            description="Es sind derzeit keine Kategorien verfügbar."
-          />
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((cat, idx) => (
-              <motion.div key={cat.slug} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.03 }}>
-                <Link href={`/${cat.slug}`} className="group block rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
-                  <div className="relative h-36">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    <div className="absolute top-3 right-3 text-2xl">{cat.icon}</div>
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <div className="text-lg font-bold">{cat.name}</div>
-                      <div className="text-xs text-white/85">{cat.count} Rezepte</div>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-                      {cat.description}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
 
 function EmptyState({ title, description, onReset }) {
   return (

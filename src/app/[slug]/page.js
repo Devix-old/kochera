@@ -7,16 +7,13 @@ import {
   ChefHat,
   Utensils,
   AlertCircle,
-  Archive,
   Wine,
   Lightbulb,
   Flame,
   ArrowRight,
   Timer,
   Clock,
-  Users,
   Star,
-  BookOpen,
   Heart
 } from 'lucide-react';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
@@ -34,15 +31,29 @@ import {
   RecipeCategoriesSection,
   RecipeSocialSection 
 } from '@/components/recipe/RecipeSEOSections';
-import CategoryCarousel from '@/components/seo/CategoryCarousel';
 import { generateRecipeMetadata, generateEnhancedRecipeSchema, generateRecipeKeywords } from '@/lib/seo/recipe-seo';
-import { generateInternalLinks, generateContextualLinks } from '@/lib/seo/internal-linking';
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
 import { formatYieldLabel } from '@/lib/utils/yield';
 import StructuredData from '@/components/seo/StructuredData';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
+
+function recipeBelongsToCategory(recipe, category) {
+  if (!recipe || !category) return false;
+  return (
+    recipe.category === category.name ||
+    recipe.primaryCategory === category.slug ||
+    (recipe.tags &&
+      recipe.tags.some(
+        (tag) =>
+          category.subcategories && category.subcategories.includes(tag)
+      )) ||
+    (recipe.subcategory &&
+      category.subcategories &&
+      category.subcategories.includes(recipe.subcategory))
+  );
+}
 
 // Icon mapping function
 function getIconComponent(iconName) {
@@ -144,15 +155,22 @@ export const dynamicParams = true;
 
 // Generate static params for categories and recipes
 export async function generateStaticParams() {
-  // Get all categories and recipes
   const categories = getAllCategories();
-  const categorySlugs = categories.map(cat => ({ slug: cat.slug }));
-  
   const recipes = await getAllContent('recipes');
-  const recipeSlugs = recipes.map(recipe => ({ slug: recipe.slug }));
 
-  // Categories first, then recipes
-  return [...categorySlugs, ...recipeSlugs];
+  // Category slugs own `/{slug}` (same as runtime: category branch runs before recipe).
+  // Omit recipe params that collide so we do not duplicate static paths or hide bugs silently.
+  const taken = new Set(categories.map((c) => c.slug).filter(Boolean));
+  const params = categories.filter((c) => c.slug).map((cat) => ({ slug: cat.slug }));
+
+  for (const recipe of recipes) {
+    const s = recipe.slug;
+    if (!s || taken.has(s)) continue;
+    taken.add(s);
+    params.push({ slug: s });
+  }
+
+  return params;
 }
 
 // Generate comprehensive metadata - dispatcher
@@ -163,12 +181,9 @@ export async function generateMetadata({ params }) {
   const category = getCategoryBySlug(slug);
   if (category) {
     const allRecipes = await getAllContent('recipes');
-    const filteredRecipes = allRecipes.filter(r => {
-      return r.category === category.name || 
-             (r.tags && r.tags.some(tag => 
-               category.subcategories && category.subcategories.includes(tag)
-             ));
-    });
+    const filteredRecipes = allRecipes.filter((r) =>
+      recipeBelongsToCategory(r, category)
+    );
 
     return generateSiteMetadata({
       title: `${category.name} Rezepte - ${filteredRecipes.length}+ Leckere Rezepte | kochira`,
@@ -205,14 +220,9 @@ export default async function SlugPage({ params }) {
     const allRecipes = await getAllContent('recipes');
     
     // Filter recipes based on category
-    const filteredRecipes = allRecipes.filter(r => {
-      return r.category === category.name || 
-             r.primaryCategory === category.slug ||
-             (r.tags && r.tags.some(tag => 
-               category.subcategories && category.subcategories.includes(tag)
-             )) ||
-             (r.subcategory && category.subcategories && category.subcategories.includes(r.subcategory));
-    });
+    const filteredRecipes = allRecipes.filter((r) =>
+      recipeBelongsToCategory(r, category)
+    );
 
     // Get all categories for related categories section
     const allCategories = getAllCategories();
@@ -277,12 +287,6 @@ export default async function SlugPage({ params }) {
             {
               '@type': 'ListItem',
               position: 2,
-              name: 'Kategorien',
-              item: normalizeUrl(siteUrl, '/kategorien')
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
               name: category.name,
               item: categoryUrl
             }
@@ -378,16 +382,14 @@ export default async function SlugPage({ params }) {
   const allCategories = getAllCategories();
 
   // Find category from recipe category (try slug first, then name)
-  let categoryObj = getCategoryBySlug(frontmatter.category);
-  if (!categoryObj) {
-    categoryObj = allCategories.find(cat => cat.name === frontmatter.category);
+  let categoryObj = frontmatter.primaryCategory
+    ? getCategoryBySlug(frontmatter.primaryCategory)
+    : null;
+  if (!categoryObj && frontmatter.category) {
+    categoryObj = allCategories.find((cat) => cat.name === frontmatter.category);
   }
   const categoryUrl = categoryObj ? `/${categoryObj.slug}` : null;
   const categoryName = categoryObj ? categoryObj.name : frontmatter.category;
-
-  // Generate internal links
-  const internalLinks = await generateInternalLinks(frontmatter);
-  const contextualLinks = generateContextualLinks(frontmatter, internalLinks);
 
   // Use recipeName if available, fallback to title for display
   const displayRecipeName = frontmatter.recipeName || frontmatter.title;
@@ -504,10 +506,12 @@ export default async function SlugPage({ params }) {
           href={normalizeUrl(siteUrl, frontmatter.image.src)} 
         />
       )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(recipeSchema) }}
-      />
+      {recipeSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(recipeSchema) }}
+        />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -769,7 +773,7 @@ export default async function SlugPage({ params }) {
                 <h2
                   className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white font-playfair"
                 >
-                  Fler {frontmatter.category?.toLowerCase() || 'recept'} du kanske gillar
+                  Mehr {frontmatter.category || 'Rezepte'}, die dir schmecken könnten
                 </h2>
               </div>
               
@@ -787,10 +791,6 @@ export default async function SlugPage({ params }) {
 
           {/* Additional SEO Sections - Placed after related recipes */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            {/* <CategoryCarousel 
-              categories={allCategories.slice(0, 8)} 
-              currentCategory={frontmatter.category?.toLowerCase()}
-            /> */}
             <RecipeSocialSection recipe={frontmatter} />
           </div>
         </div>

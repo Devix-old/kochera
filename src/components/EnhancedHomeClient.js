@@ -1,32 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Star, ArrowRight, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
-import { getAllCategories } from '@/lib/categories';
 import HomePageSearchBar from '@/components/ui/HomePageSearchBar';
 
 export default function EnhancedHomeClient({
-  popularCategories,
-  totalRecipes,
+  popularCategories = [],
   featuredRecipes = [],
   allRecipes = [],
-  authors = []
 }) {
-  const allCategories = getAllCategories();
   const carouselRef = useRef(null);
-
-  // Story categories for the stories rail
-  const STORY_CATEGORIES = [
-    { name: 'Pfannkuchen', slug: 'pfannkuchen', image: '/images/kategorien/pfannkuchen.webp', icon: '🥞' },
-    { name: 'Waffeln', slug: 'waffeln', image: '/images/kategorien/waffeln.webp', icon: '🧇' },
-    { name: 'Kuchen', slug: 'kuchen', image: '/images/kategorien/kuchen-marmorkuchen.webp', icon: '🍰' },
-    { name: 'Lasagne', slug: 'lasagne', image: '/images/kategorien/lasagne.webp', icon: '🍝' },
-    { name: 'Airfryer', slug: 'airfryer', image: '/images/kategorien/airfryer-kartoffeln.webp', icon: '💨' },
-    { name: 'Schnell', slug: 'schnell', image: '/images/kategorien/schnelles-abendessen-quesadilla.webp', icon: '⚡' },
-    { name: 'Gesund', slug: 'gesund', image: '/images/kategorien/gesunde-fruhstucks-bowl.webp', icon: '🥗' },
-    { name: 'Vegetarisch', slug: 'vegetarisch', image: '/images/kategorien/vegetarisches-ofengericht.webp', icon: '🌱' },
-  ];
+  const categoryRail = Array.isArray(popularCategories) ? popularCategories : [];
 
   // Get trending recipes (can use featured recipes or slice of all recipes)
   const trendingRecipes = featuredRecipes.length >= 4 
@@ -96,31 +81,31 @@ export default function EnhancedHomeClient({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* SEARCH & STORIES HEADER */}
+      {/* SEARCH & CATEGORY RAIL */}
       <section className="w-full bg-white border-b border-gray-200 py-4">
         {/* SEARCH BAR */}
         <div className="px-4 pt-2 mb-4 pb-2">
           <HomePageSearchBar recipes={allRecipes} placeholder="Was kochst du heute?" />
         </div>
 
-        {/* STORIES RAIL - Bigger Circles */}
+        {/* Popular category shortcuts */}
         <div className="flex overflow-x-auto gap-5 md:gap-6 px-4 pb-4 scrollbar-hide snap-x snap-mandatory lg:justify-center sm:ml-1 md:ml-1">
-          {STORY_CATEGORIES.map((story) => (
+          {categoryRail.map((cat) => (
             <Link
-              key={story.slug}
-              href={`/${story.slug}`}
+              key={cat.slug}
+              href={`/${cat.slug}`}
               className="flex-shrink-0 snap-start flex flex-col items-center gap-3 min-w-[110px] md:min-w-[120px]"
             >
               <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
                 <img
-                  src={story.image}
-                  alt={story.name}
+                  src={cat.image || '/images/kochira.png'}
+                  alt={cat.name}
                   className="w-full h-full rounded-full object-cover"
                   loading="lazy"
                 />
               </div>
               <span className="text-sm font-semibold text-gray-700 text-center">
-                {story.name}
+                {cat.name}
               </span>
             </Link>
           ))}

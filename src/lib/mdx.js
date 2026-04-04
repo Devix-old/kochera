@@ -40,24 +40,28 @@ export async function getContentBySlug(type, slug) {
  */
 export async function getAllContent(type) {
   const files = getContentFiles(type);
-  
-  const content = await Promise.all(
-    files.map(async (file) => {
-      const slug = file.replace(/\.mdx$/, '');
-      const filePath = path.join(contentDirectory, type, file);
+
+  const content = [];
+  for (const file of files) {
+    const slug = file.replace(/\.mdx$/, '');
+    const filePath = path.join(contentDirectory, type, file);
+    try {
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data } = matter(fileContents);
-      
-      return {
-        slug,
-        ...data,
-      };
-    })
-  );
+      content.push({ slug, ...data });
+    } catch (err) {
+      console.error(`[mdx] Skipping ${type}/${file}:`, err?.message || err);
+    }
+  }
 
-  // Sort by publishedAt date (newest first)
+  // Sort by publishedAt date (newest first); invalid dates sort last
   return content.sort((a, b) => {
-    return new Date(b.publishedAt) - new Date(a.publishedAt);
+    const ta = new Date(a.publishedAt || 0).getTime();
+    const tb = new Date(b.publishedAt || 0).getTime();
+    const fa = Number.isFinite(ta) ? ta : 0;
+    const fb = Number.isFinite(tb) ? tb : 0;
+    if (fb !== fa) return fb - fa;
+    return String(a.slug || '').localeCompare(String(b.slug || ''));
   });
 }
 

@@ -8,6 +8,9 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 const SITE_NAME = 'kochira';
 const SITE_DESCRIPTION = 'Deutschlands beste Sammlung von Rezepten und Kochtipps. Finde Inspiration für Alltagsgerichte, Backen und Festessen.';
 
+/** Google SearchAction target — must match a real listing page (RecipeListingClient reads `q`). */
+const SEARCH_URL_TEMPLATE = '/rezepte?q={search_term_string}';
+
 /**
  * MINOR #2: Generate keywords from title for better SEO
  * Simple keyword extraction from title when keywords are not provided
@@ -25,6 +28,17 @@ function generateKeywordsFromTitle(title) {
     .filter(word => word.length >= 4 && !stopwords.has(word));
   
   return keywords.length > 0 ? keywords.join(', ') : 'Rezepte, Kochen, Backen';
+}
+
+function buildVerificationMetadata() {
+  const verification = {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.YANDEX_VERIFICATION ? { yandex: process.env.YANDEX_VERIFICATION } : {}),
+    ...(process.env.YAHOO_VERIFICATION ? { yahoo: process.env.YAHOO_VERIFICATION } : {}),
+  };
+  return Object.keys(verification).length > 0 ? verification : undefined;
 }
 
 export function generateMetadata({
@@ -100,15 +114,13 @@ export function generateMetadata({
     // Note: metadataBase should ONLY be set in root layout (src/app/layout.js)
     // Setting it here in route-level generateMetadata is ignored by Next.js
     // and can cause canonical/OG URL issues
-    verification: {
-      google: process.env.GOOGLE_SITE_VERIFICATION,
-      yandex: process.env.YANDEX_VERIFICATION,
-      yahoo: process.env.YAHOO_VERIFICATION,
-    },
+    verification: buildVerificationMetadata(),
     other: {
       'msapplication-TileColor': '#9333EA',
       'theme-color': '#9333EA',
-      'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION,
+      ...(process.env.GOOGLE_SITE_VERIFICATION
+        ? { 'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION }
+        : {}),
     },
     category: type === 'article' ? 'Food & Cooking' : 'Food & Cooking',
   };
@@ -357,8 +369,7 @@ export function generateWebsiteSchema() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        // MINOR #11: Fix search path to match actual search page
-        urlTemplate: normalizeUrl(SITE_URL, '/sok?q={search_term_string}'),
+        urlTemplate: normalizeUrl(SITE_URL, SEARCH_URL_TEMPLATE),
       },
       'query-input': 'required name=search_term_string',
     },
@@ -397,19 +408,6 @@ export function generateOrganizationSchema() {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochira.de',
-    },
-    sameAs: [
-      'https://instagram.com/kochira',
-      'https://pinterest.com/kochira',
-    ],
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        // MINOR #11: Fix search path to match actual search page
-        urlTemplate: normalizeUrl(SITE_URL, '/sok?q={search_term_string}'),
-      },
-      'query-input': 'required name=search_term_string',
     },
   };
 

@@ -6,13 +6,16 @@ import { generateItemListSchema } from '@/lib/seo';
 import { getAllCategories } from '@/lib/categories';
 import { redirect } from 'next/navigation';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { normalizeUrl } from '@/lib/utils/url';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 export const metadata = {
   title: 'Alle Rezepte - Kochrezepte für jeden Anlass',
   description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
   keywords: 'Rezepte, Essen, Kochen, Hähnchen, Pasta, vegetarisch, Brownie, Pfannkuchen, deutsche Rezepte, Frühstück, Mittagessen, Abendessen, Dessert, Familienrezepte',
   alternates: {
-    canonical: 'https://kochira.de/rezepte',
+    canonical: normalizeUrl(siteUrl, '/rezepte'),
   },
   openGraph: {
     title: 'Alle Rezepte | kochira',

@@ -42,7 +42,10 @@ function normalizeImageSrc(image: any): string | null {
  * Main Sitemap Generator
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kochira.de';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    'https://kochira.de';
 
   // Load MDX content
   let recipes: any[] = [];
@@ -81,11 +84,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: mostRecent, changeFrequency: 'daily', priority: 1 },
     { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
-    { url: normalizeUrl(baseUrl, '/kategorien'), lastModified: mostRecent, changeFrequency: 'weekly', priority: 0.7 },
     { url: normalizeUrl(baseUrl, '/ueber-uns'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.6 },
+    { url: normalizeUrl(baseUrl, '/om'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.5 },
     { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.5 },
     { url: normalizeUrl(baseUrl, '/impressum'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },
     { url: normalizeUrl(baseUrl, '/datenschutz'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },
+    { url: normalizeUrl(baseUrl, '/disclaimer'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.25 },
+    { url: normalizeUrl(baseUrl, '/cookie-policy'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.25 },
   ];
 
   // Dynamic recipe routes

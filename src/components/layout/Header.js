@@ -28,7 +28,7 @@ export default function Header({ recipes = [] }) {
     },
     {
       label: 'Kategorien',
-      href: '/kategorien',
+      href: '/rezepte',
       icon: Grid3X3,
       dropdown: allCategories.map(cat => ({
         label: cat.name,
