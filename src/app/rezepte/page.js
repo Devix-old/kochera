@@ -11,6 +11,9 @@ export const metadata = {
   title: 'Alle Rezepte - Kochrezepte für jeden Anlass',
   description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',
   keywords: 'Rezepte, Essen, Kochen, Hähnchen, Pasta, vegetarisch, Brownie, Pfannkuchen, deutsche Rezepte, Frühstück, Mittagessen, Abendessen, Dessert, Familienrezepte',
+  alternates: {
+    canonical: 'https://kochira.de/rezepte',
+  },
   openGraph: {
     title: 'Alle Rezepte | kochira',
     description: 'Entdecke hunderte getestete Rezepte von kochira. Von Hähnchen und Pasta bis zu vegetarisch und Dessert - finde dein neues Lieblingsrezept!',

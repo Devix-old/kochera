@@ -132,7 +132,7 @@ function generateRecipeTitle(title = '', category = '', difficulty = '') {
   // Use the exact title from MDX file with NO additions
   // Safe fallback: if title is empty, use category-based fallback
   const trimmedTitle = title.trim();
-  return trimmedTitle !== '' ? trimmedTitle : (category ? `${category} recept` : 'Recept');
+  return trimmedTitle !== '' ? trimmedTitle : (category ? `${category} Rezept` : 'Rezept');
 }
 
 /**

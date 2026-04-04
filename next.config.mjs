@@ -8,6 +8,18 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   
+  // Redirect duplicate /kategorien/{slug} → /{slug} to consolidate category canonical URLs.
+  // All internal links already use /{slug} for categories; /kategorien/{slug} is an orphan duplicate.
+  async redirects() {
+    return [
+      {
+        source: '/kategorien/:slug',
+        destination: '/:slug',
+        permanent: true,
+      },
+    ];
+  },
+
   // Exclude SEO dashboard from production builds
   ...(process.env.NODE_ENV === 'production' && {
     async rewrites() {
