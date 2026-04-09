@@ -31,7 +31,12 @@ import {
   RecipeCategoriesSection,
   RecipeSocialSection 
 } from '@/components/recipe/RecipeSEOSections';
-import { generateRecipeMetadata, generateEnhancedRecipeSchema, generateRecipeKeywords } from '@/lib/seo/recipe-seo';
+import {
+  generateRecipeMetadata,
+  generateEnhancedRecipeSchema,
+  generateRecipeKeywords,
+  getRecipeKeywordExtras,
+} from '@/lib/seo/recipe-seo';
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
@@ -456,7 +461,8 @@ export default async function SlugPage({ params }) {
   const keywords = generateRecipeKeywords(
     frontmatter.tags || [],
     frontmatter.category || '',
-    displayRecipeName || ''
+    displayRecipeName || '',
+    getRecipeKeywordExtras(frontmatter)
   );
   
   const recipeSchema = generateEnhancedRecipeSchema({

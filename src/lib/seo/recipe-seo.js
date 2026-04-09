@@ -11,6 +11,24 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kochira.de';
 
 const SEARCH_URL_TEMPLATE = '/rezepte?q={search_term_string}';
 
+/** Values from MDX frontmatter merged into meta + JSON-LD keyword lists */
+export function getRecipeKeywordExtras(recipe = {}) {
+  const {
+    dietaryTags = [],
+    lifestyleTags = [],
+    subcategory,
+    cuisine,
+    mealType,
+  } = recipe;
+  return [
+    ...(Array.isArray(dietaryTags) ? dietaryTags : []),
+    ...(Array.isArray(lifestyleTags) ? lifestyleTags : []),
+    subcategory,
+    cuisine,
+    mealType,
+  ].filter(Boolean);
+}
+
 /**
  * Generate comprehensive recipe metadata
  * 
@@ -43,8 +61,12 @@ export function generateRecipeMetadata(recipe) {
   // HTML meta + OG/Twitter: `excerpt` only (not frontmatter `description`)
   const seoDescription = generateRecipeDescription(excerpt, category, totalTimeMinutes, servings);
   
-  // Generate keywords
-  const keywords = generateRecipeKeywords(tags, category, title);
+  const keywords = generateRecipeKeywords(
+    tags,
+    category,
+    title,
+    getRecipeKeywordExtras(recipe)
+  );
   
   // Generate canonical URL - use consistent pattern with seo.js
   // Construct path first, then full URL (same pattern as seo.js: `${SITE_URL}${url}`)
@@ -181,7 +203,11 @@ const RECIPE_TERMS = new Set([
  * Filters out German stopwords and only keeps meaningful words
  * CRITICAL #2: Exported to use as single source of truth
  */
-export function generateRecipeKeywords(tags = [], category = '', title = '') {
+export function generateRecipeKeywords(tags = [], category = '', title = '', additionalPhrases = []) {
+  const extraFromFrontmatter = (Array.isArray(additionalPhrases) ? additionalPhrases : [])
+    .map((p) => String(p).toLowerCase().trim())
+    .filter((p) => p.length > 0);
+
   const baseKeywords = [
     'rezepte',
     'kochen',
@@ -237,7 +263,8 @@ export function generateRecipeKeywords(tags = [], category = '', title = '') {
     ...baseKeywords,
     ...(categoryKeywords[category] || []),
     ...filteredTags,
-    ...titleKeywords
+    ...titleKeywords,
+    ...extraFromFrontmatter,
   ];
   
   // Remove duplicates and join
@@ -304,7 +331,7 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     caloriesPerServing,
     allergens = [],
     cuisine,
-    mealType, // WARNING #5: Defined but unused - kept for future use
+    mealType,
     slug = ''
   } = recipe;
 
@@ -364,10 +391,16 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     ? excerpt.trim() 
     : displayName;
 
-  // Generate keywords if not provided - Google recommends keywords field for Recipe schema
-  const schemaKeywords = keywords !== null 
-    ? keywords 
-    : generateRecipeKeywords(tags, category, displayName);
+  // Optional Recipe.keywords (rich results): same basis as <meta keywords> when `keywords` arg is null
+  const schemaKeywords =
+    keywords !== null
+      ? keywords
+      : generateRecipeKeywords(
+          tags,
+          category,
+          displayName,
+          getRecipeKeywordExtras(recipe)
+        );
 
   const yieldData = getYieldData(recipeYieldField, servings);
   const schema = {
@@ -408,7 +441,9 @@ export function generateEnhancedRecipeSchema(recipe, keywords = null) {
     // CRITICAL #2: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: category || undefined,
     recipeCuisine: cuisine || 'German',
-    // Keywords removed from schema per user request (keep only in metadata)
+    ...(schemaKeywords && String(schemaKeywords).trim()
+      ? { keywords: schemaKeywords.trim() }
+      : {}),
     recipeInstructions: validStepsWithDescriptions,
     recipeIngredient: validIngredients,
     suitableForDiet: generateDietaryInfo(allergens, tags),
