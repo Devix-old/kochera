@@ -40,7 +40,7 @@ export function generateRecipeMetadata(recipe) {
   // Generate SEO-optimized title
   const seoTitle = generateRecipeTitle(title, category, difficulty);
   
-  // Generate SEO-optimized description
+  // HTML meta + OG/Twitter: `excerpt` only (not frontmatter `description`)
   const seoDescription = generateRecipeDescription(excerpt, category, totalTimeMinutes, servings);
   
   // Generate keywords
@@ -70,7 +70,8 @@ export function generateRecipeMetadata(recipe) {
   } : null;
 
   return {
-    title: seoTitle,
+    // absolute: no parent title template / site suffix (e.g. "- kochira") appended
+    title: { absolute: seoTitle },
     description: seoDescription,
     keywords: keywords,
     // Note: Next.js canonical URLs should be in alternates.canonical, not top-level
@@ -131,9 +132,11 @@ export function generateRecipeMetadata(recipe) {
  * Safe fallback if title is missing (Issue #6)
  */
 function generateRecipeTitle(title = '', category = '', difficulty = '') {
-  // Use the exact title from MDX file with NO additions
-  // Safe fallback: if title is empty, use category-based fallback
-  const trimmedTitle = title.trim();
+  // Use the MDX title as-is, but strip accidental trailing branding if present
+  const trimmedTitle = String(title)
+    .trim()
+    .replace(/\s*[-–—|]\s*kochira\s*$/i, '')
+    .trim();
   return trimmedTitle !== '' ? trimmedTitle : (category ? `${category} Rezept` : 'Rezept');
 }
 
@@ -142,8 +145,11 @@ function generateRecipeTitle(title = '', category = '', difficulty = '') {
  * Uses the exact excerpt from MDX file without modifications
  */
 function generateRecipeDescription(excerpt = '', category = '', totalTimeMinutes = 0, servings = 0) {
-  // Use the exact excerpt from MDX file without any modifications
-  return excerpt || 'Lerne, wie du leckeres Essen mit unserer Schritt-für-Schritt-Anleitung auf kochira zubereitest.';
+  const t = typeof excerpt === 'string' ? excerpt.trim() : '';
+  // Meta description: excerpt only; frontmatter `description` is not used here
+  return t !== ''
+    ? t
+    : 'Lerne, wie du leckeres Essen mit unserer Schritt-für-Schritt-Anleitung auf kochira zubereitest.';
 }
 
 /**
