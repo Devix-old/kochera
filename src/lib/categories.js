@@ -166,6 +166,42 @@ export const PRIMARY_CATEGORIES = {
       'Spargel aus dem Ofen'
     ]
   },
+  'schnitzel': {
+    name: 'Schnitzel',
+    slug: 'schnitzel',
+    description: 'Klassische Schnitzel-Rezepte – vom Wiener Schnitzel bis Jägerschnitzel',
+    icon: '🥩',
+    color: 'from-amber-500 to-orange-600',
+    image: '/images/rezepte/wiener-schnitzel.webp',
+    subcategories: ['Schnitzel', 'Wiener Schnitzel', 'Jägerschnitzel', 'Schnitzel paniert']
+  },
+  'rouladen': {
+    name: 'Rouladen',
+    slug: 'rouladen',
+    description: 'Herzhafte Rouladen mit klassischer Füllung und dunkler Soße',
+    icon: '🥩',
+    color: 'from-red-500 to-amber-700',
+    image: '/images/rezepte/rinderrouladen.webp',
+    subcategories: ['Rouladen', 'Rinderrouladen', 'Schweinerouladen']
+  },
+  'kaiserschmarrn': {
+    name: 'Kaiserschmarrn',
+    slug: 'kaiserschmarrn',
+    description: 'Fluffiger Kaiserschmarrn – der österreichische Klassiker aus der Pfanne',
+    icon: '🥞',
+    color: 'from-amber-300 to-yellow-500',
+    image: '/images/rezepte/kaiserschmarrn.webp',
+    subcategories: ['Kaiserschmarrn', 'Klassischer Kaiserschmarrn', 'Kaiserschmarrn mit Rosinen']
+  },
+  'apfelstrudel': {
+    name: 'Apfelstrudel',
+    slug: 'apfelstrudel',
+    description: 'Goldbrauner Apfelstrudel mit knusprigem Strudelteig und saftiger Apfelfüllung',
+    icon: '🥧',
+    color: 'from-amber-400 to-red-400',
+    image: '/images/rezepte/apfelstrudel.webp',
+    subcategories: ['Apfelstrudel', 'Klassischer Apfelstrudel', 'Apfelstrudel mit Blätterteig']
+  },
   // 'karottenkuchen': {
   //   name: 'Karottenkuchen',
   //   slug: 'karottenkuchen',
