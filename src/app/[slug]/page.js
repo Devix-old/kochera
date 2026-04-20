@@ -1,4 +1,5 @@
 import { getContentBySlug, getAllContent, getRelatedContent } from '@/lib/mdx';
+import { getPillarBySlug, getAllPillars } from '@/lib/pillars';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -37,12 +38,14 @@ import {
   generateRecipeKeywords,
   getRecipeKeywordExtras,
 } from '@/lib/seo/recipe-seo';
+import { generatePillarMetadata } from '@/lib/seo/pillar-seo';
 import { getAllCategories, getCategoryBySlug } from '@/lib/categories';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
 import { normalizeNutritionData } from '@/lib/utils/nutrition';
 import { formatYieldLabel } from '@/lib/utils/yield';
 import StructuredData from '@/components/seo/StructuredData';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
+import PillarPage from '@/components/pillar/PillarPage';
 
 function recipeBelongsToCategory(recipe, category) {
   if (!recipe || !category) return false;
@@ -162,6 +165,7 @@ export const dynamicParams = true;
 export async function generateStaticParams() {
   const categories = getAllCategories();
   const recipes = await getAllContent('recipes');
+  const pillars = await getAllPillars();
 
   // Category slugs own `/{slug}` (same as runtime: category branch runs before recipe).
   // Omit recipe params that collide so we do not duplicate static paths or hide bugs silently.
@@ -170,6 +174,13 @@ export async function generateStaticParams() {
 
   for (const recipe of recipes) {
     const s = recipe.slug;
+    if (!s || taken.has(s)) continue;
+    taken.add(s);
+    params.push({ slug: s });
+  }
+
+  for (const pillar of pillars) {
+    const s = pillar.slug;
     if (!s || taken.has(s)) continue;
     taken.add(s);
     params.push({ slug: s });
@@ -208,6 +219,17 @@ export async function generateMetadata({ params }) {
       title: recipeData.frontmatter.title || recipeData.frontmatter.recipeName,
     };
     return generateRecipeMetadata(recipe);
+  }
+
+  // Third check if it's a pillar/article page
+  const pillarData = await getPillarBySlug(slug);
+  if (pillarData) {
+    const pillar = {
+      ...pillarData.frontmatter,
+      slug: pillarData.slug,
+      content: pillarData.content,
+    };
+    return generatePillarMetadata(pillar);
   }
 
   // If none match, return 404 metadata
@@ -804,6 +826,12 @@ export default async function SlugPage({ params }) {
 
     </>
   );
+  }
+
+  // Third check if it's a pillar/article page
+  const pillar = await getPillarBySlug(slug);
+  if (pillar) {
+    return <PillarPage pillar={pillar} />;
   }
 
   // If not a category or recipe, return 404

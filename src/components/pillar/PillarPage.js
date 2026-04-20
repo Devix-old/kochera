@@ -1,4 +1,5 @@
 import { normalizeUrl } from '@/lib/utils/url';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PillarHero from './PillarHero';
 import TippsSection from './TippsSection';
@@ -100,6 +101,17 @@ export default async function PillarPage({ pillar }) {
         pillar={frontmatter} 
         introductionText={introductionText}
       />
+
+      {/* 2b. Main article body */}
+      {content && content.trim().length > 0 && (
+        <section className="py-8 md:py-10 bg-white dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <MDXRemote source={content} />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 3. Variants Section - Shows all related recipes (moved before tips) */}
       {variations.length > 0 && (
