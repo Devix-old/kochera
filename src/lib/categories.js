@@ -220,15 +220,15 @@ export const PRIMARY_CATEGORIES = {
   //   image: '/images/kategorien/quiche.webp',
   //   subcategories: ['Quiche', 'Quiche Lorraine', 'Gemüsequiche', 'Quiche ohne Boden']
   // },
-  // 'rhabarber': {
-  //   name: 'Rhabarber',
-  //   slug: 'rhabarber',
-  //   description: 'Rhabarber-Rezepte – Kuchen, Kompott und süß-saure Klassiker',
-  //   icon: '🌸',
-  //   color: 'from-rose-400 to-pink-500',
-  //   image: '/images/kategorien/rhabarber.webp',
-  //   subcategories: ['Rhabarber', 'Rhabarberkuchen', 'Rhabarberkompott', 'Rhabarbertarte']
-  // },
+  'rhabarber': {
+    name: 'Rhabarber',
+    slug: 'rhabarber',
+    description: 'Rhabarber-Rezepte – Kuchen, Kompott und süß-saure Klassiker',
+    icon: '🌸',
+    color: 'from-rose-400 to-pink-500',
+    image: '/images/kategorien/rhabarber.webp',
+    subcategories: ['Rhabarber', 'Rhabarberkuchen', 'Rhabarberkompott', 'Rhabarbertarte']
+  },
   // 'erdbeerkuchen': {
   //   name: 'Erdbeerkuchen',
   //   slug: 'erdbeerkuchen',
