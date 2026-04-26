@@ -147,7 +147,7 @@ export const PRIMARY_CATEGORIES = {
     description: 'Selbstgemachtes Apfelmus und Apfelkompott – von klassisch bis ohne Zucker',
     icon: '🍎',
     color: 'from-amber-300 to-orange-400',
-    image: '/images/kategorien/apfelmus.webp',
+    image: '/images/rezepte/kaiserschmarrn-mit-apfelmus.webp',
     subcategories: ['Apfelmus', 'Apfelmus selber machen', 'Apfelkompott', 'Apfelmus mit Zimt', 'Apfelmus ohne Zucker']
   },
   'spargel': {
@@ -226,18 +226,18 @@ export const PRIMARY_CATEGORIES = {
     description: 'Rhabarber-Rezepte – Kuchen, Kompott und süß-saure Klassiker',
     icon: '🌸',
     color: 'from-rose-400 to-pink-500',
-    image: '/images/kategorien/rhabarber.webp',
+    image: '/images/rezepte/rhabarberkuchen-mit-streusel.webp',
     subcategories: ['Rhabarber', 'Rhabarberkuchen', 'Rhabarberkompott', 'Rhabarbertarte']
   },
-  // 'erdbeerkuchen': {
-  //   name: 'Erdbeerkuchen',
-  //   slug: 'erdbeerkuchen',
-  //   description: 'Erdbeerkuchen und Torten mit frischen Erdbeeren',
-  //   icon: '🍓',
-  //   color: 'from-pink-400 to-rose-500',
-  //   image: '/images/kategorien/erdbeerkuchen.webp',
-  //   subcategories: ['Erdbeerkuchen', 'Erdbeertorte', 'Erdbeerkuchen mit Sahne', 'Erdbeerboden']
-  // },
+  'erdbeerkuchen': {
+    name: 'Erdbeerkuchen',
+    slug: 'erdbeerkuchen',
+    description: 'Erdbeerkuchen und Torten mit frischen Erdbeeren',
+    icon: '🍓',
+    color: 'from-pink-400 to-rose-500',
+    image: '/images/rezepte/erdbeerkuchen-ohne-backen.webp',
+    subcategories: ['Erdbeerkuchen', 'Erdbeertorte', 'Erdbeerkuchen mit Sahne', 'Erdbeerboden']
+  },
   // 'focaccia': {
   //   name: 'Focaccia',
   //   slug: 'focaccia',
