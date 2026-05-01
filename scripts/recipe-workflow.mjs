@@ -859,23 +859,51 @@ function trimSentence(text, maxLength) {
   return `${shortened.slice(0, lastSpace > 0 ? lastSpace : maxLength).trim()}.`;
 }
 
+function normalizeSeoText(text) {
+  return String(text || '')
+    .replace(/\b([A-Za-zÀ-ÿ]+)(\s+\1\b)+/gi, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function hasClippedEnding(text) {
+  return /(?:fuer|für|mit|und|oder|ohne|von|vom|im|am|an|auf)\.$/i.test(String(text || '').trim());
+}
+
+function needsSeoRewrite(text) {
+  const value = normalizeSeoText(text);
+  return (
+    !value ||
+    /stimmige version/i.test(value) ||
+    /zuhause zuhause/i.test(value) ||
+    hasClippedEnding(value)
+  );
+}
+
 function fitLength(base, parts, minLength, maxLength) {
   for (const part of parts) {
-    const value = `${base}${part}`.replace(/\s+/g, ' ').trim();
+    const value = normalizeSeoText(`${base}${part}`);
     if (value.length >= minLength && value.length <= maxLength) return value;
   }
 
-  const fallback = `${base}${parts[0] || ''}`.replace(/\s+/g, ' ').trim();
+  const fallback = normalizeSeoText(`${base}${parts[0] || ''}`);
   if (fallback.length < minLength) {
-    return `${fallback} zuhause`.slice(0, maxLength).trim();
+    const extended = normalizeSeoText(`${fallback} zuhause`);
+    return extended.length <= maxLength ? extended : trimSentence(extended, maxLength);
   }
 
   return trimSentence(fallback, maxLength);
 }
 
 function ensureTitle(recipeData) {
-  if (recipeData.title && recipeData.title.length >= 50 && recipeData.title.length <= 60) {
-    return recipeData.title;
+  const currentTitle = normalizeSeoText(recipeData.title);
+  if (
+    currentTitle &&
+    currentTitle.length >= 50 &&
+    currentTitle.length <= 60 &&
+    !needsSeoRewrite(currentTitle)
+  ) {
+    return currentTitle;
   }
 
   const bucket = getMealBucket(recipeData);
@@ -891,26 +919,32 @@ function ensureTitle(recipeData) {
 
 function descriptionTemplate(recipeData) {
   const bucket = getMealBucket(recipeData);
+  const ingredientA = firstVisibleIngredients(recipeData)[0] || 'guten Zutaten';
   const phraseByBucket = {
-    salat: 'frisch, knackig und gut fuer Grillabend, Lunchbox oder warmen Feierabend',
-    airfryer: 'knusprig, alltagstauglich und mit wenig Aufwand schnell auf dem Tisch',
-    burger: 'saftig, herzhaft und so erklaert, dass Bun, Fuellung und Sauce stimmig zusammenkommen',
-    kuchen: 'saftig, locker und klar erklaert, damit Teig, Krume und Aroma zuhause sicher gelingen',
-    dessert: 'cremig, ausgewogen und gut vorzubereiten, ohne dass Textur oder Geschmack flach wirken',
-    pasta: 'wuerzig, rund und so aufgebaut, dass Sauce und Pasta sauber zusammenfinden',
-    default: 'alltagstauglich und klar erklaert, damit Konsistenz, Aroma und Gargrad gut passen',
+    salat: `${recipeData.recipeName} gelingt dir frisch und ausgewogen mit ${ingredientA} und einem klaren Dressing. Ideal fuer Grillabend, warme Tage oder ein schnelles Mittagessen zuhause.`,
+    airfryer: `${recipeData.recipeName} gelingt dir einfach und gleichmaessig mit zartem Biss und wenig Aufwand. So sparst du Zeit und bekommst ein rundes Ergebnis ohne grossen Topf.`,
+    burger: `${recipeData.recipeName} gelingt dir saftig und gut gewuerzt, damit beim Braten eine dunkle Kruste entsteht und der Kern locker bleibt. Ideal fuer Burgerabende zuhause.`,
+    kuchen: `${recipeData.recipeName} gelingt dir saftig und schnittfest mit klaren Schritten und einer ruhigen Krume. Ideal fuer Besuch, Kaffeetisch oder spontanes Backen zuhause.`,
+    dessert: `${recipeData.recipeName} gelingt dir cremig und frisch mit feiner Suesse und klarer Struktur. Du bereitest das Dessert gut vor und servierst es entspannt fuer Besuch oder Wochenende.`,
+    pasta: `${recipeData.recipeName} gelingt dir aromatisch und ausgewogen mit Sauce, die sich sauber an die Pasta legt. Ideal fuer Feierabend, Spargelzeit und ein schnelles Abendessen zuhause.`,
+    default: `${recipeData.recipeName} gelingt dir alltagstauglich und klar erklaert mit einem Ergebnis, das in Textur und Aroma stimmig bleibt. Gut fuer zuhause und ohne Umwege nachgekocht.`,
   };
 
-  const phrase = phraseByBucket[bucket] || phraseByBucket.default;
-  return `${recipeData.recipeName} gelingt dir ${phrase}. Du bekommst eine stimmige Version fuer zuhause mit klaren Schritten und einem Ergebnis, das richtig Lust auf den ersten Bissen macht.`;
+  return normalizeSeoText(phraseByBucket[bucket] || phraseByBucket.default);
 }
 
 function ensureDescription(recipeData) {
-  if (recipeData.description && recipeData.description.length >= 150 && recipeData.description.length <= 160) {
-    return recipeData.description;
+  const currentDescription = normalizeSeoText(recipeData.description);
+  if (
+    currentDescription &&
+    currentDescription.length >= 150 &&
+    currentDescription.length <= 160 &&
+    !needsSeoRewrite(currentDescription)
+  ) {
+    return currentDescription;
   }
 
-  const description = descriptionTemplate(recipeData);
+  const description = normalizeSeoText(descriptionTemplate(recipeData));
   if (description.length >= 150 && description.length <= 160) return description;
   if (description.length > 160) return trimSentence(description, 160);
   return fitLength(description, [' zuhause.', ' im Alltag.', ' fuer Besuch.'], 150, 160);

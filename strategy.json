@@ -698,7 +698,7 @@
       "day": "day2",
       "ordinal": 2,
       "targetDate": "2026-05-02",
-      "status": "planned",
+      "status": "published",
       "notes": [
         "balanced for category strength and internal linking",
         "spread to reduce same-intent cannibalization inside one day"
@@ -723,8 +723,9 @@
             "sommerkueche",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/eier-spargel-salat"
         },
         {
           "slug": "erdbeeren-mit-rhabarber-marmelade",
@@ -744,8 +745,9 @@
             "fruehsommer",
             "erdbeersaison"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/erdbeeren-mit-rhabarber-marmelade"
         },
         {
           "slug": "tiramisu-rhabarber",
@@ -766,8 +768,9 @@
             "kuehles dessert",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/tiramisu-rhabarber"
         },
         {
           "slug": "pasta-mit-weissem-spargel-und-tomaten",
@@ -787,8 +790,9 @@
             "spargelzeit",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/pasta-mit-weissem-spargel-und-tomaten"
         },
         {
           "slug": "quiche-lachs-spargel",
@@ -808,8 +812,9 @@
             "spargelzeit",
             "spargel und brunch"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/quiche-lachs-spargel"
         },
         {
           "slug": "schneller-erdbeerkuchen-blech",
@@ -829,8 +834,9 @@
             "erdbeersaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/schneller-erdbeerkuchen-blech"
         },
         {
           "slug": "tassen-kuchen",
@@ -849,8 +855,9 @@
             "existing category page",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/tassen-kuchen"
         },
         {
           "slug": "weisser-spargel-in-der-heissluftfritteuse-garen",
@@ -870,8 +877,9 @@
             "spargelzeit",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/weisser-spargel-in-der-heissluftfritteuse-garen"
         },
         {
           "slug": "gurkensalat",
@@ -892,8 +900,9 @@
             "grillsaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/gurkensalat"
         },
         {
           "slug": "burger-patties",
@@ -913,8 +922,83 @@
             "grillsaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/burger-patties"
+        }
+      ],
+      "publishedAt": "2026-05-01T01:28:14Z",
+      "skippedRecipes": [],
+      "publishedRecipes": [
+        {
+          "slug": "eier-spargel-salat",
+          "recipeName": "eier spargel salat",
+          "url": "https://kochira.de/eier-spargel-salat",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "erdbeeren-mit-rhabarber-marmelade",
+          "recipeName": "erdbeeren mit rhabarber marmelade",
+          "url": "https://kochira.de/erdbeeren-mit-rhabarber-marmelade",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "tiramisu-rhabarber",
+          "recipeName": "tiramisu rhabarber",
+          "url": "https://kochira.de/tiramisu-rhabarber",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "pasta-mit-weissem-spargel-und-tomaten",
+          "recipeName": "pasta mit weißem spargel und tomaten",
+          "url": "https://kochira.de/pasta-mit-weissem-spargel-und-tomaten",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "quiche-lachs-spargel",
+          "recipeName": "quiche lachs spargel",
+          "url": "https://kochira.de/quiche-lachs-spargel",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "schneller-erdbeerkuchen-blech",
+          "recipeName": "schneller erdbeerkuchen blech",
+          "url": "https://kochira.de/schneller-erdbeerkuchen-blech",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "tassen-kuchen",
+          "recipeName": "tassen kuchen",
+          "url": "https://kochira.de/tassen-kuchen",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "weisser-spargel-in-der-heissluftfritteuse-garen",
+          "recipeName": "weißer spargel in der heißluftfritteuse garen",
+          "url": "https://kochira.de/weisser-spargel-in-der-heissluftfritteuse-garen",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "gurkensalat",
+          "recipeName": "gurkensalat",
+          "url": "https://kochira.de/gurkensalat",
+          "sourceDay": "day2",
+          "replacementFor": null
+        },
+        {
+          "slug": "burger-patties",
+          "recipeName": "burger patties",
+          "url": "https://kochira.de/burger-patties",
+          "sourceDay": "day2",
+          "replacementFor": null
         }
       ]
     },

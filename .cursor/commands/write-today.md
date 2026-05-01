@@ -2,6 +2,8 @@
 
 Use this workflow when you want to publish the next planned batch from `strategy.json`.
 
+If the user says `write-today` here in chat, treat that as the instruction to run this workflow yourself. Do not send the user back to the command line.
+
 ## What it does
 
 1. Reads `strategy.json`
@@ -10,7 +12,7 @@ Use this workflow when you want to publish the next planned batch from `strategy
 4. Pulls replacements forward from later planned recipes when needed
 5. Updates `date`, `publishedAt`, and `updatedAt`
 6. Creates missing categories in `src/lib/categories.js` if required
-7. Validates title and description lengths
+7. Validates title and description lengths and rewrites awkward fallback SEO copy when needed
 8. Copies recipe MDX to `content/recipes`
 9. Copies prompt files to `content/prompts`
 10. Copies images to `public/images/rezepte`
