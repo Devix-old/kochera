@@ -247,6 +247,52 @@ export const PRIMARY_CATEGORIES = {
   //   image: '/images/kategorien/focaccia.webp',
   //   subcategories: ['Focaccia', 'Focaccia mit Rosmarin', 'Focaccia mit Tomaten', 'Italienisches Fladenbrot']
   // },
+  "salate": {
+    name: "Salate",
+    slug: "salate",
+    description: "Salate fuer Alltag, Grillabend und warme Tage - frisch, knackig und schnell gemacht.",
+    icon: "🥗",
+    color: "from-green-400 to-lime-500",
+    image: "/images/rezepte/gurkensalat.webp",
+    subcategories: ["Salate", "Blattsalat", "Nudelsalat", "Kartoffelsalat", "Grillsalat", "Sommersalat"]
+  },
+  "tiramisu": {
+    name: "Tiramisu",
+    slug: "tiramisu",
+    description: "Tiramisu Rezepte von klassisch bis fruchtig - cremige Desserts fuer Besuch und Feierabend.",
+    icon: "🍰",
+    color: "from-amber-300 to-yellow-500",
+    image: "/images/rezepte/erdbeer-tiramisu.webp",
+    subcategories: ["Tiramisu","Original Tiramisu","Tiramisu im Glas","Fruchtiges Tiramisu","Tiramisu ohne Ei"]
+  },
+  "quiche": {
+    name: "Quiche",
+    slug: "quiche",
+    description: "Quiche Rezepte mit knusprigem Boden und saftiger Fuellung - herzhaft, praktisch und vielseitig.",
+    icon: "🥧",
+    color: "from-amber-400 to-orange-500",
+    image: "/images/rezepte/gruene-spargel-quiche.webp",
+    subcategories: ["Quiche","Quiche Lorraine","Gemuesequiche","Quiche mit Lachs","Quiche mit Spargel"]
+  },
+  "burger": {
+    name: "Burger",
+    slug: "burger",
+    description: "Burger Rezepte von Patties bis Buns - saftig, herzhaft und gut fuer Grill und Pfanne.",
+    icon: "🍔",
+    color: "from-amber-400 to-red-500",
+    image: "/images/rezepte/chicken-burger.webp",
+    subcategories: ["Burger","Cheeseburger","Chicken Burger","Veggie Burger","Burger Buns","Burger Saucen"]
+  },
+  "focaccia": {
+    name: "Focaccia",
+    slug: "focaccia",
+    description: "Focaccia Rezepte mit luftiger Krume und goldener Kruste - ideal fuer Antipasti, Buffet und Sommer.",
+    icon: "🍞",
+    color: "from-amber-400 to-orange-500",
+    image: "/images/rezepte/focaccia-alla-genovese.webp",
+    subcategories: ["Focaccia","Focaccia mit Rosmarin","Focaccia mit Tomaten","Gefuellte Focaccia","Focaccia Sandwich"]
+  },
+
 };
 
 if (process.env.NODE_ENV !== 'production') {

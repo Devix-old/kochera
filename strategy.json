@@ -1,0 +1,4774 @@
+{
+  "siteId": "kochira",
+  "generatedAt": "2026-05-01T01:12:17Z",
+  "startDate": "2026-05-01",
+  "summary": {
+    "liveRecipeCount": 304,
+    "todoRecipeCount": 224,
+    "plannedRecipeCount": 200,
+    "fullDayCount": 20,
+    "overflowCount": 5,
+    "skippedDuplicateCount": 19,
+    "missingCategoryCount": 4
+  },
+  "rules": {
+    "publishBatchSize": 10,
+    "duplicateChecks": [
+      "slug",
+      "file name",
+      "recipe title",
+      "main keyword",
+      "canonical URL",
+      "similar intent"
+    ],
+    "strategyVersion": 1
+  },
+  "missingCategories": [
+    {
+      "slug": "burger",
+      "name": "Burger",
+      "todoCount": 24
+    },
+    {
+      "slug": "focaccia",
+      "name": "Focaccia",
+      "todoCount": 12
+    },
+    {
+      "slug": "quiche",
+      "name": "Quiche",
+      "todoCount": 18
+    },
+    {
+      "slug": "tiramisu",
+      "name": "Tiramisu",
+      "todoCount": 20
+    }
+  ],
+  "skippedDuplicates": [
+    {
+      "slug": "rhabarber-erdbeertorte",
+      "recipeName": "rhabarber erdbeertorte",
+      "category": "Rhabarber",
+      "primaryCategory": "rhabarber",
+      "status": "skipped_duplicate",
+      "reason": "same slug already exists",
+      "conflictSlug": "rhabarber-erdbeertorte",
+      "alternativeSuggestion": {
+        "slug": "rhabarber-erdbeer-crumble",
+        "recipeName": "rhabarber erdbeer crumble",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "nudelsalat",
+      "recipeName": "nudelsalat",
+      "category": "Salate",
+      "primaryCategory": "salate",
+      "status": "skipped_duplicate",
+      "reason": "same slug already exists",
+      "conflictSlug": "nudelsalat",
+      "alternativeSuggestion": {
+        "slug": "big-mac-salat",
+        "recipeName": "big mac salat",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-mit-spargel",
+      "recipeName": "pasta mit spargel",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "spargel-pasta",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "erdbeer-tiramisu-glas",
+      "recipeName": "erdbeer tiramisu glas",
+      "category": "Tiramisu",
+      "primaryCategory": "tiramisu",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "erdbeer-tiramisu",
+      "alternativeSuggestion": {
+        "slug": "tiramisu-rhabarber",
+        "recipeName": "tiramisu rhabarber",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "rhabarber-sirup-selbst-machen",
+      "recipeName": "rhabarber sirup selbst machen",
+      "category": "Rhabarber",
+      "primaryCategory": "rhabarber",
+      "status": "skipped_duplicate",
+      "reason": "too similar to planned recipe",
+      "conflictSlug": "rhabarber-sirup",
+      "alternativeSuggestion": {
+        "slug": "rhabarber-erdbeer-crumble",
+        "recipeName": "rhabarber erdbeer crumble",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "erdbeer-tiramisu-ohne-ei",
+      "recipeName": "erdbeer tiramisu ohne ei",
+      "category": "Tiramisu",
+      "primaryCategory": "tiramisu",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "erdbeer-tiramisu",
+      "alternativeSuggestion": {
+        "slug": "tiramisu-rhabarber",
+        "recipeName": "tiramisu rhabarber",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "rhabarber-vegan-kuchen",
+      "recipeName": "rhabarber vegan kuchen",
+      "category": "Rhabarber",
+      "primaryCategory": "rhabarber",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "rhabarber-kuchen",
+      "alternativeSuggestion": {
+        "slug": "rhabarber-erdbeer-crumble",
+        "recipeName": "rhabarber erdbeer crumble",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-gorgonzola",
+      "recipeName": "pasta gorgonzola",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "gorgonzola-pasta",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-salsiccia",
+      "recipeName": "pasta salsiccia",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "salsiccia-pasta",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "burger-patties-wuerzen",
+      "recipeName": "burger patties würzen",
+      "category": "Burger",
+      "primaryCategory": "burger",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "burger-patties",
+      "alternativeSuggestion": {
+        "slug": "bbq-burger-grill",
+        "recipeName": "bbq burger grill",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "vegane-burger-patties",
+      "recipeName": "vegane burger patties",
+      "category": "Burger",
+      "primaryCategory": "burger",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "burger-patties",
+      "alternativeSuggestion": {
+        "slug": "bbq-burger-grill",
+        "recipeName": "bbq burger grill",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-mit-haehnchen",
+      "recipeName": "pasta mit hähnchen",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "pasta-haehnchen",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-mit-kuerbis",
+      "recipeName": "pasta mit kürbis",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "kuerbis-pasta",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "erdbeerkuchen-mit-biskuitboden",
+      "recipeName": "erdbeerkuchen mit biskuitboden",
+      "category": "Erdbeerkuchen",
+      "primaryCategory": "erdbeerkuchen",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "erdbeerkuchen-auf-biskuitboden",
+      "alternativeSuggestion": {
+        "slug": "erdbeerkuchen-mit-rhabarber",
+        "recipeName": "erdbeerkuchen mit rhabarber",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "mini-burger-broetchen",
+      "recipeName": "mini burger brötchen",
+      "category": "Burger",
+      "primaryCategory": "burger",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "mini-burger",
+      "alternativeSuggestion": {
+        "slug": "bbq-burger-grill",
+        "recipeName": "bbq burger grill",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "pasta-selbst-machen-ohne-maschine",
+      "recipeName": "pasta selbst machen ohne maschine",
+      "category": "Pasta",
+      "primaryCategory": "pasta",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "pasta-selber-machen-ohne-maschine",
+      "alternativeSuggestion": {
+        "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+        "recipeName": "pasta mit grünem spargel und tomaten",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "quiche-mit-baerlauch",
+      "recipeName": "quiche mit bärlauch",
+      "category": "Quiche",
+      "primaryCategory": "quiche",
+      "status": "skipped_duplicate",
+      "reason": "too similar to existing recipe",
+      "conflictSlug": "baerlauch-quiche",
+      "alternativeSuggestion": {
+        "slug": "gruene-spargel-quiche",
+        "recipeName": "grüne spargel quiche",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "himbeer-tiramisu-im-glas",
+      "recipeName": "himbeer tiramisu im glas",
+      "category": "Tiramisu",
+      "primaryCategory": "tiramisu",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "himbeer-tiramisu",
+      "alternativeSuggestion": {
+        "slug": "erdbeer-tiramisu",
+        "recipeName": "erdbeer tiramisu",
+        "reason": "same category, lower cannibalization risk"
+      }
+    },
+    {
+      "slug": "focaccia-alla-barese",
+      "recipeName": "focaccia alla barese",
+      "category": "Focaccia",
+      "primaryCategory": "focaccia",
+      "status": "skipped_duplicate",
+      "reason": "same intent already planned",
+      "conflictSlug": "focaccia-barese",
+      "alternativeSuggestion": {
+        "slug": "focaccia-rosmarin",
+        "recipeName": "focaccia rosmarin",
+        "reason": "same category, lower cannibalization risk"
+      }
+    }
+  ],
+  "overflowCandidates": [
+    {
+      "slug": "schoko-kirschen-muffins",
+      "recipeName": "schoko kirschen muffins",
+      "category": "Muffins",
+      "primaryCategory": "muffins",
+      "canonicalUrl": "https://kochira.de/schoko-kirschen-muffins",
+      "sourceRecipePath": "todo/recipes/schoko-kirschen-muffins.mdx",
+      "strategyScore": 44,
+      "seoReasons": [
+        "category cluster 19",
+        "existing category page"
+      ],
+      "status": "planned"
+    },
+    {
+      "slug": "focaccia-alla-genovese",
+      "recipeName": "focaccia alla genovese",
+      "category": "Focaccia",
+      "primaryCategory": "focaccia",
+      "canonicalUrl": "https://kochira.de/focaccia-alla-genovese",
+      "sourceRecipePath": "todo/recipes/focaccia-alla-genovese.mdx",
+      "strategyScore": 42,
+      "seoReasons": [
+        "category cluster 12",
+        "category created on publish",
+        "buffet und picknick"
+      ],
+      "status": "planned"
+    },
+    {
+      "slug": "focaccia-mit-trockenhefe",
+      "recipeName": "focaccia mit trockenhefe",
+      "category": "Focaccia",
+      "primaryCategory": "focaccia",
+      "canonicalUrl": "https://kochira.de/focaccia-mit-trockenhefe",
+      "sourceRecipePath": "todo/recipes/focaccia-mit-trockenhefe.mdx",
+      "strategyScore": 42,
+      "seoReasons": [
+        "category cluster 12",
+        "category created on publish",
+        "buffet und picknick"
+      ],
+      "status": "planned"
+    },
+    {
+      "slug": "muffins-mit-schokostueckchen",
+      "recipeName": "muffins mit schokostückchen",
+      "category": "Muffins",
+      "primaryCategory": "muffins",
+      "canonicalUrl": "https://kochira.de/muffins-mit-schokostueckchen",
+      "sourceRecipePath": "todo/recipes/muffins-mit-schokostueckchen.mdx",
+      "strategyScore": 42,
+      "seoReasons": [
+        "category cluster 19",
+        "existing category page"
+      ],
+      "status": "planned"
+    },
+    {
+      "slug": "brot-backen-im-airfryer",
+      "recipeName": "brot backen im airfryer",
+      "category": "Airfryer",
+      "primaryCategory": "airfryer",
+      "canonicalUrl": "https://kochira.de/brot-backen-im-airfryer",
+      "sourceRecipePath": "todo/recipes/brot-backen-im-airfryer.mdx",
+      "strategyScore": 38,
+      "seoReasons": [
+        "category cluster 25",
+        "existing category page"
+      ],
+      "status": "planned"
+    }
+  ],
+  "days": {
+    "day1": {
+      "day": "day1",
+      "ordinal": 1,
+      "targetDate": "2026-05-01",
+      "status": "published",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "rhabarber-erdbeer-crumble",
+          "recipeName": "rhabarber erdbeer crumble",
+          "title": "rhabarber erdbeer crumble: knusprig und schnell",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeer-crumble",
+          "canonicalUrl": "https://kochira.de/rhabarber-erdbeer-crumble",
+          "sourceRecipePath": "todo/recipes/rhabarber-erdbeer-crumble.mdx",
+          "sourceImagePath": "todo/images/rhabarber-erdbeer-crumble.webp",
+          "strategyScore": 87,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer",
+            "erdbeersaison"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/rhabarber-erdbeer-crumble"
+        },
+        {
+          "slug": "big-mac-salat",
+          "recipeName": "big mac salat",
+          "title": "big mac salat: deftiger Feierabendgenuss in 30 Minuten",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "burger-salat",
+          "canonicalUrl": "https://kochira.de/big-mac-salat",
+          "sourceRecipePath": "todo/recipes/big-mac-salat.mdx",
+          "sourceImagePath": "todo/images/big-mac-salat.webp",
+          "strategyScore": 81,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/big-mac-salat"
+        },
+        {
+          "slug": "erdbeer-tiramisu",
+          "recipeName": "erdbeer tiramisu",
+          "title": "erdbeer tiramisu: himmlisch cremig ohne Ofen",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "erdbeer-tiramisu-ohne-ei",
+          "canonicalUrl": "https://kochira.de/erdbeer-tiramisu",
+          "sourceRecipePath": "todo/recipes/erdbeer-tiramisu.mdx",
+          "sourceImagePath": "todo/images/erdbeer-tiramisu.webp",
+          "strategyScore": 78,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "erdbeersaison",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/erdbeer-tiramisu"
+        },
+        {
+          "slug": "erdbeerkuchen-mit-rhabarber",
+          "recipeName": "erdbeerkuchen mit rhabarber",
+          "title": "erdbeerkuchen mit rhabarber: saftig vom Blech",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeerkuchen-mit-rhabarber-vom-blech",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-mit-rhabarber",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-mit-rhabarber.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-mit-rhabarber.webp",
+          "strategyScore": 76,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "fruehsommer",
+            "erdbeersaison"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/erdbeerkuchen-mit-rhabarber"
+        },
+        {
+          "slug": "erdbeer-quark-kuchen",
+          "recipeName": "erdbeer quark kuchen",
+          "title": "erdbeer quark kuchen saftig und einfach aus dem Ofen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "Quarkkuchen mit Erdbeeren",
+          "canonicalUrl": "https://kochira.de/erdbeer-quark-kuchen",
+          "sourceRecipePath": "todo/recipes/erdbeer-quark-kuchen.mdx",
+          "sourceImagePath": "todo/images/erdbeer-quark-kuchen.webp",
+          "strategyScore": 74,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/erdbeer-quark-kuchen"
+        },
+        {
+          "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+          "recipeName": "pasta mit grünem spargel und tomaten",
+          "title": "pasta mit grünem spargel und tomaten: schnell & aromatisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "spargel-tomaten-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-gruenem-spargel-und-tomaten",
+          "sourceRecipePath": "todo/recipes/pasta-mit-gruenem-spargel-und-tomaten.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-gruenem-spargel-und-tomaten.webp",
+          "strategyScore": 74,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "spargelzeit",
+            "schnelle suche"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/pasta-mit-gruenem-spargel-und-tomaten"
+        },
+        {
+          "slug": "gruene-spargel-quiche",
+          "recipeName": "grüne spargel quiche",
+          "title": "grüne spargel quiche: herzhaft und schön saftig",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "spargelquiche",
+          "canonicalUrl": "https://kochira.de/gruene-spargel-quiche",
+          "sourceRecipePath": "todo/recipes/gruene-spargel-quiche.mdx",
+          "sourceImagePath": "todo/images/gruene-spargel-quiche.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargelzeit",
+            "spargel und brunch"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/gruene-spargel-quiche"
+        },
+        {
+          "slug": "bbq-burger-grill",
+          "recipeName": "bbq burger grill",
+          "title": "bbq burger grill: saftiger Klassiker für den Rost daheim",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "bbq-rindfleisch-burger",
+          "canonicalUrl": "https://kochira.de/bbq-burger-grill",
+          "sourceRecipePath": "todo/recipes/bbq-burger-grill.mdx",
+          "sourceImagePath": "todo/images/bbq-burger-grill.webp",
+          "strategyScore": 68,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/bbq-burger-grill"
+        },
+        {
+          "slug": "muffins-erdbeer",
+          "recipeName": "muffins erdbeer",
+          "title": "muffins erdbeer: saftige Muffins mit fruchtigem Kern",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeer-joghurt-muffins",
+          "canonicalUrl": "https://kochira.de/muffins-erdbeer",
+          "sourceRecipePath": "todo/recipes/muffins-erdbeer.mdx",
+          "sourceImagePath": "todo/images/muffins-erdbeer.webp",
+          "strategyScore": 67,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/muffins-erdbeer"
+        },
+        {
+          "slug": "focaccia-rosmarin",
+          "recipeName": "focaccia rosmarin",
+          "title": "focaccia rosmarin: Knusprig und locker vom Blech",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Rosmarin-Focaccia",
+          "canonicalUrl": "https://kochira.de/focaccia-rosmarin",
+          "sourceRecipePath": "todo/recipes/focaccia-rosmarin.mdx",
+          "sourceImagePath": "todo/images/focaccia-rosmarin.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "grillsaison",
+            "buffet und picknick"
+          ],
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/focaccia-rosmarin"
+        }
+      ],
+      "publishedAt": "2026-05-01T01:12:21Z",
+      "publishedRecipes": [
+        {
+          "slug": "rhabarber-erdbeer-crumble",
+          "recipeName": "rhabarber erdbeer crumble",
+          "url": "https://kochira.de/rhabarber-erdbeer-crumble",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "big-mac-salat",
+          "recipeName": "big mac salat",
+          "url": "https://kochira.de/big-mac-salat",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "erdbeer-tiramisu",
+          "recipeName": "erdbeer tiramisu",
+          "url": "https://kochira.de/erdbeer-tiramisu",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "erdbeerkuchen-mit-rhabarber",
+          "recipeName": "erdbeerkuchen mit rhabarber",
+          "url": "https://kochira.de/erdbeerkuchen-mit-rhabarber",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "erdbeer-quark-kuchen",
+          "recipeName": "erdbeer quark kuchen",
+          "url": "https://kochira.de/erdbeer-quark-kuchen",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "pasta-mit-gruenem-spargel-und-tomaten",
+          "recipeName": "pasta mit grünem spargel und tomaten",
+          "url": "https://kochira.de/pasta-mit-gruenem-spargel-und-tomaten",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "gruene-spargel-quiche",
+          "recipeName": "grüne spargel quiche",
+          "url": "https://kochira.de/gruene-spargel-quiche",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "bbq-burger-grill",
+          "recipeName": "bbq burger grill",
+          "url": "https://kochira.de/bbq-burger-grill",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "muffins-erdbeer",
+          "recipeName": "muffins erdbeer",
+          "url": "https://kochira.de/muffins-erdbeer",
+          "sourceDay": "day1",
+          "replacementFor": null
+        },
+        {
+          "slug": "focaccia-rosmarin",
+          "recipeName": "focaccia rosmarin",
+          "url": "https://kochira.de/focaccia-rosmarin",
+          "sourceDay": "day1",
+          "replacementFor": null
+        }
+      ],
+      "skippedRecipes": []
+    },
+    "day2": {
+      "day": "day2",
+      "ordinal": 2,
+      "targetDate": "2026-05-02",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "eier-spargel-salat",
+          "recipeName": "eier spargel salat",
+          "title": "eier spargel salat: herzhaft, frisch und schnell serviert",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "spargelsalat-mit-ei",
+          "canonicalUrl": "https://kochira.de/eier-spargel-salat",
+          "sourceRecipePath": "todo/recipes/eier-spargel-salat.mdx",
+          "sourceImagePath": "todo/images/eier-spargel-salat.webp",
+          "strategyScore": 81,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "spargelzeit",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeeren-mit-rhabarber-marmelade",
+          "recipeName": "erdbeeren mit rhabarber marmelade",
+          "title": "erdbeeren mit rhabarber marmelade: intensiv & haltbar",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeer-rhabarber-marmelade",
+          "canonicalUrl": "https://kochira.de/erdbeeren-mit-rhabarber-marmelade",
+          "sourceRecipePath": "todo/recipes/erdbeeren-mit-rhabarber-marmelade.mdx",
+          "sourceImagePath": "todo/images/erdbeeren-mit-rhabarber-marmelade.webp",
+          "strategyScore": 80,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-rhabarber",
+          "recipeName": "tiramisu rhabarber",
+          "title": "tiramisu rhabarber: cremig, frisch und einfach gemacht",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "rhabarber-tiramisu-im-glas",
+          "canonicalUrl": "https://kochira.de/tiramisu-rhabarber",
+          "sourceRecipePath": "todo/recipes/tiramisu-rhabarber.mdx",
+          "sourceImagePath": "todo/images/tiramisu-rhabarber.webp",
+          "strategyScore": 78,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "fruehsommer",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-mit-weissem-spargel-und-tomaten",
+          "recipeName": "pasta mit weißem spargel und tomaten",
+          "title": "pasta mit weißem spargel und tomaten: herzhaft & schnell",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "spargelpasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-weissem-spargel-und-tomaten",
+          "sourceRecipePath": "todo/recipes/pasta-mit-weissem-spargel-und-tomaten.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-weissem-spargel-und-tomaten.webp",
+          "strategyScore": 74,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "spargelzeit",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-lachs-spargel",
+          "recipeName": "quiche lachs spargel",
+          "title": "quiche lachs spargel: herzhafter Genuss aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lachs-spargel-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-lachs-spargel",
+          "sourceRecipePath": "todo/recipes/quiche-lachs-spargel.mdx",
+          "sourceImagePath": "todo/images/quiche-lachs-spargel.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargelzeit",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schneller-erdbeerkuchen-blech",
+          "recipeName": "schneller erdbeerkuchen blech",
+          "title": "schneller erdbeerkuchen blech: saftig und gelingsicher",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-frischen-erdbeeren",
+          "canonicalUrl": "https://kochira.de/schneller-erdbeerkuchen-blech",
+          "sourceRecipePath": "todo/recipes/schneller-erdbeerkuchen-blech.mdx",
+          "sourceImagePath": "todo/images/schneller-erdbeerkuchen-blech.webp",
+          "strategyScore": 63,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tassen-kuchen",
+          "recipeName": "tassen kuchen",
+          "title": "tassen kuchen: genial saftig und fix aus dem Ofen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "tassenkuchen-aus-dem-ofen",
+          "canonicalUrl": "https://kochira.de/tassen-kuchen",
+          "sourceRecipePath": "todo/recipes/tassen-kuchen.mdx",
+          "sourceImagePath": "todo/images/tassen-kuchen.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "weisser-spargel-in-der-heissluftfritteuse-garen",
+          "recipeName": "weißer spargel in der heißluftfritteuse garen",
+          "title": "weißer spargel in der heißluftfritteuse garen: zart",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "weisser-spargel-aus-dem-airfryer",
+          "canonicalUrl": "https://kochira.de/weisser-spargel-in-der-heissluftfritteuse-garen",
+          "sourceRecipePath": "todo/recipes/weisser-spargel-in-der-heissluftfritteuse-garen.mdx",
+          "sourceImagePath": "todo/images/weisser-spargel-in-der-heissluftfritteuse-garen.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "spargelzeit",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "gurkensalat",
+          "recipeName": "gurkensalat",
+          "title": "gurkensalat mit Dill - schnell, frisch und knackig",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "klassischer-gurkensalat",
+          "canonicalUrl": "https://kochira.de/gurkensalat",
+          "sourceRecipePath": "todo/recipes/gurkensalat.mdx",
+          "sourceImagePath": "todo/images/gurkensalat.webp",
+          "strategyScore": 81,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "burger-patties",
+          "recipeName": "burger patties",
+          "title": "burger patties saftig selber machen mit Kruste",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "rinder-patties-aus-der-pfanne",
+          "canonicalUrl": "https://kochira.de/burger-patties",
+          "sourceRecipePath": "todo/recipes/burger-patties.mdx",
+          "sourceImagePath": "todo/images/burger-patties.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day3": {
+      "day": "day3",
+      "ordinal": 3,
+      "targetDate": "2026-05-03",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "italienischer-nudelsalat",
+          "recipeName": "italienischer nudelsalat",
+          "title": "italienischer nudelsalat: würzig und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "nudelsalat mit pesto-dressing",
+          "canonicalUrl": "https://kochira.de/italienischer-nudelsalat",
+          "sourceRecipePath": "todo/recipes/italienischer-nudelsalat.mdx",
+          "sourceImagePath": "todo/images/italienischer-nudelsalat.webp",
+          "strategyScore": 81,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-sirup",
+          "recipeName": "rhabarber sirup",
+          "title": "rhabarber sirup einfach selber kochen und lange genießen",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "klassischer-rhabarber-sirup",
+          "canonicalUrl": "https://kochira.de/rhabarber-sirup",
+          "sourceRecipePath": "todo/recipes/rhabarber-sirup.mdx",
+          "sourceImagePath": "todo/images/rhabarber-sirup.webp",
+          "strategyScore": 75,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-spargel-schinken",
+          "recipeName": "quiche spargel schinken",
+          "title": "quiche spargel schinken: herzhafte Ofenfreude für Gäste",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "spargel-schinken-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-spargel-schinken",
+          "sourceRecipePath": "todo/recipes/quiche-spargel-schinken.mdx",
+          "sourceImagePath": "todo/images/quiche-spargel-schinken.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargelzeit",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "glutenfreie-pasta",
+          "recipeName": "glutenfreie pasta",
+          "title": "glutenfreie pasta: cremig, schnell und alltagstauglich",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "mit-cremiger-tomatensauce",
+          "canonicalUrl": "https://kochira.de/glutenfreie-pasta",
+          "sourceRecipePath": "todo/recipes/glutenfreie-pasta.mdx",
+          "sourceImagePath": "todo/images/glutenfreie-pasta.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "alltagstauglich",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "wassermelonen-feta-salat",
+          "recipeName": "wassermelonen feta salat",
+          "title": "wassermelonen feta salat: genial frisch für heiße Tage",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "sommerlicher-melonensalat-mit-feta",
+          "canonicalUrl": "https://kochira.de/wassermelonen-feta-salat",
+          "sourceRecipePath": "todo/recipes/wassermelonen-feta-salat.mdx",
+          "sourceImagePath": "todo/images/wassermelonen-feta-salat.webp",
+          "strategyScore": 81,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "burger-patty",
+          "recipeName": "burger patty",
+          "title": "burger patty: saftig & locker für starke Burger daheim",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "rindfleisch-patty",
+          "canonicalUrl": "https://kochira.de/burger-patty",
+          "sourceRecipePath": "todo/recipes/burger-patty.mdx",
+          "sourceImagePath": "todo/images/burger-patty.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "himbeer-tiramisu",
+          "recipeName": "himbeer tiramisu",
+          "title": "himbeer tiramisu raffiniert für dein Sommerdessert",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Himbeer-Mascarpone-Tiramisu",
+          "canonicalUrl": "https://kochira.de/himbeer-tiramisu",
+          "sourceRecipePath": "todo/recipes/himbeer-tiramisu.mdx",
+          "sourceImagePath": "todo/images/himbeer-tiramisu.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kartoffelsalat-mit-gurke-und-dill",
+          "recipeName": "kartoffelsalat mit gurke und dill",
+          "title": "kartoffelsalat mit gurke und dill: frischer Sattmacher",
+          "category": "Kartoffelsalat",
+          "primaryCategory": "kartoffelsalat",
+          "categoryStatus": "existing",
+          "subcategory": "essig-oel-mit-gurke-und-dill",
+          "canonicalUrl": "https://kochira.de/kartoffelsalat-mit-gurke-und-dill",
+          "sourceRecipePath": "todo/recipes/kartoffelsalat-mit-gurke-und-dill.mdx",
+          "sourceImagePath": "todo/images/kartoffelsalat-mit-gurke-und-dill.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 1",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-puddingcreme",
+          "recipeName": "erdbeerkuchen puddingcreme",
+          "title": "erdbeerkuchen puddingcreme: saftig und schön schnittfest",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "mit-puddingcreme",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-puddingcreme",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-puddingcreme.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-puddingcreme.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "vegane-muffins",
+          "recipeName": "vegane muffins",
+          "title": "vegane muffins: saftig, locker und schnell gebacken",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "mit-heidelbeeren",
+          "canonicalUrl": "https://kochira.de/vegane-muffins",
+          "sourceRecipePath": "todo/recipes/vegane-muffins.mdx",
+          "sourceImagePath": "todo/images/vegane-muffins.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "alltagstauglich",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day4": {
+      "day": "day4",
+      "ordinal": 4,
+      "targetDate": "2026-05-04",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "salat-zum-grillen",
+          "recipeName": "salat zum grillen",
+          "title": "salat zum grillen: frischer Feierabend-Salat für Gäste",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "grillsalat-mit-joghurt-dressing",
+          "canonicalUrl": "https://kochira.de/salat-zum-grillen",
+          "sourceRecipePath": "todo/recipes/salat-zum-grillen.mdx",
+          "sourceImagePath": "todo/images/salat-zum-grillen.webp",
+          "strategyScore": 79,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-schorle",
+          "recipeName": "rhabarber schorle",
+          "title": "rhabarber schorle: frische Sommerdrinks leicht gemacht",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "schorle-mit-hausgemachtem-sirup",
+          "canonicalUrl": "https://kochira.de/rhabarber-schorle",
+          "sourceRecipePath": "todo/recipes/rhabarber-schorle.mdx",
+          "sourceImagePath": "todo/images/rhabarber-schorle.webp",
+          "strategyScore": 73,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "chicken-burger",
+          "recipeName": "chicken burger",
+          "title": "chicken burger saftig und knusprig einfach machen",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "haehnchenburger-mit-knusprigem-patty",
+          "canonicalUrl": "https://kochira.de/chicken-burger",
+          "sourceRecipePath": "todo/recipes/chicken-burger.mdx",
+          "sourceImagePath": "todo/images/chicken-burger.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "amatriciana-pasta",
+          "recipeName": "amatriciana pasta",
+          "title": "amatriciana pasta: würziges Rezept mit viel Aroma",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-amatriciana",
+          "canonicalUrl": "https://kochira.de/amatriciana-pasta",
+          "sourceRecipePath": "todo/recipes/amatriciana-pasta.mdx",
+          "sourceImagePath": "todo/images/amatriciana-pasta.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "fanta-kuchen",
+          "recipeName": "fanta kuchen",
+          "title": "fanta kuchen: saftiger Blechkuchen für viele Gäste",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "fanta-blechkuchen",
+          "canonicalUrl": "https://kochira.de/fanta-kuchen",
+          "sourceRecipePath": "todo/recipes/fanta-kuchen.mdx",
+          "sourceImagePath": "todo/images/fanta-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "mini-quiche",
+          "recipeName": "mini quiche",
+          "title": "mini quiche: Knusprig, saftig und ideal zum Vorbereiten",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Mini-Quiche mit Lauch und Käse",
+          "canonicalUrl": "https://kochira.de/mini-quiche",
+          "sourceRecipePath": "todo/recipes/mini-quiche.mdx",
+          "sourceImagePath": "todo/images/mini-quiche.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-ruehrteig",
+          "recipeName": "erdbeerkuchen rührteig",
+          "title": "erdbeerkuchen rührteig: saftig und einfach vom Blech",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-ruehrteig",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-ruehrteig",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-ruehrteig.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-ruehrteig.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "blumenkohl-airfryer",
+          "recipeName": "blumenkohl airfryer",
+          "title": "blumenkohl airfryer knusprig und schnell aus dem Korb",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "wuerzige-blumenkohl-roeschen",
+          "canonicalUrl": "https://kochira.de/blumenkohl-airfryer",
+          "sourceRecipePath": "todo/recipes/blumenkohl-airfryer.mdx",
+          "sourceImagePath": "todo/images/blumenkohl-airfryer.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "feldsalat-dressing",
+          "recipeName": "feldsalat dressing",
+          "title": "feldsalat dressing: Würzig, schnell und schön cremig",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "feldsalat-dressing-mit-senf",
+          "canonicalUrl": "https://kochira.de/feldsalat-dressing",
+          "sourceRecipePath": "todo/recipes/feldsalat-dressing.mdx",
+          "sourceImagePath": "todo/images/feldsalat-dressing.webp",
+          "strategyScore": 73,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "alltagstauglich",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-spritz",
+          "recipeName": "rhabarber spritz",
+          "title": "rhabarber spritz: frischer Sommerdrink für warme Tage",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "alkoholfreier-sommerdrink",
+          "canonicalUrl": "https://kochira.de/rhabarber-spritz",
+          "sourceRecipePath": "todo/recipes/rhabarber-spritz.mdx",
+          "sourceImagePath": "todo/images/rhabarber-spritz.webp",
+          "strategyScore": 73,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day5": {
+      "day": "day5",
+      "ordinal": 5,
+      "targetDate": "2026-05-05",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "eisbergsalat",
+          "recipeName": "eisbergsalat",
+          "title": "eisbergsalat: Knackig und schnell als frischer Salat",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "gemischter-eisbergsalat",
+          "canonicalUrl": "https://kochira.de/eisbergsalat",
+          "sourceRecipePath": "todo/recipes/eisbergsalat.mdx",
+          "sourceImagePath": "todo/images/eisbergsalat.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "alltagstauglich",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-blechkuchen",
+          "recipeName": "rhabarber blechkuchen",
+          "title": "rhabarber blechkuchen: saftig vom Blech für Gäste",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "streusel-blechkuchen",
+          "canonicalUrl": "https://kochira.de/rhabarber-blechkuchen",
+          "sourceRecipePath": "todo/recipes/rhabarber-blechkuchen.mdx",
+          "sourceImagePath": "todo/images/rhabarber-blechkuchen.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "halloumi-burger",
+          "recipeName": "Halloumi Burger",
+          "title": "Halloumi Burger knusprig gebraten und schnell gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "halloumi-burger",
+          "canonicalUrl": "https://kochira.de/halloumi-burger",
+          "sourceRecipePath": "todo/recipes/halloumi-burger.mdx",
+          "sourceImagePath": "todo/images/halloumi-burger.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "paccheri-pasta",
+          "recipeName": "paccheri pasta",
+          "title": "paccheri pasta: cremig und schnell aus einem Topf",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "paccheri-mit-tomatensahnesauce",
+          "canonicalUrl": "https://kochira.de/paccheri-pasta",
+          "sourceRecipePath": "todo/recipes/paccheri-pasta.mdx",
+          "sourceImagePath": "todo/images/paccheri-pasta.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pistazien-tiramisu",
+          "recipeName": "pistazien tiramisu",
+          "title": "pistazien tiramisu: cremig und einfach ohne Backen",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "pistazien-tiramisu",
+          "canonicalUrl": "https://kochira.de/pistazien-tiramisu",
+          "sourceRecipePath": "todo/recipes/pistazien-tiramisu.mdx",
+          "sourceImagePath": "todo/images/pistazien-tiramisu.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kaese-erdbeerkuchen",
+          "recipeName": "käse erdbeerkuchen",
+          "title": "käse erdbeerkuchen: cremig gebacken mit Erdbeeren",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "kaesekuchen-mit-erdbeeren",
+          "canonicalUrl": "https://kochira.de/kaese-erdbeerkuchen",
+          "sourceRecipePath": "todo/recipes/kaese-erdbeerkuchen.mdx",
+          "sourceImagePath": "todo/images/kaese-erdbeerkuchen.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "backmischung-muffins",
+          "recipeName": "backmischung muffins",
+          "title": "backmischung muffins: saftig und schnell aus dem Ofen",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-schoko-muffins",
+          "canonicalUrl": "https://kochira.de/backmischung-muffins",
+          "sourceRecipePath": "todo/recipes/backmischung-muffins.mdx",
+          "sourceImagePath": "todo/images/backmischung-muffins.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "joghurt-kuchen",
+          "recipeName": "joghurt kuchen",
+          "title": "joghurt kuchen: saftig, einfach und schnell gebacken",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "ruehrkuchen",
+          "canonicalUrl": "https://kochira.de/joghurt-kuchen",
+          "sourceRecipePath": "todo/recipes/joghurt-kuchen.mdx",
+          "sourceImagePath": "todo/images/joghurt-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-glutenfrei",
+          "recipeName": "quiche glutenfrei",
+          "title": "quiche glutenfrei: herzhaft und einfach aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lauch-kaese-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-glutenfrei",
+          "sourceRecipePath": "todo/recipes/quiche-glutenfrei.mdx",
+          "sourceImagePath": "todo/images/quiche-glutenfrei.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch",
+            "alltagstauglich"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-kaesekuchen",
+          "recipeName": "rhabarber käsekuchen",
+          "title": "rhabarber käsekuchen: saftig, cremig und gelingsicher",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "kaesekuchen-mit-quark",
+          "canonicalUrl": "https://kochira.de/rhabarber-kaesekuchen",
+          "sourceRecipePath": "todo/recipes/rhabarber-kaesekuchen.mdx",
+          "sourceImagePath": "todo/images/rhabarber-kaesekuchen.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day6": {
+      "day": "day6",
+      "ordinal": 6,
+      "targetDate": "2026-05-06",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "rhabarber-kuchen",
+          "recipeName": "rhabarber kuchen",
+          "title": "rhabarber kuchen: saftig mit knusprigen Streuseln",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "streuselkuchen",
+          "canonicalUrl": "https://kochira.de/rhabarber-kuchen",
+          "sourceRecipePath": "todo/recipes/rhabarber-kuchen.mdx",
+          "sourceImagePath": "todo/images/rhabarber-kuchen.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "endiviensalat",
+          "recipeName": "endiviensalat",
+          "title": "endiviensalat: Knackig, frisch und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "blattsalat-mit-senf-dressing",
+          "canonicalUrl": "https://kochira.de/endiviensalat",
+          "sourceRecipePath": "todo/recipes/endiviensalat.mdx",
+          "sourceImagePath": "todo/images/endiviensalat.webp",
+          "strategyScore": 69,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kidneybohnen-burger",
+          "recipeName": "kidneybohnen burger",
+          "title": "kidneybohnen burger: Herzhaft und saftig selbst gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "vegetarischer-bohnenburger",
+          "canonicalUrl": "https://kochira.de/kidneybohnen-burger",
+          "sourceRecipePath": "todo/recipes/kidneybohnen-burger.mdx",
+          "sourceImagePath": "todo/images/kidneybohnen-burger.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-alfredo",
+          "recipeName": "pasta alfredo",
+          "title": "pasta alfredo cremig und schnell fuer jeden Tag",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-alfredo-mit-parmesan",
+          "canonicalUrl": "https://kochira.de/pasta-alfredo",
+          "sourceRecipePath": "todo/recipes/pasta-alfredo.mdx",
+          "sourceImagePath": "todo/images/pasta-alfredo.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-banane",
+          "recipeName": "tiramisu banane",
+          "title": "tiramisu banane: cremig, fruchtig und schnell gemacht",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "bananen-tiramisu-ohne-backen",
+          "canonicalUrl": "https://kochira.de/tiramisu-banane",
+          "sourceRecipePath": "todo/recipes/tiramisu-banane.mdx",
+          "sourceImagePath": "todo/images/tiramisu-banane.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "fischstaebchen-heissluftfritteuse",
+          "recipeName": "fischstäbchen heißluftfritteuse",
+          "title": "fischstäbchen heißluftfritteuse: knusprig schnell",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "fischstaebchen",
+          "canonicalUrl": "https://kochira.de/fischstaebchen-heissluftfritteuse",
+          "sourceRecipePath": "todo/recipes/fischstaebchen-heissluftfritteuse.mdx",
+          "sourceImagePath": "todo/images/fischstaebchen-heissluftfritteuse.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-blech-biskuit",
+          "recipeName": "erdbeerkuchen blech biskuit",
+          "title": "erdbeerkuchen blech biskuit: saftig und gelingsicher",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-biskuit",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-blech-biskuit",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-blech-biskuit.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-blech-biskuit.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "lotus-kuchen",
+          "recipeName": "lotus kuchen",
+          "title": "lotus kuchen: saftig, cremig und einfach gebacken",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "Ruehrkuchen mit Lotus Creme",
+          "canonicalUrl": "https://kochira.de/lotus-kuchen",
+          "sourceRecipePath": "todo/recipes/lotus-kuchen.mdx",
+          "sourceImagePath": "todo/images/lotus-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-streuselkuchen",
+          "recipeName": "rhabarber streuselkuchen",
+          "title": "rhabarber streuselkuchen: knusprig und saftig backen",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "streuselkuchen-vom-blech",
+          "canonicalUrl": "https://kochira.de/rhabarber-streuselkuchen",
+          "sourceRecipePath": "todo/recipes/rhabarber-streuselkuchen.mdx",
+          "sourceImagePath": "todo/images/rhabarber-streuselkuchen.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-barese",
+          "recipeName": "focaccia barese",
+          "title": "focaccia barese herzhaft und saftig aus dem Ofen",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "barese",
+          "canonicalUrl": "https://kochira.de/focaccia-barese",
+          "sourceRecipePath": "todo/recipes/focaccia-barese.mdx",
+          "sourceImagePath": "todo/images/focaccia-barese.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day7": {
+      "day": "day7",
+      "ordinal": 7,
+      "targetDate": "2026-05-07",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "rhabarber-tarte",
+          "recipeName": "rhabarber tarte",
+          "title": "rhabarber tarte: saftig, buttrig und einfach gebacken",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-rhabarber-tarte-mit-streuseln",
+          "canonicalUrl": "https://kochira.de/rhabarber-tarte",
+          "sourceRecipePath": "todo/recipes/rhabarber-tarte.mdx",
+          "sourceImagePath": "todo/images/rhabarber-tarte.webp",
+          "strategyScore": 70,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rotkrautsalat",
+          "recipeName": "rotkrautsalat",
+          "title": "rotkrautsalat – knackig, frisch und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "rotkohl-apfel-salat",
+          "canonicalUrl": "https://kochira.de/rotkrautsalat",
+          "sourceRecipePath": "todo/recipes/rotkrautsalat.mdx",
+          "sourceImagePath": "todo/images/rotkrautsalat.webp",
+          "strategyScore": 69,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "leberkaese-burger",
+          "recipeName": "leberkäse burger",
+          "title": "Leberkäse Burger deftig & schnell aus der Pfanne",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "bayerischer-burger-mit-spiegelei",
+          "canonicalUrl": "https://kochira.de/leberkaese-burger",
+          "sourceRecipePath": "todo/recipes/leberkaese-burger.mdx",
+          "sourceImagePath": "todo/images/leberkaese-burger.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-arrabiata",
+          "recipeName": "pasta arrabiata",
+          "title": "pasta arrabiata: würzig, schnell und sämig gekocht",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "penne-in-scharfer-tomatensauce",
+          "canonicalUrl": "https://kochira.de/pasta-arrabiata",
+          "sourceRecipePath": "todo/recipes/pasta-arrabiata.mdx",
+          "sourceImagePath": "todo/images/pasta-arrabiata.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-eis",
+          "recipeName": "tiramisu eis",
+          "title": "tiramisu eis: cremig und ohne Eismaschine genießen",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "ohne-eismaschine",
+          "canonicalUrl": "https://kochira.de/tiramisu-eis",
+          "sourceRecipePath": "todo/recipes/tiramisu-eis.mdx",
+          "sourceImagePath": "todo/images/tiramisu-eis.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-blaetterteig",
+          "recipeName": "quiche blätterteig",
+          "title": "quiche blätterteig: Knusprig, einfach und sättigend",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lauch-kaese",
+          "canonicalUrl": "https://kochira.de/quiche-blaetterteig",
+          "sourceRecipePath": "todo/recipes/quiche-blaetterteig.mdx",
+          "sourceImagePath": "todo/images/quiche-blaetterteig.webp",
+          "strategyScore": 55,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "joghurt-muffins",
+          "recipeName": "joghurt muffins",
+          "title": "joghurt muffins: Saftiges Rezept für jeden Tag",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "saftige-joghurt-muffins",
+          "canonicalUrl": "https://kochira.de/joghurt-muffins",
+          "sourceRecipePath": "todo/recipes/joghurt-muffins.mdx",
+          "sourceImagePath": "todo/images/joghurt-muffins.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "mandarinen-kuchen",
+          "recipeName": "mandarinen kuchen",
+          "title": "mandarinen kuchen: saftig und schnell vom Blech backen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-schmand-und-mandarinen",
+          "canonicalUrl": "https://kochira.de/mandarinen-kuchen",
+          "sourceRecipePath": "todo/recipes/mandarinen-kuchen.mdx",
+          "sourceImagePath": "todo/images/mandarinen-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-mit-boden",
+          "recipeName": "erdbeerkuchen mit boden",
+          "title": "erdbeerkuchen mit boden: saftig, einfach, sicher",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeerkuchen-mit-ruehrboden",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-mit-boden",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-mit-boden.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-mit-boden.webp",
+          "strategyScore": 56,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rucola-salat",
+          "recipeName": "rucola salat",
+          "title": "rucola salat: Frisch mit Zitrone und Parmesan",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "rucola-parmesan-salat",
+          "canonicalUrl": "https://kochira.de/rucola-salat",
+          "sourceRecipePath": "todo/recipes/rucola-salat.mdx",
+          "sourceImagePath": "todo/images/rucola-salat.webp",
+          "strategyScore": 69,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day8": {
+      "day": "day8",
+      "ordinal": 8,
+      "targetDate": "2026-05-08",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "tomatensalat",
+          "recipeName": "tomatensalat",
+          "title": "tomatensalat: frischer Sommerklassiker mit Fix-Dressing",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "tomatensalat-mit-zwiebeln",
+          "canonicalUrl": "https://kochira.de/tomatensalat",
+          "sourceRecipePath": "todo/recipes/tomatensalat.mdx",
+          "sourceImagePath": "todo/images/tomatensalat.webp",
+          "strategyScore": 69,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-marmelade",
+          "recipeName": "rhabarber marmelade",
+          "title": "rhabarber marmelade: fruchtig einkochen, lange haltbar",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "mit Vanille",
+          "canonicalUrl": "https://kochira.de/rhabarber-marmelade",
+          "sourceRecipePath": "todo/recipes/rhabarber-marmelade.mdx",
+          "sourceImagePath": "todo/images/rhabarber-marmelade.webp",
+          "strategyScore": 68,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "smashed-burger",
+          "recipeName": "smashed burger",
+          "title": "smashed burger knusprig und saftig einfach zuhause",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Doppelter Cheeseburger",
+          "canonicalUrl": "https://kochira.de/smashed-burger",
+          "sourceRecipePath": "todo/recipes/smashed-burger.mdx",
+          "sourceImagePath": "todo/images/smashed-burger.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-napoli",
+          "recipeName": "pasta napoli",
+          "title": "pasta napoli: aromatisch und schnell auf dem Tisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "tomatensauce",
+          "canonicalUrl": "https://kochira.de/pasta-napoli",
+          "sourceRecipePath": "todo/recipes/pasta-napoli.mdx",
+          "sourceImagePath": "todo/images/pasta-napoli.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-torte",
+          "recipeName": "tiramisu torte",
+          "title": "tiramisu torte: cremig und einfach ohne Gelatine",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "tiramisu-torte-mit-ladyfingers",
+          "canonicalUrl": "https://kochira.de/tiramisu-torte",
+          "sourceRecipePath": "todo/recipes/tiramisu-torte.mdx",
+          "sourceImagePath": "todo/images/tiramisu-torte.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rosenkohl-airfryer",
+          "recipeName": "rosenkohl airfryer",
+          "title": "rosenkohl airfryer: knusprig, schnell und aromatisch",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "knuspriger-rosenkohl",
+          "canonicalUrl": "https://kochira.de/rosenkohl-airfryer",
+          "sourceRecipePath": "todo/recipes/rosenkohl-airfryer.mdx",
+          "sourceImagePath": "todo/images/rosenkohl-airfryer.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "maulwurf-kuchen",
+          "recipeName": "maulwurf kuchen",
+          "title": "maulwurf kuchen: genial saftig und leicht gemacht",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "schoko-bananen-sahnekuchen",
+          "canonicalUrl": "https://kochira.de/maulwurf-kuchen",
+          "sourceRecipePath": "todo/recipes/maulwurf-kuchen.mdx",
+          "sourceImagePath": "todo/images/maulwurf-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-mit-mascarpone",
+          "recipeName": "erdbeerkuchen mit mascarpone",
+          "title": "erdbeerkuchen mit mascarpone: cremig und fruchtig",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeerkuchen-mit-mascarpone-creme",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-mit-mascarpone",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-mit-mascarpone.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-mit-mascarpone.webp",
+          "strategyScore": 56,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-caprese",
+          "recipeName": "focaccia caprese",
+          "title": "focaccia caprese: knusprig, saftig und einfach gebacken",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "caprese-mit-mozzarella-und-tomaten",
+          "canonicalUrl": "https://kochira.de/focaccia-caprese",
+          "sourceRecipePath": "todo/recipes/focaccia-caprese.mdx",
+          "sourceImagePath": "todo/images/focaccia-caprese.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-brokkoli",
+          "recipeName": "quiche brokkoli",
+          "title": "quiche brokkoli: Herzhaft, saftig und einfach aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "brokkoli-kaese",
+          "canonicalUrl": "https://kochira.de/quiche-brokkoli",
+          "sourceRecipePath": "todo/recipes/quiche-brokkoli.mdx",
+          "sourceImagePath": "todo/images/quiche-brokkoli.webp",
+          "strategyScore": 55,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day9": {
+      "day": "day9",
+      "ordinal": 9,
+      "targetDate": "2026-05-09",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "rhabarber-baiser-kuchen",
+          "recipeName": "rhabarber baiser kuchen",
+          "title": "rhabarber baiser kuchen: saftig, luftig, gelingsicher",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "baiser-kuchen",
+          "canonicalUrl": "https://kochira.de/rhabarber-baiser-kuchen",
+          "sourceRecipePath": "todo/recipes/rhabarber-baiser-kuchen.mdx",
+          "sourceImagePath": "todo/images/rhabarber-baiser-kuchen.webp",
+          "strategyScore": 67,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "asiatischer-gurkensalat",
+          "recipeName": "asiatischer gurkensalat",
+          "title": "asiatischer gurkensalat: frisch und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "gurkensalat-asiatisch",
+          "canonicalUrl": "https://kochira.de/asiatischer-gurkensalat",
+          "sourceRecipePath": "todo/recipes/asiatischer-gurkensalat.mdx",
+          "sourceImagePath": "todo/images/asiatischer-gurkensalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-primavera",
+          "recipeName": "pasta primavera",
+          "title": "pasta primavera: schnelles Gemüse in cremiger Sauce",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "gemuesepasta",
+          "canonicalUrl": "https://kochira.de/pasta-primavera",
+          "sourceRecipePath": "todo/recipes/pasta-primavera.mdx",
+          "sourceImagePath": "todo/images/pasta-primavera.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "veganer-burger",
+          "recipeName": "veganer burger",
+          "title": "veganer burger: Herzhaft, saftig und einfach selbst machen",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "bohnen-burger",
+          "canonicalUrl": "https://kochira.de/veganer-burger",
+          "sourceRecipePath": "todo/recipes/veganer-burger.mdx",
+          "sourceImagePath": "todo/images/veganer-burger.webp",
+          "strategyScore": 63,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "veganes-tiramisu",
+          "recipeName": "veganes tiramisu",
+          "title": "Veganes Tiramisu: cremig, einfach und ganz ohne Ei",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "veganes-tiramisu",
+          "canonicalUrl": "https://kochira.de/veganes-tiramisu",
+          "sourceRecipePath": "todo/recipes/veganes-tiramisu.mdx",
+          "sourceImagePath": "todo/images/veganes-tiramisu.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "haehnchen-im-airfryer",
+          "recipeName": "hähnchen im airfryer",
+          "title": "hähnchen im airfryer: saftig und schnell auf dem Tisch",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "wuerzige-haehnchenoberkeulen",
+          "canonicalUrl": "https://kochira.de/haehnchen-im-airfryer",
+          "sourceRecipePath": "todo/recipes/haehnchen-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/haehnchen-im-airfryer.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "alltagstauglich",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "muffins-schokoladenstuecke",
+          "recipeName": "muffins schokoladenstücke",
+          "title": "muffins schokoladenstücke: saftig und schnell gebacken",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "schoko-muffins",
+          "canonicalUrl": "https://kochira.de/muffins-schokoladenstuecke",
+          "sourceRecipePath": "todo/recipes/muffins-schokoladenstuecke.mdx",
+          "sourceImagePath": "todo/images/muffins-schokoladenstuecke.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pfirsich-kuchen-saftiger-blechkuchen",
+          "recipeName": "pfirsich kuchen",
+          "title": "pfirsich kuchen: saftiger Blechkuchen für jeden Tag",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen",
+          "canonicalUrl": "https://kochira.de/pfirsich-kuchen-saftiger-blechkuchen",
+          "sourceRecipePath": "todo/recipes/pfirsich-kuchen-saftiger-blechkuchen.mdx",
+          "sourceImagePath": "todo/images/pfirsich-kuchen-saftiger-blechkuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-spinat",
+          "recipeName": "quiche spinat",
+          "title": "quiche spinat: Herzhaft und einfach aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "spinat-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-spinat",
+          "sourceRecipePath": "todo/recipes/quiche-spinat.mdx",
+          "sourceImagePath": "todo/images/quiche-spinat.webp",
+          "strategyScore": 55,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-vanille-torte",
+          "recipeName": "rhabarber vanille torte",
+          "title": "rhabarber vanille torte: saftig und einfach gebacken",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "muerbeteig-torte",
+          "canonicalUrl": "https://kochira.de/rhabarber-vanille-torte",
+          "sourceRecipePath": "todo/recipes/rhabarber-vanille-torte.mdx",
+          "sourceImagePath": "todo/images/rhabarber-vanille-torte.webp",
+          "strategyScore": 67,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day10": {
+      "day": "day10",
+      "ordinal": 10,
+      "targetDate": "2026-05-10",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "brotsalat",
+          "recipeName": "brotsalat",
+          "title": "brotsalat mit Knusperbrot und saftigen Tomaten",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "tomaten-brotsalat",
+          "canonicalUrl": "https://kochira.de/brotsalat",
+          "sourceRecipePath": "todo/recipes/brotsalat.mdx",
+          "sourceImagePath": "todo/images/brotsalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "puddingkuchen-mit-rhabarber",
+          "recipeName": "puddingkuchen mit rhabarber",
+          "title": "puddingkuchen mit rhabarber: cremig, saftig, gelingsicher",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-vanillepudding",
+          "canonicalUrl": "https://kochira.de/puddingkuchen-mit-rhabarber",
+          "sourceRecipePath": "todo/recipes/puddingkuchen-mit-rhabarber.mdx",
+          "sourceImagePath": "todo/images/puddingkuchen-mit-rhabarber.webp",
+          "strategyScore": 65,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-puttanesca",
+          "recipeName": "pasta puttanesca",
+          "title": "Pasta Puttanesca: würzig und schnell auf dem Tisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "tomatenpasta-mit-kapern-und-oliven",
+          "canonicalUrl": "https://kochira.de/pasta-puttanesca",
+          "sourceRecipePath": "todo/recipes/pasta-puttanesca.mdx",
+          "sourceImagePath": "todo/images/pasta-puttanesca.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "chili-cheese-burger",
+          "recipeName": "chili cheese burger",
+          "title": "chili cheese burger saftig selber machen mit Kick",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "mit-rindfleisch-und-chili-kaese-sauce",
+          "canonicalUrl": "https://kochira.de/chili-cheese-burger",
+          "sourceRecipePath": "todo/recipes/chili-cheese-burger.mdx",
+          "sourceImagePath": "todo/images/chili-cheese-burger.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "zitronen-tiramisu",
+          "recipeName": "zitronen tiramisu",
+          "title": "zitronen tiramisu: cremig, frisch und ohne Backen",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "zitronencreme-ohne-backen",
+          "canonicalUrl": "https://kochira.de/zitronen-tiramisu",
+          "sourceRecipePath": "todo/recipes/zitronen-tiramisu.mdx",
+          "sourceImagePath": "todo/images/zitronen-tiramisu.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-mit-vanillepudding-und-muerbeteigboden",
+          "recipeName": "erdbeerkuchen mit vanillepudding und mürbeteigboden",
+          "title": "erdbeerkuchen mit vanillepudding und mürbeteigboden saftig",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "mit-vanillepudding-und-muerbeteigboden",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-mit-vanillepudding-und-muerbeteigboden",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-mit-vanillepudding-und-muerbeteigboden.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-mit-vanillepudding-und-muerbeteigboden.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "stracciatella-kuchen",
+          "recipeName": "stracciatella kuchen",
+          "title": "stracciatella kuchen: saftig und locker aus dem Ofen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "ruehrkuchen",
+          "canonicalUrl": "https://kochira.de/stracciatella-kuchen",
+          "sourceRecipePath": "todo/recipes/stracciatella-kuchen.mdx",
+          "sourceImagePath": "todo/images/stracciatella-kuchen.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-pizza",
+          "recipeName": "focaccia pizza",
+          "title": "focaccia pizza: knusprig saftig und genial einfach",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "blechpizza",
+          "canonicalUrl": "https://kochira.de/focaccia-pizza",
+          "sourceRecipePath": "todo/recipes/focaccia-pizza.mdx",
+          "sourceImagePath": "todo/images/focaccia-pizza.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quarkbaellchen-airfryer",
+          "recipeName": "quarkbällchen airfryer",
+          "title": "quarkbällchen airfryer: knusprig und schnell gemacht",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "quarkbaellchen",
+          "canonicalUrl": "https://kochira.de/quarkbaellchen-airfryer",
+          "sourceRecipePath": "todo/recipes/quarkbaellchen-airfryer.mdx",
+          "sourceImagePath": "todo/images/quarkbaellchen-airfryer.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "vegane-quiche",
+          "recipeName": "vegane quiche",
+          "title": "Vegane Quiche: herzhaftes Ofenglück für jeden Tag",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "gemuese-quiche",
+          "canonicalUrl": "https://kochira.de/vegane-quiche",
+          "sourceRecipePath": "todo/recipes/vegane-quiche.mdx",
+          "sourceImagePath": "todo/images/vegane-quiche.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day11": {
+      "day": "day11",
+      "ordinal": 11,
+      "targetDate": "2026-05-11",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "bulgursalat",
+          "recipeName": "bulgursalat",
+          "title": "bulgursalat würzig und saftig für warme Tage",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "kraeuter-bulgursalat",
+          "canonicalUrl": "https://kochira.de/bulgursalat",
+          "sourceRecipePath": "todo/recipes/bulgursalat.mdx",
+          "sourceImagePath": "todo/images/bulgursalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "vodka-pasta",
+          "recipeName": "vodka pasta",
+          "title": "Vodka Pasta: Cremig und schnell auf dem Tisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "cremige-tomatenpasta",
+          "canonicalUrl": "https://kochira.de/vodka-pasta",
+          "sourceRecipePath": "todo/recipes/vodka-pasta.mdx",
+          "sourceImagePath": "todo/images/vodka-pasta.webp",
+          "strategyScore": 64,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "hamburger-selber-machen",
+          "recipeName": "hamburger selber machen",
+          "title": "hamburger selber machen: saftig und einfach daheim",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "klassischer-hamburger",
+          "canonicalUrl": "https://kochira.de/hamburger-selber-machen",
+          "sourceRecipePath": "todo/recipes/hamburger-selber-machen.mdx",
+          "sourceImagePath": "todo/images/hamburger-selber-machen.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-crumble-mit-haferflocken",
+          "recipeName": "rhabarber crumble mit haferflocken",
+          "title": "rhabarber crumble mit haferflocken: knusprig & saftig",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "fruehlings-crumble",
+          "canonicalUrl": "https://kochira.de/rhabarber-crumble-mit-haferflocken",
+          "sourceRecipePath": "todo/recipes/rhabarber-crumble-mit-haferflocken.mdx",
+          "sourceImagePath": "todo/images/rhabarber-crumble-mit-haferflocken.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "himbeere-spekulatius-tiramisu",
+          "recipeName": "himbeere spekulatius tiramisu",
+          "title": "himbeere spekulatius tiramisu: cremig & fest zum Servieren",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "fruchtiges-spekulatius-tiramisu",
+          "canonicalUrl": "https://kochira.de/himbeere-spekulatius-tiramisu",
+          "sourceRecipePath": "todo/recipes/himbeere-spekulatius-tiramisu.mdx",
+          "sourceImagePath": "todo/images/himbeere-spekulatius-tiramisu.webp",
+          "strategyScore": 55,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "erdbeerkuchen-rezept-mit-quark",
+          "recipeName": "erdbeerkuchen rezept mit quark",
+          "title": "erdbeerkuchen rezept mit quark: cremig und gelingsicher",
+          "category": "Erdbeerkuchen",
+          "primaryCategory": "erdbeerkuchen",
+          "categoryStatus": "existing",
+          "subcategory": "erdbeerkuchen-mit-quark",
+          "canonicalUrl": "https://kochira.de/erdbeerkuchen-rezept-mit-quark",
+          "sourceRecipePath": "todo/recipes/erdbeerkuchen-rezept-mit-quark.mdx",
+          "sourceImagePath": "todo/images/erdbeerkuchen-rezept-mit-quark.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 11",
+            "existing category page",
+            "erdbeersaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schoko-muffins",
+          "recipeName": "schoko muffins",
+          "title": "schoko muffins – saftig, locker und einfach gebacken",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "schoko-muffins",
+          "canonicalUrl": "https://kochira.de/schoko-muffins",
+          "sourceRecipePath": "todo/recipes/schoko-muffins.mdx",
+          "sourceImagePath": "todo/images/schoko-muffins.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kuchen-mandarinen-quark",
+          "recipeName": "kuchen mandarinen quark",
+          "title": "kuchen mandarinen quark: saftig und herrlich cremig",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "mandarinen-quark-kuchen",
+          "canonicalUrl": "https://kochira.de/kuchen-mandarinen-quark",
+          "sourceRecipePath": "todo/recipes/kuchen-mandarinen-quark.mdx",
+          "sourceImagePath": "todo/images/kuchen-mandarinen-quark.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "chicoree-salat",
+          "recipeName": "chicoree salat",
+          "title": "chicoree salat: Knackig, frisch und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "mit-apfel-und-walnuessen",
+          "canonicalUrl": "https://kochira.de/chicoree-salat",
+          "sourceRecipePath": "todo/recipes/chicoree-salat.mdx",
+          "sourceImagePath": "todo/images/chicoree-salat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-lachs-lauch",
+          "recipeName": "quiche lachs lauch",
+          "title": "quiche lachs lauch: herzhaft und saftig aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lachs-lauch-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-lachs-lauch",
+          "sourceRecipePath": "todo/recipes/quiche-lachs-lauch.mdx",
+          "sourceImagePath": "todo/images/quiche-lachs-lauch.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day12": {
+      "day": "day12",
+      "ordinal": 12,
+      "targetDate": "2026-05-12",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "couscous-salat",
+          "recipeName": "couscous salat",
+          "title": "Couscous Salat: frischer Sattmacher für jeden Tag",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "couscoussalat-mit-gemuese-und-kraeutern",
+          "canonicalUrl": "https://kochira.de/couscous-salat",
+          "sourceRecipePath": "todo/recipes/couscous-salat.mdx",
+          "sourceImagePath": "todo/images/couscous-salat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-kuchen-auf-blech",
+          "recipeName": "rhabarber kuchen auf blech",
+          "title": "rhabarber kuchen auf blech: saftig und einfach backen",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-streuseln",
+          "canonicalUrl": "https://kochira.de/rhabarber-kuchen-auf-blech",
+          "sourceRecipePath": "todo/recipes/rhabarber-kuchen-auf-blech.mdx",
+          "sourceImagePath": "todo/images/rhabarber-kuchen-auf-blech.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "smash-burger-rezept",
+          "recipeName": "smash burger rezept",
+          "title": "smash burger rezept: saftig und knusprig aus der Pfanne",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Smash Cheeseburger",
+          "canonicalUrl": "https://kochira.de/smash-burger-rezept",
+          "sourceRecipePath": "todo/recipes/smash-burger-rezept.mdx",
+          "sourceImagePath": "todo/images/smash-burger-rezept.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "marry-me-pasta",
+          "recipeName": "marry me pasta",
+          "title": "marry me pasta: Cremig, würzig und schnell gekocht",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "cremige-tomaten-sahne-pasta",
+          "canonicalUrl": "https://kochira.de/marry-me-pasta",
+          "sourceRecipePath": "todo/recipes/marry-me-pasta.mdx",
+          "sourceImagePath": "todo/images/marry-me-pasta.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-kekse",
+          "recipeName": "tiramisu kekse",
+          "title": "tiramisu kekse: cremig, knusprig und schnell gemacht",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "mascarpone-espresso-kekse",
+          "canonicalUrl": "https://kochira.de/tiramisu-kekse",
+          "sourceRecipePath": "todo/recipes/tiramisu-kekse.mdx",
+          "sourceImagePath": "todo/images/tiramisu-kekse.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "chicken-nuggets-airfryer",
+          "recipeName": "chicken nuggets airfryer",
+          "title": "chicken nuggets airfryer: knusprig und saftig",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "knusprige-haehnchen-nuggets",
+          "canonicalUrl": "https://kochira.de/chicken-nuggets-airfryer",
+          "sourceRecipePath": "todo/recipes/chicken-nuggets-airfryer.mdx",
+          "sourceImagePath": "todo/images/chicken-nuggets-airfryer.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-pugliese",
+          "recipeName": "focaccia pugliese",
+          "title": "focaccia pugliese: saftig, locker und goldbraun",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "focaccia-pugliese-mit-kartoffel-und-tomaten",
+          "canonicalUrl": "https://kochira.de/focaccia-pugliese",
+          "sourceRecipePath": "todo/recipes/focaccia-pugliese.mdx",
+          "sourceImagePath": "todo/images/focaccia-pugliese.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "mandarine-kaese-kuchen",
+          "recipeName": "mandarine käse kuchen",
+          "title": "mandarine käse kuchen: saftig, cremig, gelingsicher",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "mandarinen-kaesekuchen",
+          "canonicalUrl": "https://kochira.de/mandarine-kaese-kuchen",
+          "sourceRecipePath": "todo/recipes/mandarine-kaese-kuchen.mdx",
+          "sourceImagePath": "todo/images/mandarine-kaese-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "fenchelsalat",
+          "recipeName": "fenchelsalat",
+          "title": "fenchelsalat: Knackig, frisch und schnell für jeden Tag",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "fenchel-apfel-walnuss-salat",
+          "canonicalUrl": "https://kochira.de/fenchelsalat",
+          "sourceRecipePath": "todo/recipes/fenchelsalat.mdx",
+          "sourceImagePath": "todo/images/fenchelsalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-rezepte-herzhaft",
+          "recipeName": "quiche rezepte herzhaft",
+          "title": "quiche rezepte herzhaft: knusprig mit Lauch und Speck",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lauch-speck-quiche",
+          "canonicalUrl": "https://kochira.de/quiche-rezepte-herzhaft",
+          "sourceRecipePath": "todo/recipes/quiche-rezepte-herzhaft.mdx",
+          "sourceImagePath": "todo/images/quiche-rezepte-herzhaft.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day13": {
+      "day": "day13",
+      "ordinal": 13,
+      "targetDate": "2026-05-13",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "quinoa-salat",
+          "recipeName": "quinoa salat",
+          "title": "quinoa salat: frischer Feierabend-Salat mit Gemüse",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "quinoa-salat-mit-feta",
+          "canonicalUrl": "https://kochira.de/quinoa-salat",
+          "sourceRecipePath": "todo/recipes/quinoa-salat.mdx",
+          "sourceImagePath": "todo/images/quinoa-salat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "rhabarber-kuchen-mit-pudding-und-streusel",
+          "recipeName": "rhabarber kuchen mit pudding und streusel",
+          "title": "rhabarber kuchen mit pudding und streusel saftig backen",
+          "category": "Rhabarber",
+          "primaryCategory": "rhabarber",
+          "categoryStatus": "existing",
+          "subcategory": "blechkuchen-mit-vanillepudding-und-streuseln",
+          "canonicalUrl": "https://kochira.de/rhabarber-kuchen-mit-pudding-und-streusel",
+          "sourceRecipePath": "todo/recipes/rhabarber-kuchen-mit-pudding-und-streusel.mdx",
+          "sourceImagePath": "todo/images/rhabarber-kuchen-mit-pudding-und-streusel.webp",
+          "strategyScore": 62,
+          "seoReasons": [
+            "category cluster 20",
+            "existing category page",
+            "fruehsommer"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-e-ceci",
+          "recipeName": "pasta e ceci",
+          "title": "pasta e ceci: herzhaft, cremig und schnell gekocht",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "kichererbsen-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-e-ceci",
+          "sourceRecipePath": "todo/recipes/pasta-e-ceci.mdx",
+          "sourceImagePath": "todo/images/pasta-e-ceci.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "sushi-burger",
+          "recipeName": "sushi burger",
+          "title": "sushi burger: knusprig, frisch und leicht gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "sushi-burger-mit-lachs-und-avocado",
+          "canonicalUrl": "https://kochira.de/sushi-burger",
+          "sourceRecipePath": "todo/recipes/sushi-burger.mdx",
+          "sourceImagePath": "todo/images/sushi-burger.webp",
+          "strategyScore": 60,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-kuchen",
+          "recipeName": "tiramisu kuchen",
+          "title": "tiramisu kuchen zuerst: saftig, cremig, gelingsicher",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "mascarpone-kaffee-kuchen",
+          "canonicalUrl": "https://kochira.de/tiramisu-kuchen",
+          "sourceRecipePath": "todo/recipes/tiramisu-kuchen.mdx",
+          "sourceImagePath": "todo/images/tiramisu-kuchen.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "zuckerfreie-muffins",
+          "recipeName": "zuckerfreie muffins",
+          "title": "zuckerfreie muffins: saftig, einfach und alltagstauglich",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "bananenmuffins-ohne-zucker",
+          "canonicalUrl": "https://kochira.de/zuckerfreie-muffins",
+          "sourceRecipePath": "todo/recipes/zuckerfreie-muffins.mdx",
+          "sourceImagePath": "todo/images/zuckerfreie-muffins.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "alltagstauglich"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "no-bake-kuchen",
+          "recipeName": "no bake kuchen",
+          "title": "no bake kuchen: cremiger Familienkuchen ohne Ofen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "keksboden-frischkaese",
+          "canonicalUrl": "https://kochira.de/no-bake-kuchen",
+          "sourceRecipePath": "todo/recipes/no-bake-kuchen.mdx",
+          "sourceImagePath": "todo/images/no-bake-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "radieschensalat",
+          "recipeName": "radieschensalat",
+          "title": "radieschensalat: Frisch und in 15 Minuten serviert",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "Radieschensalat mit Gurke und Joghurt",
+          "canonicalUrl": "https://kochira.de/radieschensalat",
+          "sourceRecipePath": "todo/recipes/radieschensalat.mdx",
+          "sourceImagePath": "todo/images/radieschensalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-spinat-feta",
+          "recipeName": "quiche spinat feta",
+          "title": "quiche spinat feta: Herzhaft und einfach aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "spinat-feta",
+          "canonicalUrl": "https://kochira.de/quiche-spinat-feta",
+          "sourceRecipePath": "todo/recipes/quiche-spinat-feta.mdx",
+          "sourceImagePath": "todo/images/quiche-spinat-feta.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kichererbsen-airfryer",
+          "recipeName": "kichererbsen airfryer",
+          "title": "kichererbsen airfryer: Knuspriger Snack aus Vorrat",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "knusprige-kichererbsen",
+          "canonicalUrl": "https://kochira.de/kichererbsen-airfryer",
+          "sourceRecipePath": "todo/recipes/kichererbsen-airfryer.mdx",
+          "sourceImagePath": "todo/images/kichererbsen-airfryer.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day14": {
+      "day": "day14",
+      "ordinal": 14,
+      "targetDate": "2026-05-14",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "rote-bete-salat",
+          "recipeName": "rote bete salat",
+          "title": "Rote Bete Salat: würziges Blitzrezept für jeden Tag",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "rote-bete-apfel-salat",
+          "canonicalUrl": "https://kochira.de/rote-bete-salat",
+          "sourceRecipePath": "todo/recipes/rote-bete-salat.mdx",
+          "sourceImagePath": "todo/images/rote-bete-salat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "trueffel-pasta-rezept",
+          "recipeName": "trüffel pasta rezept",
+          "title": "trüffel pasta rezept: cremig, schnell und edel daheim",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "trueffel-sahne-pasta",
+          "canonicalUrl": "https://kochira.de/trueffel-pasta-rezept",
+          "sourceRecipePath": "todo/recipes/trueffel-pasta-rezept.mdx",
+          "sourceImagePath": "todo/images/trueffel-pasta-rezept.webp",
+          "strategyScore": 61,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "burger-saucen-selber-machen",
+          "recipeName": "burger saucen selber machen",
+          "title": "burger saucen selber machen: 3 einfache Burger-Hits",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "burgersaucen",
+          "canonicalUrl": "https://kochira.de/burger-saucen-selber-machen",
+          "sourceRecipePath": "todo/recipes/burger-saucen-selber-machen.mdx",
+          "sourceImagePath": "todo/images/burger-saucen-selber-machen.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-mit-himbeeren",
+          "recipeName": "tiramisu mit himbeeren",
+          "title": "tiramisu mit himbeeren: cremig und herrlich frisch",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "himbeer-tiramisu",
+          "canonicalUrl": "https://kochira.de/tiramisu-mit-himbeeren",
+          "sourceRecipePath": "todo/recipes/tiramisu-mit-himbeeren.mdx",
+          "sourceImagePath": "todo/images/tiramisu-mit-himbeeren.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schoko-himbeer-kuchen",
+          "recipeName": "schoko himbeer kuchen",
+          "title": "schoko himbeer kuchen: saftig und einfach gebacken",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "ruehrkuchen",
+          "canonicalUrl": "https://kochira.de/schoko-himbeer-kuchen",
+          "sourceRecipePath": "todo/recipes/schoko-himbeer-kuchen.mdx",
+          "sourceImagePath": "todo/images/schoko-himbeer-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-glutenfrei",
+          "recipeName": "focaccia glutenfrei",
+          "title": "focaccia glutenfrei: knusprig locker aus dem Ofen",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "glutenfreie-focaccia",
+          "canonicalUrl": "https://kochira.de/focaccia-glutenfrei",
+          "sourceRecipePath": "todo/recipes/focaccia-glutenfrei.mdx",
+          "sourceImagePath": "todo/images/focaccia-glutenfrei.webp",
+          "strategyScore": 48,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "spitzkohlsalat",
+          "recipeName": "spitzkohlsalat",
+          "title": "spitzkohlsalat: Knackig, frisch und schnell gemacht",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "krautsalat",
+          "canonicalUrl": "https://kochira.de/spitzkohlsalat",
+          "sourceRecipePath": "todo/recipes/spitzkohlsalat.mdx",
+          "sourceImagePath": "todo/images/spitzkohlsalat.webp",
+          "strategyScore": 66,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-spinat-lachs",
+          "recipeName": "quiche spinat lachs",
+          "title": "quiche spinat lachs: herzhafte Ofenquiche für Gäste",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "Lachs-Spinat-Quiche",
+          "canonicalUrl": "https://kochira.de/quiche-spinat-lachs",
+          "sourceRecipePath": "todo/recipes/quiche-spinat-lachs.mdx",
+          "sourceImagePath": "todo/images/quiche-spinat-lachs.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pommes-heissluftfritteuse",
+          "recipeName": "pommes heißluftfritteuse",
+          "title": "pommes heißluftfritteuse: knusprig und innen weich",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "kartoffel-pommes",
+          "canonicalUrl": "https://kochira.de/pommes-heissluftfritteuse",
+          "sourceRecipePath": "todo/recipes/pommes-heissluftfritteuse.mdx",
+          "sourceImagePath": "todo/images/pommes-heissluftfritteuse.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "cheesecakes-muffins",
+          "recipeName": "cheesecakes muffins",
+          "title": "cheesecakes muffins: Saftige Muffins mit Frischkaern",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "frischkaese-muffins",
+          "canonicalUrl": "https://kochira.de/cheesecakes-muffins",
+          "sourceRecipePath": "todo/recipes/cheesecakes-muffins.mdx",
+          "sourceImagePath": "todo/images/cheesecakes-muffins.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day15": {
+      "day": "day15",
+      "ordinal": 15,
+      "targetDate": "2026-05-15",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "green-goddess-salat",
+          "recipeName": "green goddess salat",
+          "title": "green goddess salat: frischer Sattmacher mit Biss",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "kraeutersalat-mit-joghurt-dressing",
+          "canonicalUrl": "https://kochira.de/green-goddess-salat",
+          "sourceRecipePath": "todo/recipes/green-goddess-salat.mdx",
+          "sourceImagePath": "todo/images/green-goddess-salat.webp",
+          "strategyScore": 63,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-al-limone",
+          "recipeName": "pasta al limone",
+          "title": "pasta al limone: Cremig und frisch in wenig Aufwand",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "zitronenpasta",
+          "canonicalUrl": "https://kochira.de/pasta-al-limone",
+          "sourceRecipePath": "todo/recipes/pasta-al-limone.mdx",
+          "sourceImagePath": "todo/images/pasta-al-limone.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "burger-broetchen",
+          "recipeName": "burger brötchen",
+          "title": "burger brötchen: goldbraun und stabil für saftige Burger",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "burger-broetchen",
+          "canonicalUrl": "https://kochira.de/burger-broetchen",
+          "sourceRecipePath": "todo/recipes/burger-broetchen.mdx",
+          "sourceImagePath": "todo/images/burger-broetchen.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schoko-kirsch-kuchen",
+          "recipeName": "schoko kirsch kuchen",
+          "title": "schoko kirsch kuchen: saftig gebacken für jeden Tag",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "ruehrkuchen",
+          "canonicalUrl": "https://kochira.de/schoko-kirsch-kuchen",
+          "sourceRecipePath": "todo/recipes/schoko-kirsch-kuchen.mdx",
+          "sourceImagePath": "todo/images/schoko-kirsch-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-ohne-alkohol",
+          "recipeName": "tiramisu ohne alkohol",
+          "title": "tiramisu ohne alkohol: cremig und einfach gemacht",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "klassisches-tiramisu-ohne-alkohol",
+          "canonicalUrl": "https://kochira.de/tiramisu-ohne-alkohol",
+          "sourceRecipePath": "todo/recipes/tiramisu-ohne-alkohol.mdx",
+          "sourceImagePath": "todo/images/tiramisu-ohne-alkohol.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-mit-lachs",
+          "recipeName": "quiche mit lachs",
+          "title": "quiche mit lachs: herzhafter Ofengenuss für Gäste",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lachsquiche mit lauch",
+          "canonicalUrl": "https://kochira.de/quiche-mit-lachs",
+          "sourceRecipePath": "todo/recipes/quiche-mit-lachs.mdx",
+          "sourceImagePath": "todo/images/quiche-mit-lachs.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "melonen-feta-salat",
+          "recipeName": "melonen feta salat",
+          "title": "melonen feta salat: frischer Sommerhit in 15 Minuten",
+          "category": "Salate",
+          "primaryCategory": "salate",
+          "categoryStatus": "existing",
+          "subcategory": "wassermelonen-feta-salat",
+          "canonicalUrl": "https://kochira.de/melonen-feta-salat",
+          "sourceRecipePath": "todo/recipes/melonen-feta-salat.mdx",
+          "sourceImagePath": "todo/images/melonen-feta-salat.webp",
+          "strategyScore": 63,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "sommerkueche",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "bratkartoffeln-im-airfryer",
+          "recipeName": "bratkartoffeln im airfryer",
+          "title": "bratkartoffeln im airfryer: knusprig ohne Pfanne gemacht",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "kartoffelbeilage",
+          "canonicalUrl": "https://kochira.de/bratkartoffeln-im-airfryer",
+          "sourceRecipePath": "todo/recipes/bratkartoffeln-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/bratkartoffeln-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schoko-bananen-muffins",
+          "recipeName": "schoko bananen muffins",
+          "title": "schoko bananen muffins: saftig und schnell gebacken",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "schoko-bananen",
+          "canonicalUrl": "https://kochira.de/schoko-bananen-muffins",
+          "sourceRecipePath": "todo/recipes/schoko-bananen-muffins.mdx",
+          "sourceImagePath": "todo/images/schoko-bananen-muffins.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-ohne-hefe",
+          "recipeName": "focaccia ohne hefe",
+          "title": "focaccia ohne hefe: Knusprig und schnell aus dem Ofen",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "mit-joghurt",
+          "canonicalUrl": "https://kochira.de/focaccia-ohne-hefe",
+          "sourceRecipePath": "todo/recipes/focaccia-ohne-hefe.mdx",
+          "sourceImagePath": "todo/images/focaccia-ohne-hefe.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day16": {
+      "day": "day16",
+      "ordinal": 16,
+      "targetDate": "2026-05-16",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "pasta-alla-norma",
+          "recipeName": "pasta alla norma",
+          "title": "pasta alla norma: herzhaftes Feierabendessen mit Biss",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "sizilianische-auberginenpasta",
+          "canonicalUrl": "https://kochira.de/pasta-alla-norma",
+          "sourceRecipePath": "todo/recipes/pasta-alla-norma.mdx",
+          "sourceImagePath": "todo/images/pasta-alla-norma.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "burger-buns",
+          "recipeName": "burger buns",
+          "title": "burger buns: fluffige Brötchen wie vom Burgerladen",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "hefe-burgerbroetchen",
+          "canonicalUrl": "https://kochira.de/burger-buns",
+          "sourceRecipePath": "todo/recipes/burger-buns.mdx",
+          "sourceImagePath": "todo/images/burger-buns.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "stachelbeer-baiser-kuchen",
+          "recipeName": "stachelbeer baiser kuchen",
+          "title": "stachelbeer baiser kuchen: saftig mit knuspriger Haube",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "baiser-kuchen",
+          "canonicalUrl": "https://kochira.de/stachelbeer-baiser-kuchen",
+          "sourceRecipePath": "todo/recipes/stachelbeer-baiser-kuchen.mdx",
+          "sourceImagePath": "todo/images/stachelbeer-baiser-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-rezept-original",
+          "recipeName": "tiramisu rezept original",
+          "title": "tiramisu rezept original: cremig wie in Italien daheim",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "klassisches-tiramisu",
+          "canonicalUrl": "https://kochira.de/tiramisu-rezept-original",
+          "sourceRecipePath": "todo/recipes/tiramisu-rezept-original.mdx",
+          "sourceImagePath": "todo/images/tiramisu-rezept-original.webp",
+          "strategyScore": 53,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-mit-lauch",
+          "recipeName": "quiche mit lauch",
+          "title": "quiche mit lauch: herzhafte Ofenliebe für jeden Tag",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "lauchquiche mit kaese",
+          "canonicalUrl": "https://kochira.de/quiche-mit-lauch",
+          "sourceRecipePath": "todo/recipes/quiche-mit-lauch.mdx",
+          "sourceImagePath": "todo/images/quiche-mit-lauch.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "bratwurst-im-airfryer",
+          "recipeName": "bratwurst im airfryer",
+          "title": "bratwurst im airfryer: Knusprig und saftig gelingen",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "bratwurst",
+          "canonicalUrl": "https://kochira.de/bratwurst-im-airfryer",
+          "sourceRecipePath": "todo/recipes/bratwurst-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/bratwurst-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "schoko-kirsch-muffins",
+          "recipeName": "schoko kirsch muffins",
+          "title": "schoko kirsch muffins: saftig und einfach gebacken",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "schoko-kirsch",
+          "canonicalUrl": "https://kochira.de/schoko-kirsch-muffins",
+          "sourceRecipePath": "todo/recipes/schoko-kirsch-muffins.mdx",
+          "sourceImagePath": "todo/images/schoko-kirsch-muffins.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-sandwich",
+          "recipeName": "focaccia sandwich",
+          "title": "focaccia sandwich: Knusprig saftig selbst gemacht",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "gefuellte-focaccia",
+          "canonicalUrl": "https://kochira.de/focaccia-sandwich",
+          "sourceRecipePath": "todo/recipes/focaccia-sandwich.mdx",
+          "sourceImagePath": "todo/images/focaccia-sandwich.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-mit-erbsen",
+          "recipeName": "pasta mit erbsen",
+          "title": "pasta mit erbsen: cremig und schnell für jeden Tag",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "cremige-erbsen-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-erbsen",
+          "sourceRecipePath": "todo/recipes/pasta-mit-erbsen.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-erbsen.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "crispy-chicken-burger",
+          "recipeName": "crispy chicken burger",
+          "title": "crispy chicken burger: knusprig und saftig daheim",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "chicken-burger",
+          "canonicalUrl": "https://kochira.de/crispy-chicken-burger",
+          "sourceRecipePath": "todo/recipes/crispy-chicken-burger.mdx",
+          "sourceImagePath": "todo/images/crispy-chicken-burger.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day17": {
+      "day": "day17",
+      "ordinal": 17,
+      "targetDate": "2026-05-17",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "pasta-mit-garnelen",
+          "recipeName": "pasta mit garnelen",
+          "title": "pasta mit garnelen: schnelles Wohlfühlgericht für den Feierabend",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "garnelen-knoblauch-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-garnelen",
+          "sourceRecipePath": "todo/recipes/pasta-mit-garnelen.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-garnelen.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "mini-burger",
+          "recipeName": "mini burger",
+          "title": "mini burger: saftig und einfach für Gäste schnell gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "slider-burger",
+          "canonicalUrl": "https://kochira.de/mini-burger",
+          "sourceRecipePath": "todo/recipes/mini-burger.mdx",
+          "sourceImagePath": "todo/images/mini-burger.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "zitronen-mohn-kuchen",
+          "recipeName": "zitronen mohn kuchen",
+          "title": "zitronen mohn kuchen: saftig und herrlich locker",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "Zitronen-Mohn-Rührkuchen",
+          "canonicalUrl": "https://kochira.de/zitronen-mohn-kuchen",
+          "sourceRecipePath": "todo/recipes/zitronen-mohn-kuchen.mdx",
+          "sourceImagePath": "todo/images/zitronen-mohn-kuchen.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-im-glas",
+          "recipeName": "tiramisu im glas",
+          "title": "tiramisu im glas: cremig, schnell und gelingsicher",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "ohne-ei-im-glas",
+          "canonicalUrl": "https://kochira.de/tiramisu-im-glas",
+          "sourceRecipePath": "todo/recipes/tiramisu-im-glas.mdx",
+          "sourceImagePath": "todo/images/tiramisu-im-glas.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-mit-mangold",
+          "recipeName": "quiche mit mangold",
+          "title": "quiche mit mangold: herzhaft und saftig aus dem Ofen",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "mangoldquiche",
+          "canonicalUrl": "https://kochira.de/quiche-mit-mangold",
+          "sourceRecipePath": "todo/recipes/quiche-mit-mangold.mdx",
+          "sourceImagePath": "todo/images/quiche-mit-mangold.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "fischstaebchen-im-airfryer",
+          "recipeName": "fischstäbchen im airfryer",
+          "title": "fischstäbchen im airfryer: knusprig, schnell, saftig",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "fischstaebchen",
+          "canonicalUrl": "https://kochira.de/fischstaebchen-im-airfryer",
+          "sourceRecipePath": "todo/recipes/fischstaebchen-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/fischstaebchen-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "zupfkuchen-muffins",
+          "recipeName": "zupfkuchen muffins",
+          "title": "zupfkuchen muffins: saftig, cremig und einfach backen",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "zupfkuchen-muffins",
+          "canonicalUrl": "https://kochira.de/zupfkuchen-muffins",
+          "sourceRecipePath": "todo/recipes/zupfkuchen-muffins.mdx",
+          "sourceImagePath": "todo/images/zupfkuchen-muffins.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-mit-meeresfruechten",
+          "recipeName": "pasta mit meeresfrüchten",
+          "title": "pasta mit meeresfrüchten – würzig und schnell gekocht",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "tomatige-meeresfruechte-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-meeresfruechten",
+          "sourceRecipePath": "todo/recipes/pasta-mit-meeresfruechten.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-meeresfruechten.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "focaccia-di-recco",
+          "recipeName": "focaccia di recco",
+          "title": "focaccia di recco: knusprig und cremig aus dem Ofen",
+          "category": "Focaccia",
+          "primaryCategory": "focaccia",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "klassische-recco-mit-stracchino",
+          "canonicalUrl": "https://kochira.de/focaccia-di-recco",
+          "sourceRecipePath": "todo/recipes/focaccia-di-recco.mdx",
+          "sourceImagePath": "todo/images/focaccia-di-recco.webp",
+          "strategyScore": 45,
+          "seoReasons": [
+            "category cluster 12",
+            "category created on publish",
+            "buffet und picknick"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pulled-chicken-burger",
+          "recipeName": "pulled chicken burger",
+          "title": "pulled chicken burger: saftig und einfach selbst gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "chicken-burger",
+          "canonicalUrl": "https://kochira.de/pulled-chicken-burger",
+          "sourceRecipePath": "todo/recipes/pulled-chicken-burger.mdx",
+          "sourceImagePath": "todo/images/pulled-chicken-burger.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day18": {
+      "day": "day18",
+      "ordinal": 18,
+      "targetDate": "2026-05-18",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "pasta-mit-thunfisch",
+          "recipeName": "pasta mit thunfisch",
+          "title": "pasta mit thunfisch: herzhaft und schnell auf dem Tisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "thunfisch-tomaten-pasta",
+          "canonicalUrl": "https://kochira.de/pasta-mit-thunfisch",
+          "sourceRecipePath": "todo/recipes/pasta-mit-thunfisch.mdx",
+          "sourceImagePath": "todo/images/pasta-mit-thunfisch.webp",
+          "strategyScore": 59,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pulled-pork-burger",
+          "recipeName": "pulled pork burger",
+          "title": "pulled pork burger: saftig, würzig und einfach gemacht",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "pulled-pork-burger",
+          "canonicalUrl": "https://kochira.de/pulled-pork-burger",
+          "sourceRecipePath": "todo/recipes/pulled-pork-burger.mdx",
+          "sourceImagePath": "todo/images/pulled-pork-burger.webp",
+          "strategyScore": 57,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kuchen-mit-giotto",
+          "recipeName": "kuchen mit giotto",
+          "title": "kuchen mit giotto: saftig, cremig und einfach backen",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "giotto-cremekuchen",
+          "canonicalUrl": "https://kochira.de/kuchen-mit-giotto",
+          "sourceRecipePath": "todo/recipes/kuchen-mit-giotto.mdx",
+          "sourceImagePath": "todo/images/kuchen-mit-giotto.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tiramisu-ohne-ei",
+          "recipeName": "tiramisu ohne ei",
+          "title": "tiramisu ohne ei: cremig und sicher selber machen",
+          "category": "Tiramisu",
+          "primaryCategory": "tiramisu",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "klassisches-tiramisu-ohne-rohes-ei",
+          "canonicalUrl": "https://kochira.de/tiramisu-ohne-ei",
+          "sourceRecipePath": "todo/recipes/tiramisu-ohne-ei.mdx",
+          "sourceImagePath": "todo/images/tiramisu-ohne-ei.webp",
+          "strategyScore": 51,
+          "seoReasons": [
+            "category cluster 20",
+            "category created on publish",
+            "kuehles dessert",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "quiche-mit-rosenkohl",
+          "recipeName": "quiche mit rosenkohl",
+          "title": "quiche mit rosenkohl: herzhaft und saftig gebacken",
+          "category": "Quiche",
+          "primaryCategory": "quiche",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "rosenkohl-schmand",
+          "canonicalUrl": "https://kochira.de/quiche-mit-rosenkohl",
+          "sourceRecipePath": "todo/recipes/quiche-mit-rosenkohl.mdx",
+          "sourceImagePath": "todo/images/quiche-mit-rosenkohl.webp",
+          "strategyScore": 50,
+          "seoReasons": [
+            "category cluster 18",
+            "category created on publish",
+            "spargel und brunch"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "frikadellen-im-airfryer",
+          "recipeName": "frikadellen im airfryer",
+          "title": "frikadellen im airfryer: saftig und schnell gemacht",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-frikadellen",
+          "canonicalUrl": "https://kochira.de/frikadellen-im-airfryer",
+          "sourceRecipePath": "todo/recipes/frikadellen-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/frikadellen-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "herzhafte-muffins",
+          "recipeName": "herzhafte muffins",
+          "title": "herzhafte muffins: Saftig aus dem Ofen für jeden Tag",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "kaese-paprika",
+          "canonicalUrl": "https://kochira.de/herzhafte-muffins",
+          "sourceRecipePath": "todo/recipes/herzhafte-muffins.mdx",
+          "sourceImagePath": "todo/images/herzhafte-muffins.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-aglio-olio-e",
+          "recipeName": "pasta aglio olio e",
+          "title": "pasta aglio olio e: würzig und schnell auf dem Tisch",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "aglio-olio-mit-peperoncino",
+          "canonicalUrl": "https://kochira.de/pasta-aglio-olio-e",
+          "sourceRecipePath": "todo/recipes/pasta-aglio-olio-e.mdx",
+          "sourceImagePath": "todo/images/pasta-aglio-olio-e.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "brioche-burger-buns",
+          "recipeName": "brioche burger buns",
+          "title": "brioche burger buns – fluffig und stabil für Burger",
+          "category": "Burger",
+          "primaryCategory": "burger",
+          "categoryStatus": "create_on_publish",
+          "subcategory": "brioche-burger-buns",
+          "canonicalUrl": "https://kochira.de/brioche-burger-buns",
+          "sourceRecipePath": "todo/recipes/brioche-burger-buns.mdx",
+          "sourceImagePath": "todo/images/brioche-burger-buns.webp",
+          "strategyScore": 55,
+          "seoReasons": [
+            "category cluster 24",
+            "category created on publish",
+            "grillsaison"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kuchen-mit-quark",
+          "recipeName": "kuchen mit quark",
+          "title": "kuchen mit quark: saftiger Ofenkuchen für jeden Tag",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "quarkkuchen",
+          "canonicalUrl": "https://kochira.de/kuchen-mit-quark",
+          "sourceRecipePath": "todo/recipes/kuchen-mit-quark.mdx",
+          "sourceImagePath": "todo/images/kuchen-mit-quark.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day19": {
+      "day": "day19",
+      "ordinal": 19,
+      "targetDate": "2026-05-19",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "pasta-cacio-e-pepe",
+          "recipeName": "pasta cacio e pepe",
+          "title": "pasta cacio e pepe: cremig und schnell aus 4 Zutaten",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "klassische-cacio-e-pepe",
+          "canonicalUrl": "https://kochira.de/pasta-cacio-e-pepe",
+          "sourceRecipePath": "todo/recipes/pasta-cacio-e-pepe.mdx",
+          "sourceImagePath": "todo/images/pasta-cacio-e-pepe.webp",
+          "strategyScore": 58,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kuchen-ohne-backen",
+          "recipeName": "kuchen ohne backen",
+          "title": "kuchen ohne backen: cremig, einfach und gelingsicher",
+          "category": "Kuchen",
+          "primaryCategory": "kuchen",
+          "categoryStatus": "existing",
+          "subcategory": "frischkaese-beeren-kuchen",
+          "canonicalUrl": "https://kochira.de/kuchen-ohne-backen",
+          "sourceRecipePath": "todo/recipes/kuchen-ohne-backen.mdx",
+          "sourceImagePath": "todo/images/kuchen-ohne-backen.webp",
+          "strategyScore": 52,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "kartoffeln-im-airfryer",
+          "recipeName": "kartoffeln im airfryer",
+          "title": "kartoffeln im airfryer: knusprig, schnell, gelingsicher",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "knusprige-kartoffelbeilage",
+          "canonicalUrl": "https://kochira.de/kartoffeln-im-airfryer",
+          "sourceRecipePath": "todo/recipes/kartoffeln-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/kartoffeln-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "himbeer-muffins",
+          "recipeName": "himbeer muffins",
+          "title": "himbeer muffins: saftig, locker und einfach backen",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "saftige-himbeer-muffins",
+          "canonicalUrl": "https://kochira.de/himbeer-muffins",
+          "sourceRecipePath": "todo/recipes/himbeer-muffins.mdx",
+          "sourceImagePath": "todo/images/himbeer-muffins.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "tuerkische-pasta-mit-joghurt",
+          "recipeName": "türkische pasta mit joghurt",
+          "title": "türkische pasta mit joghurt – würziges Feierabendessen",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "tuerkische-pasta-mit-hack-und-joghurt",
+          "canonicalUrl": "https://kochira.de/tuerkische-pasta-mit-joghurt",
+          "sourceRecipePath": "todo/recipes/tuerkische-pasta-mit-joghurt.mdx",
+          "sourceImagePath": "todo/images/tuerkische-pasta-mit-joghurt.webp",
+          "strategyScore": 56,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "lachs-im-airfryer",
+          "recipeName": "lachs im airfryer",
+          "title": "lachs im airfryer: saftiges Filet mit knuspriger Haut",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "lachsfilet",
+          "canonicalUrl": "https://kochira.de/lachs-im-airfryer",
+          "sourceRecipePath": "todo/recipes/lachs-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/lachs-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "muffins-mit-apfelmus",
+          "recipeName": "muffins mit apfelmus",
+          "title": "muffins mit apfelmus: saftige Muffins ohne Mixer backen",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "apfelmus-muffins",
+          "canonicalUrl": "https://kochira.de/muffins-mit-apfelmus",
+          "sourceRecipePath": "todo/recipes/muffins-mit-apfelmus.mdx",
+          "sourceImagePath": "todo/images/muffins-mit-apfelmus.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "pasta-al-forno",
+          "recipeName": "pasta al forno",
+          "title": "pasta al forno: herzhaft überbacken für den Abend",
+          "category": "Pasta",
+          "primaryCategory": "pasta",
+          "categoryStatus": "existing",
+          "subcategory": "rigatoni-auflauf",
+          "canonicalUrl": "https://kochira.de/pasta-al-forno",
+          "sourceRecipePath": "todo/recipes/pasta-al-forno.mdx",
+          "sourceImagePath": "todo/images/pasta-al-forno.webp",
+          "strategyScore": 54,
+          "seoReasons": [
+            "category cluster 30",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "steak-im-airfryer",
+          "recipeName": "steak im airfryer",
+          "title": "steak im airfryer: saftig, kross und einfach gemacht",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "Rindersteak",
+          "canonicalUrl": "https://kochira.de/steak-im-airfryer",
+          "sourceRecipePath": "todo/recipes/steak-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/steak-im-airfryer.webp",
+          "strategyScore": 49,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "chicken-wings-airfryer",
+          "recipeName": "chicken wings airfryer",
+          "title": "chicken wings airfryer: knusprig, saftig, ganz einfach",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "haehnchenfluegel",
+          "canonicalUrl": "https://kochira.de/chicken-wings-airfryer",
+          "sourceRecipePath": "todo/recipes/chicken-wings-airfryer.mdx",
+          "sourceImagePath": "todo/images/chicken-wings-airfryer.webp",
+          "strategyScore": 48,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    },
+    "day20": {
+      "day": "day20",
+      "ordinal": 20,
+      "targetDate": "2026-05-20",
+      "status": "planned",
+      "notes": [
+        "balanced for category strength and internal linking",
+        "spread to reduce same-intent cannibalization inside one day"
+      ],
+      "recipes": [
+        {
+          "slug": "gebrannte-mandeln-airfryer",
+          "recipeName": "gebrannte mandeln airfryer",
+          "title": "gebrannte mandeln airfryer: knusprig wie vom Jahrmarkt",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "zimt-zucker-mandeln",
+          "canonicalUrl": "https://kochira.de/gebrannte-mandeln-airfryer",
+          "sourceRecipePath": "todo/recipes/gebrannte-mandeln-airfryer.mdx",
+          "sourceImagePath": "todo/images/gebrannte-mandeln-airfryer.webp",
+          "strategyScore": 48,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "muffins-ohne-zucker",
+          "recipeName": "muffins ohne zucker",
+          "title": "muffins ohne zucker: saftiges Rezept für jeden Tag",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "bananen-hafer-muffins",
+          "canonicalUrl": "https://kochira.de/muffins-ohne-zucker",
+          "sourceRecipePath": "todo/recipes/muffins-ohne-zucker.mdx",
+          "sourceImagePath": "todo/images/muffins-ohne-zucker.webp",
+          "strategyScore": 47,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "suesskartoffel-pommes-airfryer",
+          "recipeName": "süßkartoffel pommes airfryer",
+          "title": "süßkartoffel pommes airfryer: knusprig mit wenig Öl",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "suesskartoffel-pommes",
+          "canonicalUrl": "https://kochira.de/suesskartoffel-pommes-airfryer",
+          "sourceRecipePath": "todo/recipes/suesskartoffel-pommes-airfryer.mdx",
+          "sourceImagePath": "todo/images/suesskartoffel-pommes-airfryer.webp",
+          "strategyScore": 48,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "muffins-glutenfrei",
+          "recipeName": "muffins glutenfrei",
+          "title": "muffins glutenfrei: saftiges Rezept für jeden Tag",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "apfel-zimt-muffins",
+          "canonicalUrl": "https://kochira.de/muffins-glutenfrei",
+          "sourceRecipePath": "todo/recipes/muffins-glutenfrei.mdx",
+          "sourceImagePath": "todo/images/muffins-glutenfrei.webp",
+          "strategyScore": 45,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "gefuellte-paprika-airfryer",
+          "recipeName": "gefüllte paprika airfryer",
+          "title": "gefüllte paprika airfryer: herzhaft und saftig",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "paprika-mit-hackfleisch-und-reis",
+          "canonicalUrl": "https://kochira.de/gefuellte-paprika-airfryer",
+          "sourceRecipePath": "todo/recipes/gefuellte-paprika-airfryer.mdx",
+          "sourceImagePath": "todo/images/gefuellte-paprika-airfryer.webp",
+          "strategyScore": 46,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "muffins-ohne-ei",
+          "recipeName": "muffins ohne ei",
+          "title": "muffins ohne ei: saftige Muffins mit lockerer Krume",
+          "category": "Muffins",
+          "primaryCategory": "muffins",
+          "categoryStatus": "existing",
+          "subcategory": "vanillemuffins-ohne-ei",
+          "canonicalUrl": "https://kochira.de/muffins-ohne-ei",
+          "sourceRecipePath": "todo/recipes/muffins-ohne-ei.mdx",
+          "sourceImagePath": "todo/images/muffins-ohne-ei.webp",
+          "strategyScore": 45,
+          "seoReasons": [
+            "category cluster 19",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "bratwurst-in-der-heissluftfritteuse",
+          "recipeName": "bratwurst in der heißluftfritteuse",
+          "title": "bratwurst in der heißluftfritteuse: saftig & kross",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "bratwurst",
+          "canonicalUrl": "https://kochira.de/bratwurst-in-der-heissluftfritteuse",
+          "sourceRecipePath": "todo/recipes/bratwurst-in-der-heissluftfritteuse.mdx",
+          "sourceImagePath": "todo/images/bratwurst-in-der-heissluftfritteuse.webp",
+          "strategyScore": 44,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "frikadellen-in-der-heissluftfritteuse",
+          "recipeName": "frikadellen in der heißluftfritteuse",
+          "title": "frikadellen in der heißluftfritteuse: saftig & schnell",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "frikadellen",
+          "canonicalUrl": "https://kochira.de/frikadellen-in-der-heissluftfritteuse",
+          "sourceRecipePath": "todo/recipes/frikadellen-in-der-heissluftfritteuse.mdx",
+          "sourceImagePath": "todo/images/frikadellen-in-der-heissluftfritteuse.webp",
+          "strategyScore": 44,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "haehnchenschenkel-im-airfryer",
+          "recipeName": "hähnchenschenkel im airfryer",
+          "title": "hähnchenschenkel im airfryer: knusprig und saftig",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "knusprige-haehnchenschenkel",
+          "canonicalUrl": "https://kochira.de/haehnchenschenkel-im-airfryer",
+          "sourceRecipePath": "todo/recipes/haehnchenschenkel-im-airfryer.mdx",
+          "sourceImagePath": "todo/images/haehnchenschenkel-im-airfryer.webp",
+          "strategyScore": 44,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        },
+        {
+          "slug": "haehnchenschenkel-in-der-heissluftfritteuse",
+          "recipeName": "hähnchenschenkel in der heißluftfritteuse",
+          "title": "hähnchenschenkel in der heißluftfritteuse: knusprig saftig",
+          "category": "Airfryer",
+          "primaryCategory": "airfryer",
+          "categoryStatus": "existing",
+          "subcategory": "haehnchen",
+          "canonicalUrl": "https://kochira.de/haehnchenschenkel-in-der-heissluftfritteuse",
+          "sourceRecipePath": "todo/recipes/haehnchenschenkel-in-der-heissluftfritteuse.mdx",
+          "sourceImagePath": "todo/images/haehnchenschenkel-in-der-heissluftfritteuse.webp",
+          "strategyScore": 44,
+          "seoReasons": [
+            "category cluster 25",
+            "existing category page",
+            "schnelle suche"
+          ],
+          "status": "planned",
+          "duplicateCheck": "passed"
+        }
+      ]
+    }
+  }
+}

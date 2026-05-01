@@ -7,7 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "indexnow:submit": "node scripts/indexnow-submit.mjs"
+    "indexnow:submit": "node scripts/indexnow-submit.mjs",
+    "strategy:generate": "node scripts/generate-strategy.mjs",
+    "write-today": "node scripts/write-today.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.1",
