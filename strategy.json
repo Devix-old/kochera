@@ -1006,7 +1006,7 @@
       "day": "day3",
       "ordinal": 3,
       "targetDate": "2026-05-03",
-      "status": "planned",
+      "status": "published",
       "notes": [
         "balanced for category strength and internal linking",
         "spread to reduce same-intent cannibalization inside one day"
@@ -1031,8 +1031,9 @@
             "grillsaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/italienischer-nudelsalat"
         },
         {
           "slug": "rhabarber-sirup",
@@ -1052,8 +1053,9 @@
             "fruehsommer",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/rhabarber-sirup"
         },
         {
           "slug": "quiche-spargel-schinken",
@@ -1073,8 +1075,9 @@
             "spargelzeit",
             "spargel und brunch"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/quiche-spargel-schinken"
         },
         {
           "slug": "glutenfreie-pasta",
@@ -1094,8 +1097,9 @@
             "alltagstauglich",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/glutenfreie-pasta"
         },
         {
           "slug": "wassermelonen-feta-salat",
@@ -1116,8 +1120,9 @@
             "grillsaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/wassermelonen-feta-salat"
         },
         {
           "slug": "burger-patty",
@@ -1137,8 +1142,9 @@
             "grillsaison",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/burger-patty"
         },
         {
           "slug": "himbeer-tiramisu",
@@ -1158,8 +1164,9 @@
             "kuehles dessert",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/himbeer-tiramisu"
         },
         {
           "slug": "kartoffelsalat-mit-gurke-und-dill",
@@ -1179,8 +1186,9 @@
             "sommerkueche",
             "grillsaison"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/kartoffelsalat-mit-gurke-und-dill"
         },
         {
           "slug": "erdbeerkuchen-puddingcreme",
@@ -1199,8 +1207,9 @@
             "existing category page",
             "erdbeersaison"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/erdbeerkuchen-puddingcreme"
         },
         {
           "slug": "vegane-muffins",
@@ -1220,8 +1229,83 @@
             "alltagstauglich",
             "schnelle suche"
           ],
-          "status": "planned",
-          "duplicateCheck": "passed"
+          "status": "published",
+          "duplicateCheck": "passed",
+          "publishedUrl": "https://kochira.de/vegane-muffins"
+        }
+      ],
+      "publishedAt": "2026-05-02T11:09:39Z",
+      "skippedRecipes": [],
+      "publishedRecipes": [
+        {
+          "slug": "italienischer-nudelsalat",
+          "recipeName": "italienischer nudelsalat",
+          "url": "https://kochira.de/italienischer-nudelsalat",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "rhabarber-sirup",
+          "recipeName": "rhabarber sirup",
+          "url": "https://kochira.de/rhabarber-sirup",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "quiche-spargel-schinken",
+          "recipeName": "quiche spargel schinken",
+          "url": "https://kochira.de/quiche-spargel-schinken",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "glutenfreie-pasta",
+          "recipeName": "glutenfreie pasta",
+          "url": "https://kochira.de/glutenfreie-pasta",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "wassermelonen-feta-salat",
+          "recipeName": "wassermelonen feta salat",
+          "url": "https://kochira.de/wassermelonen-feta-salat",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "burger-patty",
+          "recipeName": "burger patty",
+          "url": "https://kochira.de/burger-patty",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "himbeer-tiramisu",
+          "recipeName": "himbeer tiramisu",
+          "url": "https://kochira.de/himbeer-tiramisu",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "kartoffelsalat-mit-gurke-und-dill",
+          "recipeName": "kartoffelsalat mit gurke und dill",
+          "url": "https://kochira.de/kartoffelsalat-mit-gurke-und-dill",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "erdbeerkuchen-puddingcreme",
+          "recipeName": "erdbeerkuchen puddingcreme",
+          "url": "https://kochira.de/erdbeerkuchen-puddingcreme",
+          "sourceDay": "day3",
+          "replacementFor": null
+        },
+        {
+          "slug": "vegane-muffins",
+          "recipeName": "vegane muffins",
+          "url": "https://kochira.de/vegane-muffins",
+          "sourceDay": "day3",
+          "replacementFor": null
         }
       ]
     },

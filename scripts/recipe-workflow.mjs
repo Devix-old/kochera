@@ -1153,11 +1153,19 @@ function runPackageScript(scriptName) {
   }
 
   try {
-    execFileSync(commandFor('npm'), ['run', scriptName], {
-      cwd: ROOT,
-      stdio: 'pipe',
-      encoding: 'utf8',
-    });
+    if (process.platform === 'win32') {
+      execFileSync('cmd.exe', ['/d', '/s', '/c', `npm run ${scriptName}`], {
+        cwd: ROOT,
+        stdio: 'pipe',
+        encoding: 'utf8',
+      });
+    } else {
+      execFileSync('npm', ['run', scriptName], {
+        cwd: ROOT,
+        stdio: 'pipe',
+        encoding: 'utf8',
+      });
+    }
     return { ran: true, scriptName, ok: true };
   } catch (error) {
     return {
