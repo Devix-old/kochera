@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display, Lora, Crimson_Text } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
@@ -26,24 +26,6 @@ const playfair = Playfair_Display({
   fallback: ['Georgia', 'serif'],
 });
 
-// Sophisticated serif for blog content (warm, inviting)
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  display: 'swap',
-  preload: false,
-  fallback: ['Georgia', 'serif'],
-});
-
-// Alternative elegant serif for recipe titles
-const crimson = Crimson_Text({
-  variable: "--font-crimson",
-  weight: ['400', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-  preload: false,
-  fallback: ['Georgia', 'serif'],
-});
 
 export const metadata = {
   ...generateSiteMetadata({
@@ -112,7 +94,7 @@ export default function RootLayout({ children }) {
       <link rel="stylesheet" href="https://hbagency.it/cdn/stylehb.css" />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} ${lora.variable} ${crimson.variable} antialiased min-h-screen flex flex-col font-inter`}
+        className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col font-inter`}
       >
         <HeaderWrapper />
         <a 

@@ -4,6 +4,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Consolidated serif aliases — Lora and Crimson now resolve to Playfair */
+  --font-lora: var(--font-playfair, Georgia, serif);
+  --font-crimson: var(--font-playfair, Georgia, serif);
 }
 
 :root {

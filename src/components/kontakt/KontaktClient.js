@@ -48,7 +48,7 @@ export default function KontaktClient() {
       const data = await response.json();
 
       if (!response.ok) {
-        const errorMessage = data.error || 'Något gick fel.';
+        const errorMessage = data.error || 'Etwas ist schiefgelaufen.';
         throw new Error(errorMessage);
       }
 
@@ -196,7 +196,7 @@ export default function KontaktClient() {
                       <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        Skicka meddelande <Send className="w-4 h-4" />
+                        Nachricht senden <Send className="w-4 h-4" />
                       </>
                     )}
                   </button>
@@ -218,7 +218,7 @@ export default function KontaktClient() {
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">E-post</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">E-Mail</h3>
                     <a 
                       href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@kochira.de'}`}
                       className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -270,13 +270,13 @@ export default function KontaktClient() {
               <div className="p-6 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-between group hover:border-purple-400 transition-colors bg-white dark:bg-gray-900/30">
                 <div className="flex items-center gap-3">
                   <MessageSquare className="w-5 h-5 text-gray-400 group-hover:text-purple-500 transition-colors" />
-                  <span className="font-medium text-gray-700 dark:text-gray-300">Vanliga frågor</span>
+                  <span className="font-medium text-gray-700 dark:text-gray-300">Häufig gestellte Fragen</span>
                 </div>
                 <Link 
                   href="/ueber-uns" 
                   className="flex items-center gap-1 text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:gap-2 transition-all"
                 >
-                  Läs mer <ArrowRight className="w-4 h-4" />
+                  Mehr lesen <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 

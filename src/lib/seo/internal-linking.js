@@ -12,7 +12,7 @@ import { getAllCategories } from '@/lib/categories';
 export async function generateInternalLinks(recipe) {
   const allRecipes = await getAllContent('recipes');
   const categories = getAllCategories();
-  
+
   const links = {
     relatedRecipes: [],
     categoryLinks: [],
@@ -21,19 +21,10 @@ export async function generateInternalLinks(recipe) {
     seasonalLinks: []
   };
 
-  // Find related recipes by category and tags
   links.relatedRecipes = findRelatedRecipes(recipe, allRecipes);
-  
-  // Find category links
   links.categoryLinks = findCategoryLinks(recipe, categories);
-  
-  // Find ingredient-based links
   links.ingredientLinks = findIngredientLinks(recipe, allRecipes);
-  
-  // Find technique-based links
   links.techniqueLinks = findTechniqueLinks(recipe, allRecipes);
-  
-  // Find seasonal links
   links.seasonalLinks = findSeasonalLinks(recipe, allRecipes);
 
   return links;
@@ -44,25 +35,20 @@ export async function generateInternalLinks(recipe) {
  */
 function findRelatedRecipes(currentRecipe, allRecipes) {
   const { category, tags = [], cuisine, mealType } = currentRecipe;
-  
+
   return allRecipes
     .filter(recipe => recipe.slug !== currentRecipe.slug)
     .map(recipe => {
       let score = 0;
-      
-      // Category match
+
       if (recipe.category === category) score += 3;
-      
-      // Tag matches
+
       const commonTags = recipe.tags?.filter(tag => tags.includes(tag)) || [];
       score += commonTags.length * 2;
-      
-      // Cuisine match
+
       if (recipe.cuisine === cuisine) score += 2;
-      
-      // Meal type match
       if (recipe.mealType === mealType) score += 2;
-      
+
       return { ...recipe, relevanceScore: score };
     })
     .filter(recipe => recipe.relevanceScore > 0)
@@ -84,24 +70,24 @@ function findCategoryLinks(recipe, categories) {
  */
 function findIngredientLinks(recipe, allRecipes) {
   if (!recipe.ingredients) return [];
-  
+
   const mainIngredients = extractMainIngredients(recipe.ingredients);
-  
+
   return allRecipes
-    .filter(recipe => recipe.slug !== recipe.slug)
-    .map(recipe => {
-      const recipeIngredients = extractMainIngredients(recipe.ingredients || []);
-      const commonIngredients = mainIngredients.filter(ing => 
+    .filter(r => r.slug !== recipe.slug)
+    .map(r => {
+      const recipeIngredients = extractMainIngredients(r.ingredients || []);
+      const commonIngredients = mainIngredients.filter(ing =>
         recipeIngredients.some(ri => ri.toLowerCase().includes(ing.toLowerCase()))
       );
-      
+
       return {
-        ...recipe,
+        ...r,
         commonIngredients,
         ingredientScore: commonIngredients.length
       };
     })
-    .filter(recipe => recipe.ingredientScore > 0)
+    .filter(r => r.ingredientScore > 0)
     .sort((a, b) => b.ingredientScore - a.ingredientScore)
     .slice(0, 4);
 }
@@ -111,13 +97,13 @@ function findIngredientLinks(recipe, allRecipes) {
  */
 function findTechniqueLinks(recipe, allRecipes) {
   const techniques = extractCookingTechniques(recipe);
-  
+
   return allRecipes
     .filter(r => r.slug !== recipe.slug)
     .map(r => {
       const recipeTechniques = extractCookingTechniques(r);
       const commonTechniques = techniques.filter(t => recipeTechniques.includes(t));
-      
+
       return {
         ...r,
         commonTechniques,
@@ -133,17 +119,17 @@ function findTechniqueLinks(recipe, allRecipes) {
  * Find seasonal links
  */
 function findSeasonalLinks(recipe, allRecipes) {
-  const seasonalTags = ['Vår', 'Sommar', 'Höst', 'Vinter'];
+  const seasonalTags = ['Frühling', 'Sommer', 'Herbst', 'Winter'];
   const currentSeasonalTags = recipe.tags?.filter(tag => seasonalTags.includes(tag)) || [];
-  
+
   if (currentSeasonalTags.length === 0) return [];
-  
+
   return allRecipes
     .filter(r => r.slug !== recipe.slug)
     .map(r => {
       const recipeSeasonalTags = r.tags?.filter(tag => seasonalTags.includes(tag)) || [];
       const commonSeasonal = currentSeasonalTags.filter(tag => recipeSeasonalTags.includes(tag));
-      
+
       return {
         ...r,
         commonSeasonal,
@@ -162,11 +148,10 @@ function extractMainIngredients(ingredients) {
   return ingredients
     .flatMap(section => section.items || [])
     .map(item => {
-      // Extract main ingredient name (remove quantities and descriptions)
       return item
-        .replace(/^\d+\s*(dl|ml|g|kg|st|krm|tsk|msk)\s*/, '') // Remove quantities
-        .replace(/\s*\([^)]*\)/, '') // Remove parentheses
-        .split(',')[0] // Take first part before comma
+        .replace(/^\d+[\d,./]*\s*(g|kg|ml|l|EL|TL|Stück|Prise|Bund|Zehe|Scheibe|Scheiben|Dose|Pkg\.?)\s*/i, '')
+        .replace(/\s*\([^)]*\)/, '')
+        .split(',')[0]
         .trim();
     })
     .filter(ingredient => ingredient.length > 2);
@@ -178,25 +163,25 @@ function extractMainIngredients(ingredients) {
 function extractCookingTechniques(recipe) {
   const techniques = [];
   const content = `${recipe.title} ${recipe.excerpt} ${recipe.steps?.map(s => s.description).join(' ') || ''}`;
-  
+
   const techniqueKeywords = {
-    'Stekning': ['stek', 'steka', 'stekt', 'stekpanna'],
-    'Kokning': ['koka', 'kok', 'koki', 'koka'],
-    'Grillning': ['grill', 'grilla', 'grillad'],
-    'Sautering': ['sautera', 'sauter', 'wok'],
-    'Braising': ['bräsera', 'bräser', 'långkok'],
-    'Fritering': ['fritera', 'friter', 'fritös'],
-    'Ångkokning': ['ånga', 'ångkok', 'steam'],
-    'Röktning': ['rök', 'röka', 'rökt'],
-    'Marinering': ['marinera', 'marin', 'marinad']
+    'Braten': ['braten', 'gebraten', 'anbraten', 'bratpfanne', 'pfanne'],
+    'Backen': ['backen', 'gebacken', 'backofen', 'ofen', 'backblech'],
+    'Kochen': ['kochen', 'gekocht', 'aufkochen', 'einkochen', 'sieden'],
+    'Grillen': ['grillen', 'gegrillt', 'grill', 'grillieren'],
+    'Dünsten': ['dünsten', 'gedünstet', 'dämpfen', 'gedämpft'],
+    'Frittieren': ['frittieren', 'frittiert', 'fritteuse', 'ausbacken'],
+    'Schmoren': ['schmoren', 'geschmort', 'schmorgericht', 'langzeitgaren'],
+    'Überbacken': ['überbacken', 'gratinieren', 'gratiniert'],
+    'Marinieren': ['marinieren', 'mariniert', 'marinade', 'einlegen']
   };
-  
+
   Object.entries(techniqueKeywords).forEach(([technique, keywords]) => {
     if (keywords.some(keyword => content.toLowerCase().includes(keyword))) {
       techniques.push(technique);
     }
   });
-  
+
   return techniques;
 }
 
@@ -205,42 +190,38 @@ function extractCookingTechniques(recipe) {
  */
 export function generateContextualLinks(recipe, internalLinks) {
   const suggestions = [];
-  
-  // Add related recipes
+
   if (internalLinks.relatedRecipes.length > 0) {
     suggestions.push({
-      title: 'Liknande recept',
+      title: 'Ähnliche Rezepte',
       links: internalLinks.relatedRecipes.slice(0, 3),
       type: 'related'
     });
   }
-  
-  // Add ingredient-based links
+
   if (internalLinks.ingredientLinks.length > 0) {
     suggestions.push({
-      title: 'Fler recept med liknande ingredienser',
+      title: 'Mehr Rezepte mit ähnlichen Zutaten',
       links: internalLinks.ingredientLinks.slice(0, 3),
       type: 'ingredients'
     });
   }
-  
-  // Add technique-based links
+
   if (internalLinks.techniqueLinks.length > 0) {
     suggestions.push({
-      title: 'Fler recept med samma teknik',
+      title: 'Mehr Rezepte mit gleicher Technik',
       links: internalLinks.techniqueLinks.slice(0, 3),
       type: 'techniques'
     });
   }
-  
-  // Add seasonal links
+
   if (internalLinks.seasonalLinks.length > 0) {
     suggestions.push({
-      title: 'Fler säsongsrecept',
+      title: 'Mehr Saisonrezepte',
       links: internalLinks.seasonalLinks.slice(0, 3),
       type: 'seasonal'
     });
   }
-  
+
   return suggestions;
 }

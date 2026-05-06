@@ -83,7 +83,7 @@ export default function RecipeSteps({ steps }) {
                       ? 'bg-green-500 border-green-500 text-white shadow-lg'
                       : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 hover:border-purple-500 hover:scale-110'
                 }`}
-                aria-label={isCompleted ? 'Markera som ej klar' : 'Markera som klar'}
+                aria-label={isCompleted ? 'Als nicht erledigt markieren' : 'Als erledigt markieren'}
               >
                 {isCompleted ? (
                   <Check className="w-4 h-4" />
@@ -180,7 +180,7 @@ export default function RecipeSteps({ steps }) {
           <button
             onClick={closeImageModal}
             className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
-            aria-label="Stäng"
+            aria-label="Schließen"
           >
             <X className="w-6 h-6" />
           </button>

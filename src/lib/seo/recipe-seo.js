@@ -559,47 +559,47 @@ export function generateRecipeFAQSchema(recipe) {
 
   const faqs = [
     {
-      question: `Hur lång tid tar det att laga ${recipe.title}?`,
-      answer: `Det tar cirka ${recipe.totalTimeMinutes} minuter att laga ${recipe.title}.${recipe.prepTimeMinutes ? ` Förberedelse: ${recipe.prepTimeMinutes} minuter.` : ''}${recipe.cookTimeMinutes ? ` Tillagning: ${recipe.cookTimeMinutes} minuter.` : ''}`
+      question: `Wie lange dauert es, ${recipe.title} zuzubereiten?`,
+      answer: `Es dauert etwa ${recipe.totalTimeMinutes} Minuten, ${recipe.title} zuzubereiten.${recipe.prepTimeMinutes ? ` Vorbereitung: ${recipe.prepTimeMinutes} Minuten.` : ''}${recipe.cookTimeMinutes ? ` Zubereitung: ${recipe.cookTimeMinutes} Minuten.` : ''}`
     },
     {
-      question: `Hur många portioner ger ${recipe.title}?`,
-      answer: `Detta recept ger ${recipe.servings} portioner.`
+      question: `Wie viele Portionen ergibt ${recipe.title}?`,
+      answer: `Dieses Rezept ergibt ${recipe.servings} Portionen.`
     },
     {
-      question: `Vilken svårighetsgrad har ${recipe.title}?`,
-      answer: `Detta recept har svårighetsgrad ${recipe.difficulty || 'medel'}. ${getDifficultyDescription(recipe.difficulty)}`
+      question: `Welcher Schwierigkeitsgrad hat ${recipe.title}?`,
+      answer: `Dieses Rezept hat den Schwierigkeitsgrad ${recipe.difficulty || 'Mittel'}. ${getDifficultyDescription(recipe.difficulty)}`
     }
   ];
 
   // Add allergen FAQ if allergens exist
   if (recipe.allergens && recipe.allergens.length > 0) {
     faqs.push({
-      question: `Innehåller ${recipe.title} allergener?`,
-      answer: `Ja, detta recept innehåller: ${recipe.allergens.join(', ')}.`
+      question: `Enthält ${recipe.title} Allergene?`,
+      answer: `Ja, dieses Rezept enthält: ${recipe.allergens.join(', ')}.`
     });
   }
 
   // Add dynamic FAQs based on tags
   if (recipe.tags && Array.isArray(recipe.tags)) {
-    if (recipe.tags.includes('Vegetariskt')) {
+    if (recipe.tags.includes('Vegetarisch')) {
       faqs.push({
-        question: `Är ${recipe.title} vegetariskt?`,
-        answer: `Ja, detta recept är helt vegetariskt och innehåller inga kött- eller fiskprodukter.`
+        question: `Ist ${recipe.title} vegetarisch?`,
+        answer: `Ja, dieses Rezept ist vollständig vegetarisch und enthält keine Fleisch- oder Fischprodukte.`
       });
     }
-    
-    if (recipe.tags.includes('Veganskt')) {
+
+    if (recipe.tags.includes('Vegan')) {
       faqs.push({
-        question: `Är ${recipe.title} veganskt?`,
-        answer: `Ja, detta recept är helt veganskt och innehåller inga animaliska produkter.`
+        question: `Ist ${recipe.title} vegan?`,
+        answer: `Ja, dieses Rezept ist vollständig vegan und enthält keine tierischen Produkte.`
       });
     }
-    
-    if (recipe.tags.includes('Glutenfritt')) {
+
+    if (recipe.tags.includes('Glutenfrei')) {
       faqs.push({
-        question: `Är ${recipe.title} glutenfritt?`,
-        answer: `Ja, detta recept är glutenfritt och använder inga glutenhaltiga ingredienser.`
+        question: `Ist ${recipe.title} glutenfrei?`,
+        answer: `Ja, dieses Rezept ist glutenfrei und verwendet keine glutenhaltigen Zutaten.`
       });
     }
   }
@@ -607,7 +607,7 @@ export function generateRecipeFAQSchema(recipe) {
   // Add storage tips FAQ if available
   if (recipe.storageTips) {
     faqs.push({
-      question: `Hur förvarar jag ${recipe.title}?`,
+      question: `Wie bewahre ich ${recipe.title} auf?`,
       answer: recipe.storageTips
     });
   }
@@ -638,11 +638,14 @@ export function generateRecipeFAQSchema(recipe) {
  */
 function getDifficultyDescription(difficulty) {
   const descriptions = {
-    'Lätt': 'Perfekt för nybörjare med enkla tekniker och få ingredienser.',
-    'Medel': 'Kräver lite erfarenhet och några grundläggande matlagningsfärdigheter.',
-    'Svår': 'Avancerat recept som kräver erfarenhet och precision.'
+    'Lätt': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
+    'Leicht': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
+    'Medel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
+    'Mittel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
+    'Svår': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.',
+    'Schwer': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.'
   };
-  return descriptions[difficulty] || descriptions['Medel'];
+  return descriptions[difficulty] || descriptions['Mittel'];
 }
 
 /**

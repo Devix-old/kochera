@@ -10,9 +10,9 @@ import { formatYieldLabel } from '@/lib/utils/yield';
 
 export default function RecipeCard({ recipe, index = 0, className }) {
   const difficultyLabels = {
-    'Lätt': 'Lätt',
-    'Medel': 'Medel',
-    'Avancerad': 'Avancerad',
+    'Leicht': 'Leicht',
+    'Mittel': 'Mittel',
+    'Schwer': 'Schwer',
   };
 
   const yieldLabel = formatYieldLabel(recipe.yield, recipe.servings);
@@ -72,9 +72,9 @@ export default function RecipeCard({ recipe, index = 0, className }) {
             )}
             {recipe.difficulty && (
               <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                recipe.difficulty === 'Lätt' 
+                recipe.difficulty === 'Leicht'
                   ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                  : recipe.difficulty === 'Medel'
+                  : recipe.difficulty === 'Mittel'
                   ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
                   : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
               }`}>

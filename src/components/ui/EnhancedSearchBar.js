@@ -88,9 +88,9 @@ export default function EnhancedSearchBar({
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'Lätt': return 'text-green-600';
-      case 'Medel': return 'text-yellow-600';
-      case 'Svår': return 'text-red-600';
+      case 'Leicht': return 'text-green-600';
+      case 'Mittel': return 'text-yellow-600';
+      case 'Schwer': return 'text-red-600';
       default: return 'text-gray-600';
     }
   };
@@ -209,10 +209,10 @@ export default function EnhancedSearchBar({
                   <div className="p-8 text-center">
                     <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-600 dark:text-gray-400">
-                      Inga recept hittades för &ldquo;{query}&rdquo;
+                      Keine Rezepte gefunden für &ldquo;{query}&rdquo;
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
-                      Prova att söka på ingredienser eller taggar
+                      Versuche, nach Zutaten oder Tags zu suchen
                     </p>
                   </div>
                 ) : null}

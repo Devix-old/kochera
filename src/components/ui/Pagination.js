@@ -45,14 +45,14 @@ export default function Pagination({
   return (
     <nav
       role="navigation"
-      aria-label="Paginering"
+      aria-label="Seitennavigation"
       className={cn('flex items-center justify-center gap-2', className)}
     >
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        aria-label="Föregående sida"
+        aria-label="Vorherige Seite"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -76,7 +76,7 @@ export default function Pagination({
                 ? 'bg-purple-600 text-white'
                 : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
             )}
-            aria-label={`Sida ${page}`}
+            aria-label={`Seite ${page}`}
             aria-current={currentPage === page ? 'page' : undefined}
           >
             {page}
@@ -88,7 +88,7 @@ export default function Pagination({
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        aria-label="Nästa sida"
+        aria-label="Nächste Seite"
       >
         <ChevronRight className="w-5 h-5" />
       </button>

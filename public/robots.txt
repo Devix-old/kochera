@@ -8,9 +8,12 @@ Disallow: /api/internal
 Disallow: /api/admin
 Disallow: /private/
 
-
 # Google Image Bot - explicitly allow all images
 User-agent: Googlebot-Image
+Allow: /
+
+# Google-Extended (Gemini/AI Overviews) — allow crawling for AI search visibility
+User-agent: Google-Extended
 Allow: /
 
 # Sitemap

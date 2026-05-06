@@ -8,9 +8,21 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   
-  // Categories live only at /{slug}. Legacy /kategorien URLs redirect here.
+  // Legacy Swedish paths from the original project port — kept as 301s to preserve any
+  // indexed URLs. Swedish: "kategorier" = German: "Kategorien". Do not remove.
   async redirects() {
     return [
+      {
+        source: '/kategorier',
+        destination: '/rezepte',
+        permanent: true,
+      },
+      {
+        source: '/kategorier/:slug',
+        destination: '/:slug',
+        permanent: true,
+      },
+      // German alias in case /kategorien was ever linked internally
       {
         source: '/kategorien',
         destination: '/rezepte',
@@ -74,11 +86,10 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          // TODO: Temporarily removed CSP for testing - uncomment when ready
-          // {
-          //   key: 'Content-Security-Policy',
-          //   value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.google.com https://www.gstatic.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://adservice.google.com https://adservice.google.se https://www.google.com https://fundingchoicesmessages.google.com; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://adservice.google.com https://adservice.google.se https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;",
-          // },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.google.com https://www.gstatic.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://analytics.ahrefs.com https://d3u598arehftfk.cloudfront.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://hbagency.it; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://adservice.google.com https://adservice.google.se https://www.google.com https://fundingchoicesmessages.google.com; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://fundingchoicesmessages.google.com https://adservice.google.com https://adservice.google.se https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;",
+          },
         ],
       },
       // Cache control for HTML pages (excludes sitemap.xml which is handled above)

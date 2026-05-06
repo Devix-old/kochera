@@ -85,7 +85,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: baseUrl, lastModified: mostRecent, changeFrequency: 'daily', priority: 1 },
     { url: normalizeUrl(baseUrl, '/rezepte'), lastModified: mostRecent, changeFrequency: 'daily', priority: 0.9 },
     { url: normalizeUrl(baseUrl, '/ueber-uns'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.6 },
-    { url: normalizeUrl(baseUrl, '/om'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.5 },
     { url: normalizeUrl(baseUrl, '/kontakt'), lastModified: staticDate, changeFrequency: 'monthly', priority: 0.5 },
     { url: normalizeUrl(baseUrl, '/impressum'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },
     { url: normalizeUrl(baseUrl, '/datenschutz'), lastModified: staticDate, changeFrequency: 'yearly', priority: 0.3 },

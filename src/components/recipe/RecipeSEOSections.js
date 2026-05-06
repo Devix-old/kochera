@@ -270,11 +270,9 @@ export function RecipeSocialSection({ recipe }) {
  */
 function getDifficultyDescription(difficulty) {
   const descriptions = {
-    'Lätt': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
+    'Leicht': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
     'Einfach': 'Perfekt für Anfänger mit einfachen Techniken und wenigen Zutaten.',
-    'Medel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
     'Mittel': 'Erfordert etwas Erfahrung und grundlegende Kochkenntnisse.',
-    'Svår': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.',
     'Schwer': 'Fortgeschrittenes Rezept, das Erfahrung und Präzision erfordert.'
   };
   return descriptions[difficulty] || descriptions['Mittel'] || 'Mittlerer Schwierigkeitsgrad.';

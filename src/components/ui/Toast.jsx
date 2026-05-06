@@ -31,7 +31,7 @@ export default function Toast({ message, type = 'success', isVisible, onClose, d
         <button
           onClick={onClose}
           className="hover:opacity-80 transition-opacity"
-          aria-label="Stäng"
+          aria-label="Schließen"
         >
           <X className="w-4 h-4" />
         </button>

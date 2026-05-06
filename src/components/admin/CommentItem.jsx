@@ -93,7 +93,7 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
             {getStatusBadge(currentStatus)}
           </div>
           <div className="text-sm text-gray-600 dark:text-gray-400 space-x-2">
-            <span>{comment.author_email || 'Ingen e-post'}</span>
+            <span>{comment.author_email || 'Keine E-Mail'}</span>
             <span>•</span>
             <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">{comment.page_slug}</span>
             <span>•</span>
@@ -134,7 +134,7 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
             className="px-4 py-2 text-sm bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-md transform hover:scale-105 active:scale-95"
           >
             <Clock className="w-4 h-4" />
-            Markera som väntande
+            Als ausstehend markieren
           </button>
         )}
 
@@ -155,7 +155,7 @@ export default function AdminCommentItem({ comment, onUpdateStatus, onDelete }) 
           className="px-4 py-2 text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 flex items-center gap-2 ml-auto hover:shadow-md transform hover:scale-105 active:scale-95"
         >
           <Trash2 className="w-4 h-4" />
-          Radera
+          Löschen
         </button>
       </div>
     </div>

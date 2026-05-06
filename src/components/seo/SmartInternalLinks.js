@@ -14,7 +14,7 @@ export default function SmartInternalLinks({ links, currentRecipe }) {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
           <ArrowRight className="w-6 h-6 mr-3 text-purple-600" />
-          Du kanske också gillar
+          Das könnte dir auch gefallen
         </h2>
         
         <div className="space-y-8">
@@ -110,14 +110,14 @@ function getRelevanceReason(recipe, type) {
     case 'related':
       return (
         <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-          Liknande kategori och taggar
+          Ähnliche Kategorie und Tags
         </div>
       );
     case 'ingredients':
       return (
         <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
           {recipe.commonIngredients?.length > 0 && (
-            <span>Delar ingredienser: {recipe.commonIngredients.slice(0, 2).join(', ')}</span>
+            <span>Gemeinsame Zutaten: {recipe.commonIngredients.slice(0, 2).join(', ')}</span>
           )}
         </div>
       );
@@ -125,7 +125,7 @@ function getRelevanceReason(recipe, type) {
       return (
         <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
           {recipe.commonTechniques?.length > 0 && (
-            <span>Samma teknik: {recipe.commonTechniques.slice(0, 2).join(', ')}</span>
+            <span>Gleiche Technik: {recipe.commonTechniques.slice(0, 2).join(', ')}</span>
           )}
         </div>
       );
@@ -133,7 +133,7 @@ function getRelevanceReason(recipe, type) {
       return (
         <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
           {recipe.commonSeasonal?.length > 0 && (
-            <span>Säsong: {recipe.commonSeasonal.join(', ')}</span>
+            <span>Saison: {recipe.commonSeasonal.join(', ')}</span>
           )}
         </div>
       );
@@ -176,7 +176,7 @@ export function CategoryNavigation({ categories, currentCategory }) {
 /**
  * Trending Recipes Component
  */
-export function TrendingRecipes({ recipes, title = "Populära recept just nu" }) {
+export function TrendingRecipes({ recipes, title = "Beliebte Rezepte gerade" }) {
   if (!recipes || recipes.length === 0) return null;
 
   return (
@@ -210,7 +210,7 @@ export function TrendingRecipes({ recipes, title = "Populära recept just nu" })
                     data-related-recipe="true"
                   />
                   <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                    Trendande
+                    Trending
                   </div>
                 </div>
               )}

@@ -292,6 +292,23 @@ export const PRIMARY_CATEGORIES = {
     image: "/images/rezepte/focaccia-alla-genovese.webp",
     subcategories: ["Focaccia","Focaccia mit Rosmarin","Focaccia mit Tomaten","Gefuellte Focaccia","Focaccia Sandwich"]
   },
+  'stockbrot-rezepte': {
+    name: 'Stockbrot Rezepte',
+    slug: 'stockbrot-rezepte',
+    description: 'Stockbrot und Knüppelbrot am Stock – knusprig goldbraun vom Lagerfeuer, Grill oder Ofen.',
+    icon: '🔥',
+    color: 'from-amber-500 to-orange-600',
+    image: '/images/rezepte/baerlauch-brot.webp',
+    subcategories: [
+      'Stockbrot Rezepte',
+      'Stockbrot',
+      'Stockbrot am Stock',
+      'Knüppelbrot',
+      'Lagerfeuerbrot',
+      'Grillbrot am Stock',
+      'Twist-Brot'
+    ]
+  },
 
 };
 
@@ -321,13 +338,15 @@ export const MEAL_TYPES = {
 };
 
 export const COOKING_METHODS = {
-  'grill': { name: 'Grill & BBQ', icon: '🔥' },
-  'stekning': { name: 'Braten & Wok', icon: '🍳' },
-  'kokning': { name: 'Kochen & Eintopf', icon: '🍲' },
-  'ra': { name: 'Roh & Salate', icon: '🥄' },
-  'snabb': { name: 'Schnell (< 30 min)', icon: '⚡' },
-  'langsam': { name: 'Langsames Kochen', icon: '⏰' },
-  'enkel': { name: 'Einfach & Anfängerfreundlich', icon: '🍳' }
+  'braten': { name: 'Braten & Wok', icon: '🍳' },
+  'backen': { name: 'Backen', icon: '🥐' },
+  'kochen': { name: 'Kochen & Eintopf', icon: '🍲' },
+  'ofen': { name: 'Ofengericht', icon: '♨️' },
+  'grillen': { name: 'Grill & BBQ', icon: '🔥' },
+  'roh': { name: 'Roh & Salate', icon: '🥗' },
+  'dampfen': { name: 'Dämpfen', icon: '🫧' },
+  'airfryer': { name: 'Airfryer', icon: '💨' },
+  'schmoren': { name: 'Schmoren & Langsam', icon: '⏰' },
 };
 
 export const DIETARY_TAGS = {

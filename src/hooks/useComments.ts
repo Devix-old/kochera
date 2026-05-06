@@ -60,7 +60,7 @@ export function useComments({ pageSlug, enabled = true }: UseCommentsOptions): U
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Kunde inte ladda kommentarer');
+        throw new Error(data.error || 'Kommentare konnten nicht geladen werden');
       }
 
       const fetchedComments = data.comments || [];
@@ -70,7 +70,7 @@ export function useComments({ pageSlug, enabled = true }: UseCommentsOptions): U
       cache.set(cacheKey, { data: fetchedComments, timestamp: Date.now() });
     } catch (err: any) {
       if (err.name !== 'AbortError') {
-        setError(err.message || 'Kunde inte ladda kommentarer');
+        setError(err.message || 'Kommentare konnten nicht geladen werden');
       }
     } finally {
       setIsLoading(false);

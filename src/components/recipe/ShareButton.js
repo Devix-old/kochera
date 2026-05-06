@@ -72,9 +72,9 @@ export default function ShareButton({ title, excerpt, url }) {
           document.execCommand('copy');
           document.body.removeChild(textarea);
         }
-        alert('Länk kopierad! Klistra in den i Instagram.');
+        alert('Link kopiert! Füge ihn bei Instagram ein.');
       } catch (error) {
-        alert(`Kopiera denna länk manuellt:\n${url}`);
+        alert(`Bitte kopiere diesen Link manuell:\n${url}`);
       }
     } else {
       window.open(link.url, '_blank', 'width=600,height=400');
@@ -105,7 +105,7 @@ export default function ShareButton({ title, excerpt, url }) {
                     key={link.name}
                     onClick={() => handleShareClick(link)}
                     className={`group relative flex items-center justify-center w-10 h-10 rounded-full ${link.color} text-white transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg`}
-                    aria-label={`Dela på ${link.name}`}
+                    aria-label={`Auf ${link.name} teilen`}
                     title={link.name}
                   >
                     <IconComponent className="w-5 h-5" />

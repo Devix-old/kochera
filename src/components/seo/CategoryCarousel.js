@@ -129,7 +129,7 @@ export default function CategoryCarousel({ categories, currentCategory }) {
                         {/* Recipe count if available */}
                         {category.count && (
                           <div className="text-xs text-white/90 mt-1 font-medium">
-                            {category.count} recept
+                            {category.count} Rezepte
                           </div>
                         )}
                       </div>
@@ -153,7 +153,7 @@ export default function CategoryCarousel({ categories, currentCategory }) {
                       </div>
                       {category.count && (
                         <div className="text-xs mt-2 opacity-75 font-medium">
-                          {category.count} recept
+                          {category.count} Rezepte
                         </div>
                       )}
                     </div>

@@ -124,7 +124,7 @@ export async function POST(request) {
       from: fromEmail,
       to: recipientEmail,
       replyTo: sanitizedEmail,
-      subject: `Kontaktformulär: ${sanitizedSubject}`,
+      subject: `Kontaktformular: ${sanitizedSubject}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -186,19 +186,19 @@ export async function POST(request) {
           </head>
           <body>
             <div class="header">
-              <h1 style="margin: 0;">Nytt meddelande från kontaktformuläret</h1>
+              <h1 style="margin: 0;">Neue Nachricht aus dem Kontaktformular</h1>
             </div>
             <div class="content">
               <div class="field">
-                <div class="label">Från</div>
+                <div class="label">Von</div>
                 <div class="value">${sanitizedName} (${sanitizedEmail})</div>
               </div>
               <div class="field">
-                <div class="label">Ämne</div>
+                <div class="label">Betreff</div>
                 <div class="value">${sanitizedSubject}</div>
               </div>
               <div class="field">
-                <div class="label">Meddelande</div>
+                <div class="label">Nachricht</div>
                 <div class="message-box">
                   ${sanitizedMessage.replace(/\n/g, '<br>')}
                 </div>
@@ -255,7 +255,7 @@ Diese Nachricht wurde über das Kontaktformular auf kochira.de gesendet
       await resend.emails.send({
         from: confirmationFromEmail,
         to: sanitizedEmail,
-        subject: `Tack för ditt meddelande - ${sanitizedSubject}`,
+        subject: `Danke für deine Nachricht - ${sanitizedSubject}`,
         html: `
           <!DOCTYPE html>
           <html>

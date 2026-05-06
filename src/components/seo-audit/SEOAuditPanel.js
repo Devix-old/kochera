@@ -151,7 +151,7 @@ export default function SEOAuditPanel({ file, onSave, onNext, onPrevious, hasNex
     
     if (length < 50) {
       // Add SEO-friendly words
-      const additions = [' recept', ' – Klassisk favorit', ' – Perfekt för hela familjen'];
+      const additions = [' Rezept', ' – Klassiker', ' – Perfekt für die ganze Familie'];
       return currentTitle + additions[0];
     } else {
       // Shorten intelligently
@@ -167,7 +167,7 @@ export default function SEOAuditPanel({ file, onSave, onNext, onPrevious, hasNex
     
     if (length < 150) {
       // Add descriptive text
-      return currentExcerpt + ' Perfekt för hela familjen och enkel att laga.';
+      return currentExcerpt + ' Perfekt für die ganze Familie und einfach zuzubereiten.';
     } else {
       // Trim to fit
       return currentExcerpt.substring(0, 157) + '...';

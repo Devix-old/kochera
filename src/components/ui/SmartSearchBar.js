@@ -22,7 +22,7 @@ const EMPTY_RECIPES = [];
 export default function SmartSearchBar({ 
   recipes, 
   onSearch, 
-  placeholder = "Sök recept, ingredienser eller taggar...",
+  placeholder = "Rezepte, Zutaten oder Tags suchen...",
   className = ""
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -198,9 +198,9 @@ export default function SmartSearchBar({
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'Lätt': return 'text-green-600 dark:text-green-400';
-      case 'Medel': return 'text-yellow-600 dark:text-yellow-400';
-      case 'Svår': return 'text-red-600 dark:text-red-400';
+      case 'Leicht': return 'text-green-600 dark:text-green-400';
+      case 'Mittel': return 'text-yellow-600 dark:text-yellow-400';
+      case 'Schwer': return 'text-red-600 dark:text-red-400';
       default: return 'text-gray-600 dark:text-gray-400';
     }
   };
@@ -234,11 +234,11 @@ export default function SmartSearchBar({
           }, 100);
         }}
         className="w-full flex items-center gap-3 px-4 py-3 md:py-3.5 lg:py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl text-left text-gray-500 dark:text-gray-400 hover:border-purple-300 dark:hover:border-purple-600 transition-all"
-        aria-label="Sök recept"
+        aria-label="Rezepte suchen"
       >
         <Search className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0 text-gray-400 dark:text-gray-500" />
         <span className="flex-1 text-sm md:text-base lg:text-lg font-medium text-gray-400 dark:text-gray-500">
-          Sök recept, ingredienser eller taggar...
+          Rezepte, Zutaten oder Tags suchen...
         </span>
         <kbd className="hidden lg:inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded">
           <span className="text-xs">⌘</span>K
@@ -295,7 +295,7 @@ export default function SmartSearchBar({
                         inputRef.current?.focus();
                       }}
                       className="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                      aria-label="Rensa sökning"
+                      aria-label="Suche zurücksetzen"
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -313,7 +313,7 @@ export default function SmartSearchBar({
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       className="w-12 h-12 border-4 border-purple-200 dark:border-purple-800 border-t-purple-600 dark:border-t-purple-400 rounded-full mx-auto mb-4"
                     />
-                    <p className="text-gray-600 dark:text-gray-400 font-medium">Söker...</p>
+                    <p className="text-gray-600 dark:text-gray-400 font-medium">Suche läuft...</p>
                   </div>
                 )}
 
@@ -399,7 +399,7 @@ export default function SmartSearchBar({
                       <Search className="w-8 h-8 text-gray-400" />
                     </div>
                     <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Inga recept hittades
+                      Keine Rezepte gefunden
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
                       Versuchen Sie nach Zutaten, Tags oder Kategorien zu suchen
@@ -430,14 +430,14 @@ export default function SmartSearchBar({
                           <div className="flex items-center gap-2">
                             <History className="w-4 h-4 text-gray-500" />
                             <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-                              Senaste sökningar
+                              Letzte Suchen
                             </h3>
                           </div>
                           <button
                             onClick={clearHistory}
                             className="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
                           >
-                            Rensa
+                            Löschen
                           </button>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -460,7 +460,7 @@ export default function SmartSearchBar({
                       <div>
                         <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                           <Sparkles className="w-4 h-4 text-purple-600" />
-                          Förslag
+                          Vorschläge
                         </h3>
                         <div className="space-y-2">
                           {suggestions.map((suggestion) => (
@@ -486,7 +486,7 @@ export default function SmartSearchBar({
                         <div className="flex items-center gap-2 mb-3">
                           <TrendingUp className="w-4 h-4 text-purple-600" />
                           <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-                            Populära sökningar
+                            Beliebte Suchen
                           </h3>
                         </div>
                         <div className="flex flex-wrap gap-2">

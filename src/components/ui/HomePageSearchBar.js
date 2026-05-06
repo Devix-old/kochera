@@ -88,9 +88,9 @@ export default function HomePageSearchBar({
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'Lätt': return 'text-green-600';
-      case 'Medel': return 'text-yellow-600';
-      case 'Svår': return 'text-red-600';
+      case 'Leicht': return 'text-green-600';
+      case 'Mittel': return 'text-yellow-600';
+      case 'Schwer': return 'text-red-600';
       default: return 'text-gray-600';
     }
   };

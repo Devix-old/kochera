@@ -64,7 +64,7 @@ export function useAdminComments({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Kunde inte ladda kommentarer');
+        throw new Error(data.error || 'Kommentare konnten nicht geladen werden');
       }
 
       setComments(data.comments || []);
@@ -76,7 +76,7 @@ export function useAdminComments({
       });
     } catch (err: any) {
       if (err.name !== 'AbortError') {
-        setError(err.message || 'Kunde inte ladda kommentarer');
+        setError(err.message || 'Kommentare konnten nicht geladen werden');
       }
     } finally {
       setIsLoading(false);
@@ -113,7 +113,7 @@ export function useAdminComments({
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || 'Kunde inte uppdatera kommentaren');
+        throw new Error(data.error || 'Kommentar konnte nicht aktualisiert werden');
       }
       
       // Refetch in background to ensure sync (don't show loading)
@@ -154,7 +154,7 @@ export function useAdminComments({
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || 'Kunde inte radera kommentaren');
+        throw new Error(data.error || 'Kommentar konnte nicht gelöscht werden');
       }
 
       // Refetch in background to ensure sync (don't show loading)

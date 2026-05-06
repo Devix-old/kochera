@@ -19,7 +19,7 @@ function generateKeywordsFromTitle(title) {
   if (!title) return '';
   
   // Basic stopwords to filter
-  const stopwords = new Set(['och', 'att', 'i', 'det', 'som', 'en', 'på', 'är', 'av', 'för', 'med', 'till', 'den', 'de', 'har', 'om', 'du', 'han', 'hon', 'vi', 'ni', 'så', 'här', 'där', 'gör', 'ska', 'kan', 'utan', 'eller', 'men', 'vad', 'hur', 'var', 'när', 'från', 'ut', 'in']);
+  const stopwords = new Set(['und', 'die', 'der', 'das', 'ein', 'eine', 'für', 'mit', 'ist', 'in', 'von', 'zu', 'auf', 'an', 'aus', 'bei', 'nach', 'über', 'unter', 'vor', 'als', 'aber', 'oder', 'wenn', 'dann', 'noch', 'auch', 'sich', 'wie', 'was', 'wer', 'dem', 'den', 'des', 'im', 'am', 'zum', 'zur', 'mehr', 'sehr', 'nur', 'auch']);
   
   const keywords = title
     .toLowerCase()
@@ -142,6 +142,32 @@ export function generateMetadata({
 }
 
 /**
+ * Map frontmatter cuisine codes to Schema.org cuisine names
+ */
+function mapCuisineCode(code) {
+  if (!code) return 'German';
+  const map = {
+    'DE': 'German',
+    'AT': 'Austrian',
+    'CH': 'Swiss',
+    'IT': 'Italian',
+    'FR': 'French',
+    'ES': 'Spanish',
+    'GR': 'Greek',
+    'TR': 'Turkish',
+    'JP': 'Japanese',
+    'KR': 'Korean',
+    'CN': 'Chinese',
+    'TH': 'Thai',
+    'IN': 'Indian',
+    'MX': 'Mexican',
+    'US': 'American',
+    'INT': 'International',
+  };
+  return map[code.toUpperCase()] || code;
+}
+
+/**
  * Generate Recipe JSON-LD schema
  * MINOR #4: This function is outdated compared to generateEnhancedRecipeSchema() in recipe-seo.js
  * The new version has: better stopwords, better keyword generation, better step URLs, better image structure, better nutrition
@@ -176,10 +202,10 @@ export function generateRecipeSchema(recipe) {
     cookTime: recipe.cookTimeMinutes ? `PT${recipe.cookTimeMinutes}M` : undefined,
     totalTime: recipe.totalTimeMinutes ? `PT${recipe.totalTimeMinutes}M` : undefined,
     // MINOR #6: Use English for recipeYield for international visibility
-    recipeYield: recipe.servings ? `${recipe.servings} servings` : undefined,
+    recipeYield: recipe.servings ? `${recipe.servings} Portionen` : (recipe.yield ? `${recipe.yield.amount} ${recipe.yield.unit}` : undefined),
     // MINOR #7: Don't default to 'Dessert' - use undefined if category missing
     recipeCategory: recipe.category || undefined,
-    recipeCuisine: 'German',
+    recipeCuisine: mapCuisineCode(recipe.cuisine),
     // MINOR #5: Add mainEntityOfPage to reduce canonical mistakes
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -200,13 +226,13 @@ export function generateRecipeSchema(recipe) {
         return [{
           '@type': 'HowToStep',
           position: 1,
-          text: recipe.excerpt || recipe.description || 'Se den fullständiga receptet'
+          text: recipe.excerpt || recipe.description || 'Vollständiges Rezept ansehen'
         }];
       }
       return recipe.steps.map((step, index) => ({
         '@type': 'HowToStep',
         position: index + 1,
-        name: step.title || `Steg ${index + 1}`,
+        name: step.title || `Schritt ${index + 1}`,
         text: step.description,
       }));
     })(),
@@ -224,7 +250,7 @@ export function generateRecipeSchema(recipe) {
   // Google doesn't recognize dynamic properties - must use standard names
   if (recipe.nutrition && recipe.nutrition.length > 0) {
     // Helper function to find nutrition value by Swedish name
-    const findNutrition = (swedishName) => {
+    const findNutrition = (name) => {
       const item = recipe.nutrition.find(n => 
         n.name.toLowerCase() === name.toLowerCase()
       );

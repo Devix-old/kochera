@@ -31,7 +31,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
             },
             'error-callback': () => {
               setTurnstileToken(null);
-              setError('Verifieringen misslyckades. Försök igen.');
+              setError('Die Verifizierung ist fehlgeschlagen. Versuche es erneut.');
             },
             'expired-callback': () => {
               setTurnstileToken(null);
@@ -94,7 +94,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
 
     // Validate Turnstile token
     if (!turnstileToken) {
-      setError('Vänligen slutför verifieringen innan du skickar kommentaren.');
+      setError('Bitte schließe die Verifizierung ab, bevor du den Kommentar absendest.');
       return;
     }
 
@@ -119,7 +119,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Kunde inte skicka kommentaren');
+        throw new Error(data.error || 'Kommentar konnte nicht gesendet werden');
       }
 
       // Reset form and Turnstile
@@ -131,7 +131,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
         onSuccess();
       }
     } catch (err) {
-      setError(err?.message || 'Något gick fel. Försök igen senare.');
+      setError(err?.message || 'Etwas ist schiefgelaufen. Versuche es später erneut.');
       resetTurnstile();
     } finally {
       setIsSubmitting(false);
@@ -149,7 +149,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="author_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Namn <span className="text-red-500">*</span>
+            Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -158,14 +158,14 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
             value={formData.author_name}
             onChange={(e) => setFormData({ ...formData, author_name: e.target.value })}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-            placeholder="Ditt namn"
+            placeholder="Dein Name"
             disabled={isSubmitting}
           />
         </div>
 
         <div>
           <label htmlFor="author_email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            E-post (valfritt)
+            E-Mail (optional)
           </label>
           <input
             type="email"
@@ -173,7 +173,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
             value={formData.author_email}
             onChange={(e) => setFormData({ ...formData, author_email: e.target.value })}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-            placeholder="din@epost.se"
+            placeholder="deine@email.de"
             disabled={isSubmitting}
           />
         </div>
@@ -190,7 +190,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
           value={formData.content}
           onChange={(e) => setFormData({ ...formData, content: e.target.value })}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-y transition-all"
-          placeholder="Skriv din kommentar här..."
+          placeholder="Schreib deinen Kommentar hier..."
           disabled={isSubmitting}
         />
       </div>
@@ -209,10 +209,10 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
           {isSubmitting ? (
             <span className="flex items-center gap-2">
               <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent" />
-              Skickar...
+              Wird gesendet...
             </span>
           ) : (
-            parentId ? 'Skicka svar' : 'Skicka kommentar'
+            parentId ? 'Antwort senden' : 'Kommentar senden'
           )}
         </button>
         
@@ -223,7 +223,7 @@ export default function CommentForm({ pageSlug, parentId = null, onSuccess, onCa
             disabled={isSubmitting}
             className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Avbryt
+            Abbrechen
           </button>
         )}
       </div>

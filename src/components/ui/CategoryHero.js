@@ -80,7 +80,7 @@ export default function CategoryHero({ category, image, description, recipeCount
           {recipeCount > 0 && (
             <div className="inline-flex items-center gap-2 px-5 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full font-semibold">
               <span className="text-2xl font-bold">{recipeCount}</span>
-              <span>fantastiska recept</span>
+              <span>fantastische Rezepte</span>
             </div>
           )}
         </motion.div>

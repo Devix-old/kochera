@@ -27,7 +27,7 @@ export default function IngredientsList({ ingredients, defaultServings, yieldLab
             onClick={decreaseServings}
             className="p-1.5 sm:p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors disabled:opacity-50 flex-shrink-0"
             disabled={servings <= 1}
-            aria-label="Minska portioner"
+            aria-label="Portionen verringern"
           >
             <Minus className="w-4 h-4 sm:w-4 sm:h-4" />
           </button>
@@ -42,7 +42,7 @@ export default function IngredientsList({ ingredients, defaultServings, yieldLab
           <button
             onClick={increaseServings}
             className="p-1.5 sm:p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors flex-shrink-0"
-            aria-label="Öka portioner"
+            aria-label="Portionen erhöhen"
           >
             <Plus className="w-4 h-4 sm:w-4 sm:h-4" />
           </button>

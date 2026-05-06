@@ -27,7 +27,7 @@ export default function SuccessModal({ isOpen, onClose, message, autoCloseDelay 
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-          aria-label="Stäng"
+          aria-label="Schließen"
         >
           <X className="w-5 h-5" />
         </button>
@@ -39,7 +39,7 @@ export default function SuccessModal({ isOpen, onClose, message, autoCloseDelay 
 
         {/* Message */}
         <h3 className="text-xl font-semibold text-center text-gray-900 dark:text-white mb-2">
-          Kommentaren skickades!
+          Kommentar wurde gesendet!
         </h3>
         <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
           {message}

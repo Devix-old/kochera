@@ -79,7 +79,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
           <div className="flex items-center gap-2">
             <Filter className="w-5 h-5 text-purple-600" />
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Filtrera recept
+              Rezepte filtern
             </h3>
             {activeFiltersCount > 0 && (
               <span className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded-full">
@@ -136,7 +136,7 @@ export default function EnhancedRecipeFilter({ filters, onFilterChange, categori
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                    Huvudkategorier
+                    Hauptkategorien
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {allCategories.map(category => (

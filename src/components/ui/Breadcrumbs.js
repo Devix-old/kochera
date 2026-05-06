@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils/cn';
 export default function Breadcrumbs({ items, className }) {
 
   return (
-    <nav aria-label="Brödsmulor" className={cn('w-full', className)}>
+    <nav aria-label="Brotkrümelnavigation" className={cn('w-full', className)}>
       {/* Full breadcrumb - visible on all screen sizes */}
       <div className="flex items-center gap-2 text-sm font-semibold">
         <Link
