@@ -112,13 +112,17 @@ const nextConfig = {
           },
         ],
       },
-      // Cache images
+      // Cache images + prevent raw image URLs from being indexed as pages
       {
         source: '/images/(.*)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },

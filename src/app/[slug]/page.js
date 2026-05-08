@@ -396,14 +396,33 @@ export default async function SlugPage({ params }) {
     return total + (section.items?.length || 0);
   }, 0) || 0;
   
-  // Get related content
-  const relatedRecipes = await getRelatedContent(
+  // Get related content (auto-scored)
+  let relatedRecipes = await getRelatedContent(
     'recipes',
     slug,
     frontmatter.tags,
     frontmatter.category,
     6
   );
+
+  // Override / prepend with forced internal links defined in MDX frontmatter
+  // Usage in MDX: internalLinks: [{slug: "recipe-slug", anchor: "Anchor text"}]
+  if (frontmatter.internalLinks?.length > 0) {
+    const allRecipes = await getAllContent('recipes');
+    const forced = frontmatter.internalLinks
+      .map(link => {
+        const targetSlug = typeof link === 'string' ? link : link.slug;
+        return allRecipes.find(r => r.slug === targetSlug);
+      })
+      .filter(Boolean);
+    if (forced.length > 0) {
+      const forcedSlugsSet = new Set(forced.map(r => r.slug));
+      relatedRecipes = [
+        ...forced,
+        ...relatedRecipes.filter(r => !forcedSlugsSet.has(r.slug)),
+      ].slice(0, 6);
+    }
+  }
 
   // Get all categories for navigation
   const allCategories = getAllCategories();
