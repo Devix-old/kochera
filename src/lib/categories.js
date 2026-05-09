@@ -293,7 +293,7 @@ export const PRIMARY_CATEGORIES = {
     subcategories: ["Focaccia","Focaccia mit Rosmarin","Focaccia mit Tomaten","Gefuellte Focaccia","Focaccia Sandwich"]
   },
   'stockbrot-rezepte': {
-    name: 'Stockbrot Rezepte',
+    name: 'Stockbrot',
     slug: 'stockbrot-rezepte',
     description: 'Stockbrot und Knüppelbrot am Stock – knusprig goldbraun vom Lagerfeuer, Grill oder Ofen.',
     icon: '🔥',
