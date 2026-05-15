@@ -42,9 +42,9 @@ export default function ImpressumPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <p className="text-gray-700 leading-relaxed">
-              kochira<br />
-              [Ihre Straße]<br />
-              [Ihre PLZ] [Ihr Ort]<br />
+              Nina Albrecht<br />
+              Gertrudenstraße 10<br />
+              41236 Mönchengladbach<br />
               Deutschland
             </p>
           </section>

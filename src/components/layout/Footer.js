@@ -58,6 +58,18 @@ export default function Footer() {
               >
                 Impressum
               </Link>
+              <Link
+                href="/cookie-policy"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Cookie-Richtlinie
+              </Link>
+              <Link
+                href="/disclaimer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Haftungsausschluss
+              </Link>
             </div>
           </div>
         </div>
