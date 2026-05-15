@@ -1,4 +1,6 @@
-# HBAgency , kochira 
+google.com, pub-7907405885837592, DIRECT, f08c47fec0942fa0
+
+# HBAgency , kochira
 # info@hbagency.it
 managerdomain=hbagency.it 
 ownerdomain=kochira.de 

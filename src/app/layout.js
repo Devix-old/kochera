@@ -89,6 +89,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
+      <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7907405885837592" crossOrigin="anonymous"></script>
       <script src="https://analytics.ahrefs.com/analytics.js" data-key="P0GZ5rI9GtpEbgJx8oURkQ" async></script>
       {/* HBAgency scripts disabled temporarily during AdSense review — re-enable after approval + CMP setup
       <script src="https://d3u598arehftfk.cloudfront.net/prebid_hb_37238_40611.js" async></script>
