@@ -1,5 +1,3 @@
-google.com, pub-7907405885837592, DIRECT, f08c47fec0942fa0
-
 # HBAgency , kochira
 # info@hbagency.it
 managerdomain=hbagency.it 
@@ -973,3 +971,5 @@ xandr.com, 17781, RESELLER
 hbagency.it, 40611, DIRECT
 headerbidding.agency, 40611, DIRECT
 # End Header Bidding Agency
+
+google.com, pub-7907405885837592, DIRECT, f08c47fec0942fa0
