@@ -1,4 +1,5 @@
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
@@ -89,6 +90,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="6323f5fb-9d5e-4bf4-b231-a5c8e999e209"
+          data-blockingmode="auto"
+          type="text/javascript"
+          strategy="beforeInteractive"
+        />
       <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7907405885837592" crossOrigin="anonymous"></script>
       <script src="https://analytics.ahrefs.com/analytics.js" data-key="P0GZ5rI9GtpEbgJx8oURkQ" async></script>
