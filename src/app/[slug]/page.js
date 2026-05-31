@@ -700,8 +700,9 @@ export default async function SlugPage({ params }) {
               </div>
             </section>
           )}
-          {/* in-page 1 - after recipe info */}
+          {/* in-page 1 - after recipe info
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+          */}
 
           {/* Recipe two-column responsive layout - single source, no duplication */}
           <section className="mb-12">
@@ -776,8 +777,9 @@ export default async function SlugPage({ params }) {
                   </div>
                 )}
 
-                {/* in-page 2 - between ingredients and steps */}
+                {/* in-page 2 - between ingredients and steps
                 <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+                */}
               </aside>
 
               {/* Right column - Steps */}
@@ -798,8 +800,9 @@ export default async function SlugPage({ params }) {
           </section>
           
 
-          {/* in-page 3 - after steps */}
+          {/* in-page 3 - after steps
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+          */}
 
           {/* Nutrition Information Section */}
           {normalizedNutrition && (
@@ -810,23 +813,26 @@ export default async function SlugPage({ params }) {
               />
             </section>
           )}
-          {/* in-page 4 - after nutrition */}
+          {/* in-page 4 - after nutrition
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+          */}
 
           {/* SEO Sections - Placed FIRST after recipe steps for optimal SEO */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <RecipeTipsSection recipe={frontmatter} tips={tips} />
           </div>
 
-          {/* in-page 5 - after tips */}
+          {/* in-page 5 - after tips
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+          */}
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <RecipeFAQSection recipe={frontmatter} faqs={safeFaqs} />
           </div>
 
-          {/* in-page 6 - after faqs */}
+          {/* in-page 6 - after faqs
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
+          */}
 
           {/* Comments Section - Placed after SEO sections, before related recipes */}
           {/* <CommentsSection pageSlug={slug} /> */}
