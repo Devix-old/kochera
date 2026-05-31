@@ -90,14 +90,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
-        <Script
-          id="Cookiebot"
-          src="https://consent.cookiebot.com/uc.js"
-          data-cbid="6323f5fb-9d5e-4bf4-b231-a5c8e999e209"
-          data-blockingmode="auto"
-          type="text/javascript"
-          strategy="beforeInteractive"
-        />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="/cmp.css" />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="/cmp.js"></script>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script
           type="text/plain"
