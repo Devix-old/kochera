@@ -102,8 +102,12 @@
     script.setAttribute("data-cmp-handled", "true");
   }
 
+  function getScriptCategory(script) {
+    return script.getAttribute("data-category") || script.getAttribute("data-cookieconsent");
+  }
+
   function captureScript(script) {
-    var category = script.getAttribute("data-category");
+    var category = getScriptCategory(script);
     if (!category || CATEGORIES.indexOf(category) === -1 || category === "necessary") {
       return;
     }
@@ -129,6 +133,7 @@
         attr.name !== "data-code" &&
         attr.name !== "data-type" &&
         attr.name !== "data-category" &&
+        attr.name !== "data-cookieconsent" &&
         attr.name !== "data-cmp-handled"
       ) {
         scriptData.attributes[attr.name] = attr.value;
@@ -145,7 +150,7 @@
 
   function captureConsentScripts(root) {
     var scope = root || document;
-    var scripts = scope.querySelectorAll ? scope.querySelectorAll("script[data-category]") : [];
+    var scripts = scope.querySelectorAll ? scope.querySelectorAll("script[data-category], script[data-cookieconsent]") : [];
     Array.prototype.forEach.call(scripts, captureScript);
   }
 
@@ -408,7 +413,7 @@
           if (!node || node.nodeType !== 1) {
             return;
           }
-          if (node.matches && node.matches("script[data-category]")) {
+          if (node.matches && node.matches("script[data-category], script[data-cookieconsent]")) {
             captureScript(node);
           } else {
             captureConsentScripts(node);
