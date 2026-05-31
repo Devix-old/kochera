@@ -116,6 +116,7 @@
       return;
     }
 
+    var placeholder = document.createComment("cmp blocked " + category + " script");
     var scriptData = {
       category: category,
       src: script.getAttribute("src") || "",
@@ -123,7 +124,8 @@
       type: script.getAttribute("data-type") || script.getAttribute("type") || "text/javascript",
       async: script.hasAttribute("async"),
       defer: script.hasAttribute("defer"),
-      attributes: {}
+      attributes: {},
+      placeholder: placeholder
     };
 
     Array.prototype.forEach.call(script.attributes, function (attr) {
@@ -144,7 +146,7 @@
     markScriptHandled(script);
 
     if (script.parentNode) {
-      script.parentNode.removeChild(script);
+      script.parentNode.replaceChild(placeholder, script);
     }
   }
 
@@ -187,7 +189,12 @@
         return true;
       }
 
-      document.head.appendChild(createExecutableScript(item));
+      var executable = createExecutableScript(item);
+      if (item.placeholder && item.placeholder.parentNode) {
+        item.placeholder.parentNode.replaceChild(executable, item.placeholder);
+      } else {
+        document.head.appendChild(executable);
+      }
       return false;
     });
   }
