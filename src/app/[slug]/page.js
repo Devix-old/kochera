@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import { getContentBySlug, getAllContent, getRelatedContent } from '@/lib/mdx';
 import { getPillarBySlug, getAllPillars } from '@/lib/pillars';
 import { notFound } from 'next/navigation';
@@ -703,6 +704,33 @@ export default async function SlugPage({ params }) {
           {/* in-page 1 - after recipe info
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
           */}
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div className="flex justify-center">
+              <div style={{ width: 300, minHeight: 250 }}>
+                <script
+                  type="text/plain"
+                  data-cookieconsent="marketing"
+                  dangerouslySetInnerHTML={{
+                    __html: `
+                    atOptions = {
+                      'key' : '7a88112bb6203071fba2eee5a00e7a26',
+                      'format' : 'iframe',
+                      'height' : 250,
+                      'width' : 300,
+                      'params' : {}
+                    };
+                  `,
+                  }}
+                ></script>
+                <script
+                  type="text/plain"
+                  data-cookieconsent="marketing"
+                  src="https://www.highperformanceformat.com/7a88112bb6203071fba2eee5a00e7a26/invoke.js"
+                ></script>
+              </div>
+            </div>
+          </div>
 
           {/* Recipe two-column responsive layout - single source, no duplication */}
           <section className="mb-12">

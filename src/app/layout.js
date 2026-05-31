@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import { Inter, Playfair_Display } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
@@ -90,14 +90,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
-        <Script
+        <script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
           data-cbid="6323f5fb-9d5e-4bf4-b231-a5c8e999e209"
           data-blockingmode="auto"
           type="text/javascript"
-          strategy="beforeInteractive"
-        />
+        ></script>
         {/* Ads and HBAgency scripts disabled temporarily
         <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7907405885837592" crossOrigin="anonymous"></script>
@@ -105,11 +104,12 @@ export default function RootLayout({ children }) {
         <script src="https://d3u598arehftfk.cloudfront.net/prebid_hb_37238_40611.js" async></script>
         <link rel="stylesheet" href="https://hbagency.it/cdn/stylehb.css" />
         */}
-        {/* Social Bar */}
-        <Script
+        {/* Social Bar - loaded by Cookiebot only after marketing consent */}
+        <script
+          type="text/plain"
+          data-cookieconsent="marketing"
           src="https://pl29603518.effectivecpmnetwork.com/dc/4f/9f/dc4f9f452bd79147bd994f887a1aaa79.js"
-          strategy="afterInteractive"
-        />
+        ></script>
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col font-inter`}
