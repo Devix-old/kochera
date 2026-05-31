@@ -98,10 +98,12 @@ export default function RootLayout({ children }) {
           type="text/javascript"
           strategy="beforeInteractive"
         />
-        <Script
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
+          type="text/plain"
+          data-cookieconsent="marketing"
           src="https://pl29603518.effectivecpmnetwork.com/dc/4f/9f/dc4f9f452bd79147bd994f887a1aaa79.js"
-          strategy="afterInteractive"
-        />
+        ></script>
         {/* Ads and HBAgency scripts disabled temporarily
         <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
         
