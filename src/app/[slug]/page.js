@@ -709,8 +709,6 @@ export default async function SlugPage({ params }) {
             <div className="flex justify-center">
               <div style={{ width: 300, minHeight: 250 }}>
                 <script
-                  type="text/plain"
-                  data-cookieconsent="marketing"
                   dangerouslySetInnerHTML={{
                     __html: `
                     atOptions = {
@@ -724,8 +722,6 @@ export default async function SlugPage({ params }) {
                   }}
                 ></script>
                 <script
-                  type="text/plain"
-                  data-cookieconsent="marketing"
                   src="https://www.highperformanceformat.com/7a88112bb6203071fba2eee5a00e7a26/invoke.js"
                 ></script>
               </div>
