@@ -37,6 +37,35 @@
     document.cookie = name + "=" + encodeURIComponent(value) + "; Expires=" + expires + "; Path=/; SameSite=Lax" + secure;
   }
 
+  function deleteCookie(name) {
+    var secure = location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = name + "=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax" + secure;
+  }
+
+  function shouldResetConsent() {
+    try {
+      return new URLSearchParams(window.location.search).get("cmp_reset") === "1";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function resetConsent() {
+    deleteCookie(COOKIE_NAME);
+
+    try {
+      localStorage.removeItem("user_consent_timestamp");
+      localStorage.removeItem("user_consent_choices");
+    } catch (error) {
+      // localStorage can be unavailable in strict browser modes.
+    }
+
+    if (ui.floating) {
+      ui.floating.classList.add("cmp-hidden");
+    }
+    showBanner();
+  }
+
   function normalizeConsent(input) {
     var result = clone(DEFAULT_CONSENT);
     if (!input || typeof input !== "object") {
@@ -147,6 +176,10 @@
 
     if (script.parentNode) {
       script.parentNode.replaceChild(placeholder, script);
+    }
+
+    if (hasConsent(category)) {
+      loadAllowedScripts();
     }
   }
 
@@ -439,12 +472,17 @@
     window.__cmp = {
       getConsent: getConsent,
       setConsent: setConsent,
-      hasConsent: hasConsent
+      hasConsent: hasConsent,
+      resetConsent: resetConsent,
+      showPreferences: openModal
     };
   }
 
   function init() {
     exposeApi();
+    if (shouldResetConsent()) {
+      resetConsent();
+    }
     captureConsentScripts(document);
     watchFutureScripts();
     createBanner();
