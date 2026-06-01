@@ -8,12 +8,13 @@ const AD = {
   height: 60,
 };
 
-export default function AdsterraRecipeAd({ ad = AD, media, className = "" }) {
+export function AdsterraBanner({ ad = AD, media, delay = 0, className = "" }) {
   const slotRef = useRef(null);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
     const slot = slotRef.current;
-    if (!slot || slot.dataset.loaded === "true") {
+    if (!slot || loadedRef.current) {
       return;
     }
 
@@ -21,27 +22,70 @@ export default function AdsterraRecipeAd({ ad = AD, media, className = "" }) {
       return;
     }
 
-    slot.dataset.loaded = "true";
-    slot.textContent = "";
+    loadedRef.current = true;
+    let observer = null;
+    let checkTimeout = null;
 
-    const optionsScript = document.createElement("script");
-    optionsScript.text = `
-      atOptions = {
-        'key' : '${ad.key}',
-        'format' : 'iframe',
-        'height' : ${ad.height},
-        'width' : ${ad.width},
-        'params' : {}
+    const loadAd = () => {
+      if (!slot.isConnected) {
+        loadedRef.current = false;
+        return;
+      }
+
+      slot.innerHTML = "";
+      slot.removeAttribute("data-loaded");
+
+      window.atOptions = {
+        key: ad.key,
+        format: "iframe",
+        height: ad.height,
+        width: ad.width,
+        params: {},
       };
-    `;
 
-    const invokeScript = document.createElement("script");
-    invokeScript.src = `https://www.highperformanceformat.com/${ad.key}/invoke.js`;
-    invokeScript.async = false;
+      const invokeScript = document.createElement("script");
+      invokeScript.src = `https://www.highperformanceformat.com/${ad.key}/invoke.js`;
+      invokeScript.async = true;
 
-    slot.appendChild(optionsScript);
-    slot.appendChild(invokeScript);
-  }, [ad, media]);
+      const markLoadedIfIframeExists = () => {
+        const iframe = slot.querySelector("iframe");
+        if (iframe) {
+          slot.setAttribute("data-loaded", "true");
+          return true;
+        }
+        slot.removeAttribute("data-loaded");
+        return false;
+      };
+
+      observer = new MutationObserver(markLoadedIfIframeExists);
+      observer.observe(slot, {
+        childList: true,
+        subtree: true,
+      });
+
+      slot.appendChild(invokeScript);
+
+      checkTimeout = window.setTimeout(() => {
+        if (!markLoadedIfIframeExists()) {
+          loadedRef.current = false;
+        }
+        observer?.disconnect();
+      }, 4000);
+    };
+
+    const delayTimeout = window.setTimeout(loadAd, delay);
+
+    return () => {
+      window.clearTimeout(delayTimeout);
+      if (checkTimeout) {
+        window.clearTimeout(checkTimeout);
+      }
+      observer?.disconnect();
+      slot.innerHTML = "";
+      slot.removeAttribute("data-loaded");
+      loadedRef.current = false;
+    };
+  }, [ad.key, ad.width, ad.height, media, delay]);
 
   return (
     <div
@@ -60,3 +104,5 @@ export default function AdsterraRecipeAd({ ad = AD, media, className = "" }) {
     </div>
   );
 }
+
+export default AdsterraBanner;
