@@ -15,6 +15,10 @@
   var blockedScripts = [];
   var ui = {};
 
+  if (window.__cmp && window.__cmp.__initialized) {
+    return;
+  }
+
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
   }
@@ -40,6 +44,17 @@
   function deleteCookie(name) {
     var secure = location.protocol === "https:" ? "; Secure" : "";
     document.cookie = name + "=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax" + secure;
+
+    if (location.hostname) {
+      document.cookie = name + "=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; Domain=" + location.hostname + "; SameSite=Lax" + secure;
+
+      var parts = location.hostname.split(".");
+      if (parts.length >= 2) {
+        var rootDomain = parts.slice(-2).join(".");
+        document.cookie = name + "=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; Domain=" + rootDomain + "; SameSite=Lax" + secure;
+        document.cookie = name + "=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; Domain=." + rootDomain + "; SameSite=Lax" + secure;
+      }
+    }
   }
 
   function shouldResetConsent() {
@@ -61,6 +76,7 @@
     }
 
     if (ui.floating) {
+      ui.floating.hidden = true;
       ui.floating.classList.add("cmp-hidden");
     }
     showBanner();
@@ -290,6 +306,7 @@
   function createBanner() {
     var banner = document.createElement("section");
     banner.className = "cmp-banner cmp-hidden";
+    banner.hidden = true;
     banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-live", "polite");
     banner.setAttribute("aria-label", "Cookie consent");
@@ -339,6 +356,7 @@
   function createModal() {
     var overlay = document.createElement("div");
     overlay.className = "cmp-overlay cmp-hidden";
+    overlay.hidden = true;
     overlay.setAttribute("role", "presentation");
 
     var modal = document.createElement("section");
@@ -384,6 +402,7 @@
     var floating = document.createElement("button");
     floating.type = "button";
     floating.className = "cmp-floating-button cmp-hidden";
+    floating.hidden = true;
     floating.setAttribute("aria-label", "Change cookie preferences");
     floating.title = "Cookie preferences";
     floating.textContent = "C";
@@ -413,12 +432,14 @@
 
   function showBanner() {
     if (ui.banner) {
+      ui.banner.hidden = false;
       ui.banner.classList.remove("cmp-hidden");
     }
   }
 
   function hideBanner() {
     if (ui.banner) {
+      ui.banner.hidden = true;
       ui.banner.classList.add("cmp-hidden");
     }
   }
@@ -426,18 +447,21 @@
   function openModal() {
     syncModalToggles();
     if (ui.overlay) {
+      ui.overlay.hidden = false;
       ui.overlay.classList.remove("cmp-hidden");
     }
   }
 
   function hideModal() {
     if (ui.overlay) {
+      ui.overlay.hidden = true;
       ui.overlay.classList.add("cmp-hidden");
     }
   }
 
   function showFloatingButton() {
     if (ui.floating) {
+      ui.floating.hidden = false;
       ui.floating.classList.remove("cmp-hidden");
     }
   }
@@ -474,7 +498,8 @@
       setConsent: setConsent,
       hasConsent: hasConsent,
       resetConsent: resetConsent,
-      showPreferences: openModal
+      showPreferences: openModal,
+      __initialized: true
     };
   }
 

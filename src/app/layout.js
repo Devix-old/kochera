@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/cmp.css?v=20260601" />
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="/cmp.js?v=20260601-reset"></script>
+        <script src="/cmp.js?v=20260601-hidden"></script>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script
           type="text/plain"
