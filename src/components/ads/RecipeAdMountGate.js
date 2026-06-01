@@ -2,20 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-export default function RecipeAdMountGate({ step, children }) {
-  const [currentStep, setCurrentStep] = useState(1);
+export default function RecipeAdMountGate({ step = 1, delay, children }) {
+  const waitTime = delay ?? Math.max(0, (step - 1) * 1500);
+  const [isReady, setIsReady] = useState(waitTime === 0);
 
   useEffect(() => {
-    const t1 = window.setTimeout(() => setCurrentStep(2), 3000);
-    const t2 = window.setTimeout(() => setCurrentStep(3), 6000);
+    if (waitTime === 0) {
+      setIsReady(true);
+      return undefined;
+    }
+
+    setIsReady(false);
+    const timer = window.setTimeout(() => setIsReady(true), waitTime);
 
     return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
+      window.clearTimeout(timer);
     };
-  }, []);
+  }, [waitTime]);
 
-  if (currentStep < step) {
+  if (!isReady) {
     return null;
   }
 

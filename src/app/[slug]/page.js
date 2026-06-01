@@ -28,7 +28,6 @@ import ShareButton from '@/components/recipe/ShareButton';
 import { 
   RecipeTipsSection, 
   RecipeFAQSection, 
-  RelatedRecipesSection, 
   RecipeCategoriesSection,
   RecipeSocialSection 
 } from '@/components/recipe/RecipeSEOSections';
@@ -47,12 +46,31 @@ import StructuredData from '@/components/seo/StructuredData';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 import PillarPage from '@/components/pillar/PillarPage';
 import AdsterraRecipeAd from '@/components/ads/AdsterraRecipeAd';
+import AdsterraContainerAd from '@/components/ads/AdsterraContainerAd';
 import RecipeAdMountGate from '@/components/ads/RecipeAdMountGate';
+
+const ADSTERRA_TOP_AD = {
+  key: '3cd68f3a7b164d8dcd6398187f396100',
+  width: 468,
+  height: 60,
+};
 
 const ADSTERRA_INTRO_AD = {
   key: '7a88112bb6203071fba2eee5a00e7a26',
   width: 300,
   height: 250,
+};
+
+const ADSTERRA_MIDDLE_AD = {
+  key: '46ecf0a9feb12a427460598dc99453fd',
+  width: 320,
+  height: 50,
+};
+
+const ADSTERRA_TIPS_STEPS_AD = {
+  key: 'e36d3cbba9434b2e8371283e9c8adbc1',
+  width: 160,
+  height: 600,
 };
 
 const ADSTERRA_AFTER_STEPS_AD = {
@@ -596,6 +614,14 @@ export default async function SlugPage({ params }) {
         </div>
       </section>
 
+      <section className="hidden md:block bg-gray-50 dark:bg-gray-950 pt-4 pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RecipeAdMountGate step={1}>
+            <AdsterraRecipeAd ad={ADSTERRA_TOP_AD} />
+          </RecipeAdMountGate>
+        </div>
+      </section>
+
       {/* 📝 MAIN RECIPE CONTENT */}
       <article className="bg-gray-50 dark:bg-gray-950 pb-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -715,7 +741,7 @@ export default async function SlugPage({ params }) {
             </section>
           )}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <RecipeAdMountGate step={1}>
+            <RecipeAdMountGate step={2}>
               <AdsterraRecipeAd ad={ADSTERRA_INTRO_AD} />
             </RecipeAdMountGate>
           </div>
@@ -795,8 +821,8 @@ export default async function SlugPage({ params }) {
                 {/* in-page 2 - between ingredients and steps
                 <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
                 */}
-                <RecipeAdMountGate step={2}>
-                  <AdsterraRecipeAd />
+                <RecipeAdMountGate step={3}>
+                  <AdsterraRecipeAd ad={ADSTERRA_MIDDLE_AD} />
                 </RecipeAdMountGate>
               </aside>
 
@@ -818,7 +844,7 @@ export default async function SlugPage({ params }) {
           </section>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-            <RecipeAdMountGate step={3}>
+            <RecipeAdMountGate step={4}>
               <AdsterraRecipeAd ad={ADSTERRA_AFTER_STEPS_AD} />
             </RecipeAdMountGate>
           </div>
@@ -844,6 +870,11 @@ export default async function SlugPage({ params }) {
           {/* in-page 5 - after tips
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
           */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <RecipeAdMountGate step={5}>
+              <AdsterraRecipeAd ad={ADSTERRA_TIPS_STEPS_AD} />
+            </RecipeAdMountGate>
+          </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <RecipeFAQSection recipe={frontmatter} faqs={safeFaqs} />
@@ -852,6 +883,11 @@ export default async function SlugPage({ params }) {
           {/* in-page 6 - after faqs
           <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
           */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <RecipeAdMountGate step={6}>
+              <AdsterraContainerAd />
+            </RecipeAdMountGate>
+          </div>
 
           {/* Comments Section - Placed after SEO sections, before related recipes */}
           {/* <CommentsSection pageSlug={slug} /> */}
@@ -859,19 +895,20 @@ export default async function SlugPage({ params }) {
           {/* Related Recipes - Placed after comments */}
           {relatedRecipes.length > 0 && (
             <section data-secondary-content className="pt-12 border-t border-gray-200 dark:border-gray-800 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <div className="inline-block px-4 py-2 bg-[var(--color-bg-primary-alt)] dark:bg-[var(--color-primary-darkest)]/30 text-[var(--color-primary-hover)] dark:text-[var(--color-primary-light)] rounded-full text-sm font-semibold mb-4">
-                  {frontmatter.category}
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                  <div className="inline-block px-4 py-2 bg-[var(--color-bg-primary-alt)] dark:bg-[var(--color-primary-darkest)]/30 text-[var(--color-primary-hover)] dark:text-[var(--color-primary-light)] rounded-full text-sm font-semibold mb-4">
+                    {frontmatter.category}
+                  </div>
+                  <h2
+                    className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white font-playfair"
+                  >
+                    Mehr {frontmatter.category || 'Rezepte'}, die dir schmecken könnten
+                  </h2>
                 </div>
-                <h2
-                  className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white font-playfair"
-                >
-                  Mehr {frontmatter.category || 'Rezepte'}, die dir schmecken könnten
-                </h2>
               </div>
               
-              {/* Recipes grid - 2 columns on desktop, 1 column on mobile */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                 {relatedRecipes.map((r, i) => (
                   <RecipeCard key={`${r.slug}-${i}`} recipe={r} index={i} />
                 ))}
