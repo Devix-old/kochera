@@ -818,7 +818,6 @@ export default async function SlugPage({ params }) {
               </div>
             </div>
           </section>
-          
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
             <AdsterraRecipeAd ad={ADSTERRA_AFTER_STEPS_AD} />
