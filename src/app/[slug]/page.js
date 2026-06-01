@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import { getContentBySlug, getAllContent, getRelatedContent } from '@/lib/mdx';
 import { getPillarBySlug, getAllPillars } from '@/lib/pillars';
 import { notFound } from 'next/navigation';
@@ -47,6 +46,19 @@ import { formatYieldLabel } from '@/lib/utils/yield';
 import StructuredData from '@/components/seo/StructuredData';
 import EnhancedCategoryClient from '@/components/kategorier/EnhancedCategoryClient';
 import PillarPage from '@/components/pillar/PillarPage';
+import AdsterraRecipeAd from '@/components/ads/AdsterraRecipeAd';
+
+const ADSTERRA_INTRO_AD = {
+  key: '7a88112bb6203071fba2eee5a00e7a26',
+  width: 300,
+  height: 250,
+};
+
+const ADSTERRA_AFTER_STEPS_AD = {
+  key: 'bf9d41b58619098a24a8db6b8d8a508a',
+  width: 160,
+  height: 300,
+};
 
 function recipeBelongsToCategory(recipe, category) {
   if (!recipe || !category) return false;
@@ -701,33 +713,9 @@ export default async function SlugPage({ params }) {
               </div>
             </section>
           )}
-          {/* in-page 1 - after recipe info
-          <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
-          */}
-
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-            <div className="flex justify-center">
-              <div style={{ width: 300, minHeight: 250 }}>
-                <script
-                  dangerouslySetInnerHTML={{
-                    __html: `
-                    atOptions = {
-                      'key' : '7a88112bb6203071fba2eee5a00e7a26',
-                      'format' : 'iframe',
-                      'height' : 250,
-                      'width' : 300,
-                      'params' : {}
-                    };
-                  `,
-                  }}
-                ></script>
-                <script
-                  src="https://www.highperformanceformat.com/7a88112bb6203071fba2eee5a00e7a26/invoke.js"
-                ></script>
-              </div>
-            </div>
+            <AdsterraRecipeAd ad={ADSTERRA_INTRO_AD} />
           </div>
-
           {/* Recipe two-column responsive layout - single source, no duplication */}
           <section className="mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 lg:items-start">
@@ -804,10 +792,18 @@ export default async function SlugPage({ params }) {
                 {/* in-page 2 - between ingredients and steps
                 <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
                 */}
+                <AdsterraRecipeAd
+                  media="(min-width: 1024px)"
+                  className="hidden lg:flex"
+                />
               </aside>
 
+              <div className="order-2 block lg:hidden">
+                <AdsterraRecipeAd media="(max-width: 1023px)" />
+              </div>
+
               {/* Right column - Steps */}
-              <div className="space-y-8 order-2">
+              <div className="space-y-8 order-3 lg:order-2">
                 <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
                   <div className="bg-gradient-to-r from-stone-400 to-stone-500 p-6">
                     <h2 className="text-2xl font-bold text-white flex items-center gap-2">
@@ -824,9 +820,9 @@ export default async function SlugPage({ params }) {
           </section>
           
 
-          {/* in-page 3 - after steps
-          <div className="hb-ad-inpage"><div className="hb-ad-inner"><div className="hbagency_cls hbagency_space_321380"></div></div></div>
-          */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+            <AdsterraRecipeAd ad={ADSTERRA_AFTER_STEPS_AD} />
+          </div>
 
           {/* Nutrition Information Section */}
           {normalizedNutrition && (
