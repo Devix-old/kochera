@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ADS_ENABLED } from "@/lib/ads";
 
 const DEFAULT_CONTAINER_AD = {
   id: "container-7e3012fe0a2401dad93783050b1c02a3",
@@ -15,6 +16,10 @@ export default function AdsterraContainerAd({
   const loadedRef = useRef(false);
 
   useEffect(() => {
+    if (!ADS_ENABLED) {
+      return;
+    }
+
     const slot = slotRef.current;
     if (!slot || loadedRef.current) {
       return;
@@ -49,6 +54,10 @@ export default function AdsterraContainerAd({
       loadedRef.current = false;
     };
   }, [ad.id, ad.src]);
+
+  if (!ADS_ENABLED) {
+    return null;
+  }
 
   return (
     <div

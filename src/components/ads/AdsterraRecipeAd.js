@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ADS_ENABLED } from "@/lib/ads";
 
 const AD = {
   key: "3cd68f3a7b164d8dcd6398187f396100",
@@ -15,6 +16,10 @@ export function AdsterraBanner({ ad = AD, media, delay = 0, className = "" }) {
   const loadedRef = useRef(false);
 
   useEffect(() => {
+    if (!ADS_ENABLED) {
+      return;
+    }
+
     const slot = slotRef.current;
     if (!slot || loadedRef.current) {
       return;
@@ -107,6 +112,10 @@ export function AdsterraBanner({ ad = AD, media, delay = 0, className = "" }) {
       loadedRef.current = false;
     };
   }, [ad.key, ad.width, ad.height, media, delay]);
+
+  if (!ADS_ENABLED) {
+    return null;
+  }
 
   return (
     <div

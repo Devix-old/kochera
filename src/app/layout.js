@@ -1,10 +1,10 @@
 import { Inter, Playfair_Display } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { generateMetadata as generateSiteMetadata } from '@/lib/seo';
+import { ADS_ENABLED } from '@/lib/ads';
 import { Analytics } from "@vercel/analytics/next";
 
 const defaultSite = 'https://kochira.de';
@@ -90,10 +90,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de" dir="ltr">
       <head>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script
-          src="https://pl29603518.effectivecpmnetwork.com/dc/4f/9f/dc4f9f452bd79147bd994f887a1aaa79.js"
-        ></script>
+        {ADS_ENABLED && (
+          <>
+            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+            <script
+              src="https://pl29603518.effectivecpmnetwork.com/dc/4f/9f/dc4f9f452bd79147bd994f887a1aaa79.js"
+            ></script>
+          </>
+        )}
         {/* Ads and HBAgency scripts disabled temporarily
         <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
         
