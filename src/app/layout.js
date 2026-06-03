@@ -102,9 +102,10 @@ export default function RootLayout({ children }) {
         <meta name="google-adsense-account" content="ca-pub-7907405885837592" />
         
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="P0GZ5rI9GtpEbgJx8oURkQ" async></script>
-        <script src="https://d3u598arehftfk.cloudfront.net/prebid_hb_37238_40611.js" async></script>
-        <link rel="stylesheet" href="https://hbagency.it/cdn/stylehb.css" />
+        
         */}
+        <script src="https://d3u598arehftfk.cloudfront.net/prebid_hb_37238_40611.js" async></script>
+        {/* <link rel="stylesheet" href="https://hbagency.it/cdn/stylehb.css" /> */}
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col font-inter`}
