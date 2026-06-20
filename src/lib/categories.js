@@ -184,18 +184,18 @@ export const PRIMARY_CATEGORIES = {
     image: '/images/rezepte/rinderrouladen.webp',
     subcategories: ['Rouladen', 'Rinderrouladen', 'Schweinerouladen']
   },
-  'kaiserschmarrn': {
+  'kaiserschmarrn-rezepte': {
     name: 'Kaiserschmarrn',
-    slug: 'kaiserschmarrn',
+    slug: 'kaiserschmarrn-rezepte',
     description: 'Fluffiger Kaiserschmarrn – der österreichische Klassiker aus der Pfanne',
     icon: '🥞',
     color: 'from-amber-300 to-yellow-500',
     image: '/images/rezepte/kaiserschmarrn.webp',
     subcategories: ['Kaiserschmarrn', 'Klassischer Kaiserschmarrn', 'Kaiserschmarrn mit Rosinen']
   },
-  'apfelstrudel': {
+  'apfelstrudel-rezepte': {
     name: 'Apfelstrudel',
-    slug: 'apfelstrudel',
+    slug: 'apfelstrudel-rezepte',
     description: 'Goldbrauner Apfelstrudel mit knusprigem Strudelteig und saftiger Apfelfüllung',
     icon: '🥧',
     color: 'from-amber-400 to-red-400',
@@ -307,6 +307,52 @@ export const PRIMARY_CATEGORIES = {
       'Lagerfeuerbrot',
       'Grillbrot am Stock',
       'Twist-Brot'
+    ]
+  },
+  'getraenke': {
+    name: 'Getränke',
+    slug: 'getraenke',
+    description: 'Erfrischende Getränke, Spritz und Bowlen für Frühling, Sommer und Gäste.',
+    icon: '🥂',
+    color: 'from-rose-400 to-orange-500',
+    image: '/images/rezepte/rhabarber-spritz.webp',
+    subcategories: [
+      'Getränke',
+      'Spritz',
+      'Bowle',
+      'Cocktails',
+      'Sommerdrinks',
+      'Aperitif'
+    ]
+  },
+  'grillen': {
+    name: 'Grillen',
+    slug: 'grillen',
+    description: 'Rezepte für Grillabend, Beilagen und einfache Klassiker vom Rost.',
+    icon: '🔥',
+    color: 'from-orange-500 to-red-600',
+    image: '/images/rezepte/bbq-burger-grill.webp',
+    subcategories: [
+      'Grillen',
+      'Grillgemüse',
+      'Kräuterbutter',
+      'Grillbeilagen',
+      'BBQ'
+    ]
+  },
+  'brot': {
+    name: 'Brot',
+    slug: 'brot',
+    description: 'Brot-Rezepte von klassisch bis eiweißreich für Frühstück, Abendbrot und Meal Prep.',
+    icon: '🍞',
+    color: 'from-amber-400 to-orange-500',
+    image: '/images/rezepte/brot-backen-im-airfryer.webp',
+    subcategories: [
+      'Brot',
+      'Eiweißbrot',
+      'Schnelles Brot',
+      'Frühstücksbrot',
+      'Selbst gebackenes Brot'
     ]
   },
 
