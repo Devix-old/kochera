@@ -86,12 +86,6 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          {
-            key: 'Content-Security-Policy',
-            // Keep script-src strict to avoid arbitrary external JavaScript.
-            // Ad networks rotate non-script delivery, iframe, JSON, and tracking domains, so connect/frame/child allow HTTPS.
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.google.com https://www.gstatic.com https://fundingchoicesmessages.google.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://analytics.ahrefs.com https://d3u598arehftfk.cloudfront.net https://www.highperformanceformat.com https://pl29603518.effectivecpmnetwork.com https://pl29603516.effectivecpmnetwork.com https://pl29603519.effectivecpmnetwork.com https://kettledroopingcontinuation.com https://realizationnewestfangs.com https://preferencenail.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://hbagency.it; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src 'self' https:; child-src 'self' https:;",
-          },
         ],
       },
       // Cache control for HTML pages (excludes sitemap.xml which is handled above)
