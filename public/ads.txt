@@ -25,7 +25,9 @@ openx.com, 537145117, RESELLER,6a698e2ec38604c6
 adform.com, 768, RESELLER
 contextweb.com, 560489, RESELLER, 89ff185a4c4e857c
 rekmob.com, 13161, RESELLER
-lijit.com, 268737, DIRECT, fafdf38b16bf6b2b 
+lijit.com, 268737, DIRECT, fafdf38b16bf6b2b
+programmaticx.ai, 100464, RESELLER
+sharethrough.com, 4926, RESELLER, d53b998a7bd4ecd2
 lijit.com, 268737-eb, DIRECT, fafdf38b16bf6b2b
 video.unrulymedia.com, 2444764291, RESELLER
 contextweb.com, 558511, RESELLER, 89ff185a4c4e857c
@@ -478,7 +480,7 @@ pubmatic.com, 166974, RESELLER, 5d62403b186f2ace
 themediagrid.com, KCRT1N, RESELLER
 indexexchange.com, 194161, RESELLER, 50b1c356f2c5c8fc
 rubiconproject.com, 26584, RESELLER, 0bfd66d529a55807
-metup.it, 284, DIRECT
+metup.it, 284, DIRECT
 adform.com, 2664, RESELLER, 9f5210a2f0999e32
 triplelift.com, 13530, RESELLER, 6c33edb13117fd86
 indexexchange.com, 194161, RESELLER
@@ -758,6 +760,8 @@ media.net, 8CU507GON, RESELLER
 themediagrid.com, NEJFKT, RESELLER, 9fac4a4a87c2a44f
 themediagrid.com, QUZDR9, RESELLER, 35d5010d7789b49d
 vidazoo.com, 68ac57409b01af95e1d98784, DIRECT, b6ada874b4d7d0b2
+smartadserver.com, 4883, RESELLER, 060d053dcf45cbf3
+sharethrough.com, 4883, RESELLER, d53b998a7bd4ecd2
 smaato.com, 1100059437, RESELLER, 07bcf65f187117b4
 rubiconproject.com, 17130, RESELLER, 0bfd66d529a55807
 openx.com, 541017750, RESELLER, 6a698e2ec38604c6
@@ -951,20 +955,6 @@ adform.com, 1889, RESELLER
 openx.com, 558758631, RESELLER, 6a698e2ec38604c6
 video.unrulymedia.com, 724823153, RESELLER
 teads.tv, 32754, DIRECT, 15a9c44f6d26cbe1
-kntxy.com, 67709, DIRECT
-rubiconproject.com, 27883, RESELLER, 0bfd66d529a55807
-amxrtb.com, 105199840, RESELLER
-lijit.com, 542485, RESELLER, fafdf38b16bf6b2b
-adyoulike.com, ed49f1bd83a35e2c77b72423c181aaa4, RESELLER
-onetag.com, 92ca3ee66889ee2, RESELLER
-inmobi.com, 257651565cd44fc9a272f26e6975ee35, RESELLER, 83e75a7ae333ca9d
-152media.info, 152M1053, RESELLER
-minutemedia.com, 01jsf5my8xgr, RESELLER
-pubmatic.com, 166733, RESELLER, 5d62403b186f2ace
-smartadserver.com, 5397, RESELLER, 060d053dcf45cbf3
-improvedigital.com, 2630, RESELLER
-video.unrulymedia.com, 675370387, RESELLER
-xandr.com, 17781, RESELLER
 nuclion.io, 176000149, DIRECT
 adyoulike.com, 9c8f8c9e838d488f4a9a0af129ca4473, DIRECT
 appnexus.com, 2741, RESELLER, f5ab79cb980f11d1
@@ -1007,6 +997,42 @@ gumgum.com, 16062, RESELLER, ffdef49475d318a9
 rubiconproject.com, 21642, RESELLER, 0bfd66d529a55807
 richaudience.com, W3brJz0Yv9, RESELLER
 smartadserver.com, 1999, RESELLER, 060d053dcf45cbf3
+vaayamedia.com,VM1030,Direct
+voisetech.com, 1417, DIRECT, 9009ef0379162448
+google.com, pub-1682595508078257, RESELLER, f08c47fec0942fa0
+betweendigital.com, 47402, DIRECT
+richaudience.com, 4AoWPWXbVu, RESELLER
+themediagrid.com, 8USKI6, RESELLER, 9fac4a4a87c2a44f
+adcrew.co, 6a163e85457ed1c4397d9fb3, RESELLER
+aniview.com, 63203a01699023627676c2a8, RESELLER , 78b21b97965ec3f8
+pubmatic.com, 160993, RESELLER, 5d62403b186f2ace
+eskimi.com, 2020000776, DIRECT
+appnexus.com, 15670, RESELLER, f5ab79cb980f11d1
+rubiconproject.com, 26250, RESELLER, 0bfd66d529a55807
+pubmatic.com, 162270, RESELLER, 5d62403b186f2ace
+lijit.com, 502284, RESELLER, fafdf38b16bf6b2b
+smartadserver.com, 4998, RESELLER, 060d053dcf45cbf3
+onetag.com, 8c90176af2e65c8, RESELLER
+improvedigital.com, 2650, RESELLER
+admanmedia.com, 1063, RESELLER
+risecodes.com, 680b33a1fc57d10001c035e1, RESELLER
+minutemedia.com,01ktv53d3f81, DIRECT
+pubmatic.com, 161683, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 17598, RESELLER, 0bfd66d529a55807
+video.unrulymedia.com, 699546687, RESELLER
+yieldmo.com, 2954622693783052507, RESELLER
+media.net, 8CUWNDO6S, RESELLER
+appnexus.com, 8381, RESELLER
+smartadserver.com, 4106, RESELLER, 060d053dcf45cbf3
+lijit.com, 264726, RESELLER, fafdf38b16bf6b2b
+onetag.com, 765b4e6bb9c8438, RESELLER
+admanmedia.com, 953, RESELLER
+sharethrough.com, xz7QjFBY, RESELLER, d53b998a7bd4ecd2
+33across.com, 0013300001jlr99AAA, RESELLER, bbea06d9c4d2853c
+adyoulike.com, d759914f8b58659527a9a57b5a036424, RESELLER
+amxrtb.com, 105199663, RESELLER
+visiblemeasures.com, 2009VM, RESELLER
+zetaglobal.net, 591, RESELLER
 hbagency.it, 40611, DIRECT
 headerbidding.agency, 40611, DIRECT
 # End Header Bidding Agency
